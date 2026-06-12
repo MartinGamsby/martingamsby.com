@@ -1,0 +1,22 @@
+---
+import { formatDate, url, type Lang } from '../i18n/ui';
+import { slugOf, type Post } from '../lib/blog';
+
+interface Props {
+  posts: Post[];
+  lang: Lang;
+  /** Emit data-facets on each item so the blog index can filter client-side. */
+  facetData?: boolean;
+}
+
+const { posts, lang, facetData = false } = Astro.props;
+---
+
+<ul class="post-list">
+  {posts.map((p) => (
+    <li data-facets={facetData ? p.data.facets.join(' ') : undefined}>
+      <time datetime={p.data.date.toISOString().slice(0, 10)}>{formatDate(p.data.date, lang)}</time>
+      <a href={url(`/${lang}/blog/${slugOf(p)}/`)}>{p.data.title}</a>
+    </li>
+  ))}
+</ul>

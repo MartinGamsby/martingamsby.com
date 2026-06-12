@@ -1,0 +1,74 @@
+---
+import '../styles/global.css';
+import { t, url, otherLang, type Lang } from '../i18n/ui';
+import { perLang, neutral } from '../data/socials';
+
+interface Props {
+  lang: Lang;
+  title: string;
+  description?: string;
+  /** Equivalent page in the other language; defaults to the same path with the lang swapped. */
+  twinUrl?: string;
+}
+
+const { lang, title, description, twinUrl } = Astro.props;
+const tr = t(lang);
+const other = otherLang(lang);
+const defaultTwin = Astro.url.pathname.replace(`/${lang}/`, `/${other}/`);
+const twin = twinUrl ?? defaultTwin;
+const year = new Date().getFullYear();
+const footerSocials = [...perLang[lang], ...neutral];
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title === 'Martin Gamsby' ? title : `${title} · Martin Gamsby`}</title>
+    {description && <meta name="description" content={description} />}
+    <meta name="generator" content={Astro.generator} />
+    <script is:inline>
+      (() => {
+        const saved = localStorage.getItem('theme');
+        const dark = saved ? saved === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+        document.documentElement.dataset.theme = dark ? 'dark' : 'light';
+      })();
+    </script>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="wrap">
+        <a class="site-name" href={url(`/${lang}/`)}>Martin Gamsby</a>
+        <nav>
+          <a href={url(`/${lang}/blog/`)}>{tr.nav.blog}</a>
+          <a href={url(`/${lang}/about/`)}>{tr.nav.about}</a>
+          <a href={url(`/${lang}/links/`)}>{tr.nav.links}</a>
+          <a class="lang-switch" href={twin} data-set-lang={other}>{tr.switchLang}</a>
+          <button class="theme-toggle" type="button" aria-label={tr.themeToggle}>◐</button>
+        </nav>
+      </div>
+    </header>
+    <main>
+      <div class="wrap">
+        <slot />
+      </div>
+    </main>
+    <footer class="site-footer">
+      <div class="wrap">
+        <span class="footer-copy">© {year} Martin Gamsby · {tr.footerNote}</span>
+        {footerSocials.map((s) => <a href={s.url} rel="me">{s.label}</a>)}
+      </div>
+    </footer>
+    <script is:inline>
+      document.querySelectorAll('[data-set-lang]').forEach((a) => {
+        a.addEventListener('click', () => localStorage.setItem('lang', a.dataset.setLang));
+      });
+      document.querySelector('.theme-toggle')?.addEventListener('click', () => {
+        const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+        document.documentElement.dataset.theme = next;
+        localStorage.setItem('theme', next);
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,31 @@
+---
+import '../styles/global.css';
+import { url } from '../i18n/ui';
+---
+
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>404 · Martin Gamsby</title>
+    <script is:inline>
+      (() => {
+        const saved = localStorage.getItem('theme');
+        const dark = saved ? saved === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+        document.documentElement.dataset.theme = dark ? 'dark' : 'light';
+      })();
+    </script>
+  </head>
+  <body>
+    <main>
+      <div class="wrap">
+        <h1>404</h1>
+        <p>Page introuvable. / Page not found.</p>
+        <p>
+          <a href={url('/fr/')}>Retour à l’accueil</a> · <a href={url('/en/')}>Back home</a>
+        </p>
+      </div>
+    </main>
+  </body>
+</html>

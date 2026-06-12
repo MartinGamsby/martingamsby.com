@@ -1,0 +1,45 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../../layouts/Base.astro';
+import { formatDate, otherLang, t, url, type Lang } from '../../../i18n/ui';
+import { findTwin, langOf, slugOf, type Post } from '../../../lib/blog';
+
+export async function getStaticPaths() {
+  const all = await getCollection('blog', ({ data }) => !data.draft);
+  return all.map((post) => ({
+    params: { lang: langOf(post), slug: slugOf(post) },
+    props: { post },
+  }));
+}
+
+interface Props {
+  post: Post;
+}
+
+const { post } = Astro.props;
+const lang = langOf(post) as Lang;
+const tr = t(lang);
+const twin = await findTwin(post);
+// Toggle goes to the twin post, or falls back to the other language's blog index.
+const twinUrl = twin
+  ? url(`/${langOf(twin)}/blog/${slugOf(twin)}/`)
+  : url(`/${otherLang(lang)}/blog/`);
+const { Content } = await render(post);
+---
+
+<Base lang={lang} title={post.data.title} description={post.data.description} twinUrl={twinUrl}>
+  <article class="post">
+    <h1>{post.data.title}</h1>
+    <div class="post-meta">
+      <time datetime={post.data.date.toISOString().slice(0, 10)}>
+        {formatDate(post.data.date, lang)}
+      </time>
+      {post.data.facets.map((f) => (
+        <span class="facet-tag">{tr.facetNames[f]}</span>
+      ))}
+    </div>
+    {twin && <a class="twin-link" href={twinUrl}>{tr.readTwin}</a>}
+    <Content />
+    <p><a href={url(`/${lang}/blog/`)}>{tr.backToBlog}</a></p>
+  </article>
+</Base>

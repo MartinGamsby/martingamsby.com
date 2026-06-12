@@ -1,0 +1,24 @@
+---
+import Base from '../../layouts/Base.astro';
+import { LANGS, otherLang, t, url, type Lang } from '../../i18n/ui';
+import { perLang, neutral } from '../../data/socials';
+
+export function getStaticPaths() {
+  return LANGS.map((lang) => ({ params: { lang } }));
+}
+
+const lang = Astro.params.lang as Lang;
+const tr = t(lang);
+const other = otherLang(lang);
+---
+
+<Base lang={lang} title={tr.nav.links}>
+  <h1>{tr.nav.links}</h1>
+  <p>{tr.linksIntro}</p>
+  <ul class="link-list">
+    {[...perLang[lang], ...neutral].map((s) => (
+      <li><a href={s.url}>{s.label}</a></li>
+    ))}
+    <li><a href={url(`/${other}/links/`)} data-set-lang={other}>{tr.otherAccounts}</a></li>
+  </ul>
+</Base>

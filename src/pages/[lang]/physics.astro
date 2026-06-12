@@ -1,0 +1,30 @@
+---
+import Base from '../../layouts/Base.astro';
+import DoorStub from '../../components/DoorStub.astro';
+import { LANGS, t, type Lang } from '../../i18n/ui';
+
+export function getStaticPaths() {
+  return LANGS.map((lang) => ({ params: { lang } }));
+}
+
+const lang = Astro.params.lang as Lang;
+const tr = t(lang);
+const links = [
+  {
+    label:
+      lang === 'fr'
+        ? 'Article + code (Zenodo · DOI 10.5281/zenodo.20482196)'
+        : 'Paper + code (Zenodo · DOI 10.5281/zenodo.20482196)',
+    url: 'https://doi.org/10.5281/zenodo.20482196',
+  },
+  { label: 'ORCID 0009-0007-4069-9687', url: 'https://orcid.org/0009-0007-4069-9687' },
+  {
+    label: lang === 'fr' ? 'Code source (GitHub)' : 'Source code (GitHub)',
+    url: 'https://github.com/MartinGamsby/ProgenitorNodeModelCosmology',
+  },
+];
+---
+
+<Base lang={lang} title={tr.doors.physics.title}>
+  <DoorStub lang={lang} doorKey="physics" facet="physics" links={links} />
+</Base>

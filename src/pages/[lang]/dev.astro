@@ -1,0 +1,21 @@
+---
+import Base from '../../layouts/Base.astro';
+import DoorStub from '../../components/DoorStub.astro';
+import { LANGS, t, type Lang } from '../../i18n/ui';
+
+export function getStaticPaths() {
+  return LANGS.map((lang) => ({ params: { lang } }));
+}
+
+const lang = Astro.params.lang as Lang;
+const tr = t(lang);
+---
+
+<Base lang={lang} title={tr.doors.dev.title}>
+  <DoorStub
+    lang={lang}
+    doorKey="dev"
+    facet="dev"
+    links={[{ label: 'GitHub — MartinGamsby', url: 'https://github.com/MartinGamsby' }]}
+  />
+</Base>

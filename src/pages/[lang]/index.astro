@@ -1,0 +1,45 @@
+---
+import Base from '../../layouts/Base.astro';
+import PostList from '../../components/PostList.astro';
+import { LANGS, t, url, type Lang } from '../../i18n/ui';
+import { getPosts } from '../../lib/blog';
+
+export function getStaticPaths() {
+  return LANGS.map((lang) => ({ params: { lang } }));
+}
+
+const lang = Astro.params.lang as Lang;
+const tr = t(lang);
+const latest = (await getPosts(lang)).slice(0, 5);
+
+const doors: { key: keyof typeof tr.doors; href: string }[] = [
+  { key: 'dev', href: url(`/${lang}/dev/`) },
+  { key: 'physics', href: url(`/${lang}/physics/`) },
+  { key: 'book', href: url(`/${lang}/book/`) },
+  { key: 'music', href: url(`/${lang}/music/`) },
+  { key: 'everything', href: url(`/${lang}/blog/`) },
+];
+---
+
+<Base lang={lang} title="Martin Gamsby" description={tr.heroLine}>
+  <section class="hero">
+    <h1>Martin Gamsby</h1>
+    <p>{tr.heroLine}</p>
+  </section>
+
+  <h2 class="doors-heading">{tr.doorsHeading}</h2>
+  <ul class="doors">
+    {doors.map((d) => (
+      <li>
+        <a class="door" href={d.href}>
+          <strong>{tr.doors[d.key].title}</strong>
+          <span>{tr.doors[d.key].blurb}</span>
+        </a>
+      </li>
+    ))}
+  </ul>
+
+  <h2 class="doors-heading">{tr.latestPosts}</h2>
+  <PostList posts={latest} lang={lang} />
+  <p><a href={url(`/${lang}/blog/`)}>{tr.allPosts} →</a></p>
+</Base>

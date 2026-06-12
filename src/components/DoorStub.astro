@@ -1,0 +1,28 @@
+---
+import PostList from './PostList.astro';
+import { t, type Lang } from '../i18n/ui';
+import { getPosts, type Facet } from '../lib/blog';
+
+interface Props {
+  lang: Lang;
+  doorKey: 'dev' | 'physics' | 'book' | 'music';
+  facet: Facet;
+  links?: { label: string; url: string }[];
+}
+
+const { lang, doorKey, facet, links = [] } = Astro.props;
+const tr = t(lang);
+const posts = await getPosts(lang, facet);
+---
+
+<h1>{tr.doors[doorKey].title}</h1>
+<p>{tr.doors[doorKey].blurb}</p>
+{links.length > 0 && (
+  <ul class="link-list">
+    {links.map((l) => (
+      <li><a href={l.url}>{l.label}</a></li>
+    ))}
+  </ul>
+)}
+<p>{tr.underConstruction}</p>
+<PostList posts={posts} lang={lang} />

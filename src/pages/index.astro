@@ -1,0 +1,32 @@
+---
+import { url } from '../i18n/ui';
+
+// Language chooser: saved preference wins, then browser language, default FR.
+const fr = url('/fr/');
+const en = url('/en/');
+---
+
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Martin Gamsby</title>
+    <noscript><meta http-equiv="refresh" content={`0;url=${fr}`} /></noscript>
+    <script is:inline define:vars={{ fr, en }}>
+      const saved = localStorage.getItem('lang');
+      const lang =
+        saved === 'en' || saved === 'fr'
+          ? saved
+          : (navigator.language || 'fr').toLowerCase().startsWith('fr')
+            ? 'fr'
+            : 'en';
+      location.replace(lang === 'en' ? en : fr);
+    </script>
+  </head>
+  <body>
+    <p style="font-family: system-ui; padding: 2rem;">
+      <a href={fr}>Français</a> · <a href={en}>English</a>
+    </p>
+  </body>
+</html>

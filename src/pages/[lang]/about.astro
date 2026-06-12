@@ -1,0 +1,49 @@
+---
+import Base from '../../layouts/Base.astro';
+import { LANGS, t, type Lang } from '../../i18n/ui';
+
+export function getStaticPaths() {
+  return LANGS.map((lang) => ({ params: { lang } }));
+}
+
+const lang = Astro.params.lang as Lang;
+const tr = t(lang);
+---
+
+<Base lang={lang} title={tr.nav.about}>
+  <article class="post">
+    <h1>{tr.nav.about}</h1>
+    {lang === 'fr' ? (
+      <>
+        <p>
+          Curiosités, Code, Développement personnel/logiciel, Chiffres, Anthropologie,
+          Personnalités, Civilisation, Agriculture régénérative, Méta-formule, Urbanisme, et
+          peut-être même Bitcoin… tout est connecté.
+        </p>
+        <p>
+          Et même si le Myers-Briggs n’est pas scientifique (mais qu’est-ce qui est réel,
+          finalement), je suppose que je suis un INTP; j’ai trop d’intérêts, même si à première
+          vue on peut penser que je n’en ai aucun, et je prends beaucoup trop de temps à tout
+          décortiquer, tout analyser, sans partager. Ou du moins, je n’ai pas tendance à
+          partager. Ici, c’est mon essai particulier au partage d’idées.
+        </p>
+        <p><em>Martin Gamsby</em></p>
+      </>
+    ) : (
+      <>
+        <p>
+          Everything is connected: Software/Personal development, Personalities, Algorithms,
+          Figures, Anthropology, Meta-formula, Curiosities, Agriculture, Urban planning…
+        </p>
+        <p>
+          And even though Myers-Briggs is not scientific (but what is real, after all), I guess
+          I am an INTP; I have too many interests, even if at first glance one might think that
+          I have none, and I take way too much time to dissect everything, to analyze
+          everything, without sharing. Or at least, I don't tend to share. Here, it is my
+          particular attempt at sharing ideas.
+        </p>
+        <p><em>Martin Gamsby</em></p>
+      </>
+    )}
+  </article>
+</Base>
