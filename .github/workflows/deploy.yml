@@ -10,6 +10,11 @@ permissions:
   pages: write
   id-token: write
 
+env:
+  # Node 24 becomes the forced default for JS actions on 2026-06-16; opt in early
+  # so a breakage shows up in a deploy we're watching, not a random future one.
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: 'true'
+
 concurrency:
   group: pages
   cancel-in-progress: false

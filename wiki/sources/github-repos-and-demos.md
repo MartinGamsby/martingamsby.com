@@ -25,5 +25,8 @@ Profile: github.com/MartinGamsby (11 public repos as of 2026-06-11).
 - **3 patent contributions** (Mirametrix/Lattice era).
 
 ## Repo for this site
-- `MartinGamsby/martingamsby.com` — this repo; was empty until 2026-06-11 (branch
-  `main`, no commits before the planning docs landed).
+- `MartinGamsby/martingamsby.com` — this repo. **Public since 2026-06-12** (free-plan
+  GitHub Pages requires it; history squashed + scrubbed before the flip — keep
+  emails/personal details out, see [[profiles-and-channels]]). Pages serves from the
+  Actions workflow (`build_type: workflow` — it auto-enabled as `legacy` when the
+  repo went public and had to be switched via the API).
