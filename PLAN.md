@@ -95,11 +95,17 @@ Show both, clearly separated:
       blog dirs from the read-only Jekyll sources); writes `tools/migration-report.md`.
       Pairing: `ref:`+date primary, unique-date then loose-`ref` fallback —
       **discovered 5 FR posts carry copy-paste-wrong `ref:` URLs** (pointed at a
-      neighbour); date-first resolution fixes them. Remaining Phase-2 work:
-      (a) **facet review** — assignments are a keyword first-pass (see the report's
-      "Non-`ideas`" list); (b) **redirect stubs** in the two old repos (touches
-      sibling repos — not done, needs go-ahead). FR-only `ce-qui-peut-tout-gacher`,
-      `crypto`; EN-only `hello-world` → toggle falls back gracefully.
+      neighbour); date-first resolution fixes them. **Redirect stubs shipped**
+      (`tools/make-redirect-stubs.mjs`): the published (git-tracked) posts in both
+      old repos are now plugin-free `layout: redirect` meta-refresh shells →
+      `…/martingamsby.com/{lang}/blog/<stem>/` (FR 125 + EN 124); untracked drafts
+      left alone; re-run with `--target-base` at cutover. FR-only
+      `ce-qui-peut-tout-gacher`, `crypto`; EN-only `hello-world` → toggle falls
+      back gracefully. Remaining Phase-2 polish: **facet review** — assignments
+      are a keyword first-pass (see the report's "Non-`ideas`" list). NB: the
+      migration also pulled in a handful of *unpublished* drafts from the old
+      working trees onto the new site (e.g. `…-11-ans`/`…-11-years`); mark
+      `draft: true` if any shouldn't be live.
 - [ ] **Phase 3 — Doors**: home, dev, physics, book, music, about, links pages ×2 languages.
 - [ ] **Phase 4 — Polish & launch**: RSS, sitemap, hreflang, OG images, Pagefind
       search, DNS cutover, linktrees → `/links`, `llms.txt`. Time launch so the book
