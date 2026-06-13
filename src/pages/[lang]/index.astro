@@ -1,6 +1,7 @@
 ---
 import Base from '../../layouts/Base.astro';
 import PostList from '../../components/PostList.astro';
+import Constellation from '../../components/Constellation.astro';
 import { LANGS, t, url, type Lang } from '../../i18n/ui';
 import { getPosts } from '../../lib/blog';
 
@@ -11,6 +12,16 @@ export function getStaticPaths() {
 const lang = Astro.params.lang as Lang;
 const tr = t(lang);
 const latest = (await getPosts(lang)).slice(0, 5);
+
+const icons: Record<string, string> = {
+  dev: '<path d="m8 7-5 5 5 5M16 7l5 5-5 5"/>',
+  physics:
+    '<circle cx="12" cy="12" r="1.8" fill="currentColor" stroke="none"/><ellipse cx="12" cy="12" rx="9.5" ry="4" /><ellipse cx="12" cy="12" rx="9.5" ry="4" transform="rotate(62 12 12)"/>',
+  book: '<path d="M12 6.5C10 5 7 4.5 3.5 4.5v13c3.5 0 6.5.5 8.5 2 2-1.5 5-2 8.5-2v-13C17 4.5 14 5 12 6.5Zm0 0v13"/>',
+  music:
+    '<path d="M9 17.5V6.2l10-2v11.3"/><circle cx="6.8" cy="17.7" r="2.2" fill="currentColor" stroke="none"/><circle cx="16.8" cy="15.7" r="2.2" fill="currentColor" stroke="none"/>',
+  everything: '<path d="M12 3.5v17M4.6 7.75l14.8 8.5M19.4 7.75 4.6 16.25"/>',
+};
 
 const doors: { key: keyof typeof tr.doors; href: string }[] = [
   { key: 'dev', href: url(`/${lang}/dev/`) },
@@ -23,23 +34,38 @@ const doors: { key: keyof typeof tr.doors; href: string }[] = [
 
 <Base lang={lang} title="Martin Gamsby" description={tr.heroLine}>
   <section class="hero">
+    <Constellation />
     <h1>Martin Gamsby</h1>
     <p>{tr.heroLine}</p>
   </section>
 
-  <h2 class="doors-heading">{tr.doorsHeading}</h2>
+  <h2 class="section-title">{tr.doorsHeading}</h2>
   <ul class="doors">
     {doors.map((d) => (
       <li>
-        <a class="door" href={d.href}>
+        <a class={`door door--${d.key}`} href={d.href}>
+          <span class="door-icon">
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              set:html={icons[d.key]}
+            />
+          </span>
           <strong>{tr.doors[d.key].title}</strong>
           <span>{tr.doors[d.key].blurb}</span>
+          <span class="door-go" aria-hidden="true">→</span>
         </a>
       </li>
     ))}
   </ul>
 
-  <h2 class="doors-heading">{tr.latestPosts}</h2>
+  <h2 class="section-title">{tr.latestPosts}</h2>
   <PostList posts={latest} lang={lang} />
   <p><a href={url(`/${lang}/blog/`)}>{tr.allPosts} →</a></p>
 </Base>

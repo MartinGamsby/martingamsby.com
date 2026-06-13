@@ -13,10 +13,12 @@ export function url(path: string): string {
 }
 
 export function formatDate(date: Date, lang: Lang): string {
+  // Frontmatter dates parse as UTC midnight; format in UTC or they shift a day.
   return date.toLocaleDateString(lang === 'fr' ? 'fr-CA' : 'en-CA', {
     year: 'numeric',
     month: 'long',
     day: 'numeric',
+    timeZone: 'UTC',
   });
 }
 

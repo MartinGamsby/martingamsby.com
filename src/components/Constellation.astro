@@ -1,0 +1,116 @@
+---
+// Animated "everything is connected" node graph behind the hero.
+// Pure canvas, no deps; static single frame under prefers-reduced-motion;
+// pauses when the tab is hidden; palette follows the active theme.
+---
+
+<div class="hero-sky" aria-hidden="true"><canvas></canvas></div>
+
+<script>
+  const sky = document.querySelector('.hero-sky');
+  const canvas = sky?.querySelector('canvas');
+  const ctx = canvas?.getContext('2d');
+
+  if (sky && canvas && ctx) {
+    const PALETTES = {
+      dark: ['#38bdf8', '#a78bfa', '#fbbf24', '#f472b6'],
+      light: ['#0284c7', '#7c3aed', '#b45309', '#db2777'],
+    };
+    const LINK_DIST = 130;
+    const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    let palette = PALETTES[document.documentElement.dataset.theme === 'dark' ? 'dark' : 'light'];
+    let nodes = [];
+    let w = 0;
+    let h = 0;
+    let dpr = 1;
+    let raf = 0;
+
+    function resize() {
+      const rect = sky.getBoundingClientRect();
+      w = rect.width;
+      h = rect.height;
+      dpr = Math.min(devicePixelRatio || 1, 2);
+      canvas.width = Math.round(w * dpr);
+      canvas.height = Math.round(h * dpr);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      const count = Math.min(90, Math.round((w * h) / 14000));
+      nodes = Array.from({ length: count }, () => ({
+        x: Math.random() * w,
+        y: Math.random() * h,
+        vx: (Math.random() - 0.5) * 0.35,
+        vy: (Math.random() - 0.5) * 0.35,
+        r: 1 + Math.random() * 1.4,
+        c: palette[Math.floor(Math.random() * palette.length)],
+        i: Math.floor(Math.random() * palette.length),
+      }));
+    }
+
+    function frame(advance) {
+      ctx.clearRect(0, 0, w, h);
+      for (const n of nodes) {
+        if (advance) {
+          n.x += n.vx;
+          n.y += n.vy;
+          if (n.x < 0 || n.x > w) n.vx *= -1;
+          if (n.y < 0 || n.y > h) n.vy *= -1;
+        }
+      }
+      for (let a = 0; a < nodes.length; a++) {
+        for (let b = a + 1; b < nodes.length; b++) {
+          const dx = nodes[a].x - nodes[b].x;
+          const dy = nodes[a].y - nodes[b].y;
+          const d = Math.hypot(dx, dy);
+          if (d < LINK_DIST) {
+            ctx.globalAlpha = (1 - d / LINK_DIST) * 0.35;
+            ctx.strokeStyle = nodes[a].c;
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.moveTo(nodes[a].x, nodes[a].y);
+            ctx.lineTo(nodes[b].x, nodes[b].y);
+            ctx.stroke();
+          }
+        }
+      }
+      ctx.globalAlpha = 0.9;
+      for (const n of nodes) {
+        ctx.fillStyle = n.c;
+        ctx.beginPath();
+        ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
+        ctx.fill();
+      }
+      ctx.globalAlpha = 1;
+    }
+
+    function loop() {
+      frame(true);
+      raf = requestAnimationFrame(loop);
+    }
+
+    function start() {
+      cancelAnimationFrame(raf);
+      if (reduced) {
+        // settle into a pleasing static web
+        for (let i = 0; i < 60; i++) for (const n of nodes) { n.x += n.vx; n.y += n.vy; }
+        frame(false);
+      } else {
+        loop();
+      }
+    }
+
+    resize();
+    start();
+
+    addEventListener('resize', () => { resize(); start(); });
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) cancelAnimationFrame(raf);
+      else start();
+    });
+    // Repaint with the right hues when the theme toggles.
+    new MutationObserver(() => {
+      palette = PALETTES[document.documentElement.dataset.theme === 'dark' ? 'dark' : 'light'];
+      for (const n of nodes) n.c = palette[n.i];
+      if (reduced) frame(false);
+    }).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+  }
+</script>
