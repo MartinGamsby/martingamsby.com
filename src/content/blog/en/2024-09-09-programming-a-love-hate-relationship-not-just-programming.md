@@ -11,6 +11,8 @@ Have you ever tried programming?
 
 Have you ever hated a language?
 
+(The image says: “I hate myself,” then the self-hating person is shown: “c++” [a programming language], and they say “Wow! I hate that even more!”)
+
 Personally, I never hated C++.
 
 I found it fascinating.

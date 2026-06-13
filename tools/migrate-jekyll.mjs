@@ -51,19 +51,21 @@ const WRITE = process.argv.includes('--write');
 // This is a FIRST PASS — every assignment needs a human eye (see the report).
 const FACET_KEYWORDS = {
   physics: ['science', 'physique', 'physics', 'astrophysique', 'astrophysics',
-    'energie sombre', 'dark energy', 'trou noir', 'black hole', 'big bang',
-    'cosmologie', 'cosmology', 'quantique', 'quantum', 'gravite', 'gravity',
-    'supernova', 'relativite', 'univers', 'universe', 'mathematicien', 'chiffres'],
+    'energie sombre', 'energie noire', 'dark energy', 'dark flow', 'flot sombre',
+    'trou noir', 'black hole', 'big bang', 'cosmologie', 'cosmology', 'quantique',
+    'quantum', 'gravite', 'gravity', 'supernova', 'relativite', 'univers',
+    'universe', 'mathematicien', 'mathematician', 'chiffres', 'hawking'],
   dev: ['programmation', 'programming', 'logiciel', 'software', 'code', 'coding',
-    'algorithme', 'algorithm', 'developpement', 'developer', 'ia', 'ai',
-    'intelligence artificielle', 'machine learning', 'llm', 'informatique',
-    'crypto', 'bitcoin', 'web', 'jeu video', 'video game', 'tech', 'technologie',
-    'quantum computing'],
-  music: ['musique', 'music', 'piano', 'composition', 'chanson', 'song',
-    'experience musicale', 'musical experience', 'melodie', 'melody'],
+    'coder', 'algorithme', 'algorithm', 'developpement', 'developer', 'ia', 'ai',
+    'intelligence artificielle', 'artificial intelligence', 'machine learning',
+    'llm', 'informatique', 'excel', 'crypto', 'bitcoin', 'web', 'jeu video',
+    'video game', 'tech', 'technologie', 'quantum computing'],
+  music: ['musique', 'music', 'piano', 'composition', 'chanson', 'song', 'youtube',
+    'experience musicale', 'musical experience', 'melodie', 'melody', 'microphone'],
   fiction: ['fiction', 'histoire courte', 'short story', 'nouvelle', 'roman',
     'novel', 'recit', 'defi decriture', 'writing challenge', 'larche de centauri',
-    'centauri ark', 'conte'],
+    'centauri ark', 'conte', 'interverti', 'guide pour', 'djosh', 'fabulateur',
+    'fabulator', 'personnage'],
 };
 
 const FACET_ORDER = ['dev', 'physics', 'fiction', 'music', 'ideas'];

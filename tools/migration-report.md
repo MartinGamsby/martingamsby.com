@@ -14,11 +14,11 @@ Generated 2026-06-13 · mode: **WRITE**
 - date: 3
 
 ## Facet distribution (first-pass heuristic — REVIEW)
-- dev: 69
+- dev: 71
 - physics: 26
-- fiction: 51
+- fiction: 55
 - music: 20
-- ideas: 124
+- ideas: 118
 
 ## FR-only posts (toggle will fall back)
 - 2009-12-13 · ce-qui-peut-tout-gacher — Ce qui peut tout gâcher
@@ -57,6 +57,7 @@ Generated 2026-06-13 · mode: **WRITE**
 - [dev] 2024-08-31 — Can Bitcoin Price Be Predicted, From the Beginning?
 - [physics, fiction] 2024-09-02 — Falling sensation
 - [dev] 2024-09-03 — I'm afraid of soup
+- [dev] 2024-09-04 — When People Underestimate the Power of Excel
 - [dev] 2024-09-06 — When did self-help become negative?
 - [dev] 2024-09-07 — Stop hustling, enjoy chores
 - [physics] 2024-09-08 — Why is the sky blue? (And everything else)
@@ -100,5 +101,7 @@ Generated 2026-06-13 · mode: **WRITE**
 - [music] 2024-12-12 — Is it better with the phone's built-in microphone?
 - [dev] 2024-12-23 — You know how AI is really bad at generating text in images and videos?
 - [dev] 2025-06-24 — A love-hate relationship?
+- [fiction] 2025-06-28 — 10 years!
 - [dev] 2026-05-05 — I need help
+- [fiction] 2026-06-11 — 11 years!
 - [dev] 2024-09-14 — A PhD in your pocket
