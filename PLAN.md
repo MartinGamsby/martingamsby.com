@@ -1,6 +1,7 @@
 # martingamsby.com — Site Plan
 
-Status: **planning, pre-scaffold** (no code yet). Last updated: 2026-06-11.
+Status: **Phase 2 (migration) in progress** — scaffold live, back-catalogue
+imported. Last updated: 2026-06-13.
 
 ## Vision
 
@@ -87,8 +88,18 @@ Show both, clearly separated:
       proving `translationKey`, and the `new-post` skill/script.
       Live at martingamsby.github.io/martingamsby.com/ — at domain cutover, flip
       `site`/`base` in `astro.config.mjs` and add the CNAME.
-- [ ] **Phase 2 — Migrate**: post conversion script, translation pairing, facet
-      tagging, redirect stubs in the old repos.
+- [~] **Phase 2 — Migrate** (script done 2026-06-13): `tools/migrate-jekyll.mjs`
+      converts both Jekyll repos → `src/content/blog/{fr,en}` in the WriterHelper
+      Astro format. Outcome: **265 posts** (131 twin pairs + 2 FR-only + 1 EN-only),
+      build validates all of them (283 pages). Re-runnable (clears + rewrites the
+      blog dirs from the read-only Jekyll sources); writes `tools/migration-report.md`.
+      Pairing: `ref:`+date primary, unique-date then loose-`ref` fallback —
+      **discovered 5 FR posts carry copy-paste-wrong `ref:` URLs** (pointed at a
+      neighbour); date-first resolution fixes them. Remaining Phase-2 work:
+      (a) **facet review** — assignments are a keyword first-pass (see the report's
+      "Non-`ideas`" list); (b) **redirect stubs** in the two old repos (touches
+      sibling repos — not done, needs go-ahead). FR-only `ce-qui-peut-tout-gacher`,
+      `crypto`; EN-only `hello-world` → toggle falls back gracefully.
 - [ ] **Phase 3 — Doors**: home, dev, physics, book, music, about, links pages ×2 languages.
 - [ ] **Phase 4 — Polish & launch**: RSS, sitemap, hreflang, OG images, Pagefind
       search, DNS cutover, linktrees → `/links`, `llms.txt`. Time launch so the book

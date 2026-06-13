@@ -1,8 +1,8 @@
 ---
 title: "Le killer feature est : LA DETTE TECHNIQUE"
 date: 2026-01-23
-translationKey: 2026-01-23-killer-feature-technical-debt
-facets: [dev]
+translationKey: 2026-01-23-the-killer-feature-is-technical-debt
+facets: [ideas]
 tags: [Gamsblurb]
 ---
 
@@ -10,7 +10,7 @@ Pour les vrais projets pour lesquels vous ne pouvez pas faire de vibe coding, la
 
 - vous n'avez pas le temps
 - vous ne pouvez pas établir de priorités
-- vous ne voulez tout simplement pas faire.
+- vous ne voulez tout simplement pas faire. 
 
 L'IA peut faire pour 1$ des heures de travail abrutissant, qui vous éviteront une dette technique future!
 

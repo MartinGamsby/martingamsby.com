@@ -10,12 +10,27 @@ They are the migration source for the new site's blog (Phase 2).
 | Served at | martingamsby.github.io | martingamsby.github.io/en |
 | Posts (2026-06-11) | ~145 | ~140 |
 
+**Migration ran 2026-06-13** via `tools/migrate-jekyll.mjs` (site repo). Outcome:
+**265 posts** out = 131 twin pairs + 2 FR-only (`ce-qui-peut-tout-gacher`,
+`crypto`) + 1 EN-only (`hello-world`); the site build validates all of them. The
+script is re-runnable: it clears and rewrites `src/content/blog/{fr,en}` from the
+read-only Jekyll sources and emits `tools/migration-report.md` (counts, pairing
+method, FR/EN-only lists, and every non-`ideas` facet to spot-check). Format per
+`WriterHelper/PLAN_ASTRO_FORMAT.md`: drop the `### **title**` heading,
+`excerpt_image`→`image:`, drop `categories`, keep `tags`, shared `translationKey`
+= `<date>-<EN slug>`. Body preserved otherwise (raw HTML `<ul>/<span>` etc. passes
+through Markdown fine).
+
 Facts that matter for migration:
-- **Posts already declare their twin**: the Jekyll frontmatter has a `ref:` field
-  with the twin's URL (verified on the 2026-01-23 pair, both directions). Use it
-  as the primary pairing signal; date-matching is the fallback. Post bodies also
-  repeat the title as a leading `### **…**` heading — drop it at migration (the
-  new layout renders the title), but verify the pattern across all posts first.
+- **Posts declare their twin via a `ref:` URL**, BUT it is not fully trustworthy:
+  **5 FR posts carry copy-paste-wrong `ref:`** pointing at a neighbouring post
+  (`ce-qui-peut-tout-gacher` + `les-blessures-de-votre-cerveau` both → EN
+  `your-brain-injuries`; `moins-de-classement` + `le-classement-sans-dessus-dessous`
+  + `le-gros-avantage-de-lecole` all → EN `the-big-advantage-of-school`). So the
+  script pairs in passes: `ref:`+same-date first (trustworthy), then unique-date,
+  then loose-`ref` (legit cross-language date drift), deduping each EN twin. This
+  resolves the bad refs to their real same-date twins. Bodies repeat the title as
+  a leading `### **…**` heading — dropped at migration (verified the pattern holds).
 - Posts pair across languages by **date** (slugs differ: `2016-03-01-poisson-rouge`
   ↔ `2016-03-01-goldfish`). A few exist in only one language (e.g. FR
   `2024-12-03-lutin-jour-2/3` vs EN `elf-day-2/3` DO pair; EN

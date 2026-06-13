@@ -13,6 +13,8 @@ const blog = defineCollection({
     facets: z.array(z.enum(['dev', 'physics', 'fiction', 'music', 'ideas'])).default([]),
     tags: z.array(z.string()).default([]),
     draft: z.boolean().default(false),
+    // Optional preview/OG image (Jekyll `excerpt_image` at migration; WriterHelper `image`).
+    image: z.string().optional(),
   }),
 });
 
