@@ -4,7 +4,8 @@ date: 2024-09-24
 translationKey: 2024-09-24-do-you-suffer-from-thalassophobia
 facets: [ideas]
 tags: [Peur, Anxiété, Perception, Gamsblurb]
-image: https://2orpfio4ixpxegt9.public.blob.vercel-storage.com/blogPost/cm1h33ob20008jr0csnlogswc/preview-image-S7hg5Gzvy1tUHxkb9RLsqPlB0G8fno.png
+image: /assets/posts/2024-09-24-souffrez-vous-de-thalassophobie.header.webp
+imageThumb: /assets/posts/2024-09-24-souffrez-vous-de-thalassophobie.thumb.webp
 ---
 
 Parfois, je vois des images qui devraient:

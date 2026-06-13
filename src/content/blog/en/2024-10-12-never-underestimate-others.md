@@ -4,7 +4,8 @@ date: 2024-10-12
 translationKey: 2024-10-12-never-underestimate-others
 facets: [ideas]
 tags: [Advice, Learn, Teacher, Accountability, Experience, Gamsblurb]
-image: https://2orpfio4ixpxegt9.public.blob.vercel-storage.com/blogPost/cm2688ccs000sl30c8uhph4k4/preview-image-I7BLPAXZT7PL4dESiemzqZM3IuHFHO.webp
+image: /assets/posts/2024-10-12-never-underestimate-others.header.webp
+imageThumb: /assets/posts/2024-10-12-never-underestimate-others.thumb.webp
 ---
 
 For several reasons, but especially when someone has more experience than you.

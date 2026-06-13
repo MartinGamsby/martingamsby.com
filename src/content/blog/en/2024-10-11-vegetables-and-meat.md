@@ -4,7 +4,8 @@ date: 2024-10-11
 translationKey: 2024-10-11-vegetables-and-meat
 facets: [ideas]
 tags: [Food, Health, Diet, Food sensitivity, Diet restrictions, Health struggles, Gluten, Elimination diet, Anxiety, Trial and error, Isolation, Digestive issues, Self-discovery journey, Gamsblurb]
-image: https://2orpfio4ixpxegt9.public.blob.vercel-storage.com/blogPost/cm2551tnd00l6l80c9ag86pp5/preview-image-Pg7N3E4Mz7yogakkTyaxWsnV6XrlVw.webp
+image: /assets/posts/2024-10-11-vegetables-and-meat.header.webp
+imageThumb: /assets/posts/2024-10-11-vegetables-and-meat.thumb.webp
 ---
 
 That's all I ate for 2 weeks.

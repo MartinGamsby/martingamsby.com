@@ -4,7 +4,8 @@ date: 2024-10-21
 translationKey: 2024-10-21-people-like-stories-for-different-reasons-what-makes-a-story-compelling-to-you
 facets: [fiction]
 tags: [Stories, Fiction, Gamsblurb]
-image: https://2orpfio4ixpxegt9.public.blob.vercel-storage.com/blogPost/cm2jenv79000tl00cv0ob7xg0/preview-image-X6g9fsysv7XzWCIoyNpgnLQzlIRV0u.webp
+image: /assets/posts/2024-10-21-people-like-stories-for-different-reasons-what-makes-a-story-compelling-to-you.header.webp
+imageThumb: /assets/posts/2024-10-21-people-like-stories-for-different-reasons-what-makes-a-story-compelling-to-you.thumb.webp
 ---
 
 For me I think it needs to be something new, that I never encountered or thought about.

@@ -4,7 +4,8 @@ date: 2024-09-23
 translationKey: 2024-09-23-it-or-software-do-you-know-the-difference
 facets: [dev, physics]
 tags: [Informatique, Logiciel, Analogie, Développement Logiciel, Gamsblurb]
-image: https://2orpfio4ixpxegt9.public.blob.vercel-storage.com/blogPost/cm1f8sism00jlld0cdyr4aw57/preview-image-zEPKDW2ifnHd1pEmddGCnVHWEoRbQV.jfif
+image: /assets/posts/2024-09-23-informatique-ou-logiciel-connaissez-vous-la-difference.header.webp
+imageThumb: /assets/posts/2024-09-23-informatique-ou-logiciel-connaissez-vous-la-difference.thumb.webp
 ---
 
 C'est encore arrivé: quelqu'un pensait que j'étais "en informatique" (IT).

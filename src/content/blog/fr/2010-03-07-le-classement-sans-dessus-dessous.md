@@ -4,7 +4,8 @@ date: 2010-03-07
 translationKey: 2010-03-07-upside-down-organisation
 facets: [ideas]
 tags: [Gamsblog, Organisation, Apprendre, Gamsblurb]
-image: http://comment-apprendre.com/apprendre%20en%20gagnant%20du%20temps.jpg
+image: /assets/posts/2010-03-07-le-classement-sans-dessus-dessous.header.webp
+imageThumb: /assets/posts/2010-03-07-le-classement-sans-dessus-dessous.thumb.webp
 ---
 
 Le classement, ça peut être désordonné ?

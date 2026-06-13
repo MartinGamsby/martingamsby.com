@@ -4,7 +4,8 @@ date: 2024-09-11
 translationKey: 2024-09-11-alcohol-or-sugar
 facets: [ideas]
 tags: [Santé, Addiction, Sucre, Alimentation, Alcool, Gamsblurb]
-image: https://2orpfio4ixpxegt9.public.blob.vercel-storage.com/blogPost/cm0xwrjka015aky0ch4g0yelq/preview-image-FQiZcXXyh6HfewpofAhzTLGIj5q361.jfif
+image: /assets/posts/2024-09-11-alcool-ou-sucre.header.webp
+imageThumb: /assets/posts/2024-09-11-alcool-ou-sucre.thumb.webp
 ---
 
 L'alcool est présent dans nos vies, qu'on le veuille ou non.

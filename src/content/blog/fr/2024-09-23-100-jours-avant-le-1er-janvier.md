@@ -4,7 +4,8 @@ date: 2024-09-23
 translationKey: 2024-09-23-100-days-until-january-1st
 facets: [dev]
 tags: [Développement personnel, habitudes, motivation, productivité, Gamsblurb]
-image: /assets/images/default-image.jpeg
+image: /assets/posts/2024-09-23-100-jours-avant-le-1er-janvier.header.webp
+imageThumb: /assets/posts/2024-09-23-100-jours-avant-le-1er-janvier.thumb.webp
 ---
 
 Si vous cherchiez une raison commencer quelque chose, c'est aujourd'hui le jour J.

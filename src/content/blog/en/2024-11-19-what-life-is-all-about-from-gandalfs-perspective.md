@@ -4,7 +4,8 @@ date: 2024-11-19
 translationKey: 2024-11-19-what-life-is-all-about-from-gandalfs-perspective
 facets: [ideas]
 tags: [Magic, Myers-Briggs, Personalities, Purpose, Ikigai, Gamsblurb]
-image: https://2orpfio4ixpxegt9.public.blob.vercel-storage.com/blogPost/cm0cfphhf00lmlb0c67d036e8/preview-image-ZbYl0a55qAyhUN6BCOXlZ5YP58hVhB.jfif
+image: /assets/posts/2024-11-19-what-life-is-all-about-from-gandalfs-perspective.header.webp
+imageThumb: /assets/posts/2024-11-19-what-life-is-all-about-from-gandalfs-perspective.thumb.webp
 ---
 
 Gandalf is not human. He's a demigod in the world of Lord of the Rings. A Maia.

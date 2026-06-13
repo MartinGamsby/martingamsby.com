@@ -4,7 +4,8 @@ date: 2024-10-11
 translationKey: 2024-10-11-vegetables-and-meat
 facets: [ideas]
 tags: [Alimentation, Santé, Régime alimentaire, Sensibilité alimentaire, Restrictions alimentaires, Problèmes de santé, Gluten, Régime d'élimination, Anxiété, Essais et erreurs, Isolement, Problèmes digestifs, Gamsblurb]
-image: https://2orpfio4ixpxegt9.public.blob.vercel-storage.com/blogPost/cm2551tnd00l6l80c9ag86pp5/preview-image-Pg7N3E4Mz7yogakkTyaxWsnV6XrlVw.webp
+image: /assets/posts/2024-10-11-legumes-et-viande.header.webp
+imageThumb: /assets/posts/2024-10-11-legumes-et-viande.thumb.webp
 ---
 
 C'est tout ce que j'ai mangé pendant 2 semaines.

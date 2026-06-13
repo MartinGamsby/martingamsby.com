@@ -4,7 +4,8 @@ date: 2024-08-30
 translationKey: 2024-08-30-parents-are-adapting
 facets: [ideas]
 tags: [Parent, Child, ADHD, Neurodiversity, Gamsblurb]
-image: https://2orpfio4ixpxegt9.public.blob.vercel-storage.com/blogPost/cm0h0njjy00s4ml0cscbkstzr/preview-image-AYJWqweXuUVQzzqUYeAfy7zJKGvnk6.jpeg
+image: /assets/posts/2024-08-30-parents-are-adapting.header.webp
+imageThumb: /assets/posts/2024-08-30-parents-are-adapting.thumb.webp
 ---
 
 I used to think that children had to adapt to their parents.

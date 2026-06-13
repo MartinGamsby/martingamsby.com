@@ -4,7 +4,8 @@ date: 2024-10-15
 translationKey: 2024-10-15-could-dark-energy-simply-be-multiple-far-black-holes-quadrillions-of-years-old
 facets: [physics]
 tags: [Science, Trou Noir, Astrophysique, Énergie Sombre, Big Bang, Supernova, Gravité, Radiation de Hawking, Théorie, Gamsblurb]
-image: https://2orpfio4ixpxegt9.public.blob.vercel-storage.com/blogPost/cm2ahfi7i008gl40cjwmp3gz6/preview-image-QwsKqpiRcVpytee3m576BTmcR18IBH.webp
+image: /assets/posts/2024-10-15-could-dark-energy-simply-be-multiple-far-black-holes-quadrillions-of-years-old.header.webp
+imageThumb: /assets/posts/2024-10-15-could-dark-energy-simply-be-multiple-far-black-holes-quadrillions-of-years-old.thumb.webp
 ---
 
 I’ve always been interested in astrophysics, and I’ve had a question that I can’t stop thinking about for the past years. I would like someone to help me understand what I’m missing, because I couldn’t find anything about it, and couldn’t find anything against it (without a counterargument). 
@@ -101,15 +102,15 @@ If the big bang isn’t the beginning of the universe, what is it?
 
 <span style="font-weight: 400;">Here’s 2 graphs (one for the first 4 billion years and another for the rest), followed by more details.</span>
 
-<a href="http://martingamsby.com/martin-gamsby/wp-content/uploads/2023/11/chart-ESBH-Dark-energy15G.png">
-<table cellpadding=6><tr><td><img class="aligncenter wp-image-350 size-full" src="http://martingamsby.com/martin-gamsby/wp-content/uploads/2023/11/chart-ESBH-Dark-energy15G.png" alt="chart-ESBH-Dark-energy15G" width="639" height="262" /></td></tr></table>
-</a><a href="http://martingamsby.com/martin-gamsby/wp-content/uploads/2023/11/chart-ESBH-Dark-Energy-5G.png"><img class="aligncenter wp-image-351 size-full" src="http://martingamsby.com/martin-gamsby/wp-content/uploads/2023/11/chart-ESBH-Dark-Energy-5G.png" alt="chart-ESBH-Dark-Energy-5G" width="639" height="267" /></a>
+<a href="/assets/posts/chart-ESBH-Dark-energy15G.png">
+<table cellpadding=6><tr><td><img class="aligncenter wp-image-350 size-full" src="/assets/posts/chart-ESBH-Dark-energy15G.png" alt="chart-ESBH-Dark-energy15G" width="639" height="262" /></td></tr></table>
+</a><a href="/assets/posts/chart-ESBH-Dark-Energy-5G.png"><img class="aligncenter wp-image-351 size-full" src="/assets/posts/chart-ESBH-Dark-Energy-5G.png" alt="chart-ESBH-Dark-Energy-5G" width="639" height="267" /></a>
 
-<span style="font-weight: 400;">Using the variables in the (green) table.</span> <a href="http://martingamsby.com/martin-gamsby/wp-content/uploads/2023/11/UsedFor1DEstimation.png"><img class="aligncenter wp-image-353 size-full" src="http://martingamsby.com/martin-gamsby/wp-content/uploads/2023/11/UsedFor1DEstimation.png" alt="UsedFor1DEstimation" width="522" height="166" /></a>
+<span style="font-weight: 400;">Using the variables in the (green) table.</span> <a href="/assets/posts/UsedFor1DEstimation.png"><img class="aligncenter wp-image-353 size-full" src="/assets/posts/UsedFor1DEstimation.png" alt="UsedFor1DEstimation" width="522" height="166" /></a>
 
 <span style="font-weight: 400;">Results in the (blue) graph: with a big bang starting at position 0, a peripheral galaxy (meaning: its position is the radius of the universe) moving at 1c after 370000 years (using current estimates), then slowing down due to the mass of the other matter from the Big Bang, and then accelerated by 2 ESBHs located at 700 Gpc on both sides, I get </span><b>0,56 Gpc </b><span style="font-weight: 400;">at </span><b>8 billion </b><span style="font-weight: 400;">years old, </span><b>1,64 Gpc </b><span style="font-weight: 400;">at </span><b>8 billion </b><span style="font-weight: 400;">years old, and </span><b>14,15 Gpc </b><span style="font-weight: 400;">at </span><b>13,78 billion </b><span style="font-weight: 400;">years old, which is close to the agreed upon sizes of around </span><b>1,5 Gpc</b><span style="font-weight: 400;"> between </span><b>8 and 10 billion </b><span style="font-weight: 400;">years, and </span><b>14,13 Gpc</b><span style="font-weight: 400;"> now (~</span><b>13,78 billions</b><span style="font-weight: 400;"> year</span><b>)</b>
 
-<a href="http://martingamsby.com/martin-gamsby/wp-content/uploads/2023/11/Results1D.png"><img class="aligncenter wp-image-354 size-medium" src="http://martingamsby.com/martin-gamsby/wp-content/uploads/2023/11/Results1D-300x131.png" alt="Results1D" width="300" height="131" /></a>
+<a href="/assets/posts/Results1D.png"><img class="aligncenter wp-image-354 size-medium" src="/assets/posts/Results1D.png" alt="Results1D" width="300" height="131" /></a>
 
 ### Conclusion
 

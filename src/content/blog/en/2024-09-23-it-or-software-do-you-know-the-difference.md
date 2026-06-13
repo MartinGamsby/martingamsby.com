@@ -4,7 +4,8 @@ date: 2024-09-23
 translationKey: 2024-09-23-it-or-software-do-you-know-the-difference
 facets: [dev, physics]
 tags: [Computer Science, Software, Analogy, Software development, Gamsblurb]
-image: https://2orpfio4ixpxegt9.public.blob.vercel-storage.com/blogPost/cm1f8sism00jlld0cdyr4aw57/preview-image-zEPKDW2ifnHd1pEmddGCnVHWEoRbQV.jfif
+image: /assets/posts/2024-09-23-it-or-software-do-you-know-the-difference.header.webp
+imageThumb: /assets/posts/2024-09-23-it-or-software-do-you-know-the-difference.thumb.webp
 ---
 
 It happened again: Someone thought that I was in IT.

@@ -4,7 +4,8 @@ date: 2024-10-15
 translationKey: 2024-10-15-could-dark-energy-simply-be-multiple-far-black-holes-quadrillions-of-years-old
 facets: [physics]
 tags: [Science, Trou Noir, Astrophysique, Énergie Sombre, Big Bang, Supernova, Gravité, Radiation de Hawking, Théorie, Gamsblurb]
-image: https://2orpfio4ixpxegt9.public.blob.vercel-storage.com/blogPost/cm2ahfi7i008gl40cjwmp3gz6/preview-image-QwsKqpiRcVpytee3m576BTmcR18IBH.webp
+image: /assets/posts/2024-10-15-lenergie-noire-pourrait-elle-simplement-etre-constituee-de-multiples-trous-noirs-lointains-vieux-de-plusieurs-milliards-dannees.header.webp
+imageThumb: /assets/posts/2024-10-15-lenergie-noire-pourrait-elle-simplement-etre-constituee-de-multiples-trous-noirs-lointains-vieux-de-plusieurs-milliards-dannees.thumb.webp
 ---
 
 J'ai toujours été intéressé par l'astrophysique, et j'ai une question à laquelle je n'arrête pas de penser depuis un an. J'aimerais que quelqu'un m'aide à comprendre ce qui m'échappe, car je n'ai rien trouvé à ce sujet, et je n'ai rien trouvé non plus qui le réfute (sans contre-argument).
@@ -70,11 +71,11 @@ J'ai fait une estimation rapide en 1D pour voir si cela avait un sens, et même 
 
 Voici deux graphiques (un pour les 4 premiers milliards d'années et un autre pour le reste), suivis de plus de détails.
 
-<a href="http://martingamsby.com/martin-gamsby/wp-content/uploads/2023/11/chart-ESBH-Dark-energy15G.png"><img class="aligncenter wp-image-350 size-full" src="http://martingamsby.com/martin-gamsby/wp-content/uploads/2023/11/chart-ESBH-Dark-energy15G.png" alt="chart-ESBH-Dark-energy15G" width="639" height="262" /></a><a href="http://martingamsby.com/martin-gamsby/wp-content/uploads/2023/11/chart-ESBH-Dark-Energy-5G.png"><img class="aligncenter wp-image-351 size-full" src="http://martingamsby.com/martin-gamsby/wp-content/uploads/2023/11/chart-ESBH-Dark-Energy-5G.png" alt="chart-ESBH-Dark-Energy-5G" width="639" height="267" /></a>
+<a href="/assets/posts/chart-ESBH-Dark-energy15G.png"><img class="aligncenter wp-image-350 size-full" src="/assets/posts/chart-ESBH-Dark-energy15G.png" alt="chart-ESBH-Dark-energy15G" width="639" height="262" /></a><a href="/assets/posts/chart-ESBH-Dark-Energy-5G.png"><img class="aligncenter wp-image-351 size-full" src="/assets/posts/chart-ESBH-Dark-Energy-5G.png" alt="chart-ESBH-Dark-Energy-5G" width="639" height="267" /></a>
 
 En utilisant les variables du tableau (vert).
 
-<a href="http://martingamsby.com/martin-gamsby/wp-content/uploads/2023/11/UsedFor1DEstimation.png"><img class="aligncenter wp-image-353 size-full" src="http://martingamsby.com/martin-gamsby/wp-content/uploads/2023/11/UsedFor1DEstimation.png" alt="UsedFor1DEstimation" width="522" height="166" /></a>
+<a href="/assets/posts/UsedFor1DEstimation.png"><img class="aligncenter wp-image-353 size-full" src="/assets/posts/UsedFor1DEstimation.png" alt="UsedFor1DEstimation" width="522" height="166" /></a>
 
 <span style="font-weight: 400;">Résultats dans le graphique (bleu) : avec un big bang commençant à la position 0, une galaxie périphérique (c'est-à-dire : sa position est le rayon de l'univers) se déplaçant à 1c après 370000 ans (en utilisant les estimations actuelles), puis ralentissant à cause de la masse de l'autre matière du Big Bang, puis accélérée par 2 TNEB situées à 700 Gpc de chaque côté, j'obtiens </span><b>0,56 Gpc </b><span style="font-weight: 400;">à </span><b>8 milliards </b><span style="font-weight: 400;">d'années, </span><b>1,64 Gpc </b><span style="font-weight: 400;">à </span><b>8 milliards </b><span style="font-weight: 400;">d'années, et </span><b>14,15 Gpc </b><span style="font-weight: 400;">à </span><b>13,78 milliards </b><span style="font-weight: 400;">d'années, ce qui est proche des tailles convenues d'environ </span><b>1,5 Gpc</b><span style="font-weight: 400;">entre </span><b>8 et 10 milliards </b><span style="font-weight: 400;">d'années, et </span><b>14,13 Gpc</b><span style="font-weight: 400;"> maintenant (~</span><b>13,78 milliards</b><span style="font-weight: 400;"> d'années</span><b>)</b>
 

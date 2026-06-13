@@ -14,7 +14,10 @@ const blog = defineCollection({
     tags: z.array(z.string()).default([]),
     draft: z.boolean().default(false),
     // Optional preview/OG image (Jekyll `excerpt_image` at migration; WriterHelper `image`).
+    // After `tools/localize-images.mjs` runs, `image` is the local large/header webp
+    // and `imageThumb` the small list-thumbnail webp (both under /assets/posts/).
     image: z.string().optional(),
+    imageThumb: z.string().optional(),
   }),
 });
 

@@ -4,7 +4,8 @@ date: 2024-10-01
 translationKey: 2024-10-01-i-just-watched-the-martian-humanity-saving-a-stranded-astronaut
 facets: [dev, physics, fiction]
 tags: [Civilization, Humanity, Philosophy, ScienceAndTechnology, Fiction, Priorities, Gamsblurb]
-image: https://2orpfio4ixpxegt9.public.blob.vercel-storage.com/post/cm1qpz8ng0006jw0c3ae8tpv8/images/9903cd0f-aadc-43dc-b7f3-2b5872741cf7-G3Wu2JPY3f6jhsvGAemWQ3NGkOoMyE.jfif
+image: /assets/posts/2024-10-01-i-just-watched-the-martian-humanity-saving-a-stranded-astronaut.header.webp
+imageThumb: /assets/posts/2024-10-01-i-just-watched-the-martian-humanity-saving-a-stranded-astronaut.thumb.webp
 ---
 
 It's nice seeing so many people trying to save one person.

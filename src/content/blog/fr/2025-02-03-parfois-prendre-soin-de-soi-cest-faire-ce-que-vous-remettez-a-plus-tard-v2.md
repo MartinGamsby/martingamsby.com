@@ -4,7 +4,8 @@ date: 2025-02-03
 translationKey: 2025-02-03-self-care-isnt-what-you-think-stop-lying-to-yourself
 facets: [ideas]
 tags: [Finance, Santé, Soin Personnel, Santé Mentale, Productivité, Stress, Relaxation, Gamsblurb]
-image: https://2orpfio4ixpxegt9.public.blob.vercel-storage.com/blogPost/cm0pysw6n0213kz0cru8vdzfd/preview-image-YQ1xYBhkLp7wjEXXgpllN6ATULINRT.jfif
+image: /assets/posts/2025-02-03-parfois-prendre-soin-de-soi-cest-faire-ce-que-vous-remettez-a-plus-tard-v2.header.webp
+imageThumb: /assets/posts/2025-02-03-parfois-prendre-soin-de-soi-cest-faire-ce-que-vous-remettez-a-plus-tard-v2.thumb.webp
 ---
 
 Les spas, massages, relaxations, les escapades, campings, promenades, la méditation, yoga, détente.

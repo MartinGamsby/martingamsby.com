@@ -4,7 +4,8 @@ date: 2024-09-14
 translationKey: 2024-09-14-a-PhD-in-your-pocket
 facets: [dev]
 tags: [Technologie, Développement Logiciel, Intelligence Artificielle, Prédiction, Gamsblurb]
-image: https://2orpfio4ixpxegt9.public.blob.vercel-storage.com/blogPost/cm127f3rb009dl40ci927m3xv/preview-image-euqTJIQ6BqdbJ6vBW5gvbVA2wMoGhW.jpg
+image: /assets/posts/2024-09-14-un-phd-dans-votre-poche.header.webp
+imageThumb: /assets/posts/2024-09-14-un-phd-dans-votre-poche.thumb.webp
 ---
 
 Hier, ChatGPT a publié son nouveau modèle.

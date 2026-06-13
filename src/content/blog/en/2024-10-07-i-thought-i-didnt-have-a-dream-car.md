@@ -4,7 +4,8 @@ date: 2024-10-07
 translationKey: 2024-10-07-i-thought-i-didnt-have-a-dream-car
 facets: [physics]
 tags: [Cars, Future, Teleportation, Science, Gamsblurb]
-image: https://2orpfio4ixpxegt9.public.blob.vercel-storage.com/post/cm1z21oeu00hqjt0cd8m0xp4e/images/baeeed87-c861-40f1-b5bf-5754b641cc14-NRQxTJ99AnzbENDs30zUblT0LLwJ4l.jfif
+image: /assets/posts/2024-10-07-i-thought-i-didnt-have-a-dream-car.header.webp
+imageThumb: /assets/posts/2024-10-07-i-thought-i-didnt-have-a-dream-car.thumb.webp
 ---
 
 But I found one!

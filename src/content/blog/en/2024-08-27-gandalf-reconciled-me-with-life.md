@@ -4,7 +4,8 @@ date: 2024-08-27
 translationKey: 2024-08-27-gandalf-reconciled-me-with-life
 facets: [ideas]
 tags: [Magic, Myers-Briggs, Personalities, Purpose, Ikigai, Gamsblurb]
-image: https://2orpfio4ixpxegt9.public.blob.vercel-storage.com/blogPost/cm0cfphhf00lmlb0c67d036e8/preview-image-ZbYl0a55qAyhUN6BCOXlZ5YP58hVhB.jfif
+image: /assets/posts/2024-08-27-gandalf-reconciled-me-with-life.header.webp
+imageThumb: /assets/posts/2024-08-27-gandalf-reconciled-me-with-life.thumb.webp
 ---
 
 Myers-Briggs is a pseudoscience, which puts humanity in 16 boxes. Four categories, two choices per category, that gives 16 personalities with 4 letters. I won't go into the details of "pseudoscience", but let's say that I identify with INTPs.

@@ -4,7 +4,8 @@ date: 2024-10-27
 translationKey: 2024-10-27-no-more-hiccup
 facets: [ideas]
 tags: [Hiccup, Survival, Reflexes, Breathing, Gamsblurb]
-image: https://2orpfio4ixpxegt9.public.blob.vercel-storage.com/blogPost/cm2rmcbkc009sl80cutci2oc6/preview-image-1v66GHDdkYaJ8Ey4ClZMfAmXyH6NBt.png
+image: /assets/posts/2024-10-27-no-more-hiccup.header.webp
+imageThumb: /assets/posts/2024-10-27-no-more-hiccup.thumb.webp
 ---
 
 You've heard multiple ways to stop the hiccup.

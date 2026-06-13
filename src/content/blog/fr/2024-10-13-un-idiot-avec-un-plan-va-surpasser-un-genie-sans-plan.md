@@ -4,7 +4,8 @@ date: 2024-10-13
 translationKey: 2024-10-13-an-idiot-with-a-plan-will-beat-a-genius-without-a-plan
 facets: [ideas]
 tags: [Citation, Planification, Êtres chers, Gestion du temps, Gamsblurb]
-image: https://2orpfio4ixpxegt9.public.blob.vercel-storage.com/blogPost/cm27obt5v0097lk0cn9bqej7a/preview-image-DC1gj05ORx69IEVdVkyOTMg36vltKq.webp
+image: /assets/posts/2024-10-13-un-idiot-avec-un-plan-va-surpasser-un-genie-sans-plan.header.webp
+imageThumb: /assets/posts/2024-10-13-un-idiot-avec-un-plan-va-surpasser-un-genie-sans-plan.thumb.webp
 ---
 
 La planification est la partie la plus sous-estimée de... tout! (ou presque)

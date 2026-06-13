@@ -4,7 +4,8 @@ date: 2024-09-05
 translationKey: 2024-09-05-sometimes-self-care-means-doing-the-things-youve-been-putting-off
 facets: [ideas]
 tags: [Finance, Health, Personal Care, Mental Health, Productivity, Stress, Relaxation, Gamsblurb]
-image: https://2orpfio4ixpxegt9.public.blob.vercel-storage.com/blogPost/cm0pysw6n0213kz0cru8vdzfd/preview-image-YQ1xYBhkLp7wjEXXgpllN6ATULINRT.jfif
+image: /assets/posts/2024-09-05-sometimes-self-care-means-doing-the-things-youve-been-putting-off.header.webp
+imageThumb: /assets/posts/2024-09-05-sometimes-self-care-means-doing-the-things-youve-been-putting-off.thumb.webp
 ---
 
 Spas, massages, relaxations, getaways, campsites, walks, meditation, yoga, relaxation.

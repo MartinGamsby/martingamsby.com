@@ -4,7 +4,8 @@ date: 2024-09-01
 translationKey: 2024-09-01-alzheimers-can-be-prevented
 facets: [ideas]
 tags: [Alzheimer, Santé, Exercice, Sommeil, Alimentation, Le Saviez-Vous, Gamsblurb]
-image: https://2orpfio4ixpxegt9.public.blob.vercel-storage.com/blogPost/cm0jjyse701smjz0cl4uuk5xy/preview-image-EeDFBF6JhEooBosvqvy1iqSa4mzxeN.jfif
+image: /assets/posts/2024-09-01-lalzheimer-peut-etre-evite.header.webp
+imageThumb: /assets/posts/2024-09-01-lalzheimer-peut-etre-evite.thumb.webp
 ---
 
 > “Tu as un gros ventre? Ton cerveau est affecté”*** (Traduction libre de “You have belly fat? That’s brain damage”, c’est étonnamment difficile à traduire, j’aime mieux la version anglaise…)

@@ -15,9 +15,7 @@ const lang = Astro.params.lang as Lang;
 const tr = t(lang);
 
 // FR edition is in pre-release on Amazon; EN edition is still being prepared.
-// TODO: once the listing has a stable ASIN, swap this search URL for the direct
-// product link (https://www.amazon.ca/dp/<ASIN>).
-const amazonFrUrl = 'https://www.amazon.ca/s?k=Interverti+Martin+Gamsby';
+const amazonFrUrl = 'https://www.amazon.ca/dp/B0H54274BY';
 
 // Email is published deliberately but never written verbatim in this public repo:
 // the visible text is obfuscated, and a real mailto is assembled by JS (below) so

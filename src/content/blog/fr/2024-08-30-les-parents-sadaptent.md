@@ -4,7 +4,8 @@ date: 2024-08-30
 translationKey: 2024-08-30-parents-are-adapting
 facets: [ideas]
 tags: [Parent, Enfant, TDAH, Neurodiversité, Gamsblurb]
-image: https://2orpfio4ixpxegt9.public.blob.vercel-storage.com/blogPost/cm0h0njjy00s4ml0cscbkstzr/preview-image-AYJWqweXuUVQzzqUYeAfy7zJKGvnk6.jpeg
+image: /assets/posts/2024-08-30-les-parents-sadaptent.header.webp
+imageThumb: /assets/posts/2024-08-30-les-parents-sadaptent.thumb.webp
 ---
 
 Je croyais que les enfants devaient s’adapter à leurs parents.

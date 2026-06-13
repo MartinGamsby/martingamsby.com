@@ -4,7 +4,8 @@ date: 2024-09-28
 translationKey: 2024-09-28-you-dont-know-what-you-dont-know-obviously
 facets: [ideas]
 tags: [Health, Food, Sleep, Fit, Gym, Gamsblurb]
-image: https://2orpfio4ixpxegt9.public.blob.vercel-storage.com/blogPost/cm1mddzx3004djn0cog7madhv/preview-image-j0gpwHRoBWBG1VCVlJSByH1XulkSp0.jpg
+image: /assets/posts/2024-09-28-you-dont-know-what-you-dont-know-obviously.header.webp
+imageThumb: /assets/posts/2024-09-28-you-dont-know-what-you-dont-know-obviously.thumb.webp
 ---
 
 One of the biggest problems of all of the health issues that are plaguing the world right now is when people:

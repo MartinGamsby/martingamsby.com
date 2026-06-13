@@ -4,7 +4,8 @@ date: 2024-11-06
 translationKey: 2024-11-06-20-years-of-learning-distilled-into-one-idea
 facets: [dev]
 tags: [Personal Development, Habits, Health, One At A Time, Fitness, Finances, Decluttering, Motivation, Life Hacks, Gamsblurb]
-image: https://2orpfio4ixpxegt9.public.blob.vercel-storage.com/blogPost/cm15atbsr015gjq0c25zedz89/preview-image-cc6Rmpn2053xuuP3G8Vy6cpnz1zJpb.jfif
+image: /assets/posts/2024-11-06-20-years-of-learning-distilled-into-one-idea.header.webp
+imageThumb: /assets/posts/2024-11-06-20-years-of-learning-distilled-into-one-idea.thumb.webp
 ---
 
 I just hit a 20 days streak.

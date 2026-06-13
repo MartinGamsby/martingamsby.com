@@ -4,7 +4,8 @@ date: 2024-09-27
 translationKey: 2024-09-27-meditation-is-easy-actually
 facets: [ideas]
 tags: [Méditation, Chade-Meng Tan, Respiration, Marche, Gamsblurb]
-image: https://2orpfio4ixpxegt9.public.blob.vercel-storage.com/blogPost/cm1kr8jju00a3md0c8ceystn4/preview-image-x68xaM2B9PVsmYIYs9bWIEvDqaL9BQ.jfif
+image: /assets/posts/2024-09-27-la-meditation-cest-facile-en-fait.header.webp
+imageThumb: /assets/posts/2024-09-27-la-meditation-cest-facile-en-fait.thumb.webp
 ---
 
 La chose la plus importante que j'ai apprise de [Chade-Meng Tan](https://x.com/chademeng), c'est que la méditation n'est pas qu'une seule chose.

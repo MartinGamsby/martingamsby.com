@@ -4,7 +4,8 @@ date: 2024-09-17
 translationKey: 2024-09-17-the-secret-to-feeling-better-always-at-hand
 facets: [dev]
 tags: [Un à la fois, Santé, Développement Personnel, Santé Mentale, Gamsblurb]
-image: https://2orpfio4ixpxegt9.public.blob.vercel-storage.com/blogPost/cm16zm3bd001wl90co4ypfdbu/preview-image-RyXWD4LaChFaeuKCG4ARlZzpGDxWgh.jfif
+image: /assets/posts/2024-09-17-le-secret-pour-se-sentir-mieux-toujours-a-portee-de-main.header.webp
+imageThumb: /assets/posts/2024-09-17-le-secret-pour-se-sentir-mieux-toujours-a-portee-de-main.thumb.webp
 ---
 
 Te sens-tu bien, en ce moment?

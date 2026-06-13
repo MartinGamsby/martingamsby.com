@@ -4,7 +4,8 @@ date: 2024-09-19
 translationKey: 2024-09-19-electricity-germs-religion-pork-power-witches-revolution-and-thriving
 facets: [physics]
 tags: [Electricity, Germ Theory, Religion vs. Science, Science, Religion, Ecclesiastical Authority, Faith, Health, Public Health, Social Change, Politics, Globalization, Witch Hunts, Education, Revolution, Indoctrination, Gamsblurb]
-image: https://2orpfio4ixpxegt9.public.blob.vercel-storage.com/blogPost/cm19vgnn3001ol70coar7yqcf/preview-image-bjxpv96zGQxeyEaybT0Zc3USloBQ3K.jfif
+image: /assets/posts/2024-09-19-electricity-germs-religion-pork-power-witches-revolution-and-thriving.header.webp
+imageThumb: /assets/posts/2024-09-19-electricity-germs-religion-pork-power-witches-revolution-and-thriving.thumb.webp
 ---
 
 > If you could bring one piece of technology back to 100 years before it was invented, what would you choose (E.g. Steam Engine was patented 1698 so you go back to 1598 and spread steam engine technology)

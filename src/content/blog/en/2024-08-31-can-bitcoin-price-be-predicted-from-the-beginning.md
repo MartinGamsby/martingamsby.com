@@ -4,7 +4,8 @@ date: 2024-08-31
 translationKey: 2024-08-31-can-bitcoin-price-be-predicted-from-the-beginning
 facets: [dev]
 tags: [Bitcoin, Crypto, Finance, Prediction, NFA, Gamsblurb]
-image: https://2orpfio4ixpxegt9.public.blob.vercel-storage.com/blogPost/cm0i6faj0013wmr0coj23l5d0/preview-image-L5vtElMTNvBkyNPJdDXdwSL5kq3Lza.png
+image: /assets/posts/2024-08-31-can-bitcoin-price-be-predicted-from-the-beginning.header.webp
+imageThumb: /assets/posts/2024-08-31-can-bitcoin-price-be-predicted-from-the-beginning.thumb.webp
 ---
 
 I made a model of the price of Bitcoin.

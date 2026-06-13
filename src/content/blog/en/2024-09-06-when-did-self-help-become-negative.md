@@ -4,7 +4,8 @@ date: 2024-09-06
 translationKey: 2024-09-06-when-did-self-help-become-negative
 facets: [dev]
 tags: [Mental Health, Productivity, Personal Development, Collective Development, Community, Mutual Aid, Gamsblurb]
-image: https://2orpfio4ixpxegt9.public.blob.vercel-storage.com/blogPost/cm0r3zipv016eml0cl0mbyfhj/preview-image-kWI9H9m8mU0aBKbkuQSAh4mIvs2zuv.jpg
+image: /assets/posts/2024-09-06-when-did-self-help-become-negative.header.webp
+imageThumb: /assets/posts/2024-09-06-when-did-self-help-become-negative.thumb.webp
 ---
 
 I recently heard that the answers to beautifying our society should be collective, not individual.

@@ -4,7 +4,8 @@ date: 2024-10-21
 translationKey: 2024-10-21-people-like-stories-for-different-reasons-what-makes-a-story-compelling-to-you
 facets: [fiction]
 tags: [Histoires, Fiction, Gamsblurb]
-image: https://2orpfio4ixpxegt9.public.blob.vercel-storage.com/blogPost/cm2jenv79000tl00cv0ob7xg0/preview-image-X6g9fsysv7XzWCIoyNpgnLQzlIRV0u.webp
+image: /assets/posts/2024-10-21-on-aime-les-histoires-pour-differentes-raisons-quest-ce-quune-bonne-histoire-pour-vous.header.webp
+imageThumb: /assets/posts/2024-10-21-on-aime-les-histoires-pour-differentes-raisons-quest-ce-quune-bonne-histoire-pour-vous.thumb.webp
 ---
 
 Pour moi, je pense que ça doit être quelque chose de nouveau, que je n'ai jamais vu ou que je n'ai jamais imaginé.

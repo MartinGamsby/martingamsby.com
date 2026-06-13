@@ -4,7 +4,8 @@ date: 2024-10-31
 translationKey: 2024-10-31-piano-for-15-years-vs-15-weeks-my-first-composition
 facets: [music]
 tags: [Musique, Composition, Gamsblurb]
-image: https://2orpfio4ixpxegt9.public.blob.vercel-storage.com/blogPost/cm2xcwr9a006vmn0c9a54tm2f/preview-image-tIgl2zRrCWKlSf5NQNFgOf7qgqf6tR.png
+image: /assets/posts/2024-10-31-piano-pendant-15-ans-vs-15-semaines-ma-premiere-composition.header.webp
+imageThumb: /assets/posts/2024-10-31-piano-pendant-15-ans-vs-15-semaines-ma-premiere-composition.thumb.webp
 ---
 
 J'ai commencé à faire du "vrai" piano (apprendre un vrai morceau) il y a 15 ans.

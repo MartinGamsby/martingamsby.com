@@ -4,7 +4,8 @@ date: 2024-09-03
 translationKey: 2024-09-03-im-afraid-of-soup
 facets: [dev]
 tags: [Gluten, Health, Food, Gamsblurb]
-image: https://2orpfio4ixpxegt9.public.blob.vercel-storage.com/blogPost/cm0mufr5g00mmmk0dwn5j2lzh/preview-image-4f7FHwEjx67FoKhUwEtRPyl3Mvy6JM.jfif
+image: /assets/posts/2024-09-03-im-afraid-of-soup.header.webp
+imageThumb: /assets/posts/2024-09-03-im-afraid-of-soup.thumb.webp
 ---
 
 Today I was making noodle soup for my daughters, then I got a drop of broth in my eye.

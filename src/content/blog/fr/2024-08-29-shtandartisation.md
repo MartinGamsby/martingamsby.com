@@ -4,7 +4,8 @@ date: 2024-08-29
 translationKey: 2024-08-29-shtandartization
 facets: [ideas]
 tags: [Nouveau Mot, Néologisme, XKCD, Gamsblurb]
-image: https://imgs.xkcd.com/comics/standards_2x.png
+image: /assets/posts/2024-08-29-shtandartisation.header.webp
+imageThumb: /assets/posts/2024-08-29-shtandartisation.thumb.webp
 ---
 
 Parfois, on peut croire qu'il y a trop de choix. Trop de ports USB, trop d'applications de messagerie, trop de pronoms…

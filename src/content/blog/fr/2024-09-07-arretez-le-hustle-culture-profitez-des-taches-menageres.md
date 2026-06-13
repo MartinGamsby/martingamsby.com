@@ -4,7 +4,8 @@ date: 2024-09-07
 translationKey: 2024-09-07-stop-hustling-enjoy-chores
 facets: [dev]
 tags: [Santé Mentale, Productivité, Développement Personnel, Habitudes, TDAH, Gamsblurb]
-image: https://2orpfio4ixpxegt9.public.blob.vercel-storage.com/blogPost/cm0srl4te0000lc0c80rery4e/preview-image-uIPnYyafTV1aZnpPzmuNeiLEN7g8ro.jpg
+image: /assets/posts/2024-09-07-arretez-le-hustle-culture-profitez-des-taches-menageres.header.webp
+imageThumb: /assets/posts/2024-09-07-arretez-le-hustle-culture-profitez-des-taches-menageres.thumb.webp
 ---
 
 Je préférerais à 100% avoir des journées pleines de corvées. Pendant 50 ans.

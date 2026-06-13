@@ -4,7 +4,8 @@ date: 2024-09-30
 translationKey: 2024-09-30-the-most-fulfilling-thing-in-life
 facets: [ideas]
 tags: [Raison de Vivre, Ikigai, Ambition, Méditation, Gamsblurb]
-image: https://2orpfio4ixpxegt9.public.blob.vercel-storage.com/blogPost/cm1p8w5ex008omg0cgnndxoan/preview-image-EefmoLKqVCU99TtOQsE58BFo01XdCZ.png
+image: /assets/posts/2024-09-30-raison-de-vivre.header.webp
+imageThumb: /assets/posts/2024-09-30-raison-de-vivre.thumb.webp
 ---
 
 Dan Koe a dit : « Tu peux sentir ce besoin. Vers quelque chose de plus. Ton esprit en a envie. Débrance-toi. Recommence. Considère demain comme si c'était le premier jour de ta nouvelle vie. [...] »

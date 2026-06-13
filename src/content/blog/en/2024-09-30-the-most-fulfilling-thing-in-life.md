@@ -4,7 +4,8 @@ date: 2024-09-30
 translationKey: 2024-09-30-the-most-fulfilling-thing-in-life
 facets: [ideas]
 tags: [Purpose, Ikigai, Ambition, Meditation, Gamsblurb]
-image: https://2orpfio4ixpxegt9.public.blob.vercel-storage.com/blogPost/cm1p8w5ex008omg0cgnndxoan/preview-image-EefmoLKqVCU99TtOQsE58BFo01XdCZ.png
+image: /assets/posts/2024-09-30-the-most-fulfilling-thing-in-life.header.webp
+imageThumb: /assets/posts/2024-09-30-the-most-fulfilling-thing-in-life.thumb.webp
 ---
 
 Dan Koe said "You can feel the pull. Towards something more. Your mind craves it. Unplug. Reset. Treat tomorrow like it's the first day of your new life. [...]"

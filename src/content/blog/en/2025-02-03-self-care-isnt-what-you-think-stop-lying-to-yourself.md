@@ -4,7 +4,8 @@ date: 2025-02-03
 translationKey: 2025-02-03-self-care-isnt-what-you-think-stop-lying-to-yourself
 facets: [ideas]
 tags: [Finance, Health, Personal Care, Mental Health, Productivity, Stress, Relaxation, Gamsblurb]
-image: https://2orpfio4ixpxegt9.public.blob.vercel-storage.com/blogPost/cm0pysw6n0213kz0cru8vdzfd/preview-image-YQ1xYBhkLp7wjEXXgpllN6ATULINRT.jfif
+image: /assets/posts/2025-02-03-self-care-isnt-what-you-think-stop-lying-to-yourself.header.webp
+imageThumb: /assets/posts/2025-02-03-self-care-isnt-what-you-think-stop-lying-to-yourself.thumb.webp
 ---
 
 **Spa days won’t fix this.**

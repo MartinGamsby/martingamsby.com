@@ -4,7 +4,8 @@ date: 2024-09-02
 translationKey: 2024-09-02-falling-sensation
 facets: [physics, fiction]
 tags: [New Expression, New Word, Did You Know, FunFact, Science, Einstein, Gamsblurb]
-image: https://2orpfio4ixpxegt9.public.blob.vercel-storage.com/blogPost/cm0kyn69n02obk60cf6z7vqz2/preview-image-bmWXrPJcOzOxZWxcPC0vFQWxSjhvl1.jfif
+image: /assets/posts/2024-09-02-falling-sensation.header.webp
+imageThumb: /assets/posts/2024-09-02-falling-sensation.thumb.webp
 ---
 
 You know that feeling when you swing too high.

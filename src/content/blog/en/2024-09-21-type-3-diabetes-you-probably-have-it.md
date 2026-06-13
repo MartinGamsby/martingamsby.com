@@ -4,7 +4,8 @@ date: 2024-09-21
 translationKey: 2024-09-21-type-3-diabetes-you-probably-have-it
 facets: [physics]
 tags: [Alzheimer, Fun Fact, Food, Science, Gamsblurb]
-image: https://2orpfio4ixpxegt9.public.blob.vercel-storage.com/blogPost/cm1c5nc7s012djo0c8xkf7oqi/preview-image-gYRkYBgGvz8lWgxPZUQPJbKWf8zjOd.jfif
+image: /assets/posts/2024-09-21-type-3-diabetes-you-probably-have-it.header.webp
+imageThumb: /assets/posts/2024-09-21-type-3-diabetes-you-probably-have-it.thumb.webp
 ---
 
 But there's something to do about it!

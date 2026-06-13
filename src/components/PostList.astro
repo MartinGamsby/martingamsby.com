@@ -21,7 +21,7 @@ const { posts, lang, facetData = false } = Astro.props;
         <a class="post-title" href={href}>{p.data.title}</a>
         {p.data.image && (
           <a class="post-thumb" href={href} tabindex="-1" aria-hidden="true">
-            <img src={imageUrl(p.data.image)} alt="" loading="lazy" decoding="async" />
+            <img src={imageUrl(p.data.imageThumb ?? p.data.image)} alt="" loading="lazy" decoding="async" />
           </a>
         )}
       </li>

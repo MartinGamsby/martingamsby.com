@@ -4,7 +4,8 @@ date: 2024-09-13
 translationKey: 2024-09-13-be-careful-what-you-wish-for
 facets: [dev]
 tags: [Développement Logiciel, Développement Personnel, Programmation, Raison d'Être, Mème, Gamsblurb]
-image: https://2orpfio4ixpxegt9.public.blob.vercel-storage.com/blogPost/cm110x8mr004tjv0c7rjqapy9/preview-image-HykJolRchmoJRXTWzELYRl7SwmYl4l.jpg
+image: /assets/posts/2024-09-13-faites-attention-a-ce-que-vous-souhaitez.header.webp
+imageThumb: /assets/posts/2024-09-13-faites-attention-a-ce-que-vous-souhaitez.thumb.webp
 ---
 
 Quand on obtient quelque chose qu'on voulait, on le veut moins ensuite.

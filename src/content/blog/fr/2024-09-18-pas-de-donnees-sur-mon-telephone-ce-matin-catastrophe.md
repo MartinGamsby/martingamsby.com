@@ -4,7 +4,8 @@ date: 2024-09-18
 translationKey: 2024-09-18-no-data-on-my-phone-this-morning-disaster
 facets: [dev]
 tags: [Santé Mentale, Développement Personnel, Un à la fois, Habitudes, Méditation, Technologie, Gamsblurb]
-image: https://2orpfio4ixpxegt9.public.blob.vercel-storage.com/blogPost/cm18lbm1b00y5jy0clal85apc/preview-image-BTh14ykZiH2bQyKett7moou2sTLzW1.jfif
+image: /assets/posts/2024-09-18-pas-de-donnees-sur-mon-telephone-ce-matin-catastrophe.header.webp
+imageThumb: /assets/posts/2024-09-18-pas-de-donnees-sur-mon-telephone-ce-matin-catastrophe.thumb.webp
 ---
 
 J'ai 1h40 de transport en commun à faire.

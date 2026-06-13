@@ -4,7 +4,8 @@ date: 2024-10-08
 translationKey: 2024-10-08-going-to-the-restaurant-like-changing-habits-is-a-hit-and-miss
 facets: [ideas]
 tags: [Gluten, Santé, Alimentation, Restaurant, Civilisation, Gamsblurb]
-image: https://2orpfio4ixpxegt9.public.blob.vercel-storage.com/blogPost/cm212qtig00vdlf0c1vs62ihn/preview-image-iW8eUnJ0zSFkWhcQlNAkbhdOMZVKPd.png
+image: /assets/posts/2024-10-08-aller-au-restaurant-tout-comme-changer-ses-habitudes-ca-passe-ou-ca-casse.header.webp
+imageThumb: /assets/posts/2024-10-08-aller-au-restaurant-tout-comme-changer-ses-habitudes-ca-passe-ou-ca-casse.thumb.webp
 ---
 
 Je ne pourrai plus jamais profiter de tous les restaurants, et ce n'est même pas entièrement à cause de la nourriture, c'est à cause des gens...

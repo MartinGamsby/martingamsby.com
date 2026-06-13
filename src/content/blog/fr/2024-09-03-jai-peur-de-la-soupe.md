@@ -4,7 +4,8 @@ date: 2024-09-03
 translationKey: 2024-09-03-im-afraid-of-soup
 facets: [dev]
 tags: [Gluten, Santé, Alimentation, Gamsblurb]
-image: https://2orpfio4ixpxegt9.public.blob.vercel-storage.com/blogPost/cm0mufr5g00mmmk0dwn5j2lzh/preview-image-4f7FHwEjx67FoKhUwEtRPyl3Mvy6JM.jfif
+image: /assets/posts/2024-09-03-jai-peur-de-la-soupe.header.webp
+imageThumb: /assets/posts/2024-09-03-jai-peur-de-la-soupe.thumb.webp
 ---
 
 Aujourd’hui je préparais une soupe aux nouilles pour mes filles, puis j'ai reçu une goutte de bouillon dans l'œil.

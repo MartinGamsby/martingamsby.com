@@ -4,7 +4,8 @@ date: 2024-10-09
 translationKey: 2024-10-09-the-centauri-ark-working-title
 facets: [physics, fiction]
 tags: [Fiction, Science, Space, Science Fiction, Excerpt, Gamsbook, Gamsblurb]
-image: https://2orpfio4ixpxegt9.public.blob.vercel-storage.com/blogPost/cm23uordg00pzmh0c2odgkwa7/preview-image-hILg6abLoTI5PqLUpiIWiPI34oZapG.png
+image: /assets/posts/2024-10-09-the-centauri-ark-working-title.header.webp
+imageThumb: /assets/posts/2024-10-09-the-centauri-ark-working-title.thumb.webp
 ---
 
 Today was Clement’s first day at work. Fresh out of technical school, with the looks of a teenager, the age of a young adult, and the ambition of a sixty-year-old. Which is to say, zero.

@@ -4,7 +4,8 @@ date: 2024-11-19
 translationKey: 2024-11-19-what-life-is-all-about-from-gandalfs-perspective
 facets: [ideas]
 tags: [Magie, Myers-Briggs, Personnalités, Raison d'Être, Purpose, Ikigai, Gamsblurb]
-image: https://2orpfio4ixpxegt9.public.blob.vercel-storage.com/blogPost/cm0cfphhf00lmlb0c67d036e8/preview-image-ZbYl0a55qAyhUN6BCOXlZ5YP58hVhB.jfif
+image: /assets/posts/2024-11-19-le-but-de-la-vie-du-point-de-vue-de-gandalf.header.webp
+imageThumb: /assets/posts/2024-11-19-le-but-de-la-vie-du-point-de-vue-de-gandalf.thumb.webp
 ---
 
 Gandalf n’est pas humain. C’est un demi-dieu dans le monde du Seigneur des anneaux. Un Maia.

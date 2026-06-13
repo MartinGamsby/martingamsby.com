@@ -4,7 +4,8 @@ date: 2009-11-15
 translationKey: 2009-11-15-the-house-contractor-vs-learning
 facets: [music]
 tags: [Gamsblog, Anecdotes, Apprentissage, Construction, Pédagogie, Comparaison, Piano, Gamsblurb]
-image: https://2orpfio4ixpxegt9.public.blob.vercel-storage.com/post/cm1u1fmeq0087jk0cq8b047cs/images/34ce129a-4c02-4680-b796-9297c1dc99cd-C5ipXh4CHl9Y61Mi2XUdhPMHmX9sZU.webp
+image: /assets/posts/2009-11-15-le-contracteur-de-maisons-vs-lapprentissage.header.webp
+imageThumb: /assets/posts/2009-11-15-le-contracteur-de-maisons-vs-lapprentissage.thumb.webp
 ---
 
 Je vous raconte une petite histoire.

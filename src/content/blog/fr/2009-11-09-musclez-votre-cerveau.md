@@ -4,7 +4,8 @@ date: 2009-11-09
 translationKey: 2009-11-09-train-your-brain
 facets: [ideas]
 tags: [Confiance, Entraînement, Apprentissage, Gym, Entraînement vs Apprentissage, Gamsblog, Gamsblurb]
-image: https://2orpfio4ixpxegt9.public.blob.vercel-storage.com/blogPost/cm1tl8jj3000olb0cprxxkkxo/preview-image-wj32LDqeWauTkd7TFJ8ZNb2ifDUXfS.jfif
+image: /assets/posts/2009-11-09-musclez-votre-cerveau.header.webp
+imageThumb: /assets/posts/2009-11-09-musclez-votre-cerveau.thumb.webp
 ---
 
 L'entraînement et l'exercice, ça se ressemble. Voici pourquoi je vous en parle:

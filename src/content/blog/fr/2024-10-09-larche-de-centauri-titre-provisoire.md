@@ -4,7 +4,8 @@ date: 2024-10-09
 translationKey: 2024-10-09-the-centauri-ark-working-title
 facets: [physics, fiction]
 tags: [Fiction, Science, Espace, Science-Fiction, Extrait, Gamsbook, Gamsblurb]
-image: https://2orpfio4ixpxegt9.public.blob.vercel-storage.com/blogPost/cm23uordg00pzmh0c2odgkwa7/preview-image-hILg6abLoTI5PqLUpiIWiPI34oZapG.png
+image: /assets/posts/2024-10-09-larche-de-centauri-titre-provisoire.header.webp
+imageThumb: /assets/posts/2024-10-09-larche-de-centauri-titre-provisoire.thumb.webp
 ---
 
 C'était la première journée au travail de Clément aujourd'hui. Tout frais sorti de son école technique, avec l'allure d'un adolescent, l'âge d’un jeune adulte et l'ambition d'un sexagénaire. C'est-à-dire nulle.

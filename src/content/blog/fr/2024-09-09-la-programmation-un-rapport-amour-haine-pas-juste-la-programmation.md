@@ -4,7 +4,8 @@ date: 2024-09-09
 translationKey: 2024-09-09-programming-a-love-hate-relationship-not-just-programming
 facets: [dev]
 tags: [Programmation, Code, Développement Logiciel, Apprendre, C++, Humour, Développement Personnel, Personnalités, Gamsblurb]
-image: https://2orpfio4ixpxegt9.public.blob.vercel-storage.com/blogPost/cm0v2227100gul50cmkytgy2w/preview-image-ZoyiXQkxvoxQPqGWPpWVpHaGKPk4Po.jpg
+image: /assets/posts/2024-09-09-la-programmation-un-rapport-amour-haine-pas-juste-la-programmation.header.webp
+imageThumb: /assets/posts/2024-09-09-la-programmation-un-rapport-amour-haine-pas-juste-la-programmation.thumb.webp
 ---
 
 Vous avez déjà essayé de programmer?

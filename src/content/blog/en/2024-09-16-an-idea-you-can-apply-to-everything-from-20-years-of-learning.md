@@ -4,7 +4,8 @@ date: 2024-09-16
 translationKey: 2024-09-16-an-idea-you-can-apply-to-everything-from-20-years-of-learning
 facets: [dev]
 tags: [Personal Development, Habits, Health, One At A Time, Fitness, Finances, Decluttering, Motivation, Life Hacks, Gamsblurb]
-image: https://2orpfio4ixpxegt9.public.blob.vercel-storage.com/blogPost/cm15atbsr015gjq0c25zedz89/preview-image-cc6Rmpn2053xuuP3G8Vy6cpnz1zJpb.jfif
+image: /assets/posts/2024-09-16-an-idea-you-can-apply-to-everything-from-20-years-of-learning.header.webp
+imageThumb: /assets/posts/2024-09-16-an-idea-you-can-apply-to-everything-from-20-years-of-learning.thumb.webp
 ---
 
 I just hit a 20 days streak.

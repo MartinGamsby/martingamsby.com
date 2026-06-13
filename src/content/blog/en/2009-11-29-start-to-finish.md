@@ -4,7 +4,8 @@ date: 2009-11-29
 translationKey: 2009-11-29-start-to-finish
 facets: [dev]
 tags: [First step, Goal, Ambition, Confidence, Growth, Optimism, Momentum, Personal Development, Gamsblog, Gamsblurb]
-image: https://2orpfio4ixpxegt9.public.blob.vercel-storage.com/blogPost/cm2dnwpw3015sld0cxbr9qnbp/preview-image-CKhooz0ynaYbXvzF6Ald7zVIRpN1GF.png
+image: /assets/posts/2009-11-29-start-to-finish.header.webp
+imageThumb: /assets/posts/2009-11-29-start-to-finish.thumb.webp
 ---
 
 Let me explain:

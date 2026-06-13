@@ -4,7 +4,8 @@ date: 2009-11-22
 translationKey: 2009-11-22-are-you-afraid
 facets: [dev, music]
 tags: [Gamsblog, Confiance en soi, Motivation, Développement personnel, Apprentissage, Estime de soi, Timidité, Français, Piano, Musique, Gamsblurb]
-image: https://2orpfio4ixpxegt9.public.blob.vercel-storage.com/blogPost/cm210fp4100b6jy0e7siar6g6/preview-image-xrC3LK9RsV28UGtuXBnvqOBOmFKDcT.webp
+image: /assets/posts/2009-11-22-avez-vous-peur.header.webp
+imageThumb: /assets/posts/2009-11-22-avez-vous-peur.thumb.webp
 ---
 
 Environ 15 ans avant que j’écrive ces lignes, j’ai écris un essai autobiographique dans le cadre d’un cours de Français…

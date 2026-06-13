@@ -4,7 +4,8 @@ date: 2024-09-28
 translationKey: 2024-09-28-you-dont-know-what-you-dont-know-obviously
 facets: [ideas]
 tags: [Santé, Alimentation, Sommeil, Forme, Gym, Gamsblurb]
-image: https://2orpfio4ixpxegt9.public.blob.vercel-storage.com/blogPost/cm1mddzx3004djn0cog7madhv/preview-image-j0gpwHRoBWBG1VCVlJSByH1XulkSp0.jpg
+image: /assets/posts/2024-09-28-on-ne-sait-pas-ce-quon-ne-sait-pas-evidemment.header.webp
+imageThumb: /assets/posts/2024-09-28-on-ne-sait-pas-ce-quon-ne-sait-pas-evidemment.thumb.webp
 ---
 
 L'un des plus gros problèmes de santé qui affligent le monde en ce moment, c'est quand les gens :

@@ -4,7 +4,8 @@ date: 2009-11-22
 translationKey: 2009-11-22-are-you-afraid
 facets: [dev, music]
 tags: [Gamsblog, Self-confidence, Motivation, Personal development, Learning, Self-esteem, Shyness, French, Piano, Music, Gamsblurb]
-image: https://2orpfio4ixpxegt9.public.blob.vercel-storage.com/blogPost/cm210fp4100b6jy0e7siar6g6/preview-image-xrC3LK9RsV28UGtuXBnvqOBOmFKDcT.webp
+image: /assets/posts/2009-11-22-are-you-afraid.header.webp
+imageThumb: /assets/posts/2009-11-22-are-you-afraid.thumb.webp
 ---
 
 15 years ago, I wrote an autobiographical essay as part of a course…

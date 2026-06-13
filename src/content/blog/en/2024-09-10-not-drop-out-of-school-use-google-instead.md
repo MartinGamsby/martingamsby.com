@@ -4,7 +4,8 @@ date: 2024-09-10
 translationKey: 2024-09-10-not-drop-out-of-school-use-google-instead
 facets: [dev]
 tags: [School, Learn, Software Development, Programming, Work, Gamsblurb]
-image: https://2orpfio4ixpxegt9.public.blob.vercel-storage.com/blogPost/cm0x5rffm006rid0clgji46n3/preview-image-1jQs1eQ9RoWfmQxE4XcAO39KUki6QW.jfif
+image: /assets/posts/2024-09-10-not-drop-out-of-school-use-google-instead.header.webp
+imageThumb: /assets/posts/2024-09-10-not-drop-out-of-school-use-google-instead.thumb.webp
 ---
 
 I admit I agree... a little.

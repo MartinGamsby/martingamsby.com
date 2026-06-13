@@ -4,7 +4,8 @@ date: 2024-08-27
 translationKey: 2024-08-27-gandalf-reconciled-me-with-life
 facets: [ideas]
 tags: [Magie, Myers-Briggs, Personnalités, Raison d'Être, Purpose, Ikigai, Gamsblurb]
-image: https://2orpfio4ixpxegt9.public.blob.vercel-storage.com/blogPost/cm0cfphhf00lmlb0c67d036e8/preview-image-ZbYl0a55qAyhUN6BCOXlZ5YP58hVhB.jfif
+image: /assets/posts/2024-08-27-gandalf-ma-reconcilie-avec-la-vie.header.webp
+imageThumb: /assets/posts/2024-08-27-gandalf-ma-reconcilie-avec-la-vie.thumb.webp
 ---
 
 Le Myers-Briggs est une pseudoscience, qui met l’humanité dans 16 cases. Quatre catégories, deux choix par catégories, ça donne 16 personnalités avec 4 lettres. Je n’entrerai pas dans les détails de la “pseudoscience”, mais disons que je m’identifie aux INTP.

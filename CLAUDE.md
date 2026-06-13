@@ -56,7 +56,21 @@ Quick rules:
 - Commands: `npm run dev` · `npm run build` · `npm run preview` ·
   `npm run new-post -- --fr "Titre" --en "Title" [--facets dev,ideas]` (a
   deterministic helper that scaffolds the paired FR/EN files with a shared
-  `translationKey`).
+  `translationKey`) · `npm run localize-images` (see below).
+- **Post images are self-hosted.** `tools/localize-images.mjs` downloads every
+  external `image:` (and re-encodes local ones) into two webp derivatives named
+  after the post slug — `public/assets/posts/<slug>.{header,thumb}.webp` (SEO, not
+  a hash) — and rewrites the frontmatter to `image:` (large, ≤1200px — the post
+  hero) + `imageThumb:` (160px cover — the list thumbnail). It's idempotent (a post
+  already at its canonical `<slug>.*` is left alone; one under an old name is
+  renamed by copying, no re-download), edits only the frontmatter image lines (body
+  stays byte-for-byte), and the no-arg backfill prunes orphaned `.webp`. Inline
+  body images are separate — those few are hand-placed PNGs under `/assets/posts/`
+  (the prune only touches `.webp`). Two modes: no-arg backfill, or `--file <post.md>` for one post —
+  **WriterHelper must call `node tools/localize-images.mjs --file <new post.md>`
+  after writing any post that carries an `image:`** so nothing external is hot-linked.
+  `imageUrl()` in `src/i18n/ui.ts` resolves the stored path; PostList prefers
+  `imageThumb`, the post page uses `image`.
 - **Authoring is deterministic — never via a Claude skill.** Posts are
   written/translated in **WriterHelper** (sibling repo, a Python model→template→file
   pipeline) which writes the `.md` pair directly into `src/content/blog/{fr,en}/`;

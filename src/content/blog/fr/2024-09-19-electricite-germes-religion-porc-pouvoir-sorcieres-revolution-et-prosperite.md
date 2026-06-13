@@ -4,7 +4,8 @@ date: 2024-09-19
 translationKey: 2024-09-19-electricity-germs-religion-pork-power-witches-revolution-and-thriving
 facets: [physics]
 tags: [Électricité, Théorie des germes, Religion vs Science, Science, Religion, Autorité Ecclésiastique, Foi, Santé, Santé Publique, Changement Social, Politique, Mondialisation, Chasses aux sorcières, Éducation, Révolution, Endoctrinement, Gamsblurb]
-image: https://2orpfio4ixpxegt9.public.blob.vercel-storage.com/blogPost/cm19vgnn3001ol70coar7yqcf/preview-image-bjxpv96zGQxeyEaybT0Zc3USloBQ3K.jfif
+image: /assets/posts/2024-09-19-electricite-germes-religion-porc-pouvoir-sorcieres-revolution-et-prosperite.header.webp
+imageThumb: /assets/posts/2024-09-19-electricite-germes-religion-porc-pouvoir-sorcieres-revolution-et-prosperite.thumb.webp
 ---
 
 > Si vous pouviez ramener une technologie 100 ans en arrière avant son invention, que choisiriez-vous (par exemple, la machine à vapeur a été brevetée en 1698, vous retournez donc en 1598 et diffusez la technologie de la machine à vapeur)

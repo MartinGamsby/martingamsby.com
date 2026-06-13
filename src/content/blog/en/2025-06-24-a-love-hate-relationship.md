@@ -4,7 +4,8 @@ date: 2025-06-24
 translationKey: 2025-06-24-a-love-hate-relationship
 facets: [dev]
 tags: [Programming, Code, Software Development, Learn, C++, Humor, Personal Development, Personalities, Gamsblurb]
-image: https://2orpfio4ixpxegt9.public.blob.vercel-storage.com/blogPost/cm0v2227100gul50cmkytgy2w/preview-image-ZoyiXQkxvoxQPqGWPpWVpHaGKPk4Po.jpg
+image: /assets/posts/2025-06-24-a-love-hate-relationship.header.webp
+imageThumb: /assets/posts/2025-06-24-a-love-hate-relationship.thumb.webp
 ---
 
 Learning a new language is difficult.

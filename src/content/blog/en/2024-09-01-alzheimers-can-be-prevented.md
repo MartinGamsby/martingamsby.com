@@ -4,7 +4,8 @@ date: 2024-09-01
 translationKey: 2024-09-01-alzheimers-can-be-prevented
 facets: [ideas]
 tags: [Alzheimer's, Health, Exercise, Sleep, Diet, Did You Know, Gamsblurb]
-image: https://2orpfio4ixpxegt9.public.blob.vercel-storage.com/blogPost/cm0jjyse701smjz0cl4uuk5xy/preview-image-EeDFBF6JhEooBosvqvy1iqSa4mzxeN.jfif
+image: /assets/posts/2024-09-01-alzheimers-can-be-prevented.header.webp
+imageThumb: /assets/posts/2024-09-01-alzheimers-can-be-prevented.thumb.webp
 ---
 
 > “You have belly fat? That’s brain damage”***

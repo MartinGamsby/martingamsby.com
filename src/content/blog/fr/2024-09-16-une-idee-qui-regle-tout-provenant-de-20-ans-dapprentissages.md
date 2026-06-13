@@ -4,7 +4,8 @@ date: 2024-09-16
 translationKey: 2024-09-16-an-idea-you-can-apply-to-everything-from-20-years-of-learning
 facets: [dev]
 tags: [Développement Personnel, Habitudes, Santé, Un à la fois, Fitness, Finances, Désencombrement, Motivation, Life Hacks, Gamsblurb]
-image: https://2orpfio4ixpxegt9.public.blob.vercel-storage.com/blogPost/cm15atbsr015gjq0c25zedz89/preview-image-cc6Rmpn2053xuuP3G8Vy6cpnz1zJpb.jfif
+image: /assets/posts/2024-09-16-une-idee-qui-regle-tout-provenant-de-20-ans-dapprentissages.header.webp
+imageThumb: /assets/posts/2024-09-16-une-idee-qui-regle-tout-provenant-de-20-ans-dapprentissages.thumb.webp
 ---
 
 Je viens d'atteindre une séquence de 20 jours.

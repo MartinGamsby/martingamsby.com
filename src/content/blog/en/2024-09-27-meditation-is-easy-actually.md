@@ -4,7 +4,8 @@ date: 2024-09-27
 translationKey: 2024-09-27-meditation-is-easy-actually
 facets: [ideas]
 tags: [Meditation, Chade-Meng Tan, Breathing, Walking, Gamsblurb]
-image: https://2orpfio4ixpxegt9.public.blob.vercel-storage.com/blogPost/cm1kr8jju00a3md0c8ceystn4/preview-image-x68xaM2B9PVsmYIYs9bWIEvDqaL9BQ.jfif
+image: /assets/posts/2024-09-27-meditation-is-easy-actually.header.webp
+imageThumb: /assets/posts/2024-09-27-meditation-is-easy-actually.thumb.webp
 ---
 
 The #1 thing that I learned from [Chade-Meng Tan](https://x.com/chademeng) is that meditation is not just one thing.

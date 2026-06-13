@@ -4,7 +4,8 @@ date: 2024-09-08
 translationKey: 2024-09-08-why-is-the-sky-blue-and-everything-else
 facets: [physics]
 tags: [Parent, Éducation, Science, Enfant, Curiosité, Apprendre, Gamsblurb]
-image: https://2orpfio4ixpxegt9.public.blob.vercel-storage.com/blogPost/cm0u0tmff002sl80clnfj5xm9/preview-image-BgyQ2Qh1IFY8Ch5ekAXLcLH5mL0gpB.jpg
+image: /assets/posts/2024-09-08-pourquoi-le-ciel-est-bleu-et-tout-le-reste.header.webp
+imageThumb: /assets/posts/2024-09-08-pourquoi-le-ciel-est-bleu-et-tout-le-reste.thumb.webp
 ---
 
 C’est finalement arrivé.

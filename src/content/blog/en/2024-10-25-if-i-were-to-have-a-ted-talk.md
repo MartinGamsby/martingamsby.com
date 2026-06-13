@@ -4,7 +4,8 @@ date: 2024-10-25
 translationKey: 2024-10-25-if-i-were-to-have-a-ted-talk
 facets: [ideas]
 tags: [Regenerative Agriculture, Farming, Globalization, Capitalism, Climate, Gamsblurb]
-image: https://2orpfio4ixpxegt9.public.blob.vercel-storage.com/blogPost/cm2othkld001jlg0c19tqtvrd/preview-image-uiQjCNeD76kI6lu2WMAJs50OhUxKRK.jfif
+image: /assets/posts/2024-10-25-if-i-were-to-have-a-ted-talk.header.webp
+imageThumb: /assets/posts/2024-10-25-if-i-were-to-have-a-ted-talk.thumb.webp
 ---
 
 I would talk about how the agriculture is dying because of industrialization and capitalism.

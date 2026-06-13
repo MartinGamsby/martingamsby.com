@@ -4,7 +4,8 @@ date: 2024-09-25
 translationKey: 2024-09-25-a-moving-city
 facets: [fiction]
 tags: [Urbanisme, Fiction, Éducation, Entreprises, Gamsblurb]
-image: https://2orpfio4ixpxegt9.public.blob.vercel-storage.com/blogPost/cm1hx269x002gmo0d609wy2y0/preview-image-iIxnNGO8h8b4VeUwc2LIWidScc4uBP.jfif
+image: /assets/posts/2024-09-25-une-ville-roulante.header.webp
+imageThumb: /assets/posts/2024-09-25-une-ville-roulante.thumb.webp
 ---
 
 Et si les villes étaient sur des tapis roulants?

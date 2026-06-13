@@ -4,7 +4,8 @@ date: 2024-08-22
 translationKey: 2024-08-22-english-ruined-my-life
 facets: [music]
 tags: [Écrire, Créer, Musique, YouTube, Anglais, Gamsblurb]
-image: https://2orpfio4ixpxegt9.public.blob.vercel-storage.com/blogPost/cm061d3ao001wkz0crx1rapup/preview-image-mXissGlLYzKXW41x1aPKEnU1FNDoGS.jfif
+image: /assets/posts/2024-08-22-langlais-a-ruine-ma-vie.header.webp
+imageThumb: /assets/posts/2024-08-22-langlais-a-ruine-ma-vie.thumb.webp
 ---
 
 # Pourquoi je ne vais jamais apprendre un autre language

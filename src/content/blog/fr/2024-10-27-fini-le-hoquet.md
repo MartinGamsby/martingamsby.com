@@ -4,7 +4,8 @@ date: 2024-10-27
 translationKey: 2024-10-27-no-more-hiccup
 facets: [ideas]
 tags: [Hoquet, Survie, Réflexes, Respiration, Gamsblurb]
-image: https://2orpfio4ixpxegt9.public.blob.vercel-storage.com/blogPost/cm2rmcbkc009sl80cutci2oc6/preview-image-1v66GHDdkYaJ8Ey4ClZMfAmXyH6NBt.png
+image: /assets/posts/2024-10-27-fini-le-hoquet.header.webp
+imageThumb: /assets/posts/2024-10-27-fini-le-hoquet.thumb.webp
 ---
 
 Tu as entendu parler de plusieurs façons d’arrêter le hoquet.

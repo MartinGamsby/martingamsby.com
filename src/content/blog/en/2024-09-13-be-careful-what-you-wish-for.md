@@ -4,7 +4,8 @@ date: 2024-09-13
 translationKey: 2024-09-13-be-careful-what-you-wish-for
 facets: [dev]
 tags: [Software Development, Personal Development, Coding, Purpose, Meme, Gamsblurb]
-image: https://2orpfio4ixpxegt9.public.blob.vercel-storage.com/blogPost/cm110x8mr004tjv0c7rjqapy9/preview-image-HykJolRchmoJRXTWzELYRl7SwmYl4l.jpg
+image: /assets/posts/2024-09-13-be-careful-what-you-wish-for.header.webp
+imageThumb: /assets/posts/2024-09-13-be-careful-what-you-wish-for.thumb.webp
 ---
 
 When we get something, we want it less.

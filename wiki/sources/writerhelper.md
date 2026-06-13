@@ -25,9 +25,18 @@ drop `categories`).
 Implication for THIS repo: a `new-post` **skill** was created in error on
 2026-06-12 and removed — authoring is deterministic, never a Claude skill. The
 `tools/new-post.mjs` **script** stays: it's a fine low-level helper WriterHelper
-(or a human) can call to scaffold the FR/EN pair. The only schema change needed
-here is `image: z.string().optional()` in `src/content.config.ts` once
-WriterHelper starts emitting `image:`.
+(or a human) can call to scaffold the FR/EN pair. The schema carries
+`image:`/`imageThumb:` (both `z.string().optional()` in `src/content.config.ts`).
+
+**Image contract (2026-06-13):** post preview images are self-hosted, never
+hot-linked. WriterHelper may write `image:` as any URL (its Vercel-blob preview,
+xkcd, etc.), but **after writing the `.md` it MUST run
+`node tools/localize-images.mjs --file <that post.md>`** (added 2026-06-13). That
+tool downloads the image, emits `public/assets/posts/<sha1>.{header,thumb}.webp`
+(≤1200px hero + 160px cover thumbnail), and rewrites the frontmatter to local
+`image:`+`imageThumb:`. It's idempotent and twin-deduped, so calling it once per
+file (or a bulk no-arg backfill) is safe. When WriterHelper becomes the in-repo
+web app, fold this call into its save step.
 
 **Future direction (deferred — Martin, 2026-06-12):** rather than keep WriterHelper
 a separate Qt app that writes files into this repo, fold it INTO martingamsby.com
