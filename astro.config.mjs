@@ -6,5 +6,5 @@ import { defineConfig } from 'astro/config';
 // At cutover: site -> 'https://martingamsby.com', base -> undefined.
 export default defineConfig({
   site: 'https://martingamsby.github.io',
-  base: '/martingamsby.com',
+  base: '/',
 });
