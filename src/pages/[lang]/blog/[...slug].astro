@@ -1,7 +1,7 @@
 ---
 import { getCollection, render } from 'astro:content';
 import Base from '../../../layouts/Base.astro';
-import { formatDate, otherLang, t, url, type Lang } from '../../../i18n/ui';
+import { formatDate, imageUrl, otherLang, t, url, type Lang } from '../../../i18n/ui';
 import { findTwin, langOf, slugOf, type Post } from '../../../lib/blog';
 
 export async function getStaticPaths() {
@@ -39,6 +39,9 @@ const { Content } = await render(post);
       ))}
     </div>
     {twin && <a class="twin-link" href={twinUrl}>{tr.readTwin}</a>}
+    {post.data.image && (
+      <img class="post-hero" src={imageUrl(post.data.image)} alt="" loading="eager" decoding="async" />
+    )}
     <Content />
     <p><a href={url(`/${lang}/blog/`)}>{tr.backToBlog}</a></p>
   </article>

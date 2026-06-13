@@ -1,5 +1,5 @@
 ---
-import { formatDate, url, type Lang } from '../i18n/ui';
+import { formatDate, imageUrl, url, type Lang } from '../i18n/ui';
 import { slugOf, type Post } from '../lib/blog';
 
 interface Props {
@@ -13,10 +13,18 @@ const { posts, lang, facetData = false } = Astro.props;
 ---
 
 <ul class="post-list">
-  {posts.map((p) => (
-    <li data-facets={facetData ? p.data.facets.join(' ') : undefined}>
-      <time datetime={p.data.date.toISOString().slice(0, 10)}>{formatDate(p.data.date, lang)}</time>
-      <a href={url(`/${lang}/blog/${slugOf(p)}/`)}>{p.data.title}</a>
-    </li>
-  ))}
+  {posts.map((p) => {
+    const href = url(`/${lang}/blog/${slugOf(p)}/`);
+    return (
+      <li data-facets={facetData ? p.data.facets.join(' ') : undefined}>
+        <time datetime={p.data.date.toISOString().slice(0, 10)}>{formatDate(p.data.date, lang)}</time>
+        <a class="post-title" href={href}>{p.data.title}</a>
+        {p.data.image && (
+          <a class="post-thumb" href={href} tabindex="-1" aria-hidden="true">
+            <img src={imageUrl(p.data.image)} alt="" loading="lazy" decoding="async" />
+          </a>
+        )}
+      </li>
+    );
+  })}
 </ul>

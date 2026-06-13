@@ -66,10 +66,18 @@ Quick rules:
   contract and `wiki/sources/writerhelper.md`.
   - **Future direction (deferred):** fold WriterHelper into this site as a web
     app (it has a started `web/` + `webapi.py`). Not this session.
-- **Base path**: until the domain cutover the site lives at
-  `martingamsby.github.io/martingamsby.com/` — `base` is set in `astro.config.mjs`
-  and ALL internal links must go through `url()` from `src/i18n/ui.ts`. At cutover,
-  change `site`/`base` in `astro.config.mjs` (one place) and add the CNAME.
+- **Domain (cutover done 2026-06-13)**: the site is live at the apex
+  `martingamsby.com`. `astro.config.mjs` is `site: 'https://martingamsby.com'`,
+  `base: '/'`; the custom domain is pinned by `public/CNAME` so the Pages deploy
+  doesn't drop it. ALL internal links must still go through `url()` from
+  `src/i18n/ui.ts` (base is `/` now, but the helper stays the source of truth).
+  Post `image:` values go through `imageUrl()` (external URLs pass through; bare
+  paths are local `public/` assets routed through the base). Loose end: the
+  redirect stubs in the two old Jekyll repos still point at the old
+  `…/martingamsby.com/{lang}/blog/<stem>/` project URL — re-run
+  `tools/make-redirect-stubs.mjs --target-base https://martingamsby.com` in those
+  repos. HTTPS may lag while GitHub provisions the cert; enable "Enforce HTTPS" in
+  repo Settings → Pages once it's available.
 - Blog posts: markdown in `src/content/blog/{fr,en}/` (folder = language, filename
   keeps the `YYYY-MM-DD-slug` form and is the URL slug); frontmatter carries
   `title`, `date`, `translationKey` (shared by twins — the language toggle depends

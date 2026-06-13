@@ -1,7 +1,8 @@
 # martingamsby.com — Site Plan
 
 Status: **Phase 2 (migration) in progress** — scaffold live, back-catalogue
-imported. Last updated: 2026-06-13.
+imported, **domain cutover done** (live at `martingamsby.com`), post images
+(thumbnails + hero) now render. Last updated: 2026-06-13.
 
 ## Vision
 
@@ -20,7 +21,7 @@ hatch. A post can carry several facets at once (e.g. `physics` + `ideas`).
 |---|---|
 | Stack | **Astro** (first-class i18n routing, markdown content collections, zero-JS default) |
 | Hosting | GitHub Pages via GitHub Actions, in this repo (`MartinGamsby/martingamsby.com`) |
-| Domain | `martingamsby.com` DNS cutover after launch (old WordPress there is dead — HTTP 500) |
+| Domain | **Cutover done 2026-06-13** — live at apex `martingamsby.com` (`site`/`base` flipped in `astro.config.mjs`, `public/CNAME` added). HTTPS cert may still be provisioning. Old WordPress there was dead (HTTP 500). |
 | Blogs | **Migrate both Jekyll blogs in** (FR `martingamsby.github.io` + EN `en` repo, ~145 posts each); old URLs get meta-refresh redirect stubs |
 | Filter UX | **Audience doors** on the homepage (no forced gate, SEO/deep links intact) |
 | Doors (working set) | Software · Physics · Book · Music · **Everything** — names/wording still open, more doors possible; they're cheap (just filters) |
@@ -86,8 +87,8 @@ Show both, clearly separated:
       GitHub Actions → Pages deploy, root language redirect, door stubs that
       already filter by facet, about + links pages, one real FR/EN post pair
       proving `translationKey`, and the `new-post` skill/script.
-      Live at martingamsby.github.io/martingamsby.com/ — at domain cutover, flip
-      `site`/`base` in `astro.config.mjs` and add the CNAME.
+      Was live at martingamsby.github.io/martingamsby.com/; **domain cutover done
+      2026-06-13** — `site`/`base` flipped in `astro.config.mjs` + `public/CNAME`.
 - [~] **Phase 2 — Migrate** (script done 2026-06-13): `tools/migrate-jekyll.mjs`
       converts both Jekyll repos → `src/content/blog/{fr,en}` in the WriterHelper
       Astro format. Outcome: **265 posts** (131 twin pairs + 2 FR-only + 1 EN-only),
@@ -108,8 +109,13 @@ Show both, clearly separated:
       `draft: true` if any shouldn't be live.
 - [ ] **Phase 3 — Doors**: home, dev, physics, book, music, about, links pages ×2 languages.
 - [ ] **Phase 4 — Polish & launch**: RSS, sitemap, hreflang, OG images, Pagefind
-      search, DNS cutover, linktrees → `/links`, `llms.txt`. Time launch so the book
-      page is live when Interverti publishes (FR edition ships first).
+      search, ~~DNS cutover~~ (**done 2026-06-13**), linktrees → `/links`, `llms.txt`.
+      Time launch so the book page is live when Interverti publishes (FR edition
+      ships first). Post-cutover loose end: re-run `tools/make-redirect-stubs.mjs`
+      with `--target-base https://martingamsby.com` in the two old Jekyll repos so
+      their meta-refresh stubs hit the apex domain, not the old project URL. OG
+      images can reuse the per-post `image:` frontmatter (now rendered as
+      list-thumbnail + post hero via `imageUrl()`).
 
 ## Open questions
 
@@ -124,8 +130,10 @@ Show both, clearly separated:
    book page: `martingamsby.com/book` or guidepour.com?
 5. **Door wording** — current set is a proposal; Martin said "maybe other doors,
    not sure yet".
-6. **Public contact method** — Martin has an official email (the one on his CV)
-   but is hesitant to publish it. Options: (a) static-friendly contact form
-   (e.g. Formspree free tier), (b) socials-only contact (LinkedIn/Bluesky), (c)
-   obfuscated mailto (deters only lazy scrapers). Until decided: **no raw email on
-   the site — or anywhere in this public repo.**
+6. ~~**Public contact method**~~ **Resolved 2026-06-13**: option (c) — publish
+   `martingamsby@gmail.com` (a dedicated address, *not* the official CV one),
+   obfuscated. The literal address is **never written verbatim in this public
+   repo**: pages show `martingamsby [à] gmail [point] com` and a tiny inline
+   script reassembles a real `mailto:` in the browser from `data-` parts, so the
+   served static HTML stays clean for scrapers. First used on `/book`
+   (`src/pages/[lang]/book.astro`); reuse the same `.email-link` pattern elsewhere.

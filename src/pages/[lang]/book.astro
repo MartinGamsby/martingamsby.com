@@ -1,7 +1,11 @@
 ---
+import { Image } from 'astro:assets';
 import Base from '../../layouts/Base.astro';
-import DoorStub from '../../components/DoorStub.astro';
+import PostList from '../../components/PostList.astro';
 import { LANGS, t, type Lang } from '../../i18n/ui';
+import { getPosts } from '../../lib/blog';
+import coverFr from '../../assets/book/interverti-fr.png';
+import coverEn from '../../assets/book/interverti-en.png';
 
 export function getStaticPaths() {
   return LANGS.map((lang) => ({ params: { lang } }));
@@ -9,8 +13,317 @@ export function getStaticPaths() {
 
 const lang = Astro.params.lang as Lang;
 const tr = t(lang);
+
+// FR edition is in pre-release on Amazon; EN edition is still being prepared.
+// TODO: once the listing has a stable ASIN, swap this search URL for the direct
+// product link (https://www.amazon.ca/dp/<ASIN>).
+const amazonFrUrl = 'https://www.amazon.ca/s?k=Interverti+Martin+Gamsby';
+
+// Email is published deliberately but never written verbatim in this public repo:
+// the visible text is obfuscated, and a real mailto is assembled by JS (below) so
+// scrapers reading the static HTML never find a usable address.
+const emailUser = 'martingamsby';
+const emailDomain = 'gmail';
+const emailTld = 'com';
+const emailDisplay = `${emailUser} [à] ${emailDomain} [point] ${emailTld}`;
+
+const fictionPosts = await getPosts(lang, 'fiction');
+
+const content = {
+  fr: {
+    cover: coverFr,
+    coverAlt: 'Couverture du roman Interverti : La Régression Humaine, de Martin Gamsby',
+    title: 'Interverti',
+    subtitle: 'La Régression Humaine',
+    byline: 'Un roman de Martin Gamsby',
+    badge: 'En pré-vente',
+    badgeNote: 'depuis le 12 juin 2026',
+    pitch:
+      'Et si le progrès n’était qu’une longue suite de béquilles ? Un roman d’anticipation sur un monde sans mots, où tout se partage d’esprit à esprit — et sur ce qu’on perd en chemin.',
+    epigraph:
+      'Tout ce que nous faisons pour progresser n’est qu’une béquille, et chaque béquille est un pas en arrière.',
+    epigraphBy: 'Djosh Sho',
+    buy: 'Acheter sur Amazon',
+    buyHref: amazonFrUrl,
+    formats: 'Édition papier (couverture souple et rigide) · première édition, juin 2026',
+    blurbHeading: 'Imaginez un monde…',
+    blurb: [
+      'Imaginez un monde où la parole n’existe pas. Pas parce qu’elle est impossible ou interdite, mais parce qu’elle est inutile. Imaginez un monde où les écrits sont tout aussi inutiles. Imaginez un monde où les interactions sont simples et sans ambiguïtés — simples, tout en étant nuancées, exactement comme prévues.',
+      'Un monde d’idées. Un monde sans frontières. Un monde où les idées partagées sont vues telles qu’elles l’étaient dans l’imaginaire de celui ou celle qui les a formulées. Pas d’interprétation. Pas de conversion inutile et coûteuse. Comme si vous aviez eu l’idée vous-même.',
+      'Imaginez donc un Monde Idéal — avec un grand « I » — autant au sens utopique qu’au sens des idées. Ce monde, il existe déjà…',
+    ],
+    reviewsHeading: 'Premiers lecteurs',
+    reviews: [
+      { quote: 'Tu as su traiter le thème avec originalité et réalisme.', by: 'un premier lecteur' },
+      {
+        quote:
+          'Plutôt que d’écrire de la science-fiction pure, tu extrapoles la technologie actuelle et laisses croire au lecteur que, dans quelques décennies, on pourrait effectivement être rendu là.',
+        by: 'un premier lecteur',
+      },
+    ],
+    contactHeading: 'Me contacter',
+    contactIntro:
+      'Une question, un mot sur le livre, une demande de service de presse ? Écrivez-moi :',
+    postsHeading: 'Billets reliés',
+    enNote: null as string | null,
+  },
+  en: {
+    cover: coverEn,
+    coverAlt: 'Cover of the novel Interverted: The Human Regression, by Martin Gamsby',
+    title: 'Interverted',
+    subtitle: 'The Human Regression',
+    byline: 'A novel by Martin Gamsby',
+    badge: 'English edition',
+    badgeNote: 'coming soon',
+    pitch:
+      'What if progress is just a long series of crutches? A speculative novel about a world without words, where everything is shared mind to mind — and about what we lose along the way.',
+    epigraph:
+      'Everything we make for progress is only a crutch, and every crutch is a step backward.',
+    epigraphBy: 'Djosh Sho',
+    buy: 'French edition on Amazon',
+    buyHref: amazonFrUrl,
+    formats: 'The French edition is in pre-release now; the English edition is on its way.',
+    blurbHeading: 'Imagine a world…',
+    blurb: [
+      'Imagine a world where speech doesn’t exist. Not because it’s impossible or forbidden, but because it’s useless. Imagine a world where writing is equally useless. Imagine a world where interactions are simple and unambiguous — simple, while being nuanced, exactly as intended.',
+      'A world of ideas. A world without borders. A world where shared ideas are seen exactly as they were in the imagination of whoever formulated them. No interpretation. No useless and costly conversion. As if you had the idea yourself.',
+      'So imagine an Ideal World — with a capital “I” — both in the utopian sense and in the sense of ideas. This world already exists…',
+    ],
+    reviewsHeading: 'Early readers',
+    reviews: [] as { quote: string; by: string }[],
+    contactHeading: 'Get in touch',
+    contactIntro: 'A question, a note about the book, a review-copy request? Write to me:',
+    postsHeading: 'Related posts',
+    enNote: 'The English edition is being prepared — the French edition publishes first.',
+  },
+} as const;
+
+const c = content[lang];
 ---
 
-<Base lang={lang} title={tr.doors.book.title}>
-  <DoorStub lang={lang} doorKey="book" facet="fiction" />
+<Base lang={lang} title={`${c.title} — ${c.subtitle}`} description={c.pitch}>
+  <article class="book">
+    <div class="book-hero">
+      <Image class="book-cover" src={c.cover} alt={c.coverAlt} widths={[280, 420, 560]} sizes="(max-width: 640px) 60vw, 280px" />
+      <div class="book-intro">
+        <p class="book-badge">{c.badge} <span>· {c.badgeNote}</span></p>
+        <h1>{c.title}</h1>
+        <p class="book-subtitle">{c.subtitle}</p>
+        <p class="book-byline">{c.byline}</p>
+        <p class="book-pitch">{c.pitch}</p>
+        <p class="book-actions">
+          <a class="buy-btn" href={c.buyHref} rel="noopener">{c.buy}</a>
+        </p>
+        <p class="book-formats">{c.formats}</p>
+        {c.enNote && <p class="book-ennote">{c.enNote}</p>}
+      </div>
+    </div>
+
+    <blockquote class="book-epigraph">
+      <p>« {c.epigraph} »</p>
+      <cite>— {c.epigraphBy}</cite>
+    </blockquote>
+
+    <section class="book-blurb">
+      <h2>{c.blurbHeading}</h2>
+      {c.blurb.map((p) => <p>{p}</p>)}
+    </section>
+
+    {c.reviews.length > 0 && (
+      <section class="book-reviews">
+        <h2>{c.reviewsHeading}</h2>
+        {c.reviews.map((r) => (
+          <blockquote>
+            <p>« {r.quote} »</p>
+            <cite>— {r.by}</cite>
+          </blockquote>
+        ))}
+      </section>
+    )}
+
+    <section class="book-contact">
+      <h2>{c.contactHeading}</h2>
+      <p>{c.contactIntro}</p>
+      <p>
+        <a
+          class="email-link"
+          data-user={emailUser}
+          data-domain={emailDomain}
+          data-tld={emailTld}
+          href="#contact">{emailDisplay}</a>
+      </p>
+    </section>
+
+    {fictionPosts.length > 0 && (
+      <section class="book-posts">
+        <h2>{c.postsHeading}</h2>
+        <PostList posts={fictionPosts} lang={lang} />
+      </section>
+    )}
+  </article>
+
+  <script is:inline>
+    // Reassemble the address only in the browser, so it never appears verbatim
+    // in the served HTML. Keeps the visible text obfuscated either way.
+    document.querySelectorAll('.email-link').forEach((a) => {
+      const { user, domain, tld } = a.dataset;
+      const addr = user + '@' + domain + '.' + tld;
+      a.setAttribute('href', 'mailto:' + addr);
+      a.addEventListener('click', () => {
+        if (navigator.clipboard) navigator.clipboard.writeText(addr).catch(() => {});
+      });
+    });
+  </script>
 </Base>
+
+<style>
+  .book h2 {
+    font-size: 1.45rem;
+    margin: 2.75rem 0 1rem;
+  }
+
+  /* ---- Hero: cover + intro ---- */
+  .book-hero {
+    display: grid;
+    grid-template-columns: minmax(0, 16rem) 1fr;
+    gap: 2rem;
+    align-items: start;
+    margin-top: 0.5rem;
+  }
+  .book-cover {
+    width: 100%;
+    height: auto;
+    border-radius: 0.6rem;
+    box-shadow: 0 22px 50px -20px color-mix(in srgb, var(--c-physics) 60%, transparent);
+  }
+  .book-badge {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.35rem;
+    margin: 0 0 0.6rem;
+    padding: 0.25rem 0.8rem;
+    border-radius: 999px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    color: #fff;
+    background: var(--grad);
+  }
+  .book-badge span {
+    font-weight: 500;
+    text-transform: none;
+    opacity: 0.92;
+  }
+  .book-intro h1 {
+    font-size: clamp(2.4rem, 6vw, 3.4rem);
+    margin: 0;
+    background: var(--grad);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    width: fit-content;
+  }
+  .book-subtitle {
+    font-family: var(--font-heading);
+    font-size: 1.3rem;
+    color: var(--fg);
+    margin: 0.1rem 0 0.4rem;
+  }
+  .book-byline {
+    color: var(--muted);
+    margin: 0 0 1.1rem;
+  }
+  .book-pitch {
+    font-size: 1.1rem;
+    text-wrap: pretty;
+    margin: 0 0 1.4rem;
+  }
+  .book-actions {
+    margin: 0 0 0.8rem;
+  }
+  .buy-btn {
+    display: inline-block;
+    padding: 0.7rem 1.5rem;
+    border-radius: 999px;
+    font-weight: 650;
+    color: #fff;
+    background: var(--grad);
+    box-shadow: 0 10px 28px -12px color-mix(in srgb, var(--c-physics) 70%, transparent);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .buy-btn:hover {
+    text-decoration: none;
+    transform: translateY(-2px);
+    box-shadow: 0 16px 36px -14px color-mix(in srgb, var(--c-physics) 75%, transparent);
+  }
+  .book-formats {
+    color: var(--muted);
+    font-size: 0.9rem;
+    margin: 0;
+  }
+  .book-ennote {
+    color: var(--muted);
+    font-size: 0.92rem;
+    margin: 0.6rem 0 0;
+  }
+
+  /* ---- Epigraph ---- */
+  .book-epigraph {
+    border-left: 3px solid var(--accent);
+    margin: 2.75rem 0 0;
+    padding: 0.2rem 0 0.2rem 1.1rem;
+  }
+  .book-epigraph p {
+    font-family: var(--font-heading);
+    font-size: 1.2rem;
+    font-style: italic;
+    color: var(--fg);
+    margin: 0 0 0.3rem;
+  }
+  .book-epigraph cite {
+    color: var(--muted);
+    font-style: normal;
+  }
+
+  /* ---- Reviews ---- */
+  .book-reviews blockquote {
+    border-left: 3px solid color-mix(in srgb, var(--c-book) 70%, var(--border));
+    margin: 0 0 1.2rem;
+    padding-left: 1.1rem;
+  }
+  .book-reviews blockquote p {
+    margin: 0 0 0.3rem;
+  }
+  .book-reviews cite {
+    color: var(--muted);
+    font-style: normal;
+    font-size: 0.92rem;
+  }
+
+  /* ---- Contact ---- */
+  .email-link {
+    font-weight: 600;
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+  }
+
+  @media (max-width: 640px) {
+    .book-hero {
+      grid-template-columns: 1fr;
+      justify-items: center;
+      text-align: center;
+    }
+    .book-cover {
+      max-width: 16rem;
+    }
+    .book-intro h1,
+    .book-badge {
+      margin-inline: auto;
+    }
+    .book-epigraph,
+    .book-reviews blockquote {
+      text-align: left;
+    }
+  }
+</style>

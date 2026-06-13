@@ -32,12 +32,19 @@ The FR/EN split runs through almost every platform — `/links` should respect i
 
 ## Contact / email
 
-- The **official address is the one on his CV** (sibling `CV` repo, private); the
-  one in the old blog's `_config.yml` is secondary. This repo is public — never
-  write either address here.
-- Martin is **hesitant to publish the email publicly** (2026-06-11). Don't put a
-  raw mailto on the site without his explicit OK — default to a contact form or
-  socials-as-contact. PLAN.md open question #6.
+- **Resolved 2026-06-13** (PLAN.md open question #6): the public contact address is
+  **`martingamsby@gmail.com`** — a dedicated Gmail Martin chose to publish, *not*
+  the official CV address. The **official CV address still never goes in this repo
+  or on the site**, and neither does the literal Gmail string.
+- **Obfuscation contract (follow this everywhere email appears):** pages render the
+  address as `martingamsby [à] gmail [point] com` and carry the parts as
+  `data-user` / `data-domain` / `data-tld` on an `<a class="email-link">`; a tiny
+  inline script reassembles `mailto:martingamsby@gmail.com` in the browser only.
+  Net effect: the served static HTML never contains the verbatim address (verified —
+  `rawHasEmail: false`), so scrapers reading source/HTML get only the obfuscated
+  form, while humans get a working click-to-mail. First implemented on `/book`
+  (`src/pages/[lang]/book.astro`).
+- The old blog's `_config.yml` address is secondary/legacy — don't surface it.
 
 ## Dead / unresolved
 
