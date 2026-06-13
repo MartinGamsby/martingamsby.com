@@ -29,14 +29,22 @@ Implication for THIS repo: a `new-post` **skill** was created in error on
 `image:`/`imageThumb:` (both `z.string().optional()` in `src/content.config.ts`).
 
 **Image contract (2026-06-13):** post preview images are self-hosted, never
-hot-linked. WriterHelper may write `image:` as any URL (its Vercel-blob preview,
-xkcd, etc.), but **after writing the `.md` it MUST run
-`node tools/localize-images.mjs --file <that post.md>`** (added 2026-06-13). That
-tool downloads the image, emits `public/assets/posts/<sha1>.{header,thumb}.webp`
+hot-linked. WriterHelper may set `image:` to any URL (its Vercel-blob preview,
+xkcd, etc.). The site hook `node tools/localize-images.mjs --file <post.md>`
+downloads the image, emits `public/assets/posts/<slug>.{header,thumb}.webp`
 (≤1200px hero + 160px cover thumbnail), and rewrites the frontmatter to local
-`image:`+`imageThumb:`. It's idempotent and twin-deduped, so calling it once per
-file (or a bulk no-arg backfill) is safe. When WriterHelper becomes the in-repo
-web app, fold this call into its save step.
+`image:`+`imageThumb:`. Idempotent; a bulk no-arg backfill prunes stale names.
+
+**WriterHelper now calls this automatically (2026-06-13):** `set_excerpt_img()`
+runs the hook via a new `localize.py` bridge whenever the image is a *remote* URL
+(local paths are skipped, keeping its tests offline), then stores the returned
+local paths back on the model. The model gained `image_thumb`, and
+`serializers.py` round-trips `imageThumb:` so editing a localized post never
+strips it. The bridge finds the site checkout by walking up to
+`tools/localize-images.mjs` and is best-effort (logs + keeps the remote URL if
+node/network is unavailable). So the manual `--file` step is no longer required
+during authoring; the no-arg backfill remains for bulk fixes. Bridge is
+naming-scheme-agnostic (reads back whatever the tool wrote).
 
 **Future direction (deferred — Martin, 2026-06-12):** rather than keep WriterHelper
 a separate Qt app that writes files into this repo, fold it INTO martingamsby.com
