@@ -12,7 +12,10 @@
   --c-physics: #7c3aed;
   --c-book: #b45309;
   --c-music: #db2777;
-  --grad: linear-gradient(100deg, #0ea5e9, #8b5cf6 45%, #ec4899 80%, #f59e0b);
+  /* Interverti cover palette: electric cyan → warm amber. oklab blend keeps a
+     clean two-color sweep (neutral midpoint, no muddy green) — deliberately not
+     the cyan/violet/pink/amber "AI rainbow" it replaced. */
+  --grad: linear-gradient(100deg in oklab, #22d3ee, #f59e0b);
   --aurora-alpha: 7%;
   --shadow: 0 1px 2px rgb(21 23 46 / 0.05);
   --max-width: 46rem;
