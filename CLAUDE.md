@@ -47,14 +47,25 @@ Quick rules:
 | `CV` | `cvgen.js` CV generator; `cvs/martin-gamsby-en/cv.yaml` is the professional identity source |
 | `Interverti` | The book (FR publishes first); gets the `/book` page |
 | `Music-Experiment-Game` | Private repo — don't deep-link source from the site |
+| `WriterHelper` | Deterministic Python authoring app — writes posts into `src/content/blog/{fr,en}/` |
 
 ## Conventions
 
 - Stack: Astro 5 + content collections; every push to `main` deploys via
   `.github/workflows/deploy.yml` to GitHub Pages.
 - Commands: `npm run dev` · `npm run build` · `npm run preview` ·
-  `npm run new-post -- --fr "Titre" --en "Title" [--facets dev,ideas]`
-  (see `.claude/skills/new-post/SKILL.md`).
+  `npm run new-post -- --fr "Titre" --en "Title" [--facets dev,ideas]` (a
+  deterministic helper that scaffolds the paired FR/EN files with a shared
+  `translationKey`).
+- **Authoring is deterministic — never via a Claude skill.** Posts are
+  written/translated in **WriterHelper** (sibling repo, a Python model→template→file
+  pipeline) which writes the `.md` pair directly into `src/content/blog/{fr,en}/`;
+  `tools/new-post.mjs` is a low-level scaffolding helper WriterHelper (or a human)
+  can call. A `new-post` *skill* was added in error and removed — don't reintroduce
+  skills for authoring. See `WriterHelper/PLAN_ASTRO_FORMAT.md` for the format
+  contract and `wiki/sources/writerhelper.md`.
+  - **Future direction (deferred):** fold WriterHelper into this site as a web
+    app (it has a started `web/` + `webapi.py`). Not this session.
 - **Base path**: until the domain cutover the site lives at
   `martingamsby.github.io/martingamsby.com/` — `base` is set in `astro.config.mjs`
   and ALL internal links must go through `url()` from `src/i18n/ui.ts`. At cutover,

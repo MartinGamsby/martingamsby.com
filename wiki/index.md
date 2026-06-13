@@ -14,6 +14,7 @@ Read this first; open only the pages you need.
 - [[github-repos-and-demos]] — public/private repos and the employer Hugging Face demo.
 - [[profiles-and-channels]] — full per-language socials table (X, Bluesky, YouTube, Facebook, Typeshare), ORCID, LinkedIn, CV, linktrees, contact-email stance, the dead WordPress.
 - [[physics-preprint]] — the Zenodo record (paper + code, DOI 10.5281/zenodo.20482196) for the physics door.
+- [[writerhelper]] — the deterministic authoring app that writes posts into the site (replaces the erroneous new-post script).
 
 ## Operations
 - [[log]] — append-only timeline of wiki operations.

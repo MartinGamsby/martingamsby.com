@@ -14,7 +14,11 @@ on every push to `main`.
 | `npm run dev` | Dev server at `localhost:4321` |
 | `npm run build` | Production build to `dist/` |
 | `npm run preview` | Preview the production build |
-| `npm run new-post -- --fr "Titre" --en "Title"` | Create a paired FR+EN post |
+| `npm run new-post -- --fr "Titre" --en "Title"` | Scaffold a paired FR+EN post |
+
+Posts are authored in **WriterHelper** (sibling repo), which writes the FR/EN
+`.md` pair into `src/content/blog/{fr,en}/`. `npm run new-post` is a low-level
+helper for scaffolding the pair by hand.
 
 ## Structure
 
