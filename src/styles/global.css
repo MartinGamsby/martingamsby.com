@@ -204,17 +204,22 @@ main {
 }
 
 /* ---------- Hero + constellation ---------- */
+/* The field spans hero + doors; the canvas (.hero-sky) fills it and the gate
+   cards/title become anchor stars inside it. It stops before "Latest posts". */
+.constellation-field {
+  position: relative;
+}
 .hero {
   position: relative;
   padding: 3.5rem 0 2.5rem;
 }
 .hero-sky {
   position: absolute;
-  inset: -6rem -50vw 0;
+  inset: -6rem -50vw -1rem;
   z-index: -1;
   pointer-events: none;
-  -webkit-mask-image: linear-gradient(to bottom, black 55%, transparent);
-  mask-image: linear-gradient(to bottom, black 55%, transparent);
+  -webkit-mask-image: linear-gradient(to bottom, black 0, black 86%, transparent);
+  mask-image: linear-gradient(to bottom, black 0, black 86%, transparent);
 }
 .hero-sky canvas {
   width: 100%;

@@ -33,37 +33,39 @@ const doors: { key: keyof typeof tr.doors; href: string }[] = [
 ---
 
 <Base lang={lang} title="Martin Gamsby" description={tr.heroLine}>
-  <section class="hero">
+  <div class="constellation-field">
     <Constellation />
-    <h1>Martin Gamsby</h1>
-    <p>{tr.heroLine}</p>
-  </section>
+    <section class="hero">
+      <h1>Martin Gamsby</h1>
+      <p>{tr.heroLine}</p>
+    </section>
 
-  <h2 class="section-title">{tr.doorsHeading}</h2>
-  <ul class="doors">
-    {doors.map((d) => (
-      <li>
-        <a class={`door door--${d.key}`} href={d.href}>
-          <span class="door-icon">
-            <svg
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.8"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              set:html={icons[d.key]}
-            />
-          </span>
-          <strong>{tr.doors[d.key].title}</strong>
-          <span>{tr.doors[d.key].blurb}</span>
-          <span class="door-go" aria-hidden="true">→</span>
-        </a>
-      </li>
-    ))}
-  </ul>
+    <h2 class="section-title">{tr.doorsHeading}</h2>
+    <ul class="doors">
+      {doors.map((d) => (
+        <li>
+          <a class={`door door--${d.key}`} href={d.href}>
+            <span class="door-icon">
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                set:html={icons[d.key]}
+              />
+            </span>
+            <strong>{tr.doors[d.key].title}</strong>
+            <span>{tr.doors[d.key].blurb}</span>
+            <span class="door-go" aria-hidden="true">→</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
 
   <h2 class="section-title">{tr.latestPosts}</h2>
   <PostList posts={latest} lang={lang} />
