@@ -11,8 +11,8 @@ const lang = Astro.params.lang as Lang;
 const tr = t(lang);
 const links =
   lang === 'fr'
-    ? [{ label: 'YouTube — @MartinGamsby', url: 'https://www.youtube.com/@MartinGamsby' }]
-    : [{ label: 'YouTube — @MartinGamsbyEN', url: 'https://www.youtube.com/@MartinGamsbyEN' }];
+    ? [{ label: 'YouTube — @MartinGamsby', url: 'https://www.youtube.com/@MartinGamsby', icon: 'youtube' as const }]
+    : [{ label: 'YouTube — @MartinGamsbyEN', url: 'https://www.youtube.com/@MartinGamsbyEN', icon: 'youtube' as const }];
 ---
 
 <Base lang={lang} title={tr.doors.music.title}>

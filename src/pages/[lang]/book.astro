@@ -2,6 +2,7 @@
 import { Image } from 'astro:assets';
 import Base from '../../layouts/Base.astro';
 import PostList from '../../components/PostList.astro';
+import Icon from '../../components/Icon.astro';
 import { LANGS, t, type Lang } from '../../i18n/ui';
 import { getPosts } from '../../lib/blog';
 import coverFr from '../../assets/book/interverti-fr.png';
@@ -107,7 +108,7 @@ const c = content[lang];
         <p class="book-byline">{c.byline}</p>
         <p class="book-pitch">{c.pitch}</p>
         <p class="book-actions">
-          <a class="buy-btn" href={c.buyHref} rel="noopener">{c.buy}</a>
+          <a class="buy-btn" href={c.buyHref} rel="noopener"><Icon name="amazon" size={20} /><span>{c.buy}</span></a>
         </p>
         <p class="book-formats">{c.formats}</p>
         {c.enNote && <p class="book-ennote">{c.enNote}</p>}
@@ -221,7 +222,9 @@ const c = content[lang];
     margin: 0 0 0.8rem;
   }
   .buy-btn {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
     padding: 0.7rem 1.5rem;
     border-radius: 999px;
     font-weight: 650;

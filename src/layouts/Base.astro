@@ -4,6 +4,7 @@ import '@fontsource-variable/inter';
 import '../styles/global.css';
 import { t, url, otherLang, type Lang } from '../i18n/ui';
 import { perLang, neutral } from '../data/socials';
+import Icon from '../components/Icon.astro';
 
 interface Props {
   lang: Lang;
@@ -59,7 +60,9 @@ const footerSocials = [...perLang[lang], ...neutral];
     <footer class="site-footer">
       <div class="wrap">
         <span class="footer-copy">© {year} Martin Gamsby · {tr.footerNote}</span>
-        {footerSocials.map((s) => <a href={s.url} rel="me">{s.label}</a>)}
+        {footerSocials.map((s) => (
+          <a href={s.url} rel="me"><Icon name={s.icon} size={16} /><span>{s.label}</span></a>
+        ))}
       </div>
     </footer>
     <script is:inline>

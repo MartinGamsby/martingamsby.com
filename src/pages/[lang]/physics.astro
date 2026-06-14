@@ -16,11 +16,13 @@ const links = [
         ? 'Article + code (Zenodo · DOI 10.5281/zenodo.20482196)'
         : 'Paper + code (Zenodo · DOI 10.5281/zenodo.20482196)',
     url: 'https://doi.org/10.5281/zenodo.20482196',
+    icon: 'zenodo' as const,
   },
-  { label: 'ORCID 0009-0007-4069-9687', url: 'https://orcid.org/0009-0007-4069-9687' },
+  { label: 'ORCID 0009-0007-4069-9687', url: 'https://orcid.org/0009-0007-4069-9687', icon: 'orcid' as const },
   {
     label: lang === 'fr' ? 'Code source (GitHub)' : 'Source code (GitHub)',
     url: 'https://github.com/MartinGamsby/ProgenitorNodeModelCosmology',
+    icon: 'github' as const,
   },
 ];
 ---

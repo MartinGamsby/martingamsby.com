@@ -1,5 +1,7 @@
 ---
 import PostList from './PostList.astro';
+import Icon from './Icon.astro';
+import type { IconName } from '../lib/icons';
 import { t, type Lang } from '../i18n/ui';
 import { getPosts, type Facet } from '../lib/blog';
 
@@ -7,7 +9,7 @@ interface Props {
   lang: Lang;
   doorKey: 'dev' | 'physics' | 'book' | 'music';
   facet: Facet;
-  links?: { label: string; url: string }[];
+  links?: { label: string; url: string; icon: IconName }[];
 }
 
 const { lang, doorKey, facet, links = [] } = Astro.props;
@@ -20,7 +22,7 @@ const posts = await getPosts(lang, facet);
 {links.length > 0 && (
   <ul class="link-list">
     {links.map((l) => (
-      <li><a href={l.url}>{l.label}</a></li>
+      <li><a href={l.url}><Icon name={l.icon} size={20} /><span>{l.label}</span></a></li>
     ))}
   </ul>
 )}

@@ -1,26 +1,27 @@
 import type { Lang } from '../i18n/ui';
+import type { IconName } from '../lib/icons';
 
-export type Social = { label: string; url: string };
+export type Social = { label: string; url: string; icon: IconName };
 
 // Source of truth: wiki/sources/profiles-and-channels.md (extracted from the
 // linktrees 2026-06-11). NO raw email anywhere — PLAN.md open question #6.
 export const perLang: Record<Lang, Social[]> = {
   fr: [
-    { label: 'YouTube', url: 'https://www.youtube.com/@MartinGamsby' },
-    { label: 'Bluesky', url: 'https://bsky.app/profile/martin-gamsby.bsky.social' },
-    { label: 'X / Twitter', url: 'https://x.com/MartinGamsby' },
-    { label: 'Facebook', url: 'https://www.facebook.com/martin.gamsby' },
+    { label: 'YouTube', url: 'https://www.youtube.com/@MartinGamsby', icon: 'youtube' },
+    { label: 'Bluesky', url: 'https://bsky.app/profile/martin-gamsby.bsky.social', icon: 'bluesky' },
+    { label: 'X / Twitter', url: 'https://x.com/MartinGamsby', icon: 'x' },
+    { label: 'Facebook', url: 'https://www.facebook.com/martin.gamsby', icon: 'facebook' },
   ],
   en: [
-    { label: 'YouTube', url: 'https://www.youtube.com/@MartinGamsbyEN' },
-    { label: 'Bluesky', url: 'https://bsky.app/profile/martingamsby.bsky.social' },
-    { label: 'X / Twitter', url: 'https://x.com/Martin_Gamsby' },
-    { label: 'Typeshare', url: 'https://typeshare.co/martingamsby' },
+    { label: 'YouTube', url: 'https://www.youtube.com/@MartinGamsbyEN', icon: 'youtube' },
+    { label: 'Bluesky', url: 'https://bsky.app/profile/martingamsby.bsky.social', icon: 'bluesky' },
+    { label: 'X / Twitter', url: 'https://x.com/Martin_Gamsby', icon: 'x' },
+    { label: 'Typeshare', url: 'https://typeshare.co/martingamsby', icon: 'typeshare' },
   ],
 };
 
 export const neutral: Social[] = [
-  { label: 'GitHub', url: 'https://github.com/MartinGamsby' },
-  { label: 'LinkedIn', url: 'https://www.linkedin.com/in/martingamsby/' },
-  { label: 'ORCID', url: 'https://orcid.org/0009-0007-4069-9687' },
+  { label: 'GitHub', url: 'https://github.com/MartinGamsby', icon: 'github' },
+  { label: 'LinkedIn', url: 'https://www.linkedin.com/in/martingamsby/', icon: 'linkedin' },
+  { label: 'ORCID', url: 'https://orcid.org/0009-0007-4069-9687', icon: 'orcid' },
 ];
