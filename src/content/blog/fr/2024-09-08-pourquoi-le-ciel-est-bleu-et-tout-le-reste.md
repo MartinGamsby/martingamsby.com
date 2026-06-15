@@ -30,7 +30,7 @@ La réponse complète.
 
 Je pense que tout ce processus, ça va l’aider à trouver les bonnes questions à poser, à trouver de bonnes sources quand on n’est pas certain, et à rester curieuse.
 
-Par contre, mon autre fille est moins sûre d’elle, elle est anxieuse. Alors ça ne marcherait pas aussi bien pour elle. Il faut [s’adapter à nos enfants](https://martingamsby.github.io/court-adaptation), et si c’est toujours elle qui doit décider, ça va lui donner trop de pression, et elle va figer pour d’autres aspects de la vie.
+Par contre, mon autre fille est moins sûre d’elle, elle est anxieuse. Alors ça ne marcherait pas aussi bien pour elle. Il faut [s’adapter à nos enfants](https://martingamsby.com/fr/blog/2024-08-30-les-parents-sadaptent/), et si c’est toujours elle qui doit décider, ça va lui donner trop de pression, et elle va figer pour d’autres aspects de la vie.
 
 Écoutez.
 

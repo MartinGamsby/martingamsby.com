@@ -12,7 +12,7 @@ To learn at a reasonable speed, he set himself a goal: learn 3 vocabulary words 
 
 That was very clever of him. His reasoning was as follows: if I want to learn something, I have to see it often to remember it, and he was right on this point, since he was at the final 20% stage of his French learning.
 
-[Remember Pareto's law?](https://martingamsby.github.io/en/why-80-of-wealth-belongs-to-20-of-people-and-why-it-matters-for-everything)
+[Remember Pareto's law?](https://martingamsby.com/en/blog/2009-12-27-why-80-of-wealth-belongs-to-20-of-people-and-why-it-matters-for-everything/)
 
 And what are we sure to see at least 3 times in a day? A refrigerator of course.
 

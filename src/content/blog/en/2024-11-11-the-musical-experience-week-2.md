@@ -17,7 +17,7 @@ For example, the translation part.
 
 ---
 
-- [Based on](https://martingamsby.github.io/en/the-musical-experience-week-1)
+- [Based on](https://martingamsby.com/en/blog/2024-11-04-the-musical-experience-week-1/)
 - [YouTube Shorts](https://youtube.com/shorts/mYaImLwg9Ss)
 - [YouTube](https://youtu.be/15xa0NziUgI)
 - [X/Twitter](https://x.com/Martin_Gamsby/status/1855983008655831129)

@@ -22,4 +22,4 @@ Et c’est tout.
 
 ---
 
-- [Basé sur](https://martingamsby.github.io/gandalf-ma-reconcilie-avec-la-vie)
+- [Basé sur](https://martingamsby.com/fr/blog/2024-08-27-gandalf-ma-reconcilie-avec-la-vie/)

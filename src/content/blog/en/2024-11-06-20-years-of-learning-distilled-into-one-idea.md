@@ -70,5 +70,5 @@ I'm almost tempted to write a book on it, since it's such a profound idea ...
 
 ---
 
-- [Based on](https://martingamsby.github.io/en/an-idea-you-can-apply-to-everything-from-20-years-of-learning)
+- [Based on](https://martingamsby.com/en/blog/2024-09-16-an-idea-you-can-apply-to-everything-from-20-years-of-learning/)
 - [Bluesky](https://bsky.app/profile/martingamsby.bsky.social/post/3laby27pkj22k)

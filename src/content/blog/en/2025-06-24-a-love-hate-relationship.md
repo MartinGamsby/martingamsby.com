@@ -20,6 +20,6 @@ Getting to know yourself puts things into perspective.
 
 ---
 
-- [Based on](https://martingamsby.github.io/en/programming-a-love-hate-relationship-not-just-programming)
+- [Based on](https://martingamsby.com/en/blog/2024-09-09-programming-a-love-hate-relationship-not-just-programming/)
 - [X/Twitter](https://x.com/Martin_Gamsby/status/1937644627823153358)
 - [Bluesky](https://bsky.app/profile/martingamsby.bsky.social/post/3lsf7b2xada2n)

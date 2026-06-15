@@ -20,4 +20,4 @@ And ... well that's basically what I was talking about.
 
 ---
 
-- [Based on](https://martingamsby.github.io/en/could-dark-energy-simply-be-multiple-far-black-holes-quadrillions-of-years-old)
+- [Based on](https://martingamsby.com/en/blog/2024-10-15-could-dark-energy-simply-be-multiple-far-black-holes-quadrillions-of-years-old/)

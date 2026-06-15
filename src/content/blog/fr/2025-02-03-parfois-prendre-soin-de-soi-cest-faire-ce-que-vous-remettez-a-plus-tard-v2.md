@@ -36,4 +36,4 @@ Quand ce sera fait, vos techniques de relaxation vont être beaucoup plus effica
 
 ---
 
-- [Basé sur](https://martingamsby.github.io/parfois-prendre-soin-de-soi-cest-faire-ce-que-vous-remettez-a-plus-tard)
+- [Basé sur](https://martingamsby.com/fr/blog/2024-09-05-parfois-prendre-soin-de-soi-cest-faire-ce-que-vous-remettez-a-plus-tard/)

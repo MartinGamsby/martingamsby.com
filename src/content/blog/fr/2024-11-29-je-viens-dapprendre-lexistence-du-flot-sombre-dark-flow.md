@@ -20,4 +20,4 @@ Et ben ... en gros, c'est de ça que je parlais.
 
 ---
 
-- [Basé sur](https://martingamsby.github.io/lenergie-noire-pourrait-elle-simplement-etre-constituee-de-multiples-trous-noirs-lointains-vieux-de-plusieurs-milliards-dannees)
+- [Basé sur](https://martingamsby.com/fr/blog/2024-10-15-lenergie-noire-pourrait-elle-simplement-etre-constituee-de-multiples-trous-noirs-lointains-vieux-de-plusieurs-milliards-dannees/)

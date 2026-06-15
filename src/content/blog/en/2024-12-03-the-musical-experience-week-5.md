@@ -14,7 +14,7 @@ This is just a start, but this is what the game should look like, with more opti
 
 ---
 
-- [Based on](https://martingamsby.github.io/en/the-musical-experience-week-2)
+- [Based on](https://martingamsby.com/en/blog/2024-11-11-the-musical-experience-week-2/)
 - [YouTube](https://youtu.be/HWASLJTHvhA)
 - [Bluesky](https://bsky.app/profile/martingamsby.bsky.social/post/3lcjkjo2ucw2r)
 - [X/Twitter](https://twitter.com/user/status/1864487460660564191)

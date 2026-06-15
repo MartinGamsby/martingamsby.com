@@ -69,5 +69,5 @@ Je suis presque tenté d'écrire un livre sur le sujet, tant c'est une idée imp
 
 ---
 
-- [Basé sur](https://martingamsby.github.io/une-idee-qui-regle-tout-provenant-de-20-ans-dapprentissages)
+- [Basé sur](https://martingamsby.com/fr/blog/2024-09-16-une-idee-qui-regle-tout-provenant-de-20-ans-dapprentissages/)
 - [Bluesky](https://bsky.app/profile/martin-gamsby.bsky.social/post/3laby3egak62h)

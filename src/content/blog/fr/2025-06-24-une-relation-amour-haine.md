@@ -22,6 +22,6 @@ Apprendre à se connaître met les choses en perspective.
 
 ---
 
-- [Basé sur](https://martingamsby.github.io/la-programmation-un-rapport-amour-haine-pas-juste-la-programmation)
+- [Basé sur](https://martingamsby.com/fr/blog/2024-09-09-la-programmation-un-rapport-amour-haine-pas-juste-la-programmation/)
 - [X/Twitter](https://x.com/MartinGamsby/status/1937646464726949954)
 - [Bluesky](https://bsky.app/profile/martin-gamsby.bsky.social/post/3lsf7agfdtc2r)

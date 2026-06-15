@@ -14,7 +14,7 @@ Ce n'est qu'un début, mais voici à quoi le jeu devrait ressembler, avec plus d
 
 ---
 
-- [Basé sur](https://martingamsby.github.io/lexperience-musicale-semaine-2)
+- [Basé sur](https://martingamsby.com/fr/blog/2024-11-11-lexperience-musicale-semaine-2/)
 - [YouTube](https://youtu.be/o1jAh6spBz4)
 - [Bluesky](https://bsky.app/profile/martin-gamsby.bsky.social/post/3lcjkj3mz3e2y)
 - [X/Twitter](https://twitter.com/user/status/1864487379517518181)

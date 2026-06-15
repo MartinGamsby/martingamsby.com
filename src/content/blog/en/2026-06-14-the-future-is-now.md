@@ -25,3 +25,4 @@ You are lucky, I envy you, young padawans.
 ---
 
 - [Bluesky](https://bsky.app/profile/martingamsby.bsky.social/post/3modbyqckyg2b)
+- [X/Twitter](https://x.com/Martin_Gamsby/status/2066557119139029105)

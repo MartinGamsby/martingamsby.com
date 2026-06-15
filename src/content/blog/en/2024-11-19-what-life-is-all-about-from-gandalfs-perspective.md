@@ -22,5 +22,5 @@ And that's it.
 
 ---
 
-- [Based on](https://martingamsby.github.io/en/gandalf-reconciled-me-with-life)
+- [Based on](https://martingamsby.com/en/blog/2024-08-27-gandalf-reconciled-me-with-life/)
 - [Typeshare](https://typeshare.co/martingamsby/posts/what-life-is-all-about-from-gandalfs-perspective)

@@ -17,7 +17,7 @@ Par exemple, la prise en charge de la traduction.
 
 ---
 
-- [Basé sur](https://martingamsby.github.io/lexperience-musicale-semaine-1)
+- [Basé sur](https://martingamsby.com/fr/blog/2024-11-04-lexperience-musicale-semaine-1/)
 - [YouTube](https://youtu.be/15xa0NziUgI)
 - [YouTube Shorts](https://youtube.com/shorts/mYaImLwg9Ss)
 - [Bluesky](https://bsky.app/profile/martin-gamsby.bsky.social/post/3laokffjpws23)
