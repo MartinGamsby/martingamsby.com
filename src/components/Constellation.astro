@@ -1,13 +1,21 @@
 ---
 // Animated "everything is connected" node graph behind the hero + doors.
-// The gate cards and the title/subtitle are folded in as *anchor* stars:
-// big, slow-drifting nodes the small background stars link to. Bigger anchors
-// drift slower (title slowest, gates gentle, background stars fastest).
-// Pure canvas, no deps; static single frame under prefers-reduced-motion;
-// pauses when the tab is hidden; palette follows the active theme.
-// The DOM keeps its responsive CSS-grid layout (works without JS); this only
-// measures it and nudges each anchor via the `translate` property, which
-// composes with the cards' :hover transform instead of clobbering it.
+//
+// Three kinds of node:
+//   • boxes   — the gate cards + the title/subtitle. Rectangular "objects";
+//               links attach to their BORDER, not their centre, so the whole
+//               card reads as the star. Bigger box -> slower drift.
+//   • socials — the social links, rendered as DOM chips (.sky-social) and placed
+//               near the gate they belong to (data-facet) with a configurable
+//               weight (data-weight -> size). Wired to their gate with a
+//               facet-coloured line.
+//   • stars   — the background field. Many, with a wide size spread so the gates
+//               aren't the only big things.
+//
+// The DOM keeps its responsive layout (works without JS); this measures it and
+// nudges each node via the `translate` property, which composes with the cards'
+// :hover transform instead of clobbering it. Static under prefers-reduced-motion,
+// paused when the tab is hidden, palette follows the active theme.
 ---
 
 <div class="hero-sky" aria-hidden="true"><canvas></canvas></div>
@@ -18,50 +26,173 @@
   const ctx = canvas?.getContext('2d');
 
   if (sky && canvas && ctx) {
-    const PALETTES = {
+    const STAR_PALETTES = {
       dark: ['#38bdf8', '#a78bfa', '#fbbf24', '#f472b6'],
       light: ['#0284c7', '#7c3aed', '#b45309', '#db2777'],
     };
-    const LINK_DIST = 130;        // star <-> star
-    const ANCHOR_LINK = 172;      // star <-> gate reach
-    const ANCHOR_WEB = 420;       // gate <-> gate backbone
-    const DRIFT_K = 1.9;          // angular speed = DRIFT_K / size  (bigger = slower)
-    const ANCHOR_SEL = '.hero h1, .hero p, .door';
+    const LINK_DIST = 132;        // star <-> star
+    const STAR_REACH = 210;       // star <-> box border (a bit further, so neighbours show)
+    const BOX_WEB = 460;          // box <-> box backbone
+    const STAR_SOCIAL = 150;      // star <-> social chip
+    const DRIFT_K = 1.9;          // angular speed = SPEED * DRIFT_K / size  (bigger = slower)
+    const SPEED = 0.55;           // global drift-speed multiplier — lower = calmer
+    const GATE_MARGIN = 14;       // keep social chips this far outside every card edge
     const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const clamp = (v, lo, hi) => Math.min(hi, Math.max(lo, v));
 
-    let palette = PALETTES[document.documentElement.dataset.theme === 'dark' ? 'dark' : 'light'];
-    let nodes = [];
-    let anchors = [];
-    let w = 0;
-    let h = 0;
-    let dpr = 1;
-    let raf = 0;
-    let t = 0;
+    let starPalette = STAR_PALETTES[document.documentElement.dataset.theme === 'dark' ? 'dark' : 'light'];
+    let stars = [];
+    let boxes = [];      // gates + title/subtitle
+    let socials = [];    // social chips
+    let w = 0, h = 0, dpr = 1, raf = 0, t = 0;
 
-    function measureAnchors() {
+    const socialsUl = document.querySelector('.sky-socials');
+    socialsUl?.classList.add('is-floating'); // progressive enhancement: lift chips into the sky
+
+    function facetColors() {
+      const cs = getComputedStyle(document.documentElement);
+      const v = (name, fb) => (cs.getPropertyValue(name).trim() || fb);
+      const accent = v('--accent', '#a78bfa');
+      return {
+        dev: v('--c-dev', '#38bdf8'),
+        physics: v('--c-physics', '#a78bfa'),
+        book: v('--c-book', '#fbbf24'),
+        music: v('--c-music', '#db2777'),
+        everything: accent,
+        text: accent,
+      };
+    }
+    let fc = facetColors();
+
+    // --- geometry helpers ---------------------------------------------------
+    // Point on a box's border in the direction of (tx,ty).
+    function rectEdge(b, tx, ty) {
+      const dx = tx - b.x, dy = ty - b.y;
+      if (!dx && !dy) return { x: b.x, y: b.y };
+      const s = Math.min(b.hw / Math.max(Math.abs(dx), 1e-6), b.hh / Math.max(Math.abs(dy), 1e-6));
+      return { x: b.x + dx * s, y: b.y + dy * s };
+    }
+    function inRect(b, px, py) {
+      return Math.abs(px - b.x) <= b.hw && Math.abs(py - b.y) <= b.hh;
+    }
+    // Point on a chip's rim in the direction of (tx,ty).
+    function circEdge(c, tx, ty) {
+      const dx = tx - c.x, dy = ty - c.y, d = Math.hypot(dx, dy) || 1;
+      return { x: c.x + (dx / d) * c.radius, y: c.y + (dy / d) * c.radius };
+    }
+
+    // --- measuring the DOM into nodes --------------------------------------
+    function measureBoxes() {
       const field = sky.getBoundingClientRect();
-      anchors = [...document.querySelectorAll(ANCHOR_SEL)].map((el, idx) => {
-        el.style.translate = ''; // clear so we read the untranslated home position
+      const list = [
+        ...[...document.querySelectorAll('.hero h1, .hero p')].map((el) => ({ el, kind: 'text', facet: 'text' })),
+        ...[...document.querySelectorAll('.door')].map((el) => ({ el, kind: 'gate', facet: el.dataset.facet })),
+      ];
+      boxes = list.map(({ el, kind, facet }) => {
+        el.style.translate = '';
         const r = el.getBoundingClientRect();
         const size = Math.max(r.width, r.height);
-        const i = idx % palette.length;
-        const ampX = Math.max(5, Math.min(11, 1500 / size));
+        const ampX = Math.max(3.5, Math.min(8, 1400 / size));
         return {
-          el,
+          el, kind, facet,
           homeX: r.left - field.left + r.width / 2,
           homeY: r.top - field.top + r.height / 2,
-          wv: DRIFT_K / size,                 // bigger anchor -> slower orbit
+          hw: r.width / 2,
+          hh: r.height / 2,
+          wv: SPEED * DRIFT_K / size,
           px: Math.random() * Math.PI * 2,
           py: Math.random() * Math.PI * 2,
-          ampX,
-          ampY: ampX * 0.7,
-          i,
-          c: palette[i],
-          r: Math.max(2.2, Math.min(4, size / 64)),
+          ampX, ampY: ampX * 0.7,
+          c: fc[facet] || fc.text,
           x: r.left - field.left + r.width / 2,
           y: r.top - field.top + r.height / 2,
         };
       });
+    }
+
+    function layoutSocials() {
+      const chips = [...document.querySelectorAll('.sky-social')];
+      if (!chips.length) { socials = []; return; }
+
+      // Horizontal play space is the whole visible viewport (the sky is
+      // full-bleed), not just the narrow content column — that gives real
+      // margins left/right of the cards for chips to live in. Vertically we
+      // stay within the gates' band.
+      const skyRect = sky.getBoundingClientRect();
+      const edge = 16;
+      const leftBound = -skyRect.left + edge;
+      const rightBound = innerWidth - skyRect.left - edge;
+      let maxY = -Infinity;
+      for (const b of boxes) maxY = Math.max(maxY, b.homeY + b.hh);
+      const fallbackGate = boxes.find((b) => b.kind === 'gate');
+
+      socials = chips.map((el) => {
+        const facet = el.dataset.facet || 'everything';
+        const weight = parseFloat(el.dataset.weight || '1');
+        const r = el.getBoundingClientRect();
+        const radius = (r.width || 32 * weight) / 2;
+        const gate = boxes.find((b) => b.kind === 'gate' && b.facet === facet) || fallbackGate;
+        // Float at the speed of a mid-size object (floored), not their tiny size,
+        // and with a small amplitude — otherwise the chips whip around.
+        const eff = Math.max(radius * 2, 200);
+        const ampX = 5;
+        return {
+          el, facet, weight, gate, radius,
+          wv: SPEED * DRIFT_K / eff,
+          px: Math.random() * Math.PI * 2,
+          py: Math.random() * Math.PI * 2,
+          ampX, ampY: ampX * 0.8,
+          c: fc[facet] || fc.everything,
+          homeX: gate.homeX, homeY: gate.homeY, x: 0, y: 0,
+        };
+      });
+
+      // Deterministic orbit: try slots around the gate (horizontal flanks first,
+      // then vertical, then diagonals; widening rings) and take the first that
+      // clears every card, every already-placed chip, and the viewport edge. A
+      // force-relax could get wedged in the thin gap between two adjacent cards;
+      // this can't — a slot that overlaps any card simply fails the test.
+      const PREF = [180, 0, 158, 202, 22, 338, 90, 270, 128, 232, 52, 308, 45, 135, 225, 315]
+        .map((d) => (d * Math.PI) / 180);
+      const placed = [];
+      const fits = (x, y, radius) => {
+        if (x < leftBound + radius || x > rightBound - radius) return false;
+        if (y < 12 + radius || y > maxY - radius) return false;
+        for (const b of boxes) {
+          // true distance from the chip to the card rect (corners included)
+          const ddx = Math.max(b.homeX - b.hw - x, 0, x - (b.homeX + b.hw));
+          const ddy = Math.max(b.homeY - b.hh - y, 0, y - (b.homeY + b.hh));
+          if (Math.hypot(ddx, ddy) < radius + GATE_MARGIN) return false;
+        }
+        for (const p of placed) {
+          if (Math.hypot(x - p.x, y - p.y) < radius + p.radius + 10) return false;
+        }
+        return true;
+      };
+      for (const s of socials) {
+        const g = s.gate, gap = GATE_MARGIN + s.radius;
+        let best = null;
+        for (let ring = 0; ring < 9 && !best; ring++) {
+          const extra = ring * (s.radius * 2 + 8);
+          for (const ang of PREF) {
+            const x = g.homeX + Math.cos(ang) * (g.hw + gap + extra);
+            const y = g.homeY + Math.sin(ang) * (g.hh + gap + extra);
+            if (fits(x, y, s.radius)) { best = { x, y }; break; }
+          }
+        }
+        if (!best) best = {
+          x: clamp(g.homeX, leftBound + s.radius, rightBound - s.radius),
+          y: clamp(g.homeY - g.hh - gap, 12 + s.radius, maxY - s.radius),
+        };
+        s.homeX = best.x; s.homeY = best.y;
+        placed.push({ x: best.x, y: best.y, radius: s.radius });
+      }
+
+      for (const s of socials) {
+        s.x = s.homeX; s.y = s.homeY;
+        s.el.style.left = `${s.homeX.toFixed(1)}px`;
+        s.el.style.top = `${s.homeY.toFixed(1)}px`;
+      }
     }
 
     function resize() {
@@ -72,131 +203,144 @@
       canvas.width = Math.round(w * dpr);
       canvas.height = Math.round(h * dpr);
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      const count = Math.min(120, Math.round((w * h) / 15000));
-      nodes = Array.from({ length: count }, () => ({
-        x: Math.random() * w,
-        y: Math.random() * h,
-        vx: (Math.random() - 0.5) * 0.35,
-        vy: (Math.random() - 0.5) * 0.35,
-        r: 1 + Math.random() * 1.4,
-        c: palette[Math.floor(Math.random() * palette.length)],
-        i: Math.floor(Math.random() * palette.length),
-      }));
-      measureAnchors();
+      const count = Math.min(175, Math.round((w * h) / 9000));
+      stars = Array.from({ length: count }, () => {
+        const i = Math.floor(Math.random() * starPalette.length);
+        return {
+          x: Math.random() * w,
+          y: Math.random() * h,
+          vx: (Math.random() - 0.5) * 0.34,
+          vy: (Math.random() - 0.5) * 0.34,
+          // wide size spread: mostly tiny, the occasional big hub
+          r: 0.7 + Math.pow(Math.random(), 3) * 4.6,
+          i,
+          c: starPalette[i],
+        };
+      });
+      measureBoxes();
+      layoutSocials();
+    }
+
+    function drawLink(x1, y1, x2, y2, color, alpha, width) {
+      ctx.globalAlpha = alpha;
+      ctx.strokeStyle = color;
+      ctx.lineWidth = width;
+      ctx.beginPath();
+      ctx.moveTo(x1, y1);
+      ctx.lineTo(x2, y2);
+      ctx.stroke();
     }
 
     function frame(advance) {
       if (advance) t++;
       ctx.clearRect(0, 0, w, h);
 
-      // Drift the background stars.
-      for (const n of nodes) {
+      for (const n of stars) {
         if (advance) {
-          n.x += n.vx;
-          n.y += n.vy;
+          n.x += n.vx; n.y += n.vy;
           if (n.x < 0 || n.x > w) n.vx *= -1;
           if (n.y < 0 || n.y > h) n.vy *= -1;
         }
       }
-
-      // Drift the anchors (gentle, size-scaled) and carry the DOM along.
-      for (const a of anchors) {
-        const dx = a.ampX * Math.sin(t * a.wv + a.px);
-        const dy = a.ampY * Math.cos(t * a.wv * 0.85 + a.py);
-        a.x = a.homeX + dx;
-        a.y = a.homeY + dy;
-        if (advance) a.el.style.translate = `${dx.toFixed(2)}px ${dy.toFixed(2)}px`;
+      for (const b of boxes) {
+        const dx = b.ampX * Math.sin(t * b.wv + b.px);
+        const dy = b.ampY * Math.cos(t * b.wv * 0.85 + b.py);
+        b.x = b.homeX + dx; b.y = b.homeY + dy;
+        if (advance) b.el.style.translate = `${dx.toFixed(2)}px ${dy.toFixed(2)}px`;
+      }
+      for (const s of socials) {
+        const dx = s.ampX * Math.sin(t * s.wv + s.px);
+        const dy = s.ampY * Math.cos(t * s.wv * 0.9 + s.py);
+        s.x = s.homeX + dx; s.y = s.homeY + dy;
+        if (advance) s.el.style.translate = `${dx.toFixed(2)}px ${dy.toFixed(2)}px`;
       }
 
       // star <-> star
-      for (let a = 0; a < nodes.length; a++) {
-        for (let b = a + 1; b < nodes.length; b++) {
-          const dx = nodes[a].x - nodes[b].x;
-          const dy = nodes[a].y - nodes[b].y;
+      for (let a = 0; a < stars.length; a++) {
+        for (let b = a + 1; b < stars.length; b++) {
+          const dx = stars[a].x - stars[b].x, dy = stars[a].y - stars[b].y;
           const d = Math.hypot(dx, dy);
-          if (d < LINK_DIST) {
-            ctx.globalAlpha = (1 - d / LINK_DIST) * 0.35;
-            ctx.strokeStyle = nodes[a].c;
-            ctx.lineWidth = 1;
-            ctx.beginPath();
-            ctx.moveTo(nodes[a].x, nodes[a].y);
-            ctx.lineTo(nodes[b].x, nodes[b].y);
-            ctx.stroke();
+          if (d < LINK_DIST) drawLink(stars[a].x, stars[a].y, stars[b].x, stars[b].y, stars[a].c, (1 - d / LINK_DIST) * 0.32, 1);
+        }
+      }
+
+      // star <-> box border (skip stars hidden under the box)
+      for (const b of boxes) {
+        for (const n of stars) {
+          if (inRect(b, n.x, n.y)) continue;
+          const d = Math.hypot(b.x - n.x, b.y - n.y);
+          if (d < STAR_REACH) {
+            const e = rectEdge(b, n.x, n.y);
+            drawLink(e.x, e.y, n.x, n.y, b.c, (1 - d / STAR_REACH) * 0.5, 1);
           }
         }
       }
 
-      // star <-> gate (anchors pull the web toward themselves)
-      for (const a of anchors) {
-        for (const n of nodes) {
-          const dx = a.x - n.x;
-          const dy = a.y - n.y;
-          const d = Math.hypot(dx, dy);
-          if (d < ANCHOR_LINK) {
-            ctx.globalAlpha = (1 - d / ANCHOR_LINK) * 0.5;
-            ctx.strokeStyle = a.c;
-            ctx.lineWidth = 1;
-            ctx.beginPath();
-            ctx.moveTo(a.x, a.y);
-            ctx.lineTo(n.x, n.y);
-            ctx.stroke();
+      // box <-> box backbone (border to border, so it shows in the gaps)
+      for (let a = 0; a < boxes.length; a++) {
+        for (let b = a + 1; b < boxes.length; b++) {
+          const d = Math.hypot(boxes[a].x - boxes[b].x, boxes[a].y - boxes[b].y);
+          if (d < BOX_WEB) {
+            const e1 = rectEdge(boxes[a], boxes[b].x, boxes[b].y);
+            const e2 = rectEdge(boxes[b], boxes[a].x, boxes[a].y);
+            drawLink(e1.x, e1.y, e2.x, e2.y, boxes[a].c, (1 - d / BOX_WEB) * 0.38, 1.1);
           }
         }
       }
 
-      // gate <-> gate backbone
-      for (let a = 0; a < anchors.length; a++) {
-        for (let b = a + 1; b < anchors.length; b++) {
-          const dx = anchors[a].x - anchors[b].x;
-          const dy = anchors[a].y - anchors[b].y;
-          const d = Math.hypot(dx, dy);
-          if (d < ANCHOR_WEB) {
-            ctx.globalAlpha = (1 - d / ANCHOR_WEB) * 0.4;
-            ctx.strokeStyle = anchors[a].c;
-            ctx.lineWidth = 1.1;
-            ctx.beginPath();
-            ctx.moveTo(anchors[a].x, anchors[a].y);
-            ctx.lineTo(anchors[b].x, anchors[b].y);
-            ctx.stroke();
+      // social <-> its gate, and social <-> nearby stars
+      for (const s of socials) {
+        if (s.gate) {
+          const e1 = circEdge(s, s.gate.x, s.gate.y);
+          const e2 = rectEdge(s.gate, s.x, s.y);
+          drawLink(e1.x, e1.y, e2.x, e2.y, s.c, 0.6, 1.3);
+        }
+        for (const n of stars) {
+          const d = Math.hypot(s.x - n.x, s.y - n.y);
+          if (d < STAR_SOCIAL) {
+            const e = circEdge(s, n.x, n.y);
+            drawLink(e.x, e.y, n.x, n.y, s.c, (1 - d / STAR_SOCIAL) * 0.4, 1);
           }
         }
       }
 
-      // background star dots
+      // star dots
       ctx.globalAlpha = 0.9;
-      for (const n of nodes) {
+      for (const n of stars) {
         ctx.fillStyle = n.c;
         ctx.beginPath();
         ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
         ctx.fill();
       }
 
-      // anchor cores (mostly behind the translucent cards; the glow peeks at the edges)
-      for (const a of anchors) {
+      // a faint glow under each social chip / gate core, in its facet hue
+      for (const s of socials) {
         ctx.save();
-        ctx.globalAlpha = 0.85;
-        ctx.shadowColor = a.c;
-        ctx.shadowBlur = 16;
-        ctx.fillStyle = a.c;
-        ctx.beginPath();
-        ctx.arc(a.x, a.y, a.r, 0, Math.PI * 2);
-        ctx.fill();
+        ctx.globalAlpha = 0.22;
+        ctx.shadowColor = s.c; ctx.shadowBlur = 14;
+        ctx.fillStyle = s.c;
+        ctx.beginPath(); ctx.arc(s.x, s.y, s.radius * 0.55, 0, Math.PI * 2); ctx.fill();
+        ctx.restore();
+      }
+      for (const b of boxes) {
+        if (b.kind !== 'gate') continue;
+        ctx.save();
+        ctx.globalAlpha = 0.7;
+        ctx.shadowColor = b.c; ctx.shadowBlur = 14;
+        ctx.fillStyle = b.c;
+        ctx.beginPath(); ctx.arc(b.x, b.y, 2.6, 0, Math.PI * 2); ctx.fill();
         ctx.restore();
       }
 
       ctx.globalAlpha = 1;
     }
 
-    function loop() {
-      frame(true);
-      raf = requestAnimationFrame(loop);
-    }
+    function loop() { frame(true); raf = requestAnimationFrame(loop); }
 
     function start() {
       cancelAnimationFrame(raf);
       if (reduced) {
-        // settle into a pleasing static web
-        for (let i = 0; i < 60; i++) for (const n of nodes) { n.x += n.vx; n.y += n.vy; }
+        for (let i = 0; i < 60; i++) for (const n of stars) { n.x += n.vx; n.y += n.vy; }
         frame(false);
       } else {
         loop();
@@ -207,17 +351,17 @@
     start();
 
     addEventListener('resize', () => { resize(); start(); });
-    // Re-measure once the webfont has swapped (the title's box can shift).
-    document.fonts?.ready.then(() => { measureAnchors(); if (reduced) frame(false); });
+    document.fonts?.ready.then(() => { resize(); if (reduced) frame(false); });
     document.addEventListener('visibilitychange', () => {
       if (document.hidden) cancelAnimationFrame(raf);
       else start();
     });
-    // Repaint with the right hues when the theme toggles.
     new MutationObserver(() => {
-      palette = PALETTES[document.documentElement.dataset.theme === 'dark' ? 'dark' : 'light'];
-      for (const n of nodes) n.c = palette[n.i];
-      for (const a of anchors) a.c = palette[a.i];
+      starPalette = STAR_PALETTES[document.documentElement.dataset.theme === 'dark' ? 'dark' : 'light'];
+      fc = facetColors();
+      for (const n of stars) n.c = starPalette[n.i];
+      for (const b of boxes) b.c = fc[b.facet] || fc.text;
+      for (const s of socials) s.c = fc[s.facet] || fc.everything;
       if (reduced) frame(false);
     }).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
   }

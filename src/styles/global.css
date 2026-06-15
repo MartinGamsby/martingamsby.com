@@ -211,7 +211,7 @@ main {
 }
 .hero {
   position: relative;
-  padding: 3.5rem 0 2.5rem;
+  padding: 1.5rem 0 3.5rem;
 }
 .hero-sky {
   position: absolute;
@@ -229,19 +229,29 @@ main {
 .hero h1 {
   font-size: clamp(2.9rem, 8vw, 4.6rem);
   font-weight: 640;
-  margin: 0 0 0.6rem;
+  margin: 0 auto 0.75rem;
+  width: fit-content;
   background: var(--grad);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
   text-align: center;
+  /* A faint frame so the title reads as an "object" in the constellation too. */
+  padding: 0.1rem 0.7rem;
+  border: 1px solid color-mix(in srgb, var(--accent) 13%, transparent);
+  border-radius: 0.9rem;
 }
 .hero p {
   font-size: clamp(1.15rem, 2.5vw, 1.35rem);
   color: var(--fg);
-  margin: 0;
+  margin: 0 auto;
+  width: fit-content;
+  max-width: 36rem;
   text-wrap: balance;
   text-align: center;
+  padding: 0.3rem 0.8rem;
+  border: 1px solid color-mix(in srgb, var(--accent) 9%, transparent);
+  border-radius: 0.75rem;
 }
 
 /* ---------- Section titles ---------- */
@@ -267,9 +277,9 @@ main {
   justify-content: center;
   flex-wrap: wrap;
   grid-template-columns: repeat(auto-fit, minmax(13.5rem, 1fr));
-  gap: 1rem;
+  gap: 5rem 2rem;
   padding: 0;
-  margin: 0;
+  margin: 2.5rem;
   list-style: none;
 }
 .door {
@@ -284,7 +294,7 @@ main {
   background: color-mix(in srgb, var(--bg2) 82%, transparent);
   color: var(--fg);
   min-width: 9rem;
-  max-width: 13rem;
+  max-width: 11rem;
   height: 100%;
   box-shadow: var(--shadow);
   transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
@@ -343,6 +353,60 @@ main {
 .door:hover .door-go {
   opacity: 1;
   transform: translateX(0);
+}
+
+/* ---------- Social satellites ---------- */
+/* No-JS / base: a tidy centred row of icon chips under the doors. */
+.sky-socials {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.7rem;
+  list-style: none;
+  padding: 0;
+  margin: 1.6rem 0 0;
+}
+.sky-social {
+  --chip-c: var(--accent);
+  display: grid;
+  place-items: center;
+  width: calc(2rem * var(--w, 1));
+  height: calc(2rem * var(--w, 1));
+  border-radius: 50%;
+  color: var(--chip-c);
+  background: color-mix(in srgb, var(--chip-c) 12%, var(--bg2));
+  border: 1px solid color-mix(in srgb, var(--chip-c) 45%, var(--border));
+  box-shadow: var(--shadow);
+  transition: scale 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.sky-social:hover {
+  text-decoration: none;
+  scale: 1.18;
+  border-color: color-mix(in srgb, var(--chip-c) 70%, var(--border));
+  box-shadow: 0 10px 26px -12px color-mix(in srgb, var(--chip-c) 60%, transparent);
+}
+.sky-social[data-facet='dev'] { --chip-c: var(--c-dev); }
+.sky-social[data-facet='physics'] { --chip-c: var(--c-physics); }
+.sky-social[data-facet='book'] { --chip-c: var(--c-book); }
+.sky-social[data-facet='music'] { --chip-c: var(--c-music); }
+
+/* JS enhancement: lift the chips out of flow and scatter them in the sky,
+   sharing the canvas's coordinate box so JS-set left/top line up with the
+   drawn links. The chip's transform stays put; drift rides the `translate`
+   property and hover rides `scale`, so nothing fights. */
+.sky-socials.is-floating {
+  position: absolute;
+  inset: -6rem -50vw -1rem;
+  margin: 0;
+  padding: 0;
+  display: block;
+  pointer-events: none;
+}
+.sky-socials.is-floating li { display: contents; }
+.sky-socials.is-floating .sky-social {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  pointer-events: auto;
 }
 
 /* ---------- Post lists ---------- */

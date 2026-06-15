@@ -2,8 +2,11 @@
 import Base from '../../layouts/Base.astro';
 import PostList from '../../components/PostList.astro';
 import Constellation from '../../components/Constellation.astro';
+import Icon from '../../components/Icon.astro';
 import { LANGS, t, url, type Lang } from '../../i18n/ui';
 import { getPosts } from '../../lib/blog';
+import { perLang, neutral, type Social } from '../../data/socials';
+import type { IconName } from '../../lib/icons';
 
 export function getStaticPaths() {
   return LANGS.map((lang) => ({ params: { lang } }));
@@ -30,6 +33,34 @@ const doors: { key: keyof typeof tr.doors; href: string }[] = [
   { key: 'music', href: url(`/${lang}/music/`) },
   { key: 'everything', href: url(`/${lang}/blog/`) },
 ];
+
+// Social links as constellation satellites: each orbits a gate (`facet`) and
+// carries a tunable `weight` (node size — 1 = base, bigger = larger & slower).
+// Tune these freely; an unmapped label falls back to the "everything" gate.
+const ORBIT: Record<string, { facet: string; weight: number }> = {
+  GitHub: { facet: 'dev', weight: 1.35 },
+  LinkedIn: { facet: 'dev', weight: 1.2 },
+  ORCID: { facet: 'physics', weight: 1.15 },
+  Zenodo: { facet: 'physics', weight: 1 },
+  YouTube: { facet: 'music', weight: 1.25 },
+  'X / Twitter': { facet: 'everything', weight: 1 },
+  Bluesky: { facet: 'everything', weight: 0.9 },
+  Facebook: { facet: 'everything', weight: 0.85 },
+  Typeshare: { facet: 'book', weight: 0.95 },
+};
+
+const satelliteSources: Social[] = [
+  ...perLang[lang],
+  ...neutral,
+  // Homepage-only: surface the physics preprint right next to the physics gate.
+  { label: 'Zenodo', url: 'https://zenodo.org/records/20482196', icon: 'zenodo' as IconName },
+];
+
+const satellites = satelliteSources.map((s) => ({
+  ...s,
+  facet: ORBIT[s.label]?.facet ?? 'everything',
+  weight: ORBIT[s.label]?.weight ?? 1,
+}));
 ---
 
 <Base lang={lang} title="Martin Gamsby" description={tr.heroLine}>
@@ -44,7 +75,7 @@ const doors: { key: keyof typeof tr.doors; href: string }[] = [
     <ul class="doors">
       {doors.map((d) => (
         <li>
-          <a class={`door door--${d.key}`} href={d.href}>
+          <a class={`door door--${d.key}`} href={d.href} data-facet={d.key}>
             <span class="door-icon">
               <svg
                 width="24"
@@ -61,6 +92,26 @@ const doors: { key: keyof typeof tr.doors; href: string }[] = [
             <strong>{tr.doors[d.key].title}</strong>
             <span>{tr.doors[d.key].blurb}</span>
             <span class="door-go" aria-hidden="true">→</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    <ul class="sky-socials" aria-label={tr.doorsHeading}>
+      {satellites.map((s) => (
+        <li>
+          <a
+            class="sky-social"
+            href={s.url}
+            data-facet={s.facet}
+            data-weight={s.weight}
+            style={`--w:${s.weight}`}
+            target="_blank"
+            rel="me noopener"
+            aria-label={s.label}
+            title={s.label}
+          >
+            <Icon name={s.icon} size={18} />
           </a>
         </li>
       ))}
