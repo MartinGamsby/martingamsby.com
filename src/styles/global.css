@@ -478,6 +478,19 @@ article.post hr {
   background: var(--border);
   margin: 2rem 0;
 }
+/* Footer bullets (WriterHelper social slots) get the social-link glyph inline. */
+article.post a.footer-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+article.post a.footer-link .icon {
+  color: var(--muted);
+  transition: color 0.2s ease;
+}
+article.post a.footer-link:hover .icon {
+  color: var(--accent);
+}
 
 /* ---------- Links page ---------- */
 .link-list {

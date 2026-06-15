@@ -33,7 +33,7 @@ export const ui = {
   fr: {
     siteTagline: 'Tout est connecté',
     heroLine:
-      'Je fais beaucoup de choses — logiciel, physique, fiction, musique. Tout est connecté.',
+      'Logiciel, physique, fiction, musique... Tout est connecté.',
     doorsHeading: 'Par où entrer ?',
     doors: {
       dev: { title: 'Logiciel', blurb: '13+ ans de C++, Python et IA — projets, CV, brevets' },
@@ -62,7 +62,7 @@ export const ui = {
   en: {
     siteTagline: 'Everything is connected',
     heroLine:
-      'I do many things — software, physics, fiction, music. Everything is connected.',
+      'Software, physics, fiction, music... Everything is connected.',
     doorsHeading: 'Pick a door',
     doors: {
       dev: { title: 'Software', blurb: '13+ years of C++, Python and AI — projects, CV, patents' },
