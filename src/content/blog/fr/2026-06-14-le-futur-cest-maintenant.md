@@ -25,3 +25,4 @@ Vous êtes chanceux, je vous envie, jeunes padawans.
 ---
 
 - [Bluesky](https://bsky.app/profile/martin-gamsby.bsky.social/post/3modbxe2aps2i)
+- [X/Twitter](https://x.com/MartinGamsby/status/2066560291169517958)
