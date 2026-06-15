@@ -234,14 +234,14 @@ main {
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  width: fit-content;
+  text-align: center;
 }
 .hero p {
   font-size: clamp(1.15rem, 2.5vw, 1.35rem);
   color: var(--fg);
   margin: 0;
-  max-width: 34rem;
   text-wrap: balance;
+  text-align: center;
 }
 
 /* ---------- Section titles ---------- */
@@ -262,7 +262,10 @@ main {
 
 /* ---------- Doors ---------- */
 .doors {
-  display: grid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
   grid-template-columns: repeat(auto-fit, minmax(13.5rem, 1fr));
   gap: 1rem;
   padding: 0;
@@ -280,6 +283,8 @@ main {
   padding: 1.15rem 1.2rem 1.25rem;
   background: color-mix(in srgb, var(--bg2) 82%, transparent);
   color: var(--fg);
+  min-width: 9rem;
+  max-width: 13rem;
   height: 100%;
   box-shadow: var(--shadow);
   transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
