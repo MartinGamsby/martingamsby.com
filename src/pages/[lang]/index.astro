@@ -5,8 +5,8 @@ import Constellation from '../../components/Constellation.astro';
 import Icon from '../../components/Icon.astro';
 import { LANGS, t, url, type Lang } from '../../i18n/ui';
 import { getPosts } from '../../lib/blog';
-import { perLang, neutral, type Social } from '../../data/socials';
-import type { IconName } from '../../lib/icons';
+import { perLang, neutral } from '../../data/socials';
+import { orbit, extraSatellites } from '../../data/social-constellation';
 
 export function getStaticPaths() {
   return LANGS.map((lang) => ({ params: { lang } }));
@@ -34,33 +34,24 @@ const doors: { key: keyof typeof tr.doors; href: string }[] = [
   { key: 'everything', href: url(`/${lang}/blog/`) },
 ];
 
-// Social links as constellation satellites: each orbits a gate (`facet`) and
-// carries a tunable `weight` (node size — 1 = base, bigger = larger & slower).
-// Tune these freely; an unmapped label falls back to the "everything" gate.
-const ORBIT: Record<string, { facet: string; weight: number }> = {
-  GitHub: { facet: 'dev', weight: 1.35 },
-  LinkedIn: { facet: 'dev', weight: 1.2 },
-  ORCID: { facet: 'physics', weight: 1.15 },
-  Zenodo: { facet: 'physics', weight: 1 },
-  YouTube: { facet: 'music', weight: 1.25 },
-  'X / Twitter': { facet: 'everything', weight: 1 },
-  Bluesky: { facet: 'everything', weight: 0.9 },
-  Facebook: { facet: 'everything', weight: 0.85 },
-  Typeshare: { facet: 'book', weight: 0.95 },
-};
-
-const satelliteSources: Social[] = [
-  ...perLang[lang],
-  ...neutral,
-  // Homepage-only: surface the physics preprint right next to the physics gate.
-  { label: 'Zenodo', url: 'https://zenodo.org/records/20482196', icon: 'zenodo' as IconName },
+// Which social orbits which gate, and how big, is configured in
+// src/data/social-constellation.ts — edit that file to tune the icons.
+const satellites = [
+  ...[...perLang[lang], ...neutral].map((s) => ({
+    label: s.label,
+    url: s.url,
+    icon: s.icon,
+    facet: orbit[s.label]?.gate ?? 'everything',
+    weight: orbit[s.label]?.size ?? 1,
+  })),
+  ...extraSatellites.map((s) => ({
+    label: s.label,
+    url: s.url,
+    icon: s.icon,
+    facet: s.gate,
+    weight: s.size,
+  })),
 ];
-
-const satellites = satelliteSources.map((s) => ({
-  ...s,
-  facet: ORBIT[s.label]?.facet ?? 'everything',
-  weight: ORBIT[s.label]?.weight ?? 1,
-}));
 ---
 
 <Base lang={lang} title="Martin Gamsby" description={tr.heroLine}>

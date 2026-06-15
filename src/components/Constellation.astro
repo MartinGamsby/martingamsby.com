@@ -172,7 +172,7 @@
       for (const s of socials) {
         const g = s.gate, gap = GATE_MARGIN + s.radius;
         let best = null;
-        for (let ring = 0; ring < 9 && !best; ring++) {
+        for (let ring = 0; ring < 14 && !best; ring++) {
           const extra = ring * (s.radius * 2 + 8);
           for (const ang of PREF) {
             const x = g.homeX + Math.cos(ang) * (g.hw + gap + extra);

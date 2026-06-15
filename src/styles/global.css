@@ -368,16 +368,29 @@ main {
 }
 .sky-social {
   --chip-c: var(--accent);
+  /* ─── ICON SIZE KNOB ───────────────────────────────────────────────────
+     --chip-base is the overall icon size. It grows with the viewport, so the
+     chips take up more room on a big screen and shrink (reflowing into more
+     rings) when it's tight. Edit the clamp to taste:
+       clamp(MIN, PREFERRED, MAX)  — raise MAX to allow bigger icons.
+     Each icon is then scaled by its own `weight` — set per icon in the ORBIT
+     map in  src/pages/[lang]/index.astro. */
+  --chip-base: clamp(1.7rem, 1.2rem + 1.1vw, 2.9rem);
   display: grid;
   place-items: center;
-  width: calc(2rem * var(--w, 1));
-  height: calc(2rem * var(--w, 1));
+  width: calc(var(--chip-base) * var(--w, 1));
+  height: calc(var(--chip-base) * var(--w, 1));
   border-radius: 50%;
   color: var(--chip-c);
   background: color-mix(in srgb, var(--chip-c) 12%, var(--bg2));
   border: 1px solid color-mix(in srgb, var(--chip-c) 45%, var(--border));
   box-shadow: var(--shadow);
   transition: scale 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+/* Icon glyph scales with the chip instead of staying a fixed 18px. */
+.sky-social svg {
+  width: 56%;
+  height: 56%;
 }
 .sky-social:hover {
   text-decoration: none;
