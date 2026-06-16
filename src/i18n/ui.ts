@@ -29,6 +29,25 @@ export function formatDate(date: Date, lang: Lang): string {
   });
 }
 
+// Experience counters that never go stale: hard-code the start year, recompute the
+// running total on every build (this is a static Astro site, so each deploy refreshes
+// the numbers — no client JS needed).
+const EXPERIENCE_START = {
+  professional: 2013, // first paid software role (Mirametrix)
+  lifelong: 2004,     // started coding as a life choice / passion
+  novel: 2015,        // started writing Interverti
+} as const;
+
+export function yearsSince(startYear: number, now: Date = new Date()): number {
+  return now.getUTCFullYear() - startYear;
+}
+
+export const YEARS = {
+  professional: yearsSince(EXPERIENCE_START.professional),
+  lifelong: yearsSince(EXPERIENCE_START.lifelong),
+  novel: yearsSince(EXPERIENCE_START.novel),
+};
+
 export const ui = {
   fr: {
     siteTagline: 'Tout est connecté',
@@ -36,9 +55,9 @@ export const ui = {
       'Logiciel, physique, fiction, musique... Tout est connecté.',
     doorsHeading: 'Par où entrer ?',
     doors: {
-      dev: { title: 'Logiciel', blurb: '13+ ans de C++, Python et IA — projets, CV, brevets' },
+      dev: { title: 'Logiciel', blurb: `${YEARS.professional}+ ans de C++, Python et IA professionnellement (${YEARS.lifelong}+ par choix de vie) — projets, CV, brevets` },
       physics: { title: 'Physique', blurb: 'Un article + son code : et si l’énergie noire était de la gravité déguisée ?' },
-      book: { title: 'Livre', blurb: 'Interverti — un roman, en vente' },
+      book: { title: 'Livre', blurb: `Interverti — un roman (${YEARS.novel}+ ans d’écriture), en vente` },
       music: { title: 'Musique', blurb: 'L’expérience musicale, compositions et vidéos' },
       everything: { title: 'Tout', blurb: 'Le flux complet, sans filtre' },
     },
@@ -65,9 +84,9 @@ export const ui = {
       'Software, physics, fiction, music... Everything is connected.',
     doorsHeading: 'Pick a door',
     doors: {
-      dev: { title: 'Software', blurb: '13+ years of C++, Python and AI — projects, CV, patents' },
+      dev: { title: 'Software', blurb: `${YEARS.professional}+ years of C++, Python and AI professionally (${YEARS.lifelong}+ as a way of life) — projects, CV, patents` },
       physics: { title: 'Physics', blurb: 'A paper + its code: what if dark energy is gravity in disguise?' },
-      book: { title: 'Book', blurb: 'Interverti — a novel, released in French' },
+      book: { title: 'Book', blurb: `Interverti — a novel (${YEARS.novel}+ years in the writing), released in French` },
       music: { title: 'Music', blurb: 'The musical experiment, compositions and videos' },
       everything: { title: 'Everything', blurb: 'The full stream, unfiltered' },
     },
