@@ -65,12 +65,31 @@
     let fc = facetColors();
 
     // --- geometry helpers ---------------------------------------------------
-    // Point on a box's border in the direction of (tx,ty).
+    // Point on a box's border in the direction of (tx,ty). Honours the card's
+    // border-radius: in a corner zone it returns the point on the rounded arc,
+    // not the sharp rectangle corner (which sits in the card's transparent
+    // cut-out, making the link look like it stops short of the edge).
     function rectEdge(b, tx, ty) {
       const dx = tx - b.x, dy = ty - b.y;
       if (!dx && !dy) return { x: b.x, y: b.y };
       const s = Math.min(b.hw / Math.max(Math.abs(dx), 1e-6), b.hh / Math.max(Math.abs(dy), 1e-6));
-      return { x: b.x + dx * s, y: b.y + dy * s };
+      const px = b.x + dx * s, py = b.y + dy * s;
+      const r = b.rad || 0;
+      if (r > 0 && Math.abs(px - b.x) > b.hw - r && Math.abs(py - b.y) > b.hh - r) {
+        // corner zone: intersect the ray with the corner's arc circle
+        const ccx = b.x + Math.sign(px - b.x) * (b.hw - r);
+        const ccy = b.y + Math.sign(py - b.y) * (b.hh - r);
+        const ex = b.x - ccx, ey = b.y - ccy;
+        const A = dx * dx + dy * dy;
+        const B = 2 * (dx * ex + dy * ey);
+        const C = ex * ex + ey * ey - r * r;
+        const disc = B * B - 4 * A * C;
+        if (disc >= 0) {
+          const tt = (-B + Math.sqrt(disc)) / (2 * A);
+          return { x: b.x + dx * tt, y: b.y + dy * tt };
+        }
+      }
+      return { x: px, y: py };
     }
     function inRect(b, px, py) {
       return Math.abs(px - b.x) <= b.hw && Math.abs(py - b.y) <= b.hh;
@@ -93,8 +112,9 @@
         const r = el.getBoundingClientRect();
         const size = Math.max(r.width, r.height);
         const ampX = Math.max(3.5, Math.min(8, 1400 / size));
+        const rad = parseFloat(getComputedStyle(el).borderTopLeftRadius) || 0;
         return {
-          el, kind, facet,
+          el, kind, facet, rad,
           homeX: r.left - field.left + r.width / 2,
           homeY: r.top - field.top + r.height / 2,
           hw: r.width / 2,
@@ -228,14 +248,25 @@
           y: Math.random() * h,
           vx: (Math.random() - 0.5) * 0.34,
           vy: (Math.random() - 0.5) * 0.34,
-          // wide size spread: mostly tiny, the occasional big hub
-          r: 0.7 + Math.pow(Math.random(), 3) * 4.6,
           i,
           c: starPalette[i],
+          rseed: Math.random(),
+          hseed: Math.random(),
+          r: 1, ring: false,
         };
       });
       measureBoxes();
       layoutSocials();
+      // Continuous size spread, from tiny dots up to half a base-weight social
+      // chip (always smaller than an icon). Larger stars are progressively more
+      // likely to be drawn as hollow rings, with a mixed band in the middle so
+      // there's no break between "small filled dot" and "big hollow circle".
+      const baseR = socials.length ? socials[0].radius / socials[0].weight : 16;
+      const rMin = 0.7, rMax = baseR * 0.5;
+      for (const n of stars) {
+        n.r = rMin + Math.pow(n.rseed, 2.4) * (rMax - rMin);
+        n.ring = n.hseed < Math.min(1, Math.max(0, (n.r - 3) / 4));
+      }
     }
 
     function drawLink(x1, y1, x2, y2, color, alpha, width) {
@@ -321,13 +352,20 @@
         }
       }
 
-      // star dots
-      ctx.globalAlpha = 0.9;
+      // star dots — small ones filled, the occasional big one a hollow ring
       for (const n of stars) {
-        ctx.fillStyle = n.c;
         ctx.beginPath();
         ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
-        ctx.fill();
+        if (n.ring) {
+          ctx.globalAlpha = 0.7;
+          ctx.lineWidth = Math.max(1, n.r * 0.16);
+          ctx.strokeStyle = n.c;
+          ctx.stroke();
+        } else {
+          ctx.globalAlpha = 0.9;
+          ctx.fillStyle = n.c;
+          ctx.fill();
+        }
       }
 
       // a faint glow under each social chip / gate core, in its facet hue
