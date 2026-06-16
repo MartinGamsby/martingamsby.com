@@ -1,7 +1,7 @@
 ---
 import Base from '../../../layouts/Base.astro';
 import PostList from '../../../components/PostList.astro';
-import { LANGS, t, type Lang } from '../../../i18n/ui';
+import { LANGS, t, url, type Lang } from '../../../i18n/ui';
 import { getPosts } from '../../../lib/blog';
 
 export function getStaticPaths() {
@@ -15,6 +15,7 @@ const facets = ['dev', 'physics', 'fiction', 'music', 'ideas'] as const;
 ---
 
 <Base lang={lang} title={tr.blogTitle}>
+  <img class="blog-banner" src={url('/assets/images/blog-banner.webp')} alt="" width="1500" height="500" />
   <h1>{tr.blogTitle}</h1>
   <div class="chips" role="group">
     <button class="chip" type="button" data-facet="all" aria-pressed="true">{tr.filterAll}</button>
@@ -24,6 +25,20 @@ const facets = ['dev', 'physics', 'fiction', 'music', 'ideas'] as const;
   </div>
   <PostList posts={posts} lang={lang} facetData />
 </Base>
+
+<style>
+  .blog-banner {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 3 / 1;
+    object-fit: cover;
+    border-radius: 0.9rem;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+    margin-bottom: 1.5rem;
+  }
+</style>
 
 <script is:inline>
   const chips = document.querySelectorAll('.chip');
