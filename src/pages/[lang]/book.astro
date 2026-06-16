@@ -15,8 +15,8 @@ export function getStaticPaths() {
 const lang = Astro.params.lang as Lang;
 const tr = t(lang);
 
-// FR edition is in pre-release on Amazon; EN edition is still being prepared.
-const amazonFrUrl = 'https://www.amazon.ca/dp/B0H54274BY';
+// FR edition is in released on Amazon; EN edition is still being prepared.
+const amazonFrUrl = 'https://www.amazon.ca/dp/B0H53PGGBR';
 
 const ea = 'martingamsby';
 const eb = 'gmail';
@@ -32,8 +32,8 @@ const content = {
     title: 'Interverti',
     subtitle: 'La Régression Humaine',
     byline: 'Un roman de Martin Gamsby',
-    badge: 'En pré-vente',
-    badgeNote: 'depuis le 12 juin 2026',
+    badge: 'En vente',
+    badgeNote: 'depuis le 16 juin 2026',
     pitch: [
         'J\'ai commencé à écrire ce livre en 2015. ',
         'Dans l\'autobus en route vers le travail, bien avant la pandémie, l\'intelligence artificielle (ChatGPT), et Neuralink...'
@@ -88,7 +88,7 @@ const content = {
     epigraphBy: 'Djosh Sho',
     buy: 'French edition on Amazon',
     buyHref: amazonFrUrl,
-    formats: 'The French edition is in pre-release now; the English edition is on its way.',
+    formats: 'The French edition is releasde now; the English edition is on its way.',
     blurbHeading: 'Imagine a world…',
     blurb: [
       'where speech doesn\'t exist. Not because it\'s impossible or forbidden, but because it\'s useless. Imagine a world where writing is equally useless. Imagine a world where interactions are simple and unambiguous. Not simple in the sense of reduced meaning. Simple, while being nuanced, exactly as intended. Simple, because they\'re easy to maintain. Imagine a world without sentences, without words.',

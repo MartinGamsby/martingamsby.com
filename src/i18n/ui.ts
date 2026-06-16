@@ -38,7 +38,7 @@ export const ui = {
     doors: {
       dev: { title: 'Logiciel', blurb: '13+ ans de C++, Python et IA — projets, CV, brevets' },
       physics: { title: 'Physique', blurb: 'Un article + son code : et si l’énergie noire était de la gravité déguisée ?' },
-      book: { title: 'Livre', blurb: 'Interverti — un roman, en pré-vente' },
+      book: { title: 'Livre', blurb: 'Interverti — un roman, en vente' },
       music: { title: 'Musique', blurb: 'L’expérience musicale, compositions et vidéos' },
       everything: { title: 'Tout', blurb: 'Le flux complet, sans filtre' },
     },
@@ -67,7 +67,7 @@ export const ui = {
     doors: {
       dev: { title: 'Software', blurb: '13+ years of C++, Python and AI — projects, CV, patents' },
       physics: { title: 'Physics', blurb: 'A paper + its code: what if dark energy is gravity in disguise?' },
-      book: { title: 'Book', blurb: 'Interverti — a novel, in pre-release' },
+      book: { title: 'Book', blurb: 'Interverti — a novel, released in French' },
       music: { title: 'Music', blurb: 'The musical experiment, compositions and videos' },
       everything: { title: 'Everything', blurb: 'The full stream, unfiltered' },
     },

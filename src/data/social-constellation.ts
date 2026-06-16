@@ -41,13 +41,15 @@ export const orbit: Record<string, { gate: Gate; size: number }> = {
   Interverted: { gate: 'book', size: 1.4 },
 
   // ── Music ───────────────────────────────────────────────────────
-  YouTube: { gate: 'music', size: 1.25 },
+  'Music YouTube': { gate: 'music', size: 1.25 },
+  // TODO: Music youtube, actually ... Youtube other places I guess..
 
   // ── Everything / general social ─────────────────────────────────
   'X / Twitter': { gate: 'everything', size: 1.1 },
   Bluesky: { gate: 'everything', size: 0.8 },
   Facebook: { gate: 'everything', size: 0.95 },
   Typeshare: { gate: 'everything', size: 0.6 },
+  //YouTube: { gate: 'everything', size: 1.25 },
 };
 
 /**

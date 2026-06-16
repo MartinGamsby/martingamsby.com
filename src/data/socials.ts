@@ -11,7 +11,7 @@ export const perLang: Record<Lang, Social[]> = {
     { label: 'Bluesky', url: 'https://bsky.app/profile/martin-gamsby.bsky.social', icon: 'bluesky' },
     { label: 'X / Twitter', url: 'https://x.com/MartinGamsby', icon: 'x' },
     { label: 'Facebook', url: 'https://www.facebook.com/martin.gamsby', icon: 'facebook' },
-    { label: 'Interverti', url: 'https://www.amazon.ca/dp/B0H54274BY', icon: 'amazon' },
+    { label: 'Interverti', url: 'https://www.amazon.ca/dp/B0H53PGGBR', icon: 'amazon' },
   ],
   en: [
     { label: 'YouTube', url: 'https://www.youtube.com/@MartinGamsbyEN', icon: 'youtube' },
@@ -26,4 +26,5 @@ export const neutral: Social[] = [
   { label: 'GitHub', url: 'https://github.com/MartinGamsby', icon: 'github' },
   { label: 'LinkedIn', url: 'https://www.linkedin.com/in/martingamsby/', icon: 'linkedin' },
   { label: 'ORCID', url: 'https://orcid.org/0009-0007-4069-9687', icon: 'orcid' },
+  { label: 'Music YouTube', url: 'https://www.youtube.com/channel/UCX6KsvwOo2U2zrBumOL2bww/', icon: 'youtube' },
 ];
