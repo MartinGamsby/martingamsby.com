@@ -29,22 +29,25 @@ export type Gate = 'dev' | 'physics' | 'book' | 'music' | 'everything';
 /** Attach socials from ./socials.ts (matched by label) to a gate + size. */
 export const orbit: Record<string, { gate: Gate; size: number }> = {
   // ── Software / dev ──────────────────────────────────────────────
-  GitHub: { gate: 'dev', size: 1.35 },
+  GitHub: { gate: 'dev', size: 1.0 },
   LinkedIn: { gate: 'dev', size: 1.2 },
 
   // ── Physics ─────────────────────────────────────────────────────
   ORCID: { gate: 'physics', size: 1.15 },
 
   // ── Book ────────────────────────────────────────────────────────
-  Typeshare: { gate: 'book', size: 0.95 },
+  //Typeshare: { gate: 'book', size: 0.8 },
+  Interverti: { gate: 'book', size: 1.4 },
+  Interverted: { gate: 'book', size: 1.4 },
 
   // ── Music ───────────────────────────────────────────────────────
   YouTube: { gate: 'music', size: 1.25 },
 
   // ── Everything / general social ─────────────────────────────────
-  'X / Twitter': { gate: 'everything', size: 1.0 },
-  Bluesky: { gate: 'everything', size: 0.9 },
-  Facebook: { gate: 'everything', size: 0.85 },
+  'X / Twitter': { gate: 'everything', size: 1.1 },
+  Bluesky: { gate: 'everything', size: 0.8 },
+  Facebook: { gate: 'everything', size: 0.95 },
+  Typeshare: { gate: 'everything', size: 0.6 },
 };
 
 /**
@@ -60,5 +63,5 @@ export const extraSatellites: {
   size: number;
 }[] = [
   // The physics preprint, parked next to the physics gate.
-  { label: 'Zenodo', url: 'https://zenodo.org/records/20482196', icon: 'zenodo', gate: 'physics', size: 1.0 },
+  { label: 'Virialized Meta-Structure paper', url: 'https://zenodo.org/records/20482196', icon: 'zenodo', gate: 'physics', size: 1.0 },
 ];

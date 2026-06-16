@@ -147,13 +147,6 @@
         };
       });
 
-      // Deterministic orbit: try slots around the gate (horizontal flanks first,
-      // then vertical, then diagonals; widening rings) and take the first that
-      // clears every card, every already-placed chip, and the viewport edge. A
-      // force-relax could get wedged in the thin gap between two adjacent cards;
-      // this can't — a slot that overlaps any card simply fails the test.
-      const PREF = [180, 0, 158, 202, 22, 338, 90, 270, 128, 232, 52, 308, 45, 135, 225, 315]
-        .map((d) => (d * Math.PI) / 180);
       const placed = [];
       const fits = (x, y, radius) => {
         if (x < leftBound + radius || x > rightBound - radius) return false;
@@ -169,20 +162,44 @@
         }
         return true;
       };
+
+      // A point on the "orbit": the rounded outline `d` px outside the card, at
+      // perimeter fraction p (0..1). Walking this lets a chip sit ANYWHERE along
+      // an edge (or round a corner) — not just dead-centre on a side.
+      const orbitPoint = (g, d, p) => {
+        const W = g.hw * 2, H = g.hh * 2, arc = (Math.PI / 2) * d;
+        const L = 2 * W + 2 * H + 4 * arc;
+        let s = (((p % 1) + 1) % 1) * L;
+        const x1 = g.homeX - g.hw, x2 = g.homeX + g.hw;
+        const y1 = g.homeY - g.hh, y2 = g.homeY + g.hh;
+        if (s < H) return { x: x2 + d, y: y1 + s }; s -= H;                                   // right edge ↓
+        if (s < arc) { const a = s / d; return { x: x2 + d * Math.cos(a), y: y2 + d * Math.sin(a) }; } s -= arc; // BR
+        if (s < W) return { x: x2 - s, y: y2 + d }; s -= W;                                   // bottom edge ←
+        if (s < arc) { const a = Math.PI / 2 + s / d; return { x: x1 + d * Math.cos(a), y: y2 + d * Math.sin(a) }; } s -= arc; // BL
+        if (s < H) return { x: x1 - d, y: y2 - s }; s -= H;                                   // left edge ↑
+        if (s < arc) { const a = Math.PI + s / d; return { x: x1 + d * Math.cos(a), y: y1 + d * Math.sin(a) }; } s -= arc; // TL
+        if (s < W) return { x: x1 + s, y: y1 - d }; s -= W;                                   // top edge →
+        const a = Math.PI * 1.5 + s / d; return { x: x2 + d * Math.cos(a), y: y1 + d * Math.sin(a) };           // TR
+      };
+
+      // Each chip starts at a random spot on its gate's orbit and scans around
+      // until it finds one clear of every card, placed chip, and the screen
+      // edge — widening the orbit only if the whole ring is blocked.
+      const N = 30;
       for (const s of socials) {
-        const g = s.gate, gap = GATE_MARGIN + s.radius;
+        const g = s.gate, base = GATE_MARGIN + s.radius;
+        const phase = Math.random();
         let best = null;
         for (let ring = 0; ring < 14 && !best; ring++) {
-          const extra = ring * (s.radius * 2 + 8);
-          for (const ang of PREF) {
-            const x = g.homeX + Math.cos(ang) * (g.hw + gap + extra);
-            const y = g.homeY + Math.sin(ang) * (g.hh + gap + extra);
-            if (fits(x, y, s.radius)) { best = { x, y }; break; }
+          const d = base + ring * (s.radius * 2 + 8);
+          for (let k = 0; k < N && !best; k++) {
+            const pt = orbitPoint(g, d, phase + k / N);
+            if (fits(pt.x, pt.y, s.radius)) best = pt;
           }
         }
         if (!best) best = {
           x: clamp(g.homeX, leftBound + s.radius, rightBound - s.radius),
-          y: clamp(g.homeY - g.hh - gap, 12 + s.radius, maxY - s.radius),
+          y: clamp(g.homeY - g.hh - base, 12 + s.radius, maxY - s.radius),
         };
         s.homeX = best.x; s.homeY = best.y;
         placed.push({ x: best.x, y: best.y, radius: s.radius });

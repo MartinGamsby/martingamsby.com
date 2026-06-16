@@ -11,12 +11,14 @@ export const perLang: Record<Lang, Social[]> = {
     { label: 'Bluesky', url: 'https://bsky.app/profile/martin-gamsby.bsky.social', icon: 'bluesky' },
     { label: 'X / Twitter', url: 'https://x.com/MartinGamsby', icon: 'x' },
     { label: 'Facebook', url: 'https://www.facebook.com/martin.gamsby', icon: 'facebook' },
+    { label: 'Interverti', url: 'https://www.amazon.ca/dp/B0H54274BY', icon: 'amazon' },
   ],
   en: [
     { label: 'YouTube', url: 'https://www.youtube.com/@MartinGamsbyEN', icon: 'youtube' },
     { label: 'Bluesky', url: 'https://bsky.app/profile/martingamsby.bsky.social', icon: 'bluesky' },
     { label: 'X / Twitter', url: 'https://x.com/Martin_Gamsby', icon: 'x' },
     { label: 'Typeshare', url: 'https://typeshare.co/martingamsby', icon: 'typeshare' },
+    // TODO: { label: 'Interverted', url: 'https://www.amazon.ca/dp/ BLAHBLAHBLAHBLAH', icon: 'amazon' },
   ],
 };
 
