@@ -3,7 +3,7 @@ title: "Aller au restaurant (tout comme changer ses habitudes), ça passe ou ça
 date: 2024-10-08
 translationKey: 2024-10-08-going-to-the-restaurant-like-changing-habits-is-a-hit-and-miss
 facets: [ideas]
-tags: [Gluten, Santé, Alimentation, Restaurant, Civilisation, Gamsblurb]
+tags: [Gluten,Santé,Alimentation,Restaurant,Civilisation,Gamsblurb]
 image: /assets/posts/2024-10-08-aller-au-restaurant-tout-comme-changer-ses-habitudes-ca-passe-ou-ca-casse.header.webp
 imageThumb: /assets/posts/2024-10-08-aller-au-restaurant-tout-comme-changer-ses-habitudes-ca-passe-ou-ca-casse.thumb.webp
 ---

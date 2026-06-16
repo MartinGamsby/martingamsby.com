@@ -3,7 +3,7 @@ title: "I thought I didn't have a dream car..."
 date: 2024-10-07
 translationKey: 2024-10-07-i-thought-i-didnt-have-a-dream-car
 facets: [physics]
-tags: [Cars, Future, Teleportation, Science, Gamsblurb]
+tags: [Cars,Future,Teleportation,Science,Gamsblurb]
 image: /assets/posts/2024-10-07-i-thought-i-didnt-have-a-dream-car.header.webp
 imageThumb: /assets/posts/2024-10-07-i-thought-i-didnt-have-a-dream-car.thumb.webp
 ---

@@ -3,7 +3,7 @@ title: "Parfois, prendre soin de soi, c'est faire ce que vous remettez à plus t
 date: 2024-09-05
 translationKey: 2024-09-05-sometimes-self-care-means-doing-the-things-youve-been-putting-off
 facets: [ideas]
-tags: [Finance, Santé, Soin Personnel, Santé Mentale, Productivité, Stress, Relaxation, Gamsblurb]
+tags: [Finance,Santé,Soin Personnel,Santé Mentale,Productivité,Stress,Relaxation,Gamsblurb]
 image: /assets/posts/2024-09-05-parfois-prendre-soin-de-soi-cest-faire-ce-que-vous-remettez-a-plus-tard.header.webp
 imageThumb: /assets/posts/2024-09-05-parfois-prendre-soin-de-soi-cest-faire-ce-que-vous-remettez-a-plus-tard.thumb.webp
 ---

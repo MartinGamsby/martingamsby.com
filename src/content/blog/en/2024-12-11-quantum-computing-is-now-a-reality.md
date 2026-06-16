@@ -3,7 +3,7 @@ title: "Quantum computing is now a reality"
 date: 2024-12-11
 translationKey: 2024-12-11-quantum-computing-is-now-a-reality
 facets: [dev, physics]
-tags: [Future, Quantum, Gamsblurb]
+tags: [Future,Quantum,Gamsblurb]
 ---
 
 Google made it happen.

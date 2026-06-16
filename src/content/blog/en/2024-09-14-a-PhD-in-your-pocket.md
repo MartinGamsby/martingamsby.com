@@ -3,7 +3,7 @@ title: "A PhD in your pocket"
 date: 2024-09-14
 translationKey: 2024-09-14-a-PhD-in-your-pocket
 facets: [dev]
-tags: [Technology, Software Development, Artificial Intelligence, Prediction, Gamsblurb]
+tags: [Technology,Software Development,Artificial Intelligence,Prediction,Gamsblurb]
 image: /assets/posts/2024-09-14-a-PhD-in-your-pocket.header.webp
 imageThumb: /assets/posts/2024-09-14-a-PhD-in-your-pocket.thumb.webp
 ---

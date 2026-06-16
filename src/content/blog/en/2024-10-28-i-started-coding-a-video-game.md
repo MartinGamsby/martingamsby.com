@@ -3,7 +3,7 @@ title: "I started coding a video game"
 date: 2024-10-28
 translationKey: 2024-10-28-i-started-coding-a-video-game
 facets: [dev]
-tags: [Motivation, Passion, Project, Code, Game, Priorities, Children, Write, Reflection, Gamsblurb]
+tags: [Motivation,Passion,Project,Code,Game,Priorities,Children,Write,Reflection,Gamsblurb]
 ---
 
 I've been thinking about it for years.

@@ -3,7 +3,7 @@ title: "Je me suis rasé pour la première fois depuis 2 ans"
 date: 2024-11-26
 translationKey: 2024-11-26-i-shaved-for-the-first-time-in-2-years
 facets: [ideas]
-tags: [Santé, Gluten, Gamsblurb]
+tags: [Santé,Gluten,Gamsblurb]
 ---
 
 Ça faisait 2 ans que je ne m'étais pas rasé.

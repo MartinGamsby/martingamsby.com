@@ -3,7 +3,7 @@ title: "L’énergie noire pourrait-elle simplement être constituée de multipl
 date: 2024-10-15
 translationKey: 2024-10-15-could-dark-energy-simply-be-multiple-far-black-holes-quadrillions-of-years-old
 facets: [physics]
-tags: [Science, Trou Noir, Astrophysique, Énergie Sombre, Big Bang, Supernova, Gravité, Radiation de Hawking, Théorie, Gamsblurb]
+tags: [Science,Trou Noir,Astrophysique,Énergie Sombre,Big Bang,Supernova,Gravité,Radiation de Hawking,Théorie,Gamsblurb]
 image: /assets/posts/2024-10-15-lenergie-noire-pourrait-elle-simplement-etre-constituee-de-multiples-trous-noirs-lointains-vieux-de-plusieurs-milliards-dannees.header.webp
 imageThumb: /assets/posts/2024-10-15-lenergie-noire-pourrait-elle-simplement-etre-constituee-de-multiples-trous-noirs-lointains-vieux-de-plusieurs-milliards-dannees.thumb.webp
 ---

@@ -3,7 +3,7 @@ title: "Why is the sky blue? (And everything else)"
 date: 2024-09-08
 translationKey: 2024-09-08-why-is-the-sky-blue-and-everything-else
 facets: [physics]
-tags: [Parent, Education, Science, Child, Curiosity, Learn, Gamsblurb]
+tags: [Parent,Education,Science,Child,Curiosity,Learn,Gamsblurb]
 image: /assets/posts/2024-09-08-why-is-the-sky-blue-and-everything-else.header.webp
 imageThumb: /assets/posts/2024-09-08-why-is-the-sky-blue-and-everything-else.thumb.webp
 ---

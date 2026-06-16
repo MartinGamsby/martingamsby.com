@@ -3,7 +3,7 @@ title: "Préfères-tu"
 date: 2025-01-07
 translationKey: 2025-01-07-would-you-rather
 facets: [ideas]
-tags: [Santé, Ne meurs pas, Bryan Johnson, Gamsblurb]
+tags: [Santé,Ne meurs pas,Bryan Johnson,Gamsblurb]
 ---
 
 - avoir faim pour le reste de ta vie, avec une espérance de vie doublée, garanti.

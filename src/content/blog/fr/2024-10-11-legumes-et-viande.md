@@ -3,7 +3,7 @@ title: "Légumes et viande"
 date: 2024-10-11
 translationKey: 2024-10-11-vegetables-and-meat
 facets: [ideas]
-tags: [Alimentation, Santé, Régime alimentaire, Sensibilité alimentaire, Restrictions alimentaires, Problèmes de santé, Gluten, Régime d'élimination, Anxiété, Essais et erreurs, Isolement, Problèmes digestifs, Gamsblurb]
+tags: [Alimentation,Santé,Régime alimentaire,Sensibilité alimentaire,Restrictions alimentaires,Problèmes de santé,Gluten,Régime d'élimination,Anxiété,Essais et erreurs,Isolement,Problèmes digestifs,Gamsblurb]
 image: /assets/posts/2024-10-11-legumes-et-viande.header.webp
 imageThumb: /assets/posts/2024-10-11-legumes-et-viande.thumb.webp
 ---

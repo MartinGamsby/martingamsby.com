@@ -3,7 +3,7 @@ title: "Grand Métropolien"
 date: 2016-04-01
 translationKey: 2016-04-01-grand-metropolitan
 facets: [fiction]
-tags: [Guide Pour, Interverti (Roman), Fiction, Djosh Sho, Gamsblurb]
+tags: [Guide Pour,Interverti (Roman),Fiction,Djosh Sho,Gamsblurb]
 ---
 
 Quel nom ridicule. Depuis la Grande Renommée (toujours aussi original), les noms doivent correspondre à ce qu'ils sont réellement. Pour éviter les fausses représentations (dans les publicités souvent mensongères, surtout). Évidemment, seulement quelques jours après l'événement, quelques arnaqueurs ont trouvé des failles et on est revenu au point de départ, avec en bonus des noms à coucher dehors.
@@ -13,5 +13,3 @@ Et on doit cette idée géniale aux États-Unis. Déjà, États-Unis, c'est asse
 Cette Grande Renommée à donné le nom à BrainView, l’entreprise dans laquelle je travaille. Aucune restriction de langue dans cette Grande Renommée. C'est d'ailleurs une de ces failles : certains mots d'autres langues s'écrivent comme en français, mais veulent dire autre chose dans une autre langue.
 
 > (FICTION) Guide pour: * Grande Métropole * : tiré du roman **Interverti**
-
----

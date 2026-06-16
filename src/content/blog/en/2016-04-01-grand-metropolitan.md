@@ -3,7 +3,7 @@ title: "Grand Metropolitan"
 date: 2016-04-01
 translationKey: 2016-04-01-grand-metropolitan
 facets: [fiction]
-tags: [Guide For, Interverted (Novel), Fiction, Djosh Sho, Gamsblurb]
+tags: [Guide For,Interverted (Novel),Fiction,Djosh Sho,Gamsblurb]
 ---
 
 What a ridiculous name. Since the Great Reputation (also really original), names have to match what they really are. To avoid misrepresentation (especially in often misleading advertisements). Obviously, only a few days after the event, a few scammers found loopholes and we were back to square one, with the added bonus of names that would make you want to sleep outside.

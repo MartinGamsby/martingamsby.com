@@ -3,7 +3,7 @@ title: "Ça chatouille les papilles!"
 date: 2024-09-02
 translationKey: 2024-09-02-falling-sensation
 facets: [physics, fiction]
-tags: [Nouvelle Expression, Nouveau Mot, Le Saviez-Vous, FunFact, Science, Einstein, Gamsblurb]
+tags: [Nouvelle Expression,Nouveau Mot,Le Saviez-Vous,FunFact,Science,Einstein,Gamsblurb]
 image: /assets/posts/2024-09-02-ca-chatouille-les-papilles.header.webp
 imageThumb: /assets/posts/2024-09-02-ca-chatouille-les-papilles.thumb.webp
 ---

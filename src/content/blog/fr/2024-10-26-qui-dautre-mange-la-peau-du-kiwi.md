@@ -3,7 +3,7 @@ title: "Qui d’autre mange la peau du kiwi ?"
 date: 2024-10-26
 translationKey: 2024-10-26-who-else-eats-kiwi-skin
 facets: [ideas]
-tags: [Question, Gamsblurb]
+tags: [Question,Gamsblurb]
 ---
 
 Les poils sont si petits !

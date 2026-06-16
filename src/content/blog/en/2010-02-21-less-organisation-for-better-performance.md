@@ -3,7 +3,7 @@ title: "Less organisation for better performance?"
 date: 2010-02-21
 translationKey: 2010-02-21-less-organisation-for-better-performance
 facets: [ideas]
-tags: [Learning, Brain, Organization, Gamsblog, Gamsblurb]
+tags: [Learning,Brain,Organization,Gamsblog,Gamsblurb]
 ---
 
 Before I begin, I don’t want you to make me say what I didn’t say: organisation is necessary to perform well.

@@ -11,5 +11,3 @@ I wrote a physics paper.
 And now I'm procrastinating on revising and publishing.
 
 Will I let it gather dust, like the novel I wrote 10 years ago?
-
----

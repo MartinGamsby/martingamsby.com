@@ -3,7 +3,7 @@ title: "Ah, the holiday season (one tourtière at a time)"
 date: 2010-01-03
 translationKey: 2010-01-03-ah-the-holiday-season-one-tourtiere-at-a-time
 facets: [ideas]
-tags: [Tourtière, Custom, Celebrations, Learning, Motivation, Balance, Gamsblurb]
+tags: [Tourtière,Custom,Celebrations,Learning,Motivation,Balance,Gamsblurb]
 ---
 
 In Quebec, a holiday custom is to eat tourtière.
@@ -59,5 +59,3 @@ If you feel your concentration diminishing, change the subject.
 If you go through several subjects in an hour, think about going to sleep, or relaxing.
 
 Trust me, you won't waste any time, even if you're in a hurry.
-
----

@@ -3,7 +3,7 @@ title: "Le secret de mon professeur"
 date: 2010-01-17
 translationKey: 2010-01-17-my-teachers-secret
 facets: [ideas]
-tags: [Apprendre, GamsblogGamsblurb]
+tags: [Apprendre,GamsblogGamsblurb]
 ---
 
 Un jour, mon professeur d’espagnol m’a fait part de la manière qu’il a appris le vocabulaire Français.

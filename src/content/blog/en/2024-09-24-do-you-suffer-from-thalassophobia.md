@@ -3,7 +3,7 @@ title: "Do you suffer from Thalassophobia?"
 date: 2024-09-24
 translationKey: 2024-09-24-do-you-suffer-from-thalassophobia
 facets: [ideas]
-tags: [Fear, Anxiety, Perception, Gamsblurb]
+tags: [Fear,Anxiety,Perception,Gamsblurb]
 image: /assets/posts/2024-09-24-do-you-suffer-from-thalassophobia.header.webp
 imageThumb: /assets/posts/2024-09-24-do-you-suffer-from-thalassophobia.thumb.webp
 ---

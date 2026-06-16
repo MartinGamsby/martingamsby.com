@@ -3,7 +3,7 @@ title: "Le prix du Bitcoin peut-il être prédit, depuis le début ?"
 date: 2024-08-31
 translationKey: 2024-08-31-can-bitcoin-price-be-predicted-from-the-beginning
 facets: [dev]
-tags: [Bitcoin, Crypto, Finance, Prédiction, NFA, Gamsblurb]
+tags: [Bitcoin,Crypto,Finance,Prédiction,NFA,Gamsblurb]
 image: /assets/posts/2024-08-31-le-prix-du-bitcoin-peut-il-etre-predit-depuis-le-debut.header.webp
 imageThumb: /assets/posts/2024-08-31-le-prix-du-bitcoin-peut-il-etre-predit-depuis-le-debut.thumb.webp
 ---

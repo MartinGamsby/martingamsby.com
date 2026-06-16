@@ -3,7 +3,7 @@ title: "Intermittent Fasting"
 date: 2016-05-01
 translationKey: 2016-05-01-intermittent-fasting
 facets: [fiction]
-tags: [Guide For, Interverted (Novel), Fiction, Djosh Sho, Gamsblurb]
+tags: [Guide For,Interverted (Novel),Fiction,Djosh Sho,Gamsblurb]
 ---
 
 The food industry benefits if you eat. Often. This industry is owned by the only two companies that really exist today, who control everything with their products and marketing. They decide what you eat and when you eat it. Not what is best for you, but rather what is best for their wallet.

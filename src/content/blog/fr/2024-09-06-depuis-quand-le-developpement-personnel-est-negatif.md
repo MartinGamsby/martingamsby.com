@@ -3,7 +3,7 @@ title: "Depuis quand le développement personnel est négatif?"
 date: 2024-09-06
 translationKey: 2024-09-06-when-did-self-help-become-negative
 facets: [dev]
-tags: [Santé Mentale, Productivité, Développement Personnel, Développement Collectif, Communauté, Entraide, Gamsblurb]
+tags: [Santé Mentale,Productivité,Développement Personnel,Développement Collectif,Communauté,Entraide,Gamsblurb]
 image: /assets/posts/2024-09-06-depuis-quand-le-developpement-personnel-est-negatif.header.webp
 imageThumb: /assets/posts/2024-09-06-depuis-quand-le-developpement-personnel-est-negatif.thumb.webp
 ---

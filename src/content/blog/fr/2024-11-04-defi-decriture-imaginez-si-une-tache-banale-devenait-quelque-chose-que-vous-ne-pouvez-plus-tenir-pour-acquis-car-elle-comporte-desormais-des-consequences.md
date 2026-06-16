@@ -3,7 +3,7 @@ title: "Défi d'écriture; imaginez si une tâche banale devenait quelque chose 
 date: 2024-11-04
 translationKey: 2024-11-04-writing-challenge-imagine-if-a-mundane-task-became-something-you-can-no-longer-take-for-granted-because-now-it-comes-with-some-consequence
 facets: [fiction]
-tags: [Écriture, Gluten, Gamsblurb]
+tags: [Écriture,Gluten,Gamsblurb]
 ---
 
 Tournée de Beignes

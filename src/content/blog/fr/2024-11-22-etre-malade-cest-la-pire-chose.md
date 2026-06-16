@@ -3,7 +3,7 @@ title: "Être malade, c'est la pire chose"
 date: 2024-11-22
 translationKey: 2024-11-22-being-sick-is-the-worst
 facets: [ideas]
-tags: [Un à la fois, Santé, Gamsblurb]
+tags: [Un à la fois,Santé,Gamsblurb]
 ---
 
 Être malade
@@ -28,5 +28,3 @@ Dès que tu le peux, reprends le cours normal des choses.
 - Un jour à la fois
 
 Retrouve (ou trouve) un équilibre, ne soit pas en retard sur tout.
-
----

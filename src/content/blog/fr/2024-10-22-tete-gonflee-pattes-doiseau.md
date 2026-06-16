@@ -3,7 +3,7 @@ title: "Tête gonflée, pattes d'oiseau"
 date: 2024-10-22
 translationKey: 2024-10-22-puffy-head-bird-legs
 facets: [physics]
-tags: [Espace, Science, Santé, Gravité, Exercice, ISS, Gamsblurb]
+tags: [Espace,Science,Santé,Gravité,Exercice,ISS,Gamsblurb]
 ---
 
 "Tête gonflée, pattes d'oiseau", c'est quand les astronautes ont trop de sang dans la tête et pas assez dans les jambes.

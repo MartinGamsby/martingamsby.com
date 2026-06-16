@@ -3,7 +3,7 @@ title: "Your job is not your identity"
 date: 2024-11-06
 translationKey: 2024-11-06-your-job-is-not-your-identity
 facets: [ideas]
-tags: [Identity, Growth, Perspective, Gamsblurb]
+tags: [Identity,Growth,Perspective,Gamsblurb]
 ---
 
 - Being tall is not an identity

@@ -3,7 +3,7 @@ title: "Une idée qui règle tout, provenant de 20 ans d'apprentissages"
 date: 2024-09-16
 translationKey: 2024-09-16-an-idea-you-can-apply-to-everything-from-20-years-of-learning
 facets: [dev]
-tags: [Développement Personnel, Habitudes, Santé, Un à la fois, Fitness, Finances, Désencombrement, Motivation, Life Hacks, Gamsblurb]
+tags: [Développement Personnel,Habitudes,Santé,Un à la fois,Fitness,Finances,Désencombrement,Motivation,Life Hacks,Gamsblurb]
 image: /assets/posts/2024-09-16-une-idee-qui-regle-tout-provenant-de-20-ans-dapprentissages.header.webp
 imageThumb: /assets/posts/2024-09-16-une-idee-qui-regle-tout-provenant-de-20-ans-dapprentissages.thumb.webp
 ---

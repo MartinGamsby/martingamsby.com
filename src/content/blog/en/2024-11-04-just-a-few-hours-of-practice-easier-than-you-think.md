@@ -3,7 +3,7 @@ title: "Just a few hours of practice, easier than you think!"
 date: 2024-11-04
 translationKey: 2024-11-04-just-a-few-hours-of-practice-easier-than-you-think
 facets: [music]
-tags: [Piano, Jazz, Gamsblurb]
+tags: [Piano,Jazz,Gamsblurb]
 ---
 
 I learned this with very little practice, by following instructions.

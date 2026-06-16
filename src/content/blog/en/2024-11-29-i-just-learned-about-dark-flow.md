@@ -3,7 +3,7 @@ title: "I just learned about Dark Flow"
 date: 2024-11-29
 translationKey: 2024-11-29-i-just-learned-about-dark-flow
 facets: [physics]
-tags: [Science, Trou Noir, Astrophysique, Énergie Sombre, Big Bang, Supernova, Gravité, Radiation de Hawking, Théorie, Gamsblurb]
+tags: [Science,Trou Noir,Astrophysique,Énergie Sombre,Big Bang,Supernova,Gravité,Radiation de Hawking,Théorie,Gamsblurb]
 image: /assets/posts/2024-11-29-i-just-learned-about-dark-flow.header.webp
 imageThumb: /assets/posts/2024-11-29-i-just-learned-about-dark-flow.thumb.webp
 ---

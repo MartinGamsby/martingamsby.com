@@ -3,7 +3,7 @@ title: "People like stories for different reasons. What makes a story compelling
 date: 2024-10-21
 translationKey: 2024-10-21-people-like-stories-for-different-reasons-what-makes-a-story-compelling-to-you
 facets: [fiction]
-tags: [Stories, Fiction, Gamsblurb]
+tags: [Stories,Fiction,Gamsblurb]
 image: /assets/posts/2024-10-21-people-like-stories-for-different-reasons-what-makes-a-story-compelling-to-you.header.webp
 imageThumb: /assets/posts/2024-10-21-people-like-stories-for-different-reasons-what-makes-a-story-compelling-to-you.thumb.webp
 ---

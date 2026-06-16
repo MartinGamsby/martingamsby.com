@@ -3,7 +3,7 @@ title: "Mathématicien"
 date: 2017-03-01
 translationKey: 2017-03-01-mathematician
 facets: [physics, fiction]
-tags: [Guide Pour, Interverti (Roman), Djosh Sho, Gamsblurb]
+tags: [Guide Pour,Interverti (Roman),Djosh Sho,Gamsblurb]
 ---
 
 De nos jours, à l'école, les mathématiques sont nécessaires, pour plusieurs bonnes raisons. L'ennui, c'est que seulement une infime partie des élèves y sont intéressés. Résultat : les notes sont basses, alors les professeurs descendent le niveau, puisqu'ils pensent que c'est trop difficile, ce qui ne fait que rendre le cours moins intéressant et moins aimé. 

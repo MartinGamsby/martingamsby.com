@@ -3,7 +3,7 @@ title: "Musclez votre cerveau"
 date: 2009-11-09
 translationKey: 2009-11-09-train-your-brain
 facets: [ideas]
-tags: [Confiance, Entraînement, Apprentissage, Gym, Entraînement vs Apprentissage, Gamsblog, Gamsblurb]
+tags: [Confiance,Entraînement,Apprentissage,Gym,Entraînement vs Apprentissage,Gamsblog,Gamsblurb]
 image: /assets/posts/2009-11-09-musclez-votre-cerveau.header.webp
 imageThumb: /assets/posts/2009-11-09-musclez-votre-cerveau.thumb.webp
 ---

@@ -3,7 +3,7 @@ title: "Quelques heures de pratique seulement, plus facile que vous pensez !"
 date: 2024-11-04
 translationKey: 2024-11-04-just-a-few-hours-of-practice-easier-than-you-think
 facets: [music]
-tags: [Piano, Jazz, Gamsblurb]
+tags: [Piano,Jazz,Gamsblurb]
 ---
 
 J'ai appris ça avec très peu de pratique, en suivant des consignes.

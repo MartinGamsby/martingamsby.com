@@ -3,7 +3,7 @@ title: "Malade ? Blessé ?"
 date: 2024-11-21
 translationKey: 2024-11-21-are-you-sick-injured
 facets: [ideas]
-tags: [Motivation, Santé, Gamsblurb]
+tags: [Motivation,Santé,Gamsblurb]
 ---
 
 Non ?

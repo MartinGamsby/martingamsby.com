@@ -3,7 +3,7 @@ title: "Is it better with the phone's built-in microphone?"
 date: 2024-12-12
 translationKey: 2024-12-12-is-it-better-with-the-phones-built-in-microphone
 facets: [music]
-tags: [Piano, Microphone, Gamsblurb]
+tags: [Piano,Microphone,Gamsblurb]
 ---
 
 ---

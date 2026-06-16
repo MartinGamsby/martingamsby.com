@@ -3,7 +3,7 @@ title: "Don't start a business, and don't start coding"
 date: 2024-12-05
 translationKey: 2024-12-05-dont-start-a-business-and-dont-start-coding
 facets: [dev]
-tags: [Coding, Business, Gamsblurb]
+tags: [Coding,Business,Gamsblurb]
 ---
 
 Unless your life depends on it

@@ -3,7 +3,7 @@ title: "The house contractor vs Learning"
 date: 2009-11-15
 translationKey: 2009-11-15-the-house-contractor-vs-learning
 facets: [music]
-tags: [Gamsblog, Anecdotes, Learning, Construction, Pedagogy, Comparison, Piano, Gamsblurb]
+tags: [Gamsblog,Anecdotes,Learning,Construction,Pedagogy,Comparison,Piano,Gamsblurb]
 image: /assets/posts/2009-11-15-the-house-contractor-vs-learning.header.webp
 imageThumb: /assets/posts/2009-11-15-the-house-contractor-vs-learning.thumb.webp
 ---

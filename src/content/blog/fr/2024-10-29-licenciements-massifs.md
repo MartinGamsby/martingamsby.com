@@ -3,7 +3,7 @@ title: "Licenciements massifs"
 date: 2024-10-29
 translationKey: 2024-10-29-massive-layoff
 facets: [ideas]
-tags: [Anecdote, travail]
+tags: [Anecdote,travail]
 ---
 
 Eh ben,

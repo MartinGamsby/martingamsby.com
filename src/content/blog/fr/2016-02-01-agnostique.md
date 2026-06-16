@@ -3,7 +3,7 @@ title: "Agnostique"
 date: 2016-02-01
 translationKey: 2016-02-01-agnostic
 facets: [fiction]
-tags: [Guide Pour, Interverti (Roman), Djosh Sho, Gamsblurb]
+tags: [Guide Pour,Interverti (Roman),Djosh Sho,Gamsblurb]
 ---
 
 Lorsque l’on pense à la mort, on pense souvent à ce tunnel avec une lumière blanche au bout, comme plusieurs récits en témoignent. 
@@ -17,5 +17,3 @@ L'agnostique ne démenti aucune des hypothèses religieuses ou spirituelles, aus
 Par contre, la plupart des agnostiques aimeraient croire à une entité plus grande que nous, ceci étant une des différences avec le athées, qui nient toute divinité ou entité supérieure.
 
 > (FICTION) Guide pour: * Agnostique * : tiré du roman **Interverti**
-
----

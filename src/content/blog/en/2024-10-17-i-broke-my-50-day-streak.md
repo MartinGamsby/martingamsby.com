@@ -3,7 +3,7 @@ title: "I broke my 50 day streak"
 date: 2024-10-17
 translationKey: 2024-10-17-i-broke-my-50-day-streak
 facets: [dev]
-tags: [Motivation, Perseverance, Writing, Habits, Resilience, Progress, Determination, Success, Challenge, Inspiration, Health, Research, Personal Development, Gamsblurb]
+tags: [Motivation,Perseverance,Writing,Habits,Resilience,Progress,Determination,Success,Challenge,Inspiration,Health,Research,Personal Development,Gamsblurb]
 ---
 
 Yesterday, I didn't write.

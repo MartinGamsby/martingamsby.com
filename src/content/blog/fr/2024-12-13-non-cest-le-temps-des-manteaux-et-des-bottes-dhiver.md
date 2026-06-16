@@ -33,5 +33,3 @@ Pis si vous écoutiez les gens, vous en auriez plus de vêtements d'hiver, pis v
 C'est pas parce que t'en vends pas qu'on va pas payer quelqu'un d'autre sur Internet.
 
 Les magasins de vêtements: Allez dont chhhh.... ocolat
-
----

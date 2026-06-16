@@ -3,7 +3,7 @@ title: "The most fulfilling thing in life"
 date: 2024-09-30
 translationKey: 2024-09-30-the-most-fulfilling-thing-in-life
 facets: [ideas]
-tags: [Purpose, Ikigai, Ambition, Meditation, Gamsblurb]
+tags: [Purpose,Ikigai,Ambition,Meditation,Gamsblurb]
 image: /assets/posts/2024-09-30-the-most-fulfilling-thing-in-life.header.webp
 imageThumb: /assets/posts/2024-09-30-the-most-fulfilling-thing-in-life.thumb.webp
 ---

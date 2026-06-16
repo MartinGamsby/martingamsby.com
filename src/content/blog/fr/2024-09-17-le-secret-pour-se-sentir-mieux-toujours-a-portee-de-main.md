@@ -3,7 +3,7 @@ title: "Le secret pour se sentir mieux, toujours à portée de main"
 date: 2024-09-17
 translationKey: 2024-09-17-the-secret-to-feeling-better-always-at-hand
 facets: [dev]
-tags: [Un à la fois, Santé, Développement Personnel, Santé Mentale, Gamsblurb]
+tags: [Un à la fois,Santé,Développement Personnel,Santé Mentale,Gamsblurb]
 image: /assets/posts/2024-09-17-le-secret-pour-se-sentir-mieux-toujours-a-portee-de-main.header.webp
 imageThumb: /assets/posts/2024-09-17-le-secret-pour-se-sentir-mieux-toujours-a-portee-de-main.thumb.webp
 ---

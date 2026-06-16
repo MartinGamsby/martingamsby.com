@@ -3,7 +3,7 @@ title: "The Centauri Ark (working title)"
 date: 2024-10-09
 translationKey: 2024-10-09-the-centauri-ark-working-title
 facets: [physics, fiction]
-tags: [Fiction, Science, Space, Science Fiction, Excerpt, Gamsbook, Gamsblurb]
+tags: [Fiction,Science,Space,Science Fiction,Excerpt,Gamsbook,Gamsblurb]
 image: /assets/posts/2024-10-09-the-centauri-ark-working-title.header.webp
 imageThumb: /assets/posts/2024-10-09-the-centauri-ark-working-title.thumb.webp
 ---

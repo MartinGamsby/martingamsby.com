@@ -3,7 +3,7 @@ title: "I like walking in the evening"
 date: 2024-12-06
 translationKey: 2024-12-06-i-like-walking-in-the-evening
 facets: [ideas]
-tags: [Walk, Health, Gamsblurb]
+tags: [Walk,Health,Gamsblurb]
 ---
 
 I started out of necessity, but it has several advantages:

@@ -3,7 +3,7 @@ title: "I shaved for the first time in 2 years"
 date: 2024-11-26
 translationKey: 2024-11-26-i-shaved-for-the-first-time-in-2-years
 facets: [ideas]
-tags: [Health, Gluten, Gamsblurb]
+tags: [Health,Gluten,Gamsblurb]
 ---
 
 It had been 2 years since I shaved.

@@ -3,7 +3,7 @@ title: "Électricité, germes, religion, porc, pouvoir, sorcières, révolution 
 date: 2024-09-19
 translationKey: 2024-09-19-electricity-germs-religion-pork-power-witches-revolution-and-thriving
 facets: [physics]
-tags: [Électricité, Théorie des germes, Religion vs Science, Science, Religion, Autorité Ecclésiastique, Foi, Santé, Santé Publique, Changement Social, Politique, Mondialisation, Chasses aux sorcières, Éducation, Révolution, Endoctrinement, Gamsblurb]
+tags: [Électricité,Théorie des germes,Religion vs Science,Science,Religion,Autorité Ecclésiastique,Foi,Santé,Santé Publique,Changement Social,Politique,Mondialisation,Chasses aux sorcières,Éducation,Révolution,Endoctrinement,Gamsblurb]
 image: /assets/posts/2024-09-19-electricite-germes-religion-porc-pouvoir-sorcieres-revolution-et-prosperite.header.webp
 imageThumb: /assets/posts/2024-09-19-electricite-germes-religion-porc-pouvoir-sorcieres-revolution-et-prosperite.thumb.webp
 ---

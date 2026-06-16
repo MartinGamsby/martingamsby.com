@@ -3,7 +3,7 @@ title: "J’ai appris la leçon la plus importante de l’école, il y a 4 ans�
 date: 2009-12-06
 translationKey: 2009-12-06-i-learned-the-most-important-lesson-from-school-4-years-ago
 facets: [dev]
-tags: [Apprentissage, Entraînement vs Apprentissage, Langues, Organisation, Prenez le temps de gagner du temps, Gamsblog, Gamsblurb]
+tags: [Apprentissage,Entraînement vs Apprentissage,Langues,Organisation,Prenez le temps de gagner du temps,Gamsblog,Gamsblurb]
 ---
 
 Il y a 4 ans, je n’étais pas très doué à l’école.

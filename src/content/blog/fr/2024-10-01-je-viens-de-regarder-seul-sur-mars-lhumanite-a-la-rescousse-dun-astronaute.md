@@ -3,7 +3,7 @@ title: "Je viens de regarder « Seul sur Mars » - L'humanité à la rescousse d
 date: 2024-10-01
 translationKey: 2024-10-01-i-just-watched-the-martian-humanity-saving-a-stranded-astronaut
 facets: [dev, physics, fiction]
-tags: [Civilisation, Humanité, Philosophie, Science et technologie, Fiction, Priorités, Gamsblurb]
+tags: [Civilisation,Humanité,Philosophie,Science et technologie,Fiction,Priorités,Gamsblurb]
 image: /assets/posts/2024-10-01-je-viens-de-regarder-seul-sur-mars-lhumanite-a-la-rescousse-dun-astronaute.header.webp
 imageThumb: /assets/posts/2024-10-01-je-viens-de-regarder-seul-sur-mars-lhumanite-a-la-rescousse-dun-astronaute.thumb.webp
 ---

@@ -3,7 +3,7 @@ title: "Sometimes self-care means doing the things you've been putting off."
 date: 2024-09-05
 translationKey: 2024-09-05-sometimes-self-care-means-doing-the-things-youve-been-putting-off
 facets: [ideas]
-tags: [Finance, Health, Personal Care, Mental Health, Productivity, Stress, Relaxation, Gamsblurb]
+tags: [Finance,Health,Personal Care,Mental Health,Productivity,Stress,Relaxation,Gamsblurb]
 image: /assets/posts/2024-09-05-sometimes-self-care-means-doing-the-things-youve-been-putting-off.header.webp
 imageThumb: /assets/posts/2024-09-05-sometimes-self-care-means-doing-the-things-youve-been-putting-off.thumb.webp
 ---

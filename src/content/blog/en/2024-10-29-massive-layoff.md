@@ -3,7 +3,7 @@ title: "Massive layoff"
 date: 2024-10-29
 translationKey: 2024-10-29-massive-layoff
 facets: [ideas]
-tags: [Anecdote, Job]
+tags: [Anecdote,Job]
 ---
 
 Well,

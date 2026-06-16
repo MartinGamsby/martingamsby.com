@@ -3,7 +3,7 @@ title: "I tried using a microphone on my phone"
 date: 2024-12-11
 translationKey: 2024-12-11-i-tried-using-a-microphone-on-my-phone
 facets: [dev, music]
-tags: [Piano, Music, Microphone, Gamsblurb]
+tags: [Piano,Music,Microphone,Gamsblurb]
 ---
 
 It sounds weird ...

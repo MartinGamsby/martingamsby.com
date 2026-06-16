@@ -3,7 +3,7 @@ title: "When did self-help become negative?"
 date: 2024-09-06
 translationKey: 2024-09-06-when-did-self-help-become-negative
 facets: [dev]
-tags: [Mental Health, Productivity, Personal Development, Collective Development, Community, Mutual Aid, Gamsblurb]
+tags: [Mental Health,Productivity,Personal Development,Collective Development,Community,Mutual Aid,Gamsblurb]
 image: /assets/posts/2024-09-06-when-did-self-help-become-negative.header.webp
 imageThumb: /assets/posts/2024-09-06-when-did-self-help-become-negative.thumb.webp
 ---

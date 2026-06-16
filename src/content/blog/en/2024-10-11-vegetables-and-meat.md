@@ -3,7 +3,7 @@ title: "Vegetables and meat"
 date: 2024-10-11
 translationKey: 2024-10-11-vegetables-and-meat
 facets: [ideas]
-tags: [Food, Health, Diet, Food sensitivity, Diet restrictions, Health struggles, Gluten, Elimination diet, Anxiety, Trial and error, Isolation, Digestive issues, Self-discovery journey, Gamsblurb]
+tags: [Food,Health,Diet,Food sensitivity,Diet restrictions,Health struggles,Gluten,Elimination diet,Anxiety,Trial and error,Isolation,Digestive issues,Self-discovery journey,Gamsblurb]
 image: /assets/posts/2024-10-11-vegetables-and-meat.header.webp
 imageThumb: /assets/posts/2024-10-11-vegetables-and-meat.thumb.webp
 ---

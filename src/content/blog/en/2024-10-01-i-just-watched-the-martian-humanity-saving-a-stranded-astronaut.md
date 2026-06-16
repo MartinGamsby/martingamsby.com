@@ -3,7 +3,7 @@ title: "I just watched \"the Martian\" - Humanity saving a stranded astronaut"
 date: 2024-10-01
 translationKey: 2024-10-01-i-just-watched-the-martian-humanity-saving-a-stranded-astronaut
 facets: [dev, physics, fiction]
-tags: [Civilization, Humanity, Philosophy, ScienceAndTechnology, Fiction, Priorities, Gamsblurb]
+tags: [Civilization,Humanity,Philosophy,ScienceAndTechnology,Fiction,Priorities,Gamsblurb]
 image: /assets/posts/2024-10-01-i-just-watched-the-martian-humanity-saving-a-stranded-astronaut.header.webp
 imageThumb: /assets/posts/2024-10-01-i-just-watched-the-martian-humanity-saving-a-stranded-astronaut.thumb.webp
 ---

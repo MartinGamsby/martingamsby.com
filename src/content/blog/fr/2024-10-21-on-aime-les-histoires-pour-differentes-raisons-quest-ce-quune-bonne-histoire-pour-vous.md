@@ -3,7 +3,7 @@ title: "On aime les histoires pour différentes raisons. Qu'est-ce qu'une bonne 
 date: 2024-10-21
 translationKey: 2024-10-21-people-like-stories-for-different-reasons-what-makes-a-story-compelling-to-you
 facets: [fiction]
-tags: [Histoires, Fiction, Gamsblurb]
+tags: [Histoires,Fiction,Gamsblurb]
 image: /assets/posts/2024-10-21-on-aime-les-histoires-pour-differentes-raisons-quest-ce-quune-bonne-histoire-pour-vous.header.webp
 imageThumb: /assets/posts/2024-10-21-on-aime-les-histoires-pour-differentes-raisons-quest-ce-quune-bonne-histoire-pour-vous.thumb.webp
 ---

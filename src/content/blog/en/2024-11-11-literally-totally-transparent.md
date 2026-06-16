@@ -3,7 +3,7 @@ title: "Literally, totally transparent,"
 date: 2024-11-11
 translationKey: 2024-11-11-literally-totally-transparent
 facets: [fiction]
-tags: [Fiction, Bank, Money, Gamsblurb]
+tags: [Fiction,Bank,Money,Gamsblurb]
 ---
 
 new banks were built.

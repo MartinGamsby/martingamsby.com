@@ -3,7 +3,7 @@ title: "Ah, le temps des fêtes (une tourtière à la fois)"
 date: 2010-01-03
 translationKey: 2010-01-03-ah-the-holiday-season-one-tourtiere-at-a-time
 facets: [ideas]
-tags: [Tourtière, Coutume, Fêtes, Apprentissage, Motivation, Équilibre, Gamsblurb]
+tags: [Tourtière,Coutume,Fêtes,Apprentissage,Motivation,Équilibre,Gamsblurb]
 ---
 
 Au Québec, une coutume du temps des fêtes est de manger de la tourtière.

@@ -3,7 +3,7 @@ title: "My teacher's secret"
 date: 2010-01-17
 translationKey: 2010-01-17-my-teachers-secret
 facets: [ideas]
-tags: [Learn, Gamsblog, Gamsblurb]
+tags: [Learn,Gamsblog,Gamsblurb]
 ---
 
 One day, my Spanish teacher told me how he learned vocabulary.

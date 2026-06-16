@@ -3,7 +3,7 @@ title: "Simple is not always better"
 date: 2024-10-26
 translationKey: 2024-10-26-simple-is-not-always-better
 facets: [ideas]
-tags: [Simplicity, Smurf, Gamsblurb]
+tags: [Simplicity,Smurf,Gamsblurb]
 ---
 
 What's the easiest language to learn?

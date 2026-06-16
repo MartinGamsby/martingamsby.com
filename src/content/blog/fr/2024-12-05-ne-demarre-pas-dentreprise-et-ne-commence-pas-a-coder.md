@@ -3,7 +3,7 @@ title: "Ne démarre pas d'entreprise, et ne commence pas à coder"
 date: 2024-12-05
 translationKey: 2024-12-05-dont-start-a-business-and-dont-start-coding
 facets: [dev]
-tags: [Codage, Entreprise, Gamsblurb]
+tags: [Codage,Entreprise,Gamsblurb]
 ---
 
 Sauf si ta vie en dépend

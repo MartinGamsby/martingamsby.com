@@ -3,8 +3,7 @@ title: "Ce qui peut tout gâcher"
 date: 2009-12-13
 translationKey: 2009-12-13-ce-qui-peut-tout-gacher
 facets: [ideas]
-tags: [Gamsblog, Gamsblurb]
-TODO: translate to english
+tags: [Gamsblog,Gamsblurb]
 ---
 
 Peu importe votre préparation, vos connaissances ou vos aptitudes, une petite chose peut tout arrêter, tout annuler.

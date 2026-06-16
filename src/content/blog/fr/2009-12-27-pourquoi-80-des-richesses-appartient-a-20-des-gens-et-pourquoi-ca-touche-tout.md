@@ -3,7 +3,7 @@ title: "Pourquoi 80% des richesses appartient à 20% des gens, et pourquoi ça t
 date: 2009-12-27
 translationKey: 2009-12-27-why-80-of-wealth-belongs-to-20-of-people-and-why-it-matters-for-everything
 facets: [ideas]
-tags: [Richesse, Apprentissage, Motivation, Succès, Éducation, Pareto, Organisation, Chance, Gamsblog, Gamsblurb]
+tags: [Richesse,Apprentissage,Motivation,Succès,Éducation,Pareto,Organisation,Chance,Gamsblog,Gamsblurb]
 ---
 
 Quel est le rapport entre la richesse et l’apprentissage me direz vous ?

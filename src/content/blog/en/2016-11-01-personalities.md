@@ -3,7 +3,7 @@ title: "Personalities"
 date: 2016-11-01
 translationKey: 2016-11-01-personalities
 facets: [fiction]
-tags: [Guide For, Interverted (Novel), Fiction, Djosh Sho, Gamsblurb]
+tags: [Guide For,Interverted (Novel),Fiction,Djosh Sho,Gamsblurb]
 ---
 
 On the Internet, there are 4 types of personalities.

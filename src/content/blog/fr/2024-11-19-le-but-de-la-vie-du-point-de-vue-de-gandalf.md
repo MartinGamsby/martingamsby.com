@@ -3,7 +3,7 @@ title: "Le but de la vie, du point de vue de Gandalf"
 date: 2024-11-19
 translationKey: 2024-11-19-what-life-is-all-about-from-gandalfs-perspective
 facets: [ideas]
-tags: [Magie, Myers-Briggs, Personnalités, Raison d'Être, Purpose, Ikigai, Gamsblurb]
+tags: [Magie,Myers-Briggs,Personnalités,Raison d'Être,Purpose,Ikigai,Gamsblurb]
 image: /assets/posts/2024-11-19-le-but-de-la-vie-du-point-de-vue-de-gandalf.header.webp
 imageThumb: /assets/posts/2024-11-19-le-but-de-la-vie-du-point-de-vue-de-gandalf.thumb.webp
 ---

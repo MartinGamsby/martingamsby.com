@@ -3,7 +3,7 @@ title: "Je pensais à ça l'autre jour..."
 date: 2024-10-15
 translationKey: 2024-10-15-i-was-thinking-about-something-somewhat-that-the-other-day
 facets: [dev]
-tags: [Technologie, Téléphone, Gamsblurb]
+tags: [Technologie,Téléphone,Gamsblurb]
 ---
 
 Je me suis dit : « T'sais, quand tu décroches le téléphone, on entends une tonalité »

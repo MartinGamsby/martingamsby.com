@@ -3,7 +3,7 @@ title: "Le contracteur de maisons vs l'apprentissage"
 date: 2009-11-15
 translationKey: 2009-11-15-the-house-contractor-vs-learning
 facets: [music]
-tags: [Gamsblog, Anecdotes, Apprentissage, Construction, Pédagogie, Comparaison, Piano, Gamsblurb]
+tags: [Gamsblog,Anecdotes,Apprentissage,Construction,Pédagogie,Comparaison,Piano,Gamsblurb]
 image: /assets/posts/2009-11-15-le-contracteur-de-maisons-vs-lapprentissage.header.webp
 imageThumb: /assets/posts/2009-11-15-le-contracteur-de-maisons-vs-lapprentissage.thumb.webp
 ---

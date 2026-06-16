@@ -3,7 +3,7 @@ title: "Being a parent is easy"
 date: 2024-10-02
 translationKey: 2024-10-02-being-a-parent-is-easy
 facets: [ideas]
-tags: [Parenting, Mental Health, Personal Care, Priorities, Gamsblurb]
+tags: [Parenting,Mental Health,Personal Care,Priorities,Gamsblurb]
 ---
 
 Parenting is not hard in itself.

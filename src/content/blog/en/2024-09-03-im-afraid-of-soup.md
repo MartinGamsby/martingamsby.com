@@ -3,7 +3,7 @@ title: "I'm afraid of soup"
 date: 2024-09-03
 translationKey: 2024-09-03-im-afraid-of-soup
 facets: [dev]
-tags: [Gluten, Health, Food, Gamsblurb]
+tags: [Gluten,Health,Food,Gamsblurb]
 image: /assets/posts/2024-09-03-im-afraid-of-soup.header.webp
 imageThumb: /assets/posts/2024-09-03-im-afraid-of-soup.thumb.webp
 ---

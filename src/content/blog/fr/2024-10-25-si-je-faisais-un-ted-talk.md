@@ -3,7 +3,7 @@ title: "Si je faisais un Ted Talk"
 date: 2024-10-25
 translationKey: 2024-10-25-if-i-were-to-have-a-ted-talk
 facets: [ideas]
-tags: [Agriculture régénératrice, agriculture, mondialisation, capitalisme, climat, Gamsblurb]
+tags: [Agriculture régénératrice,agriculture,mondialisation,capitalisme,climat,Gamsblurb]
 image: /assets/posts/2024-10-25-si-je-faisais-un-ted-talk.header.webp
 imageThumb: /assets/posts/2024-10-25-si-je-faisais-un-ted-talk.thumb.webp
 ---

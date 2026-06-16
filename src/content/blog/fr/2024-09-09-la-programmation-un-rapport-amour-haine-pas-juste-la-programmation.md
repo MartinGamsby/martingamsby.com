@@ -3,7 +3,7 @@ title: "La programmation, un rapport amour-haine? (Pas juste la programmation)"
 date: 2024-09-09
 translationKey: 2024-09-09-programming-a-love-hate-relationship-not-just-programming
 facets: [dev]
-tags: [Programmation, Code, Développement Logiciel, Apprendre, C++, Humour, Développement Personnel, Personnalités, Gamsblurb]
+tags: [Programmation,Code,Développement Logiciel,Apprendre,C++,Humour,Développement Personnel,Personnalités,Gamsblurb]
 image: /assets/posts/2024-09-09-la-programmation-un-rapport-amour-haine-pas-juste-la-programmation.header.webp
 imageThumb: /assets/posts/2024-09-09-la-programmation-un-rapport-amour-haine-pas-juste-la-programmation.thumb.webp
 ---

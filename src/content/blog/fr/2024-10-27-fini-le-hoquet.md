@@ -3,7 +3,7 @@ title: "Fini le hoquet"
 date: 2024-10-27
 translationKey: 2024-10-27-no-more-hiccup
 facets: [ideas]
-tags: [Hoquet, Survie, Réflexes, Respiration, Gamsblurb]
+tags: [Hoquet,Survie,Réflexes,Respiration,Gamsblurb]
 image: /assets/posts/2024-10-27-fini-le-hoquet.header.webp
 imageThumb: /assets/posts/2024-10-27-fini-le-hoquet.thumb.webp
 ---

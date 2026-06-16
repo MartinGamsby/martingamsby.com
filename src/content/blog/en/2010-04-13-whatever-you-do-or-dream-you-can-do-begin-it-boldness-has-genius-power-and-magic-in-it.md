@@ -3,7 +3,7 @@ title: "Whatever you do, or dream you can do, begin it. Boldness has genius, pow
 date: 2010-04-13
 translationKey: 2010-04-13-whatever-you-do-or-dream-you-can-do-begin-it-boldness-has-genius-power-and-magic-in-it
 facets: [ideas]
-tags: [Quote, Create]
+tags: [Quote,Create]
 ---
 
 >  Johann Wolfgang Von Goethe

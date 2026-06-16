@@ -3,7 +3,7 @@ title: "No more hiccup"
 date: 2024-10-27
 translationKey: 2024-10-27-no-more-hiccup
 facets: [ideas]
-tags: [Hiccup, Survival, Reflexes, Breathing, Gamsblurb]
+tags: [Hiccup,Survival,Reflexes,Breathing,Gamsblurb]
 image: /assets/posts/2024-10-27-no-more-hiccup.header.webp
 imageThumb: /assets/posts/2024-10-27-no-more-hiccup.thumb.webp
 ---

@@ -3,7 +3,7 @@ title: "If I were to have a Ted Talk"
 date: 2024-10-25
 translationKey: 2024-10-25-if-i-were-to-have-a-ted-talk
 facets: [ideas]
-tags: [Regenerative Agriculture, Farming, Globalization, Capitalism, Climate, Gamsblurb]
+tags: [Regenerative Agriculture,Farming,Globalization,Capitalism,Climate,Gamsblurb]
 image: /assets/posts/2024-10-25-if-i-were-to-have-a-ted-talk.header.webp
 imageThumb: /assets/posts/2024-10-25-if-i-were-to-have-a-ted-talk.thumb.webp
 ---

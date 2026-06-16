@@ -3,7 +3,7 @@ title: "Arrêtez de manger de la malbouffe. Arrêtez de normaliser ce que l'indu
 date: 2024-12-12
 translationKey: 2024-12-12-stop-eating-crap-food-stop-normalizing-what-the-food-industry-wants
 facets: [ideas]
-tags: [Gluten, Santé, Nutrition, Gamsblurb]
+tags: [Gluten,Santé,Nutrition,Gamsblurb]
 ---
 
 Ce n'est pas "plus facile qu'avant" de manger sans gluten, ou quoi que ce soit de bon pour la santé

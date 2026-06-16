@@ -3,7 +3,7 @@ title: "Les blessures de votre cerveau"
 date: 2009-12-20
 translationKey: 2009-12-20-your-brain-injuries
 facets: [ideas]
-tags: [Anecdotes, Confiance, Entraînement vs Apprentissage, Gamsblog, Gamsblurb]
+tags: [Anecdotes,Confiance,Entraînement vs Apprentissage,Gamsblog,Gamsblurb]
 ---
 
 Voici une autre occasion où votre corps et ses capacités ressemble étrangement à votre cerveau et ses performances, tiré d’une histoire vécue … en ce moment même :

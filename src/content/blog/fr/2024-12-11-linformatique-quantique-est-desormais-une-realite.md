@@ -3,7 +3,7 @@ title: "L'informatique quantique est désormais une réalité"
 date: 2024-12-11
 translationKey: 2024-12-11-quantum-computing-is-now-a-reality
 facets: [dev, physics]
-tags: [Futur, Quantique, Gamsblurb]
+tags: [Futur,Quantique,Gamsblurb]
 ---
 
 Google y est arrivé.

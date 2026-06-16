@@ -3,7 +3,7 @@ title: "100 days until January 1st"
 date: 2024-09-23
 translationKey: 2024-09-23-100-days-until-january-1st
 facets: [dev]
-tags: [Personal Development, Habits, Motivation, Productivity, Gamsblurb]
+tags: [Personal Development,Habits,Motivation,Productivity,Gamsblurb]
 ---
 
 If you wanted a reason/milestone to start something. Today's the day.

@@ -3,7 +3,7 @@ title: "Meditation is easy, actually."
 date: 2024-09-27
 translationKey: 2024-09-27-meditation-is-easy-actually
 facets: [ideas]
-tags: [Meditation, Chade-Meng Tan, Breathing, Walking, Gamsblurb]
+tags: [Meditation,Chade-Meng Tan,Breathing,Walking,Gamsblurb]
 image: /assets/posts/2024-09-27-meditation-is-easy-actually.header.webp
 imageThumb: /assets/posts/2024-09-27-meditation-is-easy-actually.thumb.webp
 ---

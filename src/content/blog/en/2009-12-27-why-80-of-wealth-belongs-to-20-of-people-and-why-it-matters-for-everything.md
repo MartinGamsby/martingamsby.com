@@ -3,7 +3,7 @@ title: "Why 80% of wealth belongs to 20% of people, and why it matters for every
 date: 2009-12-27
 translationKey: 2009-12-27-why-80-of-wealth-belongs-to-20-of-people-and-why-it-matters-for-everything
 facets: [ideas]
-tags: [Wealth, Learning, Motivation, Success, Education, Pareto, Organization, Luck, Gamsblog, Gamsblurb]
+tags: [Wealth,Learning,Motivation,Success,Education,Pareto,Organization,Luck,Gamsblog,Gamsblurb]
 ---
 
 What is the connection between wealth and learning, you might ask?

@@ -3,7 +3,7 @@ title: "Stop hustling, enjoy chores"
 date: 2024-09-07
 translationKey: 2024-09-07-stop-hustling-enjoy-chores
 facets: [dev]
-tags: [Mental Health, Productivity, Personal Development, Habits, ADHD, Gamsblurb]
+tags: [Mental Health,Productivity,Personal Development,Habits,ADHD,Gamsblurb]
 image: /assets/posts/2024-09-07-stop-hustling-enjoy-chores.header.webp
 imageThumb: /assets/posts/2024-09-07-stop-hustling-enjoy-chores.thumb.webp
 ---

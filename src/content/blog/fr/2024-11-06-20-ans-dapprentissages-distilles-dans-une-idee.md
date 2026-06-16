@@ -3,7 +3,7 @@ title: "20 ans d'apprentissages distillés dans une idée"
 date: 2024-11-06
 translationKey: 2024-11-06-20-years-of-learning-distilled-into-one-idea
 facets: [dev]
-tags: [Développement Personnel, Habitudes, Santé, Un à la fois, Fitness, Finances, Désencombrement, Motivation, Life Hacks, Gamsblurb]
+tags: [Développement Personnel,Habitudes,Santé,Un à la fois,Fitness,Finances,Désencombrement,Motivation,Life Hacks,Gamsblurb]
 image: /assets/posts/2024-11-06-20-ans-dapprentissages-distilles-dans-une-idee.header.webp
 imageThumb: /assets/posts/2024-11-06-20-ans-dapprentissages-distilles-dans-une-idee.thumb.webp
 ---

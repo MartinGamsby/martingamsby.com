@@ -3,7 +3,7 @@ title: "Falling sensation"
 date: 2024-09-02
 translationKey: 2024-09-02-falling-sensation
 facets: [physics, fiction]
-tags: [New Expression, New Word, Did You Know, FunFact, Science, Einstein, Gamsblurb]
+tags: [New Expression,New Word,Did You Know,FunFact,Science,Einstein,Gamsblurb]
 image: /assets/posts/2024-09-02-falling-sensation.header.webp
 imageThumb: /assets/posts/2024-09-02-falling-sensation.thumb.webp
 ---

@@ -3,7 +3,7 @@ title: "Conference"
 date: 2016-08-01
 translationKey: 2016-08-01-conference
 facets: [fiction]
-tags: [Guide For, Interverted (Novel), Fiction, Djosh Sho, Gamsblurb]
+tags: [Guide For,Interverted (Novel),Fiction,Djosh Sho,Gamsblurb]
 ---
 
 This term may seem outdated, but this trend has gained momentum again, since only real-world training is allowed for the annual continuing education tax credit, since the training scandal a few years ago. For those who are wondering what it is, a conference is essentially a video training, but not on the Internet... 

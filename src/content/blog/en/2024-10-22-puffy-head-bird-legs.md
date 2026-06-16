@@ -3,7 +3,7 @@ title: "Puffy head, bird legs"
 date: 2024-10-22
 translationKey: 2024-10-22-puffy-head-bird-legs
 facets: [physics]
-tags: [Space, Science, Health, Gravity, Exercise, ISS, Gamsblurb]
+tags: [Space,Science,Health,Gravity,Exercise,ISS,Gamsblurb]
 ---
 
 "Puffy head, bird legs" is when astronauts get too much blood in their head, and not enough in their legs.

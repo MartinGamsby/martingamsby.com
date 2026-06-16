@@ -3,7 +3,7 @@ title: "Piano for 15 years vs 15 weeks - My first composition"
 date: 2024-10-31
 translationKey: 2024-10-31-piano-for-15-years-vs-15-weeks-my-first-composition
 facets: [music]
-tags: [Music, Composition, Gamsblurb]
+tags: [Music,Composition,Gamsblurb]
 image: /assets/posts/2024-10-31-piano-for-15-years-vs-15-weeks-my-first-composition.header.webp
 imageThumb: /assets/posts/2024-10-31-piano-for-15-years-vs-15-weeks-my-first-composition.thumb.webp
 ---

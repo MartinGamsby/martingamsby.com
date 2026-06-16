@@ -3,7 +3,7 @@ title: "Your Brain Injuries"
 date: 2009-12-20
 translationKey: 2009-12-20-your-brain-injuries
 facets: [ideas]
-tags: [Anecdotes, Confidence, Training vs Learning, Gamsblog, Gamsblurb]
+tags: [Anecdotes,Confidence,Training vs Learning,Gamsblog,Gamsblurb]
 ---
 
 Here is another instance where your body and its abilities are strangely similar to your brain and its performance, taken from a real-life story… right now:

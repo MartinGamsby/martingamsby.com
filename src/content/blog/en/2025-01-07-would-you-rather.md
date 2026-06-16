@@ -3,7 +3,7 @@ title: "Would you rather"
 date: 2025-01-07
 translationKey: 2025-01-07-would-you-rather
 facets: [ideas]
-tags: [Health, Don't die, Bryan Johnson, Gamsblurb]
+tags: [Health,Don't die,Bryan Johnson,Gamsblurb]
 ---
 
 - be hungry for the rest of your life, with a guaranteed doubled lifespan.

@@ -3,7 +3,7 @@ title: "Are you afraid?"
 date: 2009-11-22
 translationKey: 2009-11-22-are-you-afraid
 facets: [dev, music]
-tags: [Gamsblog, Self-confidence, Motivation, Personal development, Learning, Self-esteem, Shyness, French, Piano, Music, Gamsblurb]
+tags: [Gamsblog,Self-confidence,Motivation,Personal development,Learning,Self-esteem,Shyness,French,Piano,Music,Gamsblurb]
 image: /assets/posts/2009-11-22-are-you-afraid.header.webp
 imageThumb: /assets/posts/2009-11-22-are-you-afraid.thumb.webp
 ---

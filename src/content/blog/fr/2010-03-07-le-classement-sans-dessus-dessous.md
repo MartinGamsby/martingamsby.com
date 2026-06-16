@@ -3,7 +3,7 @@ title: "Le classement sans dessus dessous"
 date: 2010-03-07
 translationKey: 2010-03-07-upside-down-organisation
 facets: [ideas]
-tags: [Gamsblog, Organisation, Apprendre, Gamsblurb]
+tags: [Gamsblog,Organisation,Apprendre,Gamsblurb]
 image: /assets/posts/2010-03-07-le-classement-sans-dessus-dessous.header.webp
 imageThumb: /assets/posts/2010-03-07-le-classement-sans-dessus-dessous.thumb.webp
 ---
@@ -61,5 +61,3 @@ Vous pouvez vous souvenir de la forme de votre schéma, de la disposition de vos
 Je le sais, il n’y a pas beacoup de détails sur la manière de faire, et ça peut paraître difficile à première vue, mais j’espère au moins que ça aura pu en aider quelques-uns.
 
 Pour utiliser autre chose que du papier, vous pouvez aussi utiliser le logiciel Freemind pour faire des cartes heuristiques simples à l’ordinateur.
-
----

@@ -3,7 +3,7 @@ title: "Quand les gens sous-estiment le pouvoir d'Excel"
 date: 2024-09-04
 translationKey: 2024-09-04-when-people-underestimate-the-power-of-excel
 facets: [dev]
-tags: [Excel, Spreadsheet, Tutoriel Excel, Années 90, Humour Excel, Gamsblurb]
+tags: [Excel,Spreadsheet,Tutoriel Excel,Années 90,Humour Excel,Gamsblurb]
 ---
 
 J’ai vu une annonce de Microsoft, montrant Excel, en 1990.

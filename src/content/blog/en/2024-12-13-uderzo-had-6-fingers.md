@@ -3,7 +3,7 @@ title: "Uderzo had 6 fingers"
 date: 2024-12-13
 translationKey: 2024-12-13-uderzo-had-6-fingers
 facets: [ideas]
-tags: [Truth, Internet, Gamsblurb]
+tags: [Truth,Internet,Gamsblurb]
 ---
 
 Having 6 fingers at birth is surprisingly frequent.

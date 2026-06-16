@@ -3,7 +3,7 @@ title: "Pas de données sur mon téléphone ce matin, catastrophe?"
 date: 2024-09-18
 translationKey: 2024-09-18-no-data-on-my-phone-this-morning-disaster
 facets: [dev]
-tags: [Santé Mentale, Développement Personnel, Un à la fois, Habitudes, Méditation, Technologie, Gamsblurb]
+tags: [Santé Mentale,Développement Personnel,Un à la fois,Habitudes,Méditation,Technologie,Gamsblurb]
 image: /assets/posts/2024-09-18-pas-de-donnees-sur-mon-telephone-ce-matin-catastrophe.header.webp
 imageThumb: /assets/posts/2024-09-18-pas-de-donnees-sur-mon-telephone-ce-matin-catastrophe.thumb.webp
 ---

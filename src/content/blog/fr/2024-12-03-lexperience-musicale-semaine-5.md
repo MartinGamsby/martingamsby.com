@@ -3,7 +3,7 @@ title: "L'expérience musicale - Semaine 5"
 date: 2024-12-03
 translationKey: 2024-12-03-the-musical-experience-week-5
 facets: [dev, music]
-tags: [JeuVideo, Musique, DevLog, Gamsblurb]
+tags: [JeuVideo,Musique,DevLog,Gamsblurb]
 ---
 
 Cinquième semaine de code à temps partiel, le jeu peut maintenant générer des musiques un peu plus cohérentes..

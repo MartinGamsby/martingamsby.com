@@ -3,7 +3,7 @@ title: "Wet mattress"
 date: 2024-08-28
 translationKey: 2024-08-28-wet-mattress
 facets: [ideas]
-tags: [Mattress, FunFact, Tongue Twister, Did You Know, Gamsblurb]
+tags: [Mattress,FunFact,Tongue Twister,Did You Know,Gamsblurb]
 image: /assets/posts/2024-08-28-wet-mattress.header.webp
 imageThumb: /assets/posts/2024-08-28-wet-mattress.thumb.webp
 ---

@@ -3,7 +3,7 @@ title: "I learned the most important lesson from school, 4 years ago …"
 date: 2009-12-06
 translationKey: 2009-12-06-i-learned-the-most-important-lesson-from-school-4-years-ago
 facets: [dev]
-tags: [Learning, Training vs Learning, Languages, Organization, Take Time to Save Time, Gamsblog, Gamsblurb]
+tags: [Learning,Training vs Learning,Languages,Organization,Take Time to Save Time,Gamsblog,Gamsblurb]
 ---
 
 4 years ago, I wasn’t very good at school.

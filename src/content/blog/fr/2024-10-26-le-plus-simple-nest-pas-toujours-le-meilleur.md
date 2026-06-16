@@ -3,7 +3,7 @@ title: "Le plus simple n’est pas toujours le meilleur"
 date: 2024-10-26
 translationKey: 2024-10-26-simple-is-not-always-better
 facets: [ideas]
-tags: [Simplicité, schtroumpf, Gamsblurb]
+tags: [Simplicité,schtroumpf,Gamsblurb]
 ---
 
 Quelle est la langue la plus facile à apprendre ?

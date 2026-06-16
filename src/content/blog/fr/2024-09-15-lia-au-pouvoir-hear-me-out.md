@@ -3,7 +3,7 @@ title: "l'IA au pouvoir? (hear me out)"
 date: 2024-09-15
 translationKey: 2024-09-15-ai-for-president-hear-me-out
 facets: [dev]
-tags: [Intelligence Artificielle, IA, Politique, Vol, Un à la fois, Gamsblurb]
+tags: [Intelligence Artificielle,IA,Politique,Vol,Un à la fois,Gamsblurb]
 image: /assets/posts/2024-09-15-lia-au-pouvoir-hear-me-out.header.webp
 imageThumb: /assets/posts/2024-09-15-lia-au-pouvoir-hear-me-out.thumb.webp
 ---

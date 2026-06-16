@@ -23,5 +23,3 @@ Avec un cerveau beaucoup plus gros que nos enfants.
 Et une mémoire parfaite.
 
 J'espère juste qu'ils n'auront pas de phase adolescente ...
-
----

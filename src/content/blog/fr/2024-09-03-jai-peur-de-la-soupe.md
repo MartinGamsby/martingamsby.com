@@ -3,7 +3,7 @@ title: "J'ai peur de la soupe"
 date: 2024-09-03
 translationKey: 2024-09-03-im-afraid-of-soup
 facets: [dev]
-tags: [Gluten, Santé, Alimentation, Gamsblurb]
+tags: [Gluten,Santé,Alimentation,Gamsblurb]
 image: /assets/posts/2024-09-03-jai-peur-de-la-soupe.header.webp
 imageThumb: /assets/posts/2024-09-03-jai-peur-de-la-soupe.thumb.webp
 ---

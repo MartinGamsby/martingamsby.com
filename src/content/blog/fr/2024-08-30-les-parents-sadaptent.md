@@ -3,7 +3,7 @@ title: "Les parents s'adaptent"
 date: 2024-08-30
 translationKey: 2024-08-30-parents-are-adapting
 facets: [ideas]
-tags: [Parent, Enfant, TDAH, Neurodiversité, Gamsblurb]
+tags: [Parent,Enfant,TDAH,Neurodiversité,Gamsblurb]
 image: /assets/posts/2024-08-30-les-parents-sadaptent.header.webp
 imageThumb: /assets/posts/2024-08-30-les-parents-sadaptent.thumb.webp
 ---

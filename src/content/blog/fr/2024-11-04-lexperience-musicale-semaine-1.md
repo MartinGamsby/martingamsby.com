@@ -3,7 +3,7 @@ title: "L'expérience musicale - Semaine 1"
 date: 2024-11-04
 translationKey: 2024-11-04-the-musical-experience-week-1
 facets: [music]
-tags: [Jeu, Musique, DevLog, Gamsblurb]
+tags: [Jeu,Musique,DevLog,Gamsblurb]
 ---
 
 Après une semaine de code, le jeu peut générer des fichiers midi, et les jouer, mais pas avec le son cacanne des midis usuel, avec des meilleurs sons pour les instruments.

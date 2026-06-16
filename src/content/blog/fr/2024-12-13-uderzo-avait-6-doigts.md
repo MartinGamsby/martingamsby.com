@@ -3,7 +3,7 @@ title: "Uderzo avait 6 doigts"
 date: 2024-12-13
 translationKey: 2024-12-13-uderzo-had-6-fingers
 facets: [ideas]
-tags: [Vérité, Internet, Gamsblurb]
+tags: [Vérité,Internet,Gamsblurb]
 ---
 
 Avoir 6 doigts à la naissance est étonnamment fréquent.

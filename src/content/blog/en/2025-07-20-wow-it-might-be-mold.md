@@ -3,7 +3,7 @@ title: "Wow it might be mold..."
 date: 2025-07-20
 translationKey: 2025-07-20-wow-it-might-be-mold
 facets: [ideas]
-tags: [Gamsblurb, Mold, Health]
+tags: [Gamsblurb,Mold,Health]
 ---
 
 I came back from vacation and got the neurological symptoms I usually get from gluten.

@@ -3,7 +3,7 @@ title: "Shtandartization"
 date: 2024-08-29
 translationKey: 2024-08-29-shtandartization
 facets: [ideas]
-tags: [New Word, Neologism, XKCD, Gamsblurb]
+tags: [New Word,Neologism,XKCD,Gamsblurb]
 image: /assets/posts/2024-08-29-shtandartization.header.webp
 imageThumb: /assets/posts/2024-08-29-shtandartization.thumb.webp
 ---

@@ -3,7 +3,7 @@ title: "Being sick is the worst"
 date: 2024-11-22
 translationKey: 2024-11-22-being-sick-is-the-worst
 facets: [ideas]
-tags: [One At A Time, Heatlh, Gamsblurb]
+tags: [One At A Time,Heatlh,Gamsblurb]
 ---
 
 Being sick 

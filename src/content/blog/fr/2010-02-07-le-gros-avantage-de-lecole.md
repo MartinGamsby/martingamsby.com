@@ -3,7 +3,7 @@ title: "Le GROS avantage de l’école"
 date: 2010-02-07
 translationKey: 2010-02-07-the-big-advantage-of-school
 facets: [ideas]
-tags: [École, Apprendre, Un à la fois, Gamsblog, Gamsblurb]
+tags: [École,Apprendre,Un à la fois,Gamsblog,Gamsblurb]
 ---
 
 J’ai dit du mal de l’école précédemment, mais il n’y a pas que du mal dans le système scolaire, bien au contraire.

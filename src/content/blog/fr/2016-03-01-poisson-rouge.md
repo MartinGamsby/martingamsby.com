@@ -3,7 +3,7 @@ title: "Poisson Rouge"
 date: 2016-03-01
 translationKey: 2016-03-01-goldfish
 facets: [fiction]
-tags: [Guide Pour, Interverti (Roman), Djosh Sho, Gamsblurb]
+tags: [Guide Pour,Interverti (Roman),Djosh Sho,Gamsblurb]
 ---
 
 Tout le monde semble s’entendre sur le fait que les poissons rouges sont bêtes et qu’ils n’ont que 3 secondes de mémoire. Ces gens seraient déçus de savoir le temps mémoire des humains, à peine plus élevé. 
@@ -18,3 +18,4 @@ Mais il y a la mémoire à long terme qui vient pallier à cette lacune, nous tr
 
 - [Bluesky](https://bsky.app/profile/martin-gamsby.bsky.social/post/3lc4xuja2c72n)
 - [X/Twitter](https://twitter.com/user/status/1862674048339116530)
+- [Facebook](https://www.facebook.com/440556702484707_122170529798685210)

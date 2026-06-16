@@ -3,7 +3,7 @@ title: "I wrote a short story"
 date: 2024-11-03
 translationKey: 2024-11-03-i-wrote-a-short-story
 facets: [dev, fiction]
-tags: [History, Fiction, Gamsblurb]
+tags: [History,Fiction,Gamsblurb]
 ---
 
 — Mr. Generic, you are dying

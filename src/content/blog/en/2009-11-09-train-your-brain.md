@@ -3,7 +3,7 @@ title: "Train your brain"
 date: 2009-11-09
 translationKey: 2009-11-09-train-your-brain
 facets: [ideas]
-tags: [Confidence, Training, Learning, Gym, Training vs Learning, Gamsblog, Gamsblurb]
+tags: [Confidence,Training,Learning,Gym,Training vs Learning,Gamsblog,Gamsblurb]
 image: /assets/posts/2009-11-09-train-your-brain.header.webp
 imageThumb: /assets/posts/2009-11-09-train-your-brain.thumb.webp
 ---

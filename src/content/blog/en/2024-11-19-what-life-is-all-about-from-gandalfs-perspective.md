@@ -3,7 +3,7 @@ title: "What life is all about, from Gandalf's perspective"
 date: 2024-11-19
 translationKey: 2024-11-19-what-life-is-all-about-from-gandalfs-perspective
 facets: [ideas]
-tags: [Magic, Myers-Briggs, Personalities, Purpose, Ikigai, Gamsblurb]
+tags: [Magic,Myers-Briggs,Personalities,Purpose,Ikigai,Gamsblurb]
 image: /assets/posts/2024-11-19-what-life-is-all-about-from-gandalfs-perspective.header.webp
 imageThumb: /assets/posts/2024-11-19-what-life-is-all-about-from-gandalfs-perspective.thumb.webp
 ---

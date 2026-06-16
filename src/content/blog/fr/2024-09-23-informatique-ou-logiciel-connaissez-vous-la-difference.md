@@ -3,7 +3,7 @@ title: "Informatique ou logiciel. Connaissez-vous la différence ?"
 date: 2024-09-23
 translationKey: 2024-09-23-it-or-software-do-you-know-the-difference
 facets: [dev, physics]
-tags: [Informatique, Logiciel, Analogie, Développement Logiciel, Gamsblurb]
+tags: [Informatique,Logiciel,Analogie,Développement Logiciel,Gamsblurb]
 image: /assets/posts/2024-09-23-informatique-ou-logiciel-connaissez-vous-la-difference.header.webp
 imageThumb: /assets/posts/2024-09-23-informatique-ou-logiciel-connaissez-vous-la-difference.thumb.webp
 ---

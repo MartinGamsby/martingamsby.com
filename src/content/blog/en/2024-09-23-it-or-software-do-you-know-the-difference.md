@@ -3,7 +3,7 @@ title: "IT or software. Do you know the difference?"
 date: 2024-09-23
 translationKey: 2024-09-23-it-or-software-do-you-know-the-difference
 facets: [dev, physics]
-tags: [Computer Science, Software, Analogy, Software development, Gamsblurb]
+tags: [Computer Science,Software,Analogy,Software development,Gamsblurb]
 image: /assets/posts/2024-09-23-it-or-software-do-you-know-the-difference.header.webp
 imageThumb: /assets/posts/2024-09-23-it-or-software-do-you-know-the-difference.thumb.webp
 ---

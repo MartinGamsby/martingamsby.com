@@ -3,7 +3,7 @@ title: "Parents are adapting"
 date: 2024-08-30
 translationKey: 2024-08-30-parents-are-adapting
 facets: [ideas]
-tags: [Parent, Child, ADHD, Neurodiversity, Gamsblurb]
+tags: [Parent,Child,ADHD,Neurodiversity,Gamsblurb]
 image: /assets/posts/2024-08-30-parents-are-adapting.header.webp
 imageThumb: /assets/posts/2024-08-30-parents-are-adapting.thumb.webp
 ---

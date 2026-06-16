@@ -3,7 +3,7 @@ title: "Gandalf reconciled me with life"
 date: 2024-08-27
 translationKey: 2024-08-27-gandalf-reconciled-me-with-life
 facets: [ideas]
-tags: [Magic, Myers-Briggs, Personalities, Purpose, Ikigai, Gamsblurb]
+tags: [Magic,Myers-Briggs,Personalities,Purpose,Ikigai,Gamsblurb]
 image: /assets/posts/2024-08-27-gandalf-reconciled-me-with-life.header.webp
 imageThumb: /assets/posts/2024-08-27-gandalf-reconciled-me-with-life.thumb.webp
 ---

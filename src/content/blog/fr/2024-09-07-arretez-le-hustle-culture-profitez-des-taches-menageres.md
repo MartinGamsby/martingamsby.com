@@ -3,7 +3,7 @@ title: "Arrêtez le hustle culture, profitez des tâches ménagères"
 date: 2024-09-07
 translationKey: 2024-09-07-stop-hustling-enjoy-chores
 facets: [dev]
-tags: [Santé Mentale, Productivité, Développement Personnel, Habitudes, TDAH, Gamsblurb]
+tags: [Santé Mentale,Productivité,Développement Personnel,Habitudes,TDAH,Gamsblurb]
 image: /assets/posts/2024-09-07-arretez-le-hustle-culture-profitez-des-taches-menageres.header.webp
 imageThumb: /assets/posts/2024-09-07-arretez-le-hustle-culture-profitez-des-taches-menageres.thumb.webp
 ---

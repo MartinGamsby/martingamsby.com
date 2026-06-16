@@ -3,7 +3,7 @@ title: "La méditation c'est facile, en fait."
 date: 2024-09-27
 translationKey: 2024-09-27-meditation-is-easy-actually
 facets: [ideas]
-tags: [Méditation, Chade-Meng Tan, Respiration, Marche, Gamsblurb]
+tags: [Méditation,Chade-Meng Tan,Respiration,Marche,Gamsblurb]
 image: /assets/posts/2024-09-27-la-meditation-cest-facile-en-fait.header.webp
 imageThumb: /assets/posts/2024-09-27-la-meditation-cest-facile-en-fait.thumb.webp
 ---

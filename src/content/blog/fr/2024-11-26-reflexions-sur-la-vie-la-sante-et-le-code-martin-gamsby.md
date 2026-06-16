@@ -3,7 +3,7 @@ title: "Réflexions sur la vie, la santé et le code - Martin Gamsby"
 date: 2024-11-26
 translationKey: 2024-11-26-reflections-on-life-health-and-code-martin-gamsby
 facets: [dev]
-tags: [Podcast, Martin Gamsby, IA, Gamsblurb]
+tags: [Podcast,Martin Gamsby,IA,Gamsblurb]
 ---
 
 Sean et Allie !

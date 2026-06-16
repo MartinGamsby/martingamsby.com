@@ -3,7 +3,7 @@ title: "L'Alzheimer peut être évité"
 date: 2024-09-01
 translationKey: 2024-09-01-alzheimers-can-be-prevented
 facets: [ideas]
-tags: [Alzheimer, Santé, Exercice, Sommeil, Alimentation, Le Saviez-Vous, Gamsblurb]
+tags: [Alzheimer,Santé,Exercice,Sommeil,Alimentation,Le Saviez-Vous,Gamsblurb]
 image: /assets/posts/2024-09-01-lalzheimer-peut-etre-evite.header.webp
 imageThumb: /assets/posts/2024-09-01-lalzheimer-peut-etre-evite.thumb.webp
 ---

@@ -3,7 +3,7 @@ title: "Derrière chaque expert"
 date: 2024-11-17
 translationKey: 2024-11-17-behind-every-expert
 facets: [ideas]
-tags: [Expert, Gamsblurb]
+tags: [Expert,Gamsblurb]
 ---
 
 ... se cache des heures à faire semblant de savoir ce qu'ils font ?

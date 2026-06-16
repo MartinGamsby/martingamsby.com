@@ -3,7 +3,7 @@ title: "Going to the restaurant (like changing habits) is a hit-and-miss"
 date: 2024-10-08
 translationKey: 2024-10-08-going-to-the-restaurant-like-changing-habits-is-a-hit-and-miss
 facets: [ideas]
-tags: [Gluten, Health, Food, Restaurant, Civilisation, Gamsblurb]
+tags: [Gluten,Health,Food,Restaurant,Civilisation,Gamsblurb]
 image: /assets/posts/2024-10-08-going-to-the-restaurant-like-changing-habits-is-a-hit-and-miss.header.webp
 imageThumb: /assets/posts/2024-10-08-going-to-the-restaurant-like-changing-habits-is-a-hit-and-miss.thumb.webp
 ---

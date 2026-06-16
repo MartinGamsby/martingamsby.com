@@ -3,7 +3,7 @@ title: "Who else eats kiwi skin?"
 date: 2024-10-26
 translationKey: 2024-10-26-who-else-eats-kiwi-skin
 facets: [ideas]
-tags: [Question, Gamsblurb]
+tags: [Question,Gamsblurb]
 ---
 
 The hairs are so little!

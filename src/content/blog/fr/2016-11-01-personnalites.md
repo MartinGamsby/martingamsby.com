@@ -3,7 +3,7 @@ title: "Personnalités"
 date: 2016-11-01
 translationKey: 2016-11-01-personalities
 facets: [fiction]
-tags: [Guide Pour, Interverti (Roman), Fiction, Djosh Sho, Gamsblurb]
+tags: [Guide Pour,Interverti (Roman),Fiction,Djosh Sho,Gamsblurb]
 ---
 
 Sur Internet, il y a 4 types de personnalités.
@@ -13,5 +13,3 @@ Sur Internet, il y a 4 types de personnalités.
 4. Trolls : Semblent avoir un plaisir à faire chier les gens.
 
 > (FICTION) Guide pour: * Personnalités* : tiré du roman **Interverti**
-
----

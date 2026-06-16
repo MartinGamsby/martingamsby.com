@@ -3,7 +3,7 @@ title: "Exemple d’association"
 date: 2010-01-24
 translationKey: 2010-01-24-example-of-association
 facets: [ideas]
-tags: [Apprentissage, Concentration, Mémoire, Associations, Productivité, Focus, Gamsblog, Gamsblurb]
+tags: [Apprentissage,Concentration,Mémoire,Associations,Productivité,Focus,Gamsblog,Gamsblurb]
 ---
 
 Visualisez ceci : vous êtes à la maison, vous êtes en train d’apprendre, disons … le japonais (ça peut être n’importe quoi, c’est votre imagination après tout).

@@ -3,7 +3,7 @@ title: "Be careful what you wish for"
 date: 2024-09-13
 translationKey: 2024-09-13-be-careful-what-you-wish-for
 facets: [dev]
-tags: [Software Development, Personal Development, Coding, Purpose, Meme, Gamsblurb]
+tags: [Software Development,Personal Development,Coding,Purpose,Meme,Gamsblurb]
 image: /assets/posts/2024-09-13-be-careful-what-you-wish-for.header.webp
 imageThumb: /assets/posts/2024-09-13-be-careful-what-you-wish-for.thumb.webp
 ---

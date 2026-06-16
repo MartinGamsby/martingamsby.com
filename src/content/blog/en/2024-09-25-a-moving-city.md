@@ -3,7 +3,7 @@ title: "A moving city"
 date: 2024-09-25
 translationKey: 2024-09-25-a-moving-city
 facets: [fiction]
-tags: [Urban planning, Fiction, Education, Business, Gamsblurb]
+tags: [Urban planning,Fiction,Education,Business,Gamsblurb]
 image: /assets/posts/2024-09-25-a-moving-city.header.webp
 imageThumb: /assets/posts/2024-09-25-a-moving-city.thumb.webp
 ---

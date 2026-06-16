@@ -3,7 +3,7 @@ title: "Ne sous-estime jamais les autres"
 date: 2024-10-12
 translationKey: 2024-10-12-never-underestimate-others
 facets: [ideas]
-tags: [Conseils, Apprendre, Professeur, Redevabilité, Expérience, Gamsblurb]
+tags: [Conseils,Apprendre,Professeur,Redevabilité,Expérience,Gamsblurb]
 image: /assets/posts/2024-10-12-ne-sous-estime-jamais-les-autres.header.webp
 imageThumb: /assets/posts/2024-10-12-ne-sous-estime-jamais-les-autres.thumb.webp
 ---

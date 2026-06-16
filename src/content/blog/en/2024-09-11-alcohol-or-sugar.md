@@ -3,7 +3,7 @@ title: "Alcohol or sugar?"
 date: 2024-09-11
 translationKey: 2024-09-11-alcohol-or-sugar
 facets: [ideas]
-tags: [Health, Addiction, Sugar, Food, Alcohol, Gamsblurb]
+tags: [Health,Addiction,Sugar,Food,Alcohol,Gamsblurb]
 image: /assets/posts/2024-09-11-alcohol-or-sugar.header.webp
 imageThumb: /assets/posts/2024-09-11-alcohol-or-sugar.thumb.webp
 ---

@@ -3,7 +3,7 @@ title: "Behind every expert"
 date: 2024-11-17
 translationKey: 2024-11-17-behind-every-expert
 facets: [ideas]
-tags: [Expert, Gamsblurb]
+tags: [Expert,Gamsblurb]
 ---
 
 ... is hours of pretending they know what they’re doing?

@@ -3,7 +3,7 @@ title: "L'arche de Centauri (titre provisoire)"
 date: 2024-10-09
 translationKey: 2024-10-09-the-centauri-ark-working-title
 facets: [physics, fiction]
-tags: [Fiction, Science, Espace, Science-Fiction, Extrait, Gamsbook, Gamsblurb]
+tags: [Fiction,Science,Espace,Science-Fiction,Extrait,Gamsbook,Gamsblurb]
 image: /assets/posts/2024-10-09-larche-de-centauri-titre-provisoire.header.webp
 imageThumb: /assets/posts/2024-10-09-larche-de-centauri-titre-provisoire.thumb.webp
 ---
