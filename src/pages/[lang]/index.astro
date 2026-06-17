@@ -3,10 +3,11 @@ import Base from '../../layouts/Base.astro';
 import PostList from '../../components/PostList.astro';
 import Constellation from '../../components/Constellation.astro';
 import Icon from '../../components/Icon.astro';
-import { LANGS, t, url, type Lang } from '../../i18n/ui';
-import { getPosts } from '../../lib/blog';
+import { LANGS, t, url, imageUrl, type Lang } from '../../i18n/ui';
+import { getPosts, slugOf } from '../../lib/blog';
+import { getGateFeatures } from '../../lib/featured';
 import { perLang, neutral } from '../../data/socials';
-import { orbit, extraSatellites } from '../../data/social-constellation';
+import { orbit, extraSatellites, type Gate } from '../../data/social-constellation';
 
 export function getStaticPaths() {
   return LANGS.map((lang) => ({ params: { lang } }));
@@ -33,6 +34,11 @@ const doors: { key: keyof typeof tr.doors; href: string }[] = [
   { key: 'physics', href: url(`/${lang}/physics/`) },
   { key: 'everything', href: url(`/${lang}/blog/`) },
 ];
+
+// One representative post per gate, hung off its door as a "star" in the sky.
+// Picked by manual popularity (src/data/post-popularity.json), falling back to
+// the most-recent post with an image. See src/lib/featured.ts.
+const features = await getGateFeatures(lang, doors.map((d) => d.key) as Gate[]);
 
 // Which social orbits which gate, and how big, is configured in
 // src/data/social-constellation.ts — edit that file to tune the icons.
@@ -106,6 +112,28 @@ const satellites = [
           </a>
         </li>
       ))}
+      <!-- remove that part if you don't wat articles anymore... -->
+      {features.map((f) => {
+        const href = url(`/${lang}/blog/${slugOf(f.post)}/`);
+        const thumb = f.post.data.image ? imageUrl(f.post.data.imageThumb ?? f.post.data.image) : null;
+        return (
+          <li>
+            <a
+              class="sky-social sky-post"
+              href={href}
+              data-facet={f.gate}
+              data-weight="1.9"
+              style="--w:1.9"
+              aria-label={f.post.data.title}
+              title={f.post.data.title}
+            >
+              {thumb
+                ? <img src={thumb} alt="" loading="eager" decoding="async" />
+                : <span class="sky-post-glyph" aria-hidden="true">★</span>}
+            </a>
+          </li>
+        );
+      })}
     </ul>
   </div>
 

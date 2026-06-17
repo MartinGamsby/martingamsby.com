@@ -71,6 +71,16 @@ Quick rules:
   after writing any post that carries an `image:`** so nothing external is hot-linked.
   `imageUrl()` in `src/i18n/ui.ts` resolves the stored path; PostList prefers
   `imageThumb`, the post page uses `image`.
+- **Home constellation features one post per gate** (a "star"). `src/lib/featured.ts`
+  picks it: highest **popularity score** → has-image → most-recent, de-duped across
+  gates (`GATE_FACET` maps `book→fiction`, `everything→`all). Popularity lives in
+  `src/data/post-popularity.json` (manual, keyed by `translationKey`; `_`-prefixed
+  keys ignored) — **the manual JSON is the source of truth, refreshed only on demand,
+  never per-commit/cron.** `tools/fetch-popularity.mjs` (`npm run fetch-popularity`)
+  updates entries that carry a `links` map: Bluesky (no auth) + YouTube (needs
+  `YOUTUBE_API_KEY`); `score = manual + Σ(sources×WEIGHTS)` unless a numeric `pin`;
+  Typeshare/FB/X have no free API → hand-score. Stars render as `.sky-social.sky-post`
+  chips so the constellation script is untouched. See `wiki/concepts/featured-stars.md`.
 - **Authoring is deterministic — never via a Claude skill.** Posts are
   written/translated in **WriterHelper** (sibling repo, a Python model→template→file
   pipeline) which writes the `.md` pair directly into `src/content/blog/{fr,en}/`;

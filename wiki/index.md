@@ -7,6 +7,7 @@ Read this first; open only the pages you need.
 
 ## Concepts
 - [[doors-as-lenses]] — the core design concept: audience doors filter one content pool, never silo it.
+- [[featured-stars]] — each home gate hangs one representative post as a "star"; chosen by a manual popularity table (src/data/post-popularity.json) + on-demand fetch script, falling back to most-recent-with-image.
 - [[bilingual-routing]] — mirrored /fr + /en routes, translationKey pairing, hreflang.
 - [[link-icons]] — one royalty-free icon pack (Font Awesome Free) for every external/social link.
 

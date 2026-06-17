@@ -8,7 +8,8 @@
     "build": "astro build",
     "preview": "astro preview",
     "new-post": "node tools/new-post.mjs",
-    "localize-images": "node tools/localize-images.mjs"
+    "localize-images": "node tools/localize-images.mjs",
+    "fetch-popularity": "node tools/fetch-popularity.mjs"
   },
   "dependencies": {
     "@fontsource-variable/fraunces": "^5.2.9",

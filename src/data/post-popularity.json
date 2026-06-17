@@ -1,0 +1,3 @@
+{
+  "_readme": "Per-post popularity, keyed by translationKey (shared by FR/EN twins). The home constellation features the HIGHEST-scored post per gate as a 'star'; with no score it falls back to the most-recent post that has an image. Edit `score` by hand, OR run `node tools/fetch-popularity.mjs` to pull stats into `sources` (it recomputes score = manual + sum(sources) unless `pin` is set). Keys starting with '_' are ignored. Entry shape: { score:number, manual?:number, sources?:{platform:number}, links?:{bluesky?:string, youtube?:string}, pin?:number, updated?:string }. The single example below is a placeholder — change/remove it and add your own."
+}

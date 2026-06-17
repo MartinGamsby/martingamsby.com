@@ -403,6 +403,28 @@ main {
 .sky-social[data-facet='book'] { --chip-c: var(--c-book); }
 .sky-social[data-facet='music'] { --chip-c: var(--c-music); }
 
+/* Featured "post stars": one representative article per gate, rendered as a
+   thumbnail chip that orbits its door. Bigger than a social chip and
+   image-filled, so each door visibly anchors a real post. */
+.sky-post {
+  overflow: hidden;
+  padding: 0;
+  border-width: 2px;
+  background: color-mix(in srgb, var(--chip-c) 18%, var(--bg2));
+}
+.sky-post img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+.sky-post .sky-post-glyph {
+  font-size: calc(var(--chip-base) * var(--w, 1) * 0.5);
+  line-height: 1;
+  color: var(--chip-c);
+}
+.sky-post:hover { scale: 1.12; }
+
 /* JS enhancement: lift the chips out of flow and scatter them in the sky,
    sharing the canvas's coordinate box so JS-set left/top line up with the
    drawn links. The chip's transform stays put; drift rides the `translate`
