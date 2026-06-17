@@ -76,10 +76,16 @@ Quick rules:
   gates (`GATE_FACET` maps `book→fiction`, `everything→`all). Popularity lives in
   `src/data/post-popularity.json` (manual, keyed by `translationKey`; `_`-prefixed
   keys ignored) — **the manual JSON is the source of truth, refreshed only on demand,
-  never per-commit/cron.** `tools/fetch-popularity.mjs` (`npm run fetch-popularity`)
-  updates entries that carry a `links` map: Bluesky (no auth) + YouTube (needs
-  `YOUTUBE_API_KEY`); `score = manual + Σ(sources×WEIGHTS)` unless a numeric `pin`;
-  Typeshare/FB/X have no free API → hand-score. Stars render as `.sky-social.sky-post`
+  never per-commit/cron.** `tools/fetch-popularity.mjs` (`npm run fetch-popularity`):
+  the **no-flag run** (no API key needed) seeds missing entries, auto-discovers
+  YouTube videos (3 `CHANNELS` + both Bluesky feeds as a video index), scrapes each
+  video's public view count, matches it to a post **by title**, writes `sources.ytView`
+  (+`links.youtube`) and recomputes `score = manual + Σ(sources×WEIGHTS)` unless a
+  numeric `pin`. Flags: `--seed` (scaffold only), `--list` (standings only),
+  `--dry-run`, `--offline`. YouTube view count is the only real auto-signal —
+  Bluesky engagement is ~0 (used only for discovery), the blog has no analytics, and
+  Typeshare/FB/X have no free API → hand-score by editing `score`. Hand-edited
+  `manual`/`pin`/`score` survive re-runs. Stars render as `.sky-social.sky-post`
   chips so the constellation script is untouched. See `wiki/concepts/featured-stars.md`.
 - **Authoring is deterministic — never via a Claude skill.** Posts are
   written/translated in **WriterHelper** (sibling repo, a Python model→template→file

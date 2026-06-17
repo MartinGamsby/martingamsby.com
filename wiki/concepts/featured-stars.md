@@ -32,16 +32,36 @@ twin). Keys starting with `_` are ignored (there's a `_readme`). Entry shape:
 
 The site only reads `score`. Decision (Martin, 2026-06-16): **manual JSON is the
 source of truth, refreshed on demand by a script — never on commit / never on a
-cron.** `tools/fetch-popularity.mjs` (also `npm run fetch-popularity`) updates
-only entries that carry a `links` map:
+cron.** `tools/fetch-popularity.mjs` (`npm run fetch-popularity`):
 
-- **Bluesky** — public API, no auth (`public.api.bsky.app`): likes + reposts
-  from an `at://` uri or a `bsky.app/profile/<h>/post/<rkey>` URL. Verified live.
-- **YouTube** — Data API, needs `YOUTUBE_API_KEY` env var: views + likes.
-- It writes raw counts into `sources`, then `score = (manual||0) + Σ(sources ×
-  WEIGHTS)`, unless a numeric `pin` hard-overrides. Hand-scored entries (no
-  `links`) are left untouched. `--dry-run` previews.
-- **No clean free API:** Typeshare, Facebook, X/Twitter → score by hand.
+- **no flag (the default — "the works")**, all without any API key:
+  1. seeds a `{score:0,title}` entry for every post that lacks one;
+  2. **auto-discovers YouTube videos** — harvests video IDs from the three
+     `CHANNELS` (`@MartinGamsby`, `@MartinGamsbyEN`, the music channel) *and*
+     from both Bluesky feeds (which surface older videos the channel `/videos`
+     page, capped ~30, omits);
+  3. **scrapes each video's public view count** off the watch page
+     (`"viewCount":"…"`), and **matches it to a post by title** (normalized exact
+     or prefix either direction, ≥15-char guard — so the music-cover catalogue,
+     "Take On Me" etc., correctly does NOT match any post);
+  4. writes views into `sources.ytView` (+ `links.youtube`), then recomputes
+     `score = (manual||0) + Σ(sources × WEIGHTS)` unless a numeric `pin` overrides.
+     A post promoted by several videos (full + Short, FR + EN) sums their views.
+- `--seed` — just scaffold entries (idempotent). **Seeded all 131 posts 2026-06-16.**
+- `--list` — just print each gate's candidates with the current ★ star.
+- `--dry-run` — do the work, write nothing. `--offline` — skip the network.
+
+First real run (2026-06-16): 79 videos discovered, 9 matched → e.g. dev star
+`i-tried-using-a-microphone-on-my-phone` (198 views), music
+`just-a-few-hours-of-practice` (562), everything `piano-...` (86); book/physics
+have no companion video so they stay on the most-recent-with-image fallback.
+
+**Reality check:** Bluesky *engagement* is ~0 (likes/reposts) so it isn't scored —
+it's used only as an extra **video-discovery index** (Martin's Bluesky posts link
+his YouTube uploads). The blog has no analytics. So **YouTube view count is the
+only real auto-signal**; everything else is hand-scored by editing `score` (or
+`pin`). Hand-edited `manual`/`pin`/`score` survive re-runs. No clean free API for
+Typeshare/Facebook/X.
 
 ## Rendering
 
