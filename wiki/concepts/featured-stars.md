@@ -56,12 +56,21 @@ First real run (2026-06-16): 79 videos discovered, 9 matched → e.g. dev star
 `just-a-few-hours-of-practice` (562), everything `piano-...` (86); book/physics
 have no companion video so they stay on the most-recent-with-image fallback.
 
-**Reality check:** Bluesky *engagement* is ~0 (likes/reposts) so it isn't scored —
-it's used only as an extra **video-discovery index** (Martin's Bluesky posts link
-his YouTube uploads). The blog has no analytics. So **YouTube view count is the
-only real auto-signal**; everything else is hand-scored by editing `score` (or
-`pin`). Hand-edited `manual`/`pin`/`score` survive re-runs. No clean free API for
-Typeshare/Facebook/X.
+**Reality check.** Bluesky *engagement* is ~0 (likes/reposts) and the API exposes
+**no view/impression count at all** (post fields are only like/repost/reply/quote/
+bookmark — all 0), so Bluesky is used *only* as an extra **video-discovery index**
+(both FR + EN feeds; the FR feed `martin-gamsby` actually yields more videos than
+EN and drives most of the view totals — FR + EN uploads of the same post share a
+translationKey so their views sum). The "Music YouTube" channel
+(`UCX6KsvwOo2U2zrBumOL2bww`) is **excluded** — pure covers, no blog companions.
+
+Probed every other platform 2026-06-17 to see if YouTube's trick generalizes — it
+doesn't: **X/Twitter** is a JS shell (real data needs authed GraphQL, impressions
+behind login + anti-bot), **Facebook** is a login wall / Graph API, **Typeshare**
+is a client-rendered SPA with no data in the HTML and no public API. The blog has
+no analytics. So **YouTube view count is the only real auto-signal**; X / Facebook
+/ Typeshare / blog are hand-scored by editing `score` (or `pin`). Hand-edited
+`manual`/`pin`/`score` survive re-runs.
 
 ## Rendering
 

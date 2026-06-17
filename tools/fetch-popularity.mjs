@@ -33,12 +33,14 @@ const WEIGHTS = { ytView: 1, ytLike: 10, bskyLike: 3, bskyRepost: 5 };
 const GATE_FACET = { book: 'fiction', dev: 'dev', music: 'music', physics: 'physics', everything: null };
 const GATES = Object.keys(GATE_FACET);
 
-// Martin's YouTube channels (source of truth: src/data/socials.ts). The /videos
-// page HTML lists each upload's id; we scrape view counts per video, no API key.
+// YouTube channels whose uploads accompany blog posts (source of truth:
+// src/data/socials.ts). The /videos page HTML lists each upload's id; we scrape
+// view counts per video, no API key. Only list channels that mirror blog posts —
+// the "Music YouTube" channel (UCX6KsvwOo2U2zrBumOL2bww) is pure music/covers
+// with no blog companions, so it's intentionally left out (re-add if that changes).
 const CHANNELS = [
   'https://www.youtube.com/@MartinGamsby/videos',
   'https://www.youtube.com/@MartinGamsbyEN/videos',
-  'https://www.youtube.com/channel/UCX6KsvwOo2U2zrBumOL2bww/videos',
 ];
 const BSKY = 'https://public.api.bsky.app/xrpc';
 // Bluesky handles (src/data/socials.ts) — used only to discover MORE YouTube

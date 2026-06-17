@@ -78,7 +78,8 @@ Quick rules:
   keys ignored) — **the manual JSON is the source of truth, refreshed only on demand,
   never per-commit/cron.** `tools/fetch-popularity.mjs` (`npm run fetch-popularity`):
   the **no-flag run** (no API key needed) seeds missing entries, auto-discovers
-  YouTube videos (3 `CHANNELS` + both Bluesky feeds as a video index), scrapes each
+  YouTube videos (the 2 blog-mirroring `CHANNELS` — the music channel is excluded,
+  no blog companions — + both FR/EN Bluesky feeds as a video index), scrapes each
   video's public view count, matches it to a post **by title**, writes `sources.ytView`
   (+`links.youtube`) and recomputes `score = manual + Σ(sources×WEIGHTS)` unless a
   numeric `pin`. Flags: `--seed` (scaffold only), `--list` (standings only),
