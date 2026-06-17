@@ -34,19 +34,29 @@ The site only reads `score`. Decision (Martin, 2026-06-16): **manual JSON is the
 source of truth, refreshed on demand by a script — never on commit / never on a
 cron.** `tools/fetch-popularity.mjs` (`npm run fetch-popularity`):
 
-- **no flag (the default — "the works")**, all without any API key:
+- **no flag (the default — "the works")**:
   1. seeds a `{score:0,title}` entry for every post that lacks one;
-  2. **auto-discovers YouTube videos** — harvests video IDs from the three
-     `CHANNELS` (`@MartinGamsby`, `@MartinGamsbyEN`, the music channel) *and*
-     from both Bluesky feeds (which surface older videos the channel `/videos`
-     page, capped ~30, omits);
-  3. **scrapes each video's public view count** off the watch page
-     (`"viewCount":"…"`), and **matches it to a post by title** (normalized exact
-     or prefix either direction, ≥15-char guard — so the music-cover catalogue,
-     "Take On Me" etc., correctly does NOT match any post);
-  4. writes views into `sources.ytView` (+ `links.youtube`), then recomputes
-     `score = (manual||0) + Σ(sources × WEIGHTS)` unless a numeric `pin` overrides.
-     A post promoted by several videos (full + Short, FR + EN) sums their views.
+  2. **gathers YouTube videos** from the 2 blog `CHANNELS` (`@MartinGamsby`,
+     `@MartinGamsbyEN`; music channel excluded) *plus* both Bluesky feeds as a
+     supplemental index;
+  3. **matches each video to a post by title** (normalized exact or prefix either
+     direction, ≥15-char guard — so the music-cover catalogue, "Take On Me" etc.,
+     correctly does NOT match any post), with its view count;
+  4. writes views into `sources.ytView` (+`ytLike` in API mode, +`links.youtube`),
+     then recomputes `score = (manual||0) + Σ(sources × WEIGHTS)` unless a numeric
+     `pin`. A post promoted by several videos (full + Short, FR + EN) sums views.
+
+  **Two YouTube modes (this is the important bit):**
+  - **`YOUTUBE_API_KEY` set (recommended)** — YouTube Data API: `channels`→uploads
+    playlist, `playlistItems` paginates **every** upload, `videos.list` batches
+    stats 50-at-a-time (views **and** likes). A 60-video channel = ~2 requests.
+    Complete and reliable. *(Written but not yet run with a real key — verify.)*
+  - **no key** — best-effort: the channel `/videos` page only exposes ~30 recent
+    (the rest need an innertube continuation token, which is **flaky/
+    nondeterministic** — measured 30 one run, 59 the next), plus Bluesky-shared
+    videos, then **scrapes each watch page** for views. YouTube **rate-limits
+    (HTTP 429)** after a few dozen rapid requests → incomplete. **@MartinGamsby
+    actually has 59 uploads but only ~30 are seen this way.** Hence the key.
 - `--seed` — just scaffold entries (idempotent). **Seeded all 131 posts 2026-06-16.**
 - `--list` — just print each gate's candidates with the current ★ star.
 - `--dry-run` — do the work, write nothing. `--offline` — skip the network.
@@ -66,11 +76,19 @@ translationKey so their views sum). The "Music YouTube" channel
 
 Probed every other platform 2026-06-17 to see if YouTube's trick generalizes — it
 doesn't: **X/Twitter** is a JS shell (real data needs authed GraphQL, impressions
-behind login + anti-bot), **Facebook** is a login wall / Graph API, **Typeshare**
-is a client-rendered SPA with no data in the HTML and no public API. The blog has
-no analytics. So **YouTube view count is the only real auto-signal**; X / Facebook
-/ Typeshare / blog are hand-scored by editing `score` (or `pin`). Hand-edited
-`manual`/`pin`/`score` survive re-runs.
+behind login + anti-bot), **Typeshare** is a client-rendered SPA with no data in
+the HTML and no public API. **Facebook**: Martin has a Graph API token for a
+*business Page*, but a Page token is scoped to **that Page only** — it reads the
+Page's own posts + insights (incl. impressions/reach for those posts), NOT
+arbitrary profiles/posts; reading other pages' public content needs "Page Public
+Content Access" (app review + business verification), and personal profiles are
+off-limits. Martin's blog is shared on his **personal** profile
+(`facebook.com/martin.gamsby`), so the Page token only helps **if** blog content
+also lives on that business Page (then `/{page}/posts` + insights would give real
+reach). Otherwise it's no use here. The blog itself has no analytics. So **YouTube
+view count is the only real auto-signal**; X / Facebook / Typeshare / blog are
+hand-scored by editing `score` (or `pin`). Hand-edited `manual`/`pin`/`score`
+survive re-runs.
 
 ## Rendering
 

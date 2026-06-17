@@ -7,13 +7,20 @@
 //   npm run fetch-popularity -- --dry-run   # do everything but don't write the file
 //   npm run fetch-popularity -- --offline   # skip the network (seed + list only)
 //
-// WHAT THE DEFAULT RUN DOES (no flags), all without any API key:
+// WHAT THE DEFAULT RUN DOES (no flags):
 //   1. seeds a {score:0,title} entry for every post that doesn't have one;
-//   2. harvests video IDs from your YouTube channels (see CHANNELS), scrapes each
-//      video's public view count, and matches it to a post BY TITLE;
+//   2. gathers your YouTube videos + their view counts, and matches each to a post
+//      BY TITLE;
 //   3. writes the views into `sources.ytView` (+ `links.youtube`) and recomputes
 //      score = (manual||0) + Σ(sources × WEIGHTS), unless a numeric `pin` overrides;
 //   4. prints the standings. So "most viewed on YouTube" floats to each gate's star.
+//
+// TWO YOUTUBE MODES:
+//   • YOUTUBE_API_KEY set (recommended) — YouTube Data API: paginates EVERY upload
+//     and batches stats (views + likes), reliably and completely.
+//   • no key — best-effort scrape of the channel page (~30 recent) + Bluesky-shared
+//     videos; incomplete and YouTube rate-limits (429) after a few dozen requests.
+//   Get a free key: Google Cloud console → enable "YouTube Data API v3" → API key.
 // Posts with no matching video keep score 0 → fall back to most-recent-with-image.
 // Bluesky engagement is ~0 here so it's not auto-scored, but an explicit
 // `links.bluesky` is still fetched. Typeshare/FB/X have no free API → hand-score
@@ -51,12 +58,14 @@ const args = new Set(process.argv.slice(2));
 const dryRun = args.has('--dry-run');
 const offline = args.has('--offline');
 if (args.has('--help') || args.has('-h')) {
-  console.log('Usage: node tools/fetch-popularity.mjs [--list | --seed | --dry-run | --offline]\n' +
+  console.log('Usage: [YOUTUBE_API_KEY=…] node tools/fetch-popularity.mjs [--list | --seed | --dry-run | --offline]\n' +
     '  (no flags)  seed missing entries + auto-fetch YouTube views + print standings\n' +
     '  --list      print each gate\'s candidates and current ★ star\n' +
     '  --seed      scaffold an entry (score 0) for every post\n' +
     '  --dry-run   do the work but do not write the file\n' +
-    '  --offline   skip the network (seed + list only)');
+    '  --offline   skip the network (seed + list only)\n' +
+    '  Set YOUTUBE_API_KEY for complete, reliable coverage (all uploads + likes);\n' +
+    '  without it, YouTube is scraped best-effort (~30 recent + Bluesky, rate-limited).');
   process.exit(0);
 }
 
@@ -158,7 +167,10 @@ function list(posts) {
 }
 
 // --- network: discover + scrape YouTube views ----------------------------
-const getText = async (u) => (await fetch(u, { headers: { 'accept-language': 'en-US,en' } })).text();
+// A desktop UA matters: without it YouTube serves a lighter page that omits the
+// innertube key/continuation token we need to paginate a channel's full uploads.
+const UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36';
+const getText = async (u) => (await fetch(u, { headers: { 'accept-language': 'en-US,en', 'user-agent': UA } })).text();
 const getJson = async (u) => { const r = await fetch(u, { headers: { accept: 'application/json' } }); if (!r.ok) throw new Error(`HTTP ${r.status}`); return r.json(); };
 
 async function mapLimit(items, limit, fn) {
@@ -169,14 +181,42 @@ async function mapLimit(items, limit, fn) {
   return out;
 }
 const ytId = (u = '') => u.match(/(?:v=|youtu\.be\/|\/shorts\/|\/embed\/)([\w-]{11})/)?.[1];
-async function discoverVideoIds() {
+
+// Pull EVERY upload's id from a channel. The /videos page HTML only carries the
+// first ~30; the rest come from YouTube's internal "innertube" browse endpoint
+// via a continuation token (no API key — uses the public web key in the page).
+// Stops when a page adds no new ids (so a stray non-video continuation can't loop).
+// Video ids show up as "videoId" (classic renderers) or "contentId" (the newer
+// lockupViewModel grid the continuation returns) — capture both.
+const VID_RE = /"(?:videoId|contentId)":"([\w-]{11})"/g;
+async function channelVideoIds(url) {
   const ids = new Set();
-  // 1. each channel's /videos page (≈30 most recent uploads)
-  for (const u of CHANNELS) {
-    try { for (const m of (await getText(u)).matchAll(/"videoId":"([\w-]{11})"/g)) ids.add(m[1]); }
-    catch (e) { console.warn(`  ! channel ${u}: ${e.message}`); }
+  const html = await getText(url);
+  for (const m of html.matchAll(VID_RE)) ids.add(m[1]);
+  const key = html.match(/"INNERTUBE_API_KEY":"([^"]+)"/)?.[1];
+  const clientVersion = html.match(/"INNERTUBE_CONTEXT_CLIENT_VERSION":"([^"]+)"/)?.[1]
+    || html.match(/"clientVersion":"([\d.]+)"/)?.[1];
+  let token = html.match(/"continuationCommand":\{"token":"([^"]+)"/)?.[1];
+  for (let page = 0; token && key && clientVersion && page < 25; page++) {
+    let body;
+    try {
+      const r = await fetch(`https://www.youtube.com/youtubei/v1/browse?key=${key}`, {
+        method: 'POST', headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ context: { client: { clientName: 'WEB', clientVersion } }, continuation: token }),
+      });
+      body = await r.text();
+    } catch { break; }
+    const before = ids.size;
+    for (const m of body.matchAll(VID_RE)) ids.add(m[1]);
+    if (ids.size === before) break; // no new videos → done (ignore stray continuations)
+    token = body.match(/"continuationCommand":\{"token":"([^"]+)"/)?.[1];
   }
-  // 2. YouTube links Martin shared on Bluesky (reaches older videos the page omits)
+  return ids;
+}
+
+// YouTube video links Martin shared on Bluesky — supplements channel discovery.
+async function discoverBskyIds() {
+  const ids = new Set();
   for (const handle of BSKY_HANDLES) {
     try {
       const { did } = await getJson(`${BSKY}/com.atproto.identity.resolveHandle?handle=${handle}`);
@@ -184,16 +224,18 @@ async function discoverVideoIds() {
       for (let page = 0; page < 6; page++) {
         const res = await getJson(`${BSKY}/app.bsky.feed.getAuthorFeed?actor=${did}&limit=100&filter=posts_no_replies${cursor ? `&cursor=${cursor}` : ''}`);
         for (const it of res.feed || []) {
-          const uri = it.post?.embed?.external?.uri || it.post?.record?.embed?.external?.uri;
-          const id = ytId(uri || '');
+          const id = ytId(it.post?.embed?.external?.uri || it.post?.record?.embed?.external?.uri || '');
           if (id) ids.add(id);
         }
         if (!(cursor = res.cursor)) break;
       }
     } catch (e) { console.warn(`  ! bluesky ${handle}: ${e.message}`); }
   }
-  return [...ids];
+  return ids;
 }
+
+// No-key path: scrape one video's view count off its watch page. Best-effort —
+// YouTube rate-limits (HTTP 429) after a few dozen rapid requests.
 async function scrapeVideo(id) {
   try {
     const html = await getText(`https://www.youtube.com/watch?v=${id}`);
@@ -202,6 +244,43 @@ async function scrapeVideo(id) {
     if (!Number.isFinite(views) || !title) return null;
     return { id, title: decode(title), views };
   } catch { return null; }
+}
+
+// --- YouTube Data API path (set YOUTUBE_API_KEY) --------------------------
+// The robust route: paginates EVERY upload and batches stats 50-at-a-time, so a
+// 60-video channel is ~2 requests (no scraping, no rate-limit, includes likes).
+const YT = 'https://www.googleapis.com/youtube/v3';
+async function channelUploadsApi(key) {
+  const ids = [];
+  for (const u of CHANNELS) {
+    try {
+      const handle = u.match(/@([^/]+)/)?.[1];
+      const cid = u.match(/channel\/(UC[\w-]+)/)?.[1];
+      const ch = await getJson(`${YT}/channels?part=contentDetails&${handle ? `forHandle=${handle}` : `id=${cid}`}&key=${key}`);
+      const uploads = ch.items?.[0]?.contentDetails?.relatedPlaylists?.uploads;
+      if (!uploads) { console.warn(`  ! no uploads playlist for ${u}`); continue; }
+      let pageToken;
+      do {
+        const pl = await getJson(`${YT}/playlistItems?part=contentDetails&maxResults=50&playlistId=${uploads}${pageToken ? `&pageToken=${pageToken}` : ''}&key=${key}`);
+        for (const it of pl.items || []) ids.push(it.contentDetails.videoId);
+        pageToken = pl.nextPageToken;
+      } while (pageToken);
+    } catch (e) { console.warn(`  ! channel API ${u}: ${e.message}`); }
+  }
+  return ids;
+}
+async function videoStatsApi(key, ids) {
+  const out = [];
+  for (let i = 0; i < ids.length; i += 50) {
+    try {
+      const res = await getJson(`${YT}/videos?part=snippet,statistics&id=${ids.slice(i, i + 50).join(',')}&key=${key}`);
+      for (const it of res.items || []) out.push({
+        id: it.id, title: decode(it.snippet.title),
+        views: Number(it.statistics?.viewCount || 0), likes: Number(it.statistics?.likeCount || 0),
+      });
+    } catch (e) { console.warn(`  ! videos API: ${e.message}`); }
+  }
+  return out;
 }
 async function fetchBsky(link) {
   let atUri = link.trim();
@@ -240,25 +319,46 @@ if (args.has('--seed')) {
   process.exit(0);
 }
 
-let matched = 0, scraped = 0;
+const ytKey = process.env.YOUTUBE_API_KEY;
+let matched = 0, videoCount = 0;
 if (!offline) {
-  const ids = await discoverVideoIds();
-  console.log(`Discovered ${ids.length} videos across your channels; scraping view counts…`);
-  const vids = (await mapLimit(ids, 8, scrapeVideo)).filter(Boolean);
-  scraped = vids.length;
+  const bskyIds = await discoverBskyIds();
+  let videos; // [{ id, title, views, likes }]
+  if (ytKey) {
+    const ids = [...new Set([...(await channelUploadsApi(ytKey)), ...bskyIds])];
+    console.log(`YouTube Data API: ${ids.length} videos across your channels; fetching stats…`);
+    videos = await videoStatsApi(ytKey, ids);
+  } else {
+    const chIds = new Set();
+    for (const u of CHANNELS) {
+      try { for (const id of await channelVideoIds(u)) chIds.add(id); }
+      catch (e) { console.warn(`  ! channel ${u}: ${e.message}`); }
+    }
+    const ids = [...new Set([...chIds, ...bskyIds])];
+    console.log(`Discovered ${ids.length} videos (no API key — scraping view counts, best-effort)…`);
+    videos = (await mapLimit(ids, 5, scrapeVideo)).filter(Boolean);
+    if (videos.length < ids.length) {
+      console.warn(`  (only ${videos.length}/${ids.length} scraped — YouTube rate-limits without a key. ` +
+        `Set YOUTUBE_API_KEY for complete, reliable results + likes.)`);
+    }
+  }
+  videoCount = videos.length;
+
   const index = titleIndex(posts);
-  const viewsByTk = {}, urlByTk = {};
-  for (const v of vids) {
+  const viewsByTk = {}, likesByTk = {}, urlByTk = {};
+  for (const v of videos) {
     const tk = matchTitle(v.title, index);
     if (!tk) continue;
     matched++;
     viewsByTk[tk] = (viewsByTk[tk] || 0) + v.views;
+    if (v.likes) likesByTk[tk] = (likesByTk[tk] || 0) + v.likes;
     if (!urlByTk[tk]) urlByTk[tk] = `https://youtu.be/${v.id}`;
     console.log(`  ✓ ${String(v.views).padStart(6)} views → ${tk}`);
   }
-  for (const [tk, views] of Object.entries(viewsByTk)) {
+  for (const tk of Object.keys(viewsByTk)) {
     const e = (data[tk] ||= { score: 0 });
-    e.sources = { ...(e.sources || {}), ytView: views };
+    e.sources = { ...(e.sources || {}), ytView: viewsByTk[tk] };
+    if (likesByTk[tk]) e.sources.ytLike = likesByTk[tk];
     if (!e.links?.youtube) e.links = { ...(e.links || {}), youtube: urlByTk[tk] };
   }
   // any explicit Bluesky links the user added by hand
@@ -271,8 +371,8 @@ if (!offline) {
 
 const changed = recomputeScores();
 console.log(
-  `\n${seeded} seeded · ${scraped} videos scraped · ${matched} matched to posts · ${changed} scores updated.` +
-  (offline ? '  (offline)' : ''),
+  `\n${seeded} seeded · ${videoCount} videos${ytKey ? '' : ' scraped'} · ${matched} matched to posts · ${changed} scores updated.` +
+  (offline ? '  (offline)' : ytKey ? '  (YouTube Data API)' : ''),
 );
 if ((seeded || changed) && !dryRun) { write(); console.log(`Wrote ${path.relative(root, FILE)}.`); }
 else if (seeded || changed) console.log('Dry run — no file written.');

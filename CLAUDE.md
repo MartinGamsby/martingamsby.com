@@ -77,13 +77,16 @@ Quick rules:
   `src/data/post-popularity.json` (manual, keyed by `translationKey`; `_`-prefixed
   keys ignored) — **the manual JSON is the source of truth, refreshed only on demand,
   never per-commit/cron.** `tools/fetch-popularity.mjs` (`npm run fetch-popularity`):
-  the **no-flag run** (no API key needed) seeds missing entries, auto-discovers
-  YouTube videos (the 2 blog-mirroring `CHANNELS` — the music channel is excluded,
-  no blog companions — + both FR/EN Bluesky feeds as a video index), scrapes each
-  video's public view count, matches it to a post **by title**, writes `sources.ytView`
+  the **no-flag run** seeds missing entries, gathers YouTube videos (the 2
+  blog-mirroring `CHANNELS` — music channel excluded — + both FR/EN Bluesky feeds
+  as a supplemental index), matches each to a post **by title**, writes `sources.ytView`
   (+`links.youtube`) and recomputes `score = manual + Σ(sources×WEIGHTS)` unless a
-  numeric `pin`. Flags: `--seed` (scaffold only), `--list` (standings only),
-  `--dry-run`, `--offline`. YouTube view count is the only real auto-signal —
+  numeric `pin`. **Two YouTube modes:** with `YOUTUBE_API_KEY` it uses the Data API
+  (paginates EVERY upload + batched views/likes — complete, reliable); without, it
+  scrapes best-effort (~30 recent from the channel page + Bluesky-shared) and
+  YouTube **rate-limits (429)** on repeated runs — so a key is recommended. Flags:
+  `--seed` (scaffold only), `--list` (standings only), `--dry-run`, `--offline`.
+  YouTube view count is the only real auto-signal —
   Bluesky engagement is ~0 (used only for discovery), the blog has no analytics, and
   Typeshare/FB/X have no free API → hand-score by editing `score`. Hand-edited
   `manual`/`pin`/`score` survive re-runs. Stars render as `.sky-social.sky-post`
