@@ -63,19 +63,22 @@ async function collectAliasTargets(blogDir) {
   return out;
 }
 
+// The JS `location.replace` in <head> runs before the body paints, so the redirect
+// is instant and invisible (no "this page has moved" flash) and leaves no history
+// entry (Back returns to where the visitor came from). The meta-refresh is the no-JS
+// fallback; the body is empty so nothing shows in the split second either takes.
 const stub = (target, canonical) => `<!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta http-equiv="refresh" content="0; url=${target}">
   <link rel="canonical" href="${canonical}">
   <meta name="robots" content="noindex, follow">
+  <script>location.replace(${JSON.stringify(target)} + location.search + location.hash)</script>
+  <meta http-equiv="refresh" content="0; url=${target}">
   <title>Redirecting…</title>
 </head>
-<body>
-  <p>This page has moved to <a href="${target}">${target}</a>.</p>
-</body>
+<body></body>
 </html>
 `;
 
