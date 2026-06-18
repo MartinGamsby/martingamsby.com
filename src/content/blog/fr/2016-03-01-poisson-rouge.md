@@ -4,7 +4,7 @@ date: 2016-03-01
 translationKey: 2016-03-01-goldfish
 facets: [fiction]
 aliases: [poisson-rouge]
-tags: [Guide Pour,Interverti (Roman),Fiction,Djosh Sho,Gamsblurb]
+tags: [Guide Pour,Interverti (Roman),Djosh Sho,Gamsblurb]
 ---
 
 Tout le monde semble s’entendre sur le fait que les poissons rouges sont bêtes et qu’ils n’ont que 3 secondes de mémoire. Ces gens seraient déçus de savoir le temps mémoire des humains, à peine plus élevé. 

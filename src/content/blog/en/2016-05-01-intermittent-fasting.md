@@ -3,8 +3,8 @@ title: "Intermittent Fasting"
 date: 2016-05-01
 translationKey: 2016-05-01-intermittent-fasting
 facets: [fiction]
-aliases: [intermittent-fasting]
-tags: [Guide For,Interverted (Novel),Fiction,Djosh Sho,Gamsblurb]
+aliases: [fasting]
+tags: [Guidance For,Interverted (Novel),Fiction,Djosh Sho,Gamsblurb]
 ---
 
 The food industry benefits if you eat. Often. This industry is owned by the only two companies that really exist today, who control everything with their products and marketing. They decide what you eat and when you eat it. Not what is best for you, but rather what is best for their wallet.
@@ -13,7 +13,7 @@ When I realized this, I did some research and then I discovered something amazin
 
 Counterintuitively, fasting for one meal, every other day, can have a beneficial effect on the human body. Many people already do it without realizing it, for example when they have “brunch” on the weekend. Obviously, you don’t have to become anorexic. You have to eat more than usual the meal that is the fast and not exceed this magic number of one meal every two days. Exercising every day should also be included with this practice.
 
-> (FICTION) Guide for: * Intermittent fasting * : from the novel **Interverti**
+> (FICTION) Guidance for: * Intermittent fasting * : from the novel **Interverti**
 
 ---
 

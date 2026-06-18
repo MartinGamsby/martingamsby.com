@@ -4,7 +4,7 @@ date: 2016-11-01
 translationKey: 2016-11-01-personalities
 facets: [fiction]
 aliases: [personalities]
-tags: [Guide For,Interverted (Novel),Fiction,Djosh Sho,Gamsblurb]
+tags: [Guidance For,Interverted (Novel),Fiction,Djosh Sho,Gamsblurb]
 ---
 
 On the Internet, there are 4 types of personalities.
@@ -13,7 +13,7 @@ On the Internet, there are 4 types of personalities.
 3. "Altruists": sell real value, would give if they didn't need money to survive... Some don't ask for it anyway.
 4. Trolls: Seem to enjoy annoying people.
 
-> (FICTION) Guide for: * Personalities * : from the novel **Interverti**
+> (FICTION) Guidance for: * Personalities * : from the novel **Interverti**
 
 ---
 
