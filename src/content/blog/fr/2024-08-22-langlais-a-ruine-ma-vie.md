@@ -3,7 +3,7 @@ title: "L'anglais a ruiné ma vie"
 date: 2024-08-22
 translationKey: 2024-08-22-english-ruined-my-life
 facets: [music]
-tags: [Écrire,Créer,Musique,YouTube,Anglais,Gamsblurb]
+tags: [Écriture,Créer,Musique,YouTube,Anglais,Gamsblurb]
 image: /assets/posts/2024-08-22-langlais-a-ruine-ma-vie.header.webp
 imageThumb: /assets/posts/2024-08-22-langlais-a-ruine-ma-vie.thumb.webp
 ---

@@ -3,7 +3,7 @@ title: "Avez vous peur ?"
 date: 2009-11-22
 translationKey: 2009-11-22-are-you-afraid
 facets: [dev, music]
-tags: [Gamsblog,Confiance en soi,Motivation,Développement personnel,Apprentissage,Estime de soi,Timidité,Français,Piano,Musique,Gamsblurb]
+tags: [Gamsblog,Confiance en soi,Motivation,Développement Personnel,Apprentissage,Estime de soi,Timidité,Français,Piano,Musique,Gamsblurb]
 image: /assets/posts/2009-11-22-avez-vous-peur.header.webp
 imageThumb: /assets/posts/2009-11-22-avez-vous-peur.thumb.webp
 ---

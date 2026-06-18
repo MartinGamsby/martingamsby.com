@@ -3,7 +3,7 @@ title: "Type 3 diabetes? You probably have it"
 date: 2024-09-21
 translationKey: 2024-09-21-type-3-diabetes-you-probably-have-it
 facets: [physics]
-tags: [Alzheimer,Fun Fact,Food,Science,Gamsblurb]
+tags: [Alzheimer,FunFact,Food,Science,Did You Know,Gamsblurb]
 image: /assets/posts/2024-09-21-type-3-diabetes-you-probably-have-it.header.webp
 imageThumb: /assets/posts/2024-09-21-type-3-diabetes-you-probably-have-it.thumb.webp
 ---

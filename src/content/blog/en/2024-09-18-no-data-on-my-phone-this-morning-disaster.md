@@ -3,7 +3,7 @@ title: "No data on my phone this morning, disaster?"
 date: 2024-09-18
 translationKey: 2024-09-18-no-data-on-my-phone-this-morning-disaster
 facets: [dev]
-tags: [Mental Health,Personal Development,One at a Time,Habits,Meditation,Technology,Gamsblurb]
+tags: [Mental Health,Personal Development,One At A Time,Habits,Meditation,Technology,Gamsblurb]
 image: /assets/posts/2024-09-18-no-data-on-my-phone-this-morning-disaster.header.webp
 imageThumb: /assets/posts/2024-09-18-no-data-on-my-phone-this-morning-disaster.thumb.webp
 ---

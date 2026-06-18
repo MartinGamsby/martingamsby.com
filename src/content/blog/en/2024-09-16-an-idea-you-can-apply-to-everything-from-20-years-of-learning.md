@@ -3,7 +3,7 @@ title: "An idea you can apply to everything, from 20 years of learning"
 date: 2024-09-16
 translationKey: 2024-09-16-an-idea-you-can-apply-to-everything-from-20-years-of-learning
 facets: [dev]
-tags: [Personal Development,Habits,Health,One At A Time,Fitness,Finances,Decluttering,Motivation,Life Hacks,Gamsblurb]
+tags: [Personal Development,Habits,Health,One At A Time,Fitness,Finance,Decluttering,Motivation,Life Hacks,Gamsblurb]
 image: /assets/posts/2024-09-16-an-idea-you-can-apply-to-everything-from-20-years-of-learning.header.webp
 imageThumb: /assets/posts/2024-09-16-an-idea-you-can-apply-to-everything-from-20-years-of-learning.thumb.webp
 ---

@@ -3,7 +3,7 @@ title: "Start to finish"
 date: 2009-11-29
 translationKey: 2009-11-29-start-to-finish
 facets: [dev]
-tags: [First step,Goal,Ambition,Confidence,Growth,Optimism,Momentum,Personal Development,Gamsblog,Gamsblurb]
+tags: [First step,Goal,Ambition,Confidence,Growth,Optimism,Momentum,Personal Development,Gamsblog,Priorities,Gamsblurb]
 image: /assets/posts/2009-11-29-start-to-finish.header.webp
 imageThumb: /assets/posts/2009-11-29-start-to-finish.thumb.webp
 ---

@@ -3,7 +3,7 @@ title: "The Musical Experience - Week 2"
 date: 2024-11-11
 translationKey: 2024-11-11-the-musical-experience-week-2
 facets: [music]
-tags: [VideoGame,Music,DevLog,Gamsblurb]
+tags: [Video Game,Music,DevLog,Gamsblurb]
 ---
 
 Second week of part-time coding, the game can now generate semi-random music.

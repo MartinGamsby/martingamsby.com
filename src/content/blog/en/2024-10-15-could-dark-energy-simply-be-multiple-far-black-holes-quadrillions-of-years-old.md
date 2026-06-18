@@ -3,7 +3,7 @@ title: "Could dark energy simply be multiple (far) black holes, quadrillions of 
 date: 2024-10-15
 translationKey: 2024-10-15-could-dark-energy-simply-be-multiple-far-black-holes-quadrillions-of-years-old
 facets: [physics]
-tags: [Science,Trou Noir,Astrophysique,Énergie Sombre,Big Bang,Supernova,Gravité,Radiation de Hawking,Théorie,Gamsblurb]
+tags: [Science,Black Hole,Astrophysics,Dark Energy,Big Bang,Supernova,Gravity,Hawking Radiation,Theory,Gamsblurb]
 image: /assets/posts/2024-10-15-could-dark-energy-simply-be-multiple-far-black-holes-quadrillions-of-years-old.header.webp
 imageThumb: /assets/posts/2024-10-15-could-dark-energy-simply-be-multiple-far-black-holes-quadrillions-of-years-old.thumb.webp
 ---

@@ -3,7 +3,7 @@ title: "Commencez pour finir"
 date: 2009-11-29
 translationKey: 2009-11-29-start-to-finish
 facets: [dev]
-tags: [Première étape,Objectifs,Ambition,Confiance,Croissance,Optimisme,Dynamisme,Développement Personnel,Gamsblog,Gamsblurb]
+tags: [Première étape,Priorités,Ambition,Confiance,Croissance,Optimisme,Dynamisme,Développement Personnel,Gamsblog,Gamsblurb]
 image: /assets/posts/2009-11-29-commencez-pour-finir.header.webp
 imageThumb: /assets/posts/2009-11-29-commencez-pour-finir.thumb.webp
 ---

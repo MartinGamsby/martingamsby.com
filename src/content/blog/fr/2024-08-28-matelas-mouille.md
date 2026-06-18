@@ -3,7 +3,7 @@ title: "Matelas mouillé"
 date: 2024-08-28
 translationKey: 2024-08-28-wet-mattress
 facets: [ideas]
-tags: [Matelas,FunFact,Virelangue,Le Saviez-Vous,FunFact,Gamsblurb]
+tags: [Matelas,FunFact,Virelangue,Le Saviez-Vous,Gamsblurb]
 image: /assets/posts/2024-08-28-matelas-mouille.header.webp
 imageThumb: /assets/posts/2024-08-28-matelas-mouille.thumb.webp
 ---

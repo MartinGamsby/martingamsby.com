@@ -3,7 +3,7 @@ title: "Gandalf m'a réconcilié avec la vie"
 date: 2024-08-27
 translationKey: 2024-08-27-gandalf-reconciled-me-with-life
 facets: [ideas]
-tags: [Magie,Myers-Briggs,Personnalités,Raison d'Être,Purpose,Ikigai,Gamsblurb]
+tags: [Magie,Myers-Briggs,Personnalités,Raison d'Être,Ikigai,Gamsblurb]
 image: /assets/posts/2024-08-27-gandalf-ma-reconcilie-avec-la-vie.header.webp
 imageThumb: /assets/posts/2024-08-27-gandalf-ma-reconcilie-avec-la-vie.thumb.webp
 ---

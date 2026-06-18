@@ -3,7 +3,7 @@ title: "Upside down organisation"
 date: 2010-03-07
 translationKey: 2010-03-07-upside-down-organisation
 facets: [ideas]
-tags: [Gamsblog,Organization,Learn,Gamsblurb]
+tags: [Gamsblog,Organization,Learning,Gamsblurb]
 image: /assets/posts/2010-03-07-upside-down-organisation.header.webp
 imageThumb: /assets/posts/2010-03-07-upside-down-organisation.thumb.webp
 ---

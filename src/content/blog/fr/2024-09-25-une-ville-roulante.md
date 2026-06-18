@@ -3,7 +3,7 @@ title: "Une ville roulante"
 date: 2024-09-25
 translationKey: 2024-09-25-a-moving-city
 facets: [fiction]
-tags: [Urbanisme,Fiction,Éducation,Entreprises,Gamsblurb]
+tags: [Urbanisme,Fiction,Éducation,Entreprise,Gamsblurb]
 image: /assets/posts/2024-09-25-une-ville-roulante.header.webp
 imageThumb: /assets/posts/2024-09-25-une-ville-roulante.thumb.webp
 ---

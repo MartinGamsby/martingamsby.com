@@ -3,7 +3,7 @@ title: "(NOT) Décrochez de l'école, utilisez Google à la place?"
 date: 2024-09-10
 translationKey: 2024-09-10-not-drop-out-of-school-use-google-instead
 facets: [dev]
-tags: [École,Apprendre,Développement Logiciel,Programmation,Travail,Gamsblurb]
+tags: [École,Apprentissage,Développement Logiciel,Programmation,Travail,Gamsblurb]
 image: /assets/posts/2024-09-10-not-decrochez-de-lecole-utilisez-google-a-la-place.header.webp
 imageThumb: /assets/posts/2024-09-10-not-decrochez-de-lecole-utilisez-google-a-la-place.thumb.webp
 ---

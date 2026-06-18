@@ -3,7 +3,7 @@ title: "Pourquoi le ciel est bleu? (Et tout le reste)"
 date: 2024-09-08
 translationKey: 2024-09-08-why-is-the-sky-blue-and-everything-else
 facets: [physics]
-tags: [Parent,Éducation,Science,Enfant,Curiosité,Apprendre,Gamsblurb]
+tags: [Parent,Éducation,Science,Enfant,Curiosité,Apprentissage,Gamsblurb]
 image: /assets/posts/2024-09-08-pourquoi-le-ciel-est-bleu-et-tout-le-reste.header.webp
 imageThumb: /assets/posts/2024-09-08-pourquoi-le-ciel-est-bleu-et-tout-le-reste.thumb.webp
 ---

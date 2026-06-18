@@ -3,7 +3,7 @@ title: "English ruined my life"
 date: 2024-08-22
 translationKey: 2024-08-22-english-ruined-my-life
 facets: [music]
-tags: [Write,Create,Music,YouTube,English,Gamsblurb]
+tags: [Writing,Create,Music,YouTube,English,Gamsblurb]
 image: /assets/posts/2024-08-22-english-ruined-my-life.header.webp
 imageThumb: /assets/posts/2024-08-22-english-ruined-my-life.thumb.webp
 ---

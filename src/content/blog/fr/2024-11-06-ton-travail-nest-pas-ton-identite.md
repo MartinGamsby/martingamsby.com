@@ -3,7 +3,7 @@ title: "Ton travail n'est pas ton identité"
 date: 2024-11-06
 translationKey: 2024-11-06-your-job-is-not-your-identity
 facets: [ideas]
-tags: [Identité,croissance,perspective,Gamsblurb]
+tags: [Identité,Croissance,Perspective,Gamsblurb]
 ---
 
 - Être grand n'est pas une identité

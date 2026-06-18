@@ -3,7 +3,7 @@ title: "Parfois, prendre soin de soi, c'est faire ce que vous remettez à plus t
 date: 2025-02-03
 translationKey: 2025-02-03-self-care-isnt-what-you-think-stop-lying-to-yourself
 facets: [ideas]
-tags: [Finance,Santé,Soin Personnel,Santé Mentale,Productivité,Stress,Relaxation,Gamsblurb]
+tags: [Finance,Santé,Soins Personnels,Santé Mentale,Productivité,Stress,Relaxation,Gamsblurb]
 image: /assets/posts/2025-02-03-parfois-prendre-soin-de-soi-cest-faire-ce-que-vous-remettez-a-plus-tard-v2.header.webp
 imageThumb: /assets/posts/2025-02-03-parfois-prendre-soin-de-soi-cest-faire-ce-que-vous-remettez-a-plus-tard-v2.thumb.webp
 ---

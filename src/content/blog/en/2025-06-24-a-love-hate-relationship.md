@@ -3,7 +3,7 @@ title: "A love-hate relationship?"
 date: 2025-06-24
 translationKey: 2025-06-24-a-love-hate-relationship
 facets: [dev]
-tags: [Programming,Code,Software Development,Learn,C++,Humor,Personal Development,Personalities,Gamsblurb]
+tags: [Programming,Code,Software Development,Learning,C++,Humor,Personal Development,Personalities,Gamsblurb]
 image: /assets/posts/2025-06-24-a-love-hate-relationship.header.webp
 imageThumb: /assets/posts/2025-06-24-a-love-hate-relationship.thumb.webp
 ---

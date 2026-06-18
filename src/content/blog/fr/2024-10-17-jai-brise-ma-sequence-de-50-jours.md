@@ -3,7 +3,7 @@ title: "J'ai brisé ma séquence de 50 jours"
 date: 2024-10-17
 translationKey: 2024-10-17-i-broke-my-50-day-streak
 facets: [dev]
-tags: [Motivation,Persévérance,Écriture,Habitudes,Résilience,Progrès,Détermination,Succès,Défi,Inspiration,Santé,Recherche,Développement personnel,Gamsblurb]
+tags: [Motivation,Persévérance,Écriture,Habitudes,Résilience,Progrès,Détermination,Succès,Défi,Inspiration,Santé,Recherche,Développement Personnel,Gamsblurb]
 ---
 
 Hier, je n'ai pas écrit.

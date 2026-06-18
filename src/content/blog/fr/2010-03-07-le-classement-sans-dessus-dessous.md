@@ -3,7 +3,7 @@ title: "Le classement sans dessus dessous"
 date: 2010-03-07
 translationKey: 2010-03-07-upside-down-organisation
 facets: [ideas]
-tags: [Gamsblog,Organisation,Apprendre,Gamsblurb]
+tags: [Gamsblog,Organisation,Apprentissage,Gamsblurb]
 image: /assets/posts/2010-03-07-le-classement-sans-dessus-dessous.header.webp
 imageThumb: /assets/posts/2010-03-07-le-classement-sans-dessus-dessous.thumb.webp
 ---

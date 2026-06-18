@@ -3,7 +3,7 @@ title: "Alzheimer's can be prevented"
 date: 2024-09-01
 translationKey: 2024-09-01-alzheimers-can-be-prevented
 facets: [ideas]
-tags: [Alzheimer's,Health,Exercise,Sleep,Diet,Did You Know,Gamsblurb]
+tags: [Alzheimer's,Health,Exercise,Sleep,Diet,Did You Know,Food,Gamsblurb]
 image: /assets/posts/2024-09-01-alzheimers-can-be-prevented.header.webp
 imageThumb: /assets/posts/2024-09-01-alzheimers-can-be-prevented.thumb.webp
 ---

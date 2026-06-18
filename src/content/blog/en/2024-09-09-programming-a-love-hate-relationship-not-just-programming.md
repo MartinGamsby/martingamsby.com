@@ -3,7 +3,7 @@ title: "Programming, a love-hate relationship? (Not just programming)"
 date: 2024-09-09
 translationKey: 2024-09-09-programming-a-love-hate-relationship-not-just-programming
 facets: [dev]
-tags: [Programming,Code,Software Development,Learn,C++,Humor,Personal Development,Personalities,Gamsblurb]
+tags: [Programming,Code,Software Development,Learning,C++,Humor,Personal Development,Personalities,Gamsblurb]
 image: /assets/posts/2024-09-09-programming-a-love-hate-relationship-not-just-programming.header.webp
 imageThumb: /assets/posts/2024-09-09-programming-a-love-hate-relationship-not-just-programming.thumb.webp
 ---

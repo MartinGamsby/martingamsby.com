@@ -3,7 +3,7 @@ title: "100 jours avant le 1er janvier"
 date: 2024-09-23
 translationKey: 2024-09-23-100-days-until-january-1st
 facets: [dev]
-tags: [Développement personnel,habitudes,motivation,productivité,Gamsblurb]
+tags: [Développement Personnel,Habitudes,Motivation,Productivité,Gamsblurb]
 image: /assets/posts/2024-09-23-100-jours-avant-le-1er-janvier.header.webp
 imageThumb: /assets/posts/2024-09-23-100-jours-avant-le-1er-janvier.thumb.webp
 ---

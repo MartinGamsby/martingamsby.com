@@ -3,7 +3,7 @@ title: "AI for president? (hear me out)"
 date: 2024-09-15
 translationKey: 2024-09-15-ai-for-president-hear-me-out
 facets: [dev]
-tags: [Artificial Intelligence,AI,Politics,Flight,One At A Time,Gamsblurb]
+tags: [Artificial Intelligence,Politics,Flight,One At A Time,Gamsblurb]
 image: /assets/posts/2024-09-15-ai-for-president-hear-me-out.header.webp
 imageThumb: /assets/posts/2024-09-15-ai-for-president-hear-me-out.thumb.webp
 ---

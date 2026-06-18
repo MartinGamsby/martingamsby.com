@@ -3,7 +3,7 @@ title: "Wow, c'est la moisissure?"
 date: 2025-07-20
 translationKey: 2025-07-20-wow-it-might-be-mold
 facets: [ideas]
-tags: [Gamsblur,moisissure,santé]
+tags: [moisissure,Santé,Gamsblurb]
 ---
 
 Je reviens de vacances et j'ai les symptômes neurologiques que j'ai d'habitude, du gluten.

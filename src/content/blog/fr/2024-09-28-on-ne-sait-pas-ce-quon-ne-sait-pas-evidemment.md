@@ -3,7 +3,7 @@ title: "On ne sait pas ce qu'on ne sait pas (évidemment)"
 date: 2024-09-28
 translationKey: 2024-09-28-you-dont-know-what-you-dont-know-obviously
 facets: [ideas]
-tags: [Santé,Alimentation,Sommeil,Forme,Gym,Gamsblurb]
+tags: [Santé,Alimentation,Sommeil,Fitness,Gym,Gamsblurb]
 image: /assets/posts/2024-09-28-on-ne-sait-pas-ce-quon-ne-sait-pas-evidemment.header.webp
 imageThumb: /assets/posts/2024-09-28-on-ne-sait-pas-ce-quon-ne-sait-pas-evidemment.thumb.webp
 ---

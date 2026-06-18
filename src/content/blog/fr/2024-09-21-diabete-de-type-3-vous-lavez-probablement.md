@@ -3,7 +3,7 @@ title: "Diabète de type 3 ? Vous l'avez probablement"
 date: 2024-09-21
 translationKey: 2024-09-21-type-3-diabetes-you-probably-have-it
 facets: [physics]
-tags: [Alzheimer,Le Saviez-Vous,Allimentation,Science,Gamsblurb]
+tags: [Alzheimer,Le Saviez-Vous,Alimentation,Science,FunFact,Gamsblurb]
 image: /assets/posts/2024-09-21-diabete-de-type-3-vous-lavez-probablement.header.webp
 imageThumb: /assets/posts/2024-09-21-diabete-de-type-3-vous-lavez-probablement.thumb.webp
 ---

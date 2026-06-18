@@ -3,7 +3,7 @@ title: "Everything beautiful and good that men have done, they have built with t
 date: 2024-10-18
 translationKey: 2024-10-18-everything-beautiful-and-good-that-men-have-done-they-have-built-with-their-dreams
 facets: [ideas]
-tags: [Quote]
+tags: [Quote,Gamsblurb]
 ---
 
 ---

@@ -3,7 +3,7 @@ title: "J'ai commencé à coder un jeu vidéo"
 date: 2024-10-28
 translationKey: 2024-10-28-i-started-coding-a-video-game
 facets: [dev]
-tags: [Motivation,Passion,Projet,Code,Jeu,Priorités,Enfants,Écrire,Réflexion,Gamsblurb]
+tags: [Motivation,Passion,Projet,Code,Jeu,Priorités,Enfant,Écriture,Réflexion,Gamsblurb]
 ---
 
 Ça fait des années que j'y pense.

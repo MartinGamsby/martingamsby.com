@@ -3,7 +3,7 @@ title: "Être parent, c'est facile"
 date: 2024-10-02
 translationKey: 2024-10-02-being-a-parent-is-easy
 facets: [ideas]
-tags: [Parentalité,Santé mentale,Soins personnels,Priorités,Gamsblurb]
+tags: [Parentalité,Santé Mentale,Soins Personnels,Priorités,Gamsblurb]
 ---
 
 Être parent n'est pas difficile en soi.

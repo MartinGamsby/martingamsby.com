@@ -3,7 +3,7 @@ title: "The BIG advantage of school"
 date: 2010-02-07
 translationKey: 2010-02-07-the-big-advantage-of-school
 facets: [ideas]
-tags: [School,Learn,One at a time,Gamsblog,Gamsblurb]
+tags: [School,Learning,One At A Time,Gamsblog,Gamsblurb]
 ---
 
 I said bad things about school before, but there is not only bad in the school system, quite the contrary.
