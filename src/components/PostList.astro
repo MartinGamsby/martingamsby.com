@@ -26,7 +26,7 @@ const { posts, lang, facetData = false, tagData = false, titlePrefix } = Astro.p
       >
         <time datetime={p.data.date.toISOString().slice(0, 10)}>{formatDate(p.data.date, lang)}</time>
         {titlePrefix
-          ? <a class="post-title" href={href}>{titlePrefix} <em>{p.data.title}</em></a>
+          ? <a class="post-title" href={href}>{titlePrefix} *{p.data.title}*</a>
           : <a class="post-title" href={href}>{p.data.title}</a>}
         {p.data.image && (
           <a class="post-thumb" href={href} tabindex="-1" aria-hidden="true">

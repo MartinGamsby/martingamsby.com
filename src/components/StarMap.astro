@@ -84,7 +84,7 @@ const CoreTag = coreHref ? 'a' : 'div';
 
     map.classList.add('is-mapped');
     const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
-    let w = 0, h = 0, dpr = 1, raf = 0, t = 0, cx = 0, cy = 0, coreHW = 0, coreHH = 0;
+    let w = 0, h = 0, dpr = 1, raf = 0, t = 0, cx = 0, cy = 0, coreHW = 0, coreHH = 0, coreRad = 0;
 
     const items = nodes.map((el) => ({
       el,
@@ -100,9 +100,11 @@ const CoreTag = coreHref ? 'a' : 'div';
     }));
     items.forEach((it) => (it.ampY = it.ampX * 0.8));
 
-    // The box used for both the orbit layout and the line-attachment point — the core
-    // pill. `border-radius:999px` caps to a corner radius of min(coreHW, coreHH).
-    const coreBox = () => ({ x: cx, y: cy, hw: coreHW, hh: coreHH, rad: Math.min(coreHW, coreHH) });
+    // The box used for both the orbit layout and the line-attachment point. `coreRad` is
+    // the core's ACTUAL computed corner radius (measured in layout), capped to its
+    // half-extents — so lines attach correctly whether the core is a pill or a wrapped
+    // multi-line card.
+    const coreBox = () => ({ x: cx, y: cy, hw: coreHW, hh: coreHH, rad: coreRad });
 
     // Lay the chips on concentric rounded-rect orbits around the core, heaviest first.
     // Each orbit sits `d` px outside the box, so every chip clears the core (and a long
@@ -120,6 +122,7 @@ const CoreTag = coreHref ? 'a' : 'div';
         const cr = core.getBoundingClientRect();
         coreHW = cr.width / 2;
         coreHH = cr.height / 2;
+        coreRad = Math.min(parseFloat(getComputedStyle(core).borderTopLeftRadius) || 0, coreHW, coreHH);
       }
       const maxR = Math.max(16, ...items.map((i) => i.r));
       const gap = 16;
