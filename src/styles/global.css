@@ -691,20 +691,21 @@ article.post a.footer-link:hover .icon {
   overflow-wrap: anywhere;
 }
 .starmap-core {
-  display: inline-grid;
-  place-items: center;
-  padding: 0.45rem 1rem;
+  display: block;
+  width: fit-content;
+  max-width: min(92%, 20rem);
   margin: 0 auto 0.5rem;
-  border-radius: 999px;
+  padding: 0.45rem 1rem;
+  border-radius: 0.9rem;            /* modest radius so a multi-line title reads as a card */
   font-weight: 600;
+  line-height: 1.25;
+  text-align: center;
+  text-wrap: balance;               /* even line lengths when the title wraps */
+  overflow-wrap: anywhere;          /* never clip — wrap the full title instead */
   color: var(--accent);
   background: color-mix(in srgb, var(--accent) 12%, var(--bg2));
   border: 1px solid color-mix(in srgb, var(--accent) 45%, var(--border));
   box-shadow: var(--shadow);
-  max-width: min(90%, 22rem);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 .starmap-chip { text-decoration: none; }
 

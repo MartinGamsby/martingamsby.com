@@ -95,7 +95,7 @@ export const ui = {
       music: { title: 'Music', blurb: 'The musical experiment, compositions and videos' },
       everything: { title: 'Everything', blurb: 'The full stream, unfiltered' },
     },
-    nav: { book: 'Interverted', guidepour: 'Guide for', blog: 'Blog', tags: 'Tags', about: 'About', links: 'Links' },
+    nav: { book: 'Interverted', guidepour: 'Guidance for', blog: 'Blog', tags: 'Tags', about: 'About', links: 'Links' },
     latestPosts: 'Latest posts',
     allPosts: 'All posts',
     relatedHeading: 'Related posts',

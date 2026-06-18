@@ -22,19 +22,25 @@ Candidates with zero shared tags AND zero shared facets are dropped.
 ## Rendering
 
 `src/pages/[lang]/blog/[...slug].astro` maps the related posts to stars and drops in
-`<StarMap>` under the post body (only when there's at least one related post). Each
+`<StarMap>` under the post body (only when there's at least one related post). The core
+node carries the **full** current-post title — it wraps to multiple lines (no ellipsis);
+`StarMap` reads the core's computed corner radius so the connector lines still attach
+exactly on the (rounded-rect) border. Each
 star's colour gate comes from `gateOf(facets, preferSharedFacet)` (`src/lib/blog.ts`) and its
 size from `trendingScore` normalized across the shown set (most-trending = biggest).
 Image posts render as a circular thumbnail (the `.sky-post` look), the rest as a ★.
 
 ## Shared component: `StarMap.astro`
 
-Both this and the [[tag-galaxy]] use `src/components/StarMap.astro` — a focused,
-self-contained constellation (a central "core" node + orbiting `.sky-social`/`.sky-post`
-star-chips, connected by facet-coloured canvas lines). It **reuses the home sky's visual
-vocabulary** (the `--c-<gate>` palette, `data-facet` colour + `--w` weight) but is fully
-decoupled from [[featured-stars]]'s `Constellation.astro` (which is hard-wired to the
-home gates/hero). Props: `stars[]` (`href,title,gate,weight,image?,glyph?,label?,tag?`),
+Both this and the [[tag-galaxy]] use `src/components/StarMap.astro` — a focused
+constellation (a central "core" node + orbiting `.sky-social`/`.sky-post` star-chips,
+connected by facet-coloured canvas lines). It **reuses the home sky's visual vocabulary**
+(the `--c-<gate>` palette, `data-facet` colour + `--w` weight) and its **geometry**: the
+node-attachment maths (`rectEdge`/`circEdge`/`orbitPoint`) lives in one shared module
+`src/lib/constellation-geometry.ts`, imported by BOTH StarMap and [[featured-stars]]'s
+`Constellation.astro` — so the rounded-pill line-attachment fix is fixed once for both.
+StarMap stays decoupled from Constellation's home-only layout otherwise. Props: `stars[]`
+(`href,title,gate,weight,image?,glyph?,label?,tag?`),
 `coreLabel`, `coreHref`. Works without JS (chips fall back to a centred wrapped row);
 JS lays them out in concentric rings, draws the lines, and floats them — static under
 `prefers-reduced-motion`, paused when hidden, palette follows the theme.

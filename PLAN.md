@@ -136,10 +136,16 @@ Show both, clearly separated:
    `aliases:` frontmatter field (`/agnostique → /fr/blog/2016-02-01-agnostique/`) via
    the `guidepour-redirects` build integration. New `/{lang}/guidepour` page carries
    the Djosh Sho bio. The 16 entries already live on the site as `fiction` posts.
-   English sibling **guidance4.com** gets the same treatment later (EN aliases seeded
-   as a best guess). See `wiki/concepts/guidepour-redirects.md`. Open gaps Martin will
-   fill: missing entry #06, the hidden `/crypto` article, the full printed-slug list,
-   guidance4's real slugs.
+   English sibling **guidance4.com** (EN, "Guidance for ✳") is a **separate** redirect
+   layer — its `web5`/`conferences` slugs collide with the French ones, so it can't
+   share the martingamsby.com bare-slug namespace; the integration emits FR only
+   (`EMIT_LANGS=['fr']`). EN aliases now match the EN book
+   (`Interverti/content/interverti/en/book.draft.md`, the source of truth). See
+   `wiki/concepts/guidepour-redirects.md`. Open gaps Martin will fill: missing FR entry
+   #06, the hidden `/crypto` article, the FR printed-slug cross-check, and the **17 EN
+   book entries with no post yet** (bicycle, bunker, backward-compatibility, …) — texts
+   are in the book; decide whether to generate them. Also: EN post titles differ from
+   the book's entry titles (Sleeper/Sleep, Mathematician/Regression, Fabulator/Fabulist).
 5. **Door wording** — current set is a proposal; Martin said "maybe other doors,
    not sure yet".
 6. ~~**Public contact method**~~ **Resolved 2026-06-13**: option (c) — publish

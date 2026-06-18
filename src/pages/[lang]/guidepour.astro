@@ -31,22 +31,24 @@ const content = {
     coalTon:
       'Coal Ton (« Colton ») est un autre personnage du roman, souvent cité dans ces billets.',
     postsHeading: 'Les billets « Guide pour ✳ »',
+    listPrefix: 'Guide pour',
     bookLink: 'À propos du roman Interverti →',
   },
   en: {
-    title: 'Guide for ✳',
-    lede: '“Guide for ✳” — where the star is a role, a job, a state… anything someone can be “new” at. A column by Djosh Sho.',
+    title: 'Guidance for ✳',
+    lede: '“Guidance for ✳” — where the star is a role, a job, a state… anything someone can be “new” at. A column by Djosh Sho.',
     fictionNote:
-      'Djosh Sho is a fictional character: the narrator of the novel Interverted. These “Guide for ✳” entries are drawn from his world.',
+      'Djosh Sho is a fictional character: the narrator of the novel Interverted. These “Guidance for ✳” entries are drawn from his world.',
     bioHeading: 'Djosh Sho',
     bio: [
-      'Complaining gets you nowhere; you have to act. And that’s what I do now, almost every night. One day, I read a quote that went something like: “why do birds, who can fly anywhere on the planet, always stay in the same places?” Then I asked myself: why do I stay here, when I too can fly anywhere on the planet?',
-      'The truth is that we want others to change things. The truth is also that everyone you meet knows something you don’t, no matter their age or origin. Everything I know could be useful to someone else, even what I find insignificant! So I write. I write to help, and also a little to make up for my lack of sleep. I write in the only place where people still read: on a website. I write sentences to help the newcomers. Newcomers to anything, in any field I’ve ever touched, closely or from afar. I call it “guide for ✳”, where the star is a role, a job, a state… anything someone can be new at.',
-      'When I write words on my site, I also draw furrows under my eyes, but I dare hope it’s for a good cause, one that might help toward a better future — even if these days everything seems to be getting worse and worse, no matter what the media thinks…',
+      'But complaining doesn’t help, you have to act. And that’s what I do now almost every evening. One day, I read a quote that said something like: “Why do birds, who can fly anywhere on the planet, always stay in the same places.” Then, I asked myself the same question: why do I stay here, when I can fly anywhere on the planet?',
+      'The truth is, we want others to change things. The truth is also that every person we meet knows something we don’t know, regardless of their age or origin. Everything I know can be useful to someone else, even what I find insignificant! So I write. I write to help, and also a bit to fill the sleepless hours. I write in the only place where people still read: on a website. I write sentences to help newcomers. Newcomers in anything, in any field I’ve touched closely or from afar. I call it “guidance for ✳”, where the star is a function, a profession, a state… where someone can be new.',
+      'When I write words on my site, I’m also carving lines under my eyes, but I dare hope it’s for a good cause, which might help toward a better future, even though these days, everything seems to be getting worse and worse, despite what the media thinks…',
     ],
     coalTon:
       'Coal Ton (“Colton”) is another character from the novel, often quoted in these entries.',
-    postsHeading: 'The “Guide for ✳” entries',
+    postsHeading: 'The “Guidance for ✳” entries',
+    listPrefix: 'Guidance for',
     bookLink: 'About the novel Interverted →',
   },
 } as const;
@@ -72,7 +74,7 @@ const c = content[lang];
     {posts.length > 0 && (
       <section class="gp-posts">
         <h2>{c.postsHeading}</h2>
-        <PostList posts={posts} lang={lang} />
+        <PostList posts={posts} lang={lang} titlePrefix={c.listPrefix} />
       </section>
     )}
   </article>

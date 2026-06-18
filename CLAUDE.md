@@ -125,10 +125,16 @@ Quick rules:
   `withastro/action` runs `astro build` directly). It **fails the build** on a
   duplicate alias or one that shadows a real route. This retires **guidepour.com** (FR
   "Guide pour ✳" entries by the fictional Djosh Sho; Martin path-forwards
-  `guidepour.com/* → martingamsby.com/*` at the registrar) and, later,
-  **guidance4.com** (EN). The old guidepour slugs are FRENCH and rarely match the
-  filename (`/metropole`→`grand-metropolien`), so they're stored explicitly — and
-  they're **immutable** (printed in the book), so never rename an existing alias.
+  `guidepour.com/* → martingamsby.com/*` at the registrar). The integration emits
+  **FR posts only** (`EMIT_LANGS = ['fr']`): the EN book (**guidance4.com**) prints
+  `web5` and `conferences` too — identical to the French slugs — so the two domains
+  **can't share one bare-slug namespace**, and guidance4.com gets its own redirect
+  layer later. EN posts still carry their guidance4 slug in `aliases:` (the recorded
+  source of truth is `Interverti/content/interverti/en/book.draft.md`, which prints
+  `guidance4.com/<slug>` and uses "**Guidance for**" — not "Guide for"). The old slugs
+  are FRENCH and rarely match the filename (`/metropole`→`grand-metropolien`), so
+  they're stored explicitly — and they're **immutable** (printed in the book), so
+  never rename an existing alias.
   **WriterHelper must set `aliases:` on any new Guide Pour entry** (and tag it
   `Djosh Sho`, which `isGuidePour()`/`getGuidePourPosts()` in `src/lib/blog.ts` use to
   populate the `/{lang}/guidepour` page). See `wiki/concepts/guidepour-redirects.md`.

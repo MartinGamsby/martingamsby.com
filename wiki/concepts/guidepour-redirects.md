@@ -11,12 +11,16 @@ the entries already live. Added 2026-06-17.
 
 The 16 live entries were converted to Gamsblurb posts years ago (`convert.py` in the
 Grav `01.home/`) and pulled in during the Jekyll migration, so they're already
-`facets: [fiction]` posts **in both FR and EN**, tagged `Guide Pour`/`Guide For`,
+`facets: [fiction]` posts **in both FR and EN**, tagged `Guide Pour`/`Guidance For`,
 `Interverti (Roman)`/`Interverted (Novel)`, **`Djosh Sho`**, `Gamsblurb`. This was a
 redirect + author-page + tag-tidy job, **not** a content migration. **Not every entry is
-fiction** — some "Guide pour" pieces are real-life facts; for those the `fiction` facet
-(and the `Fiction` tag, which now follows it via WriterHelper's tag migration) is
-dropped. The `Djosh Sho` tag is the only thing that defines the column.
+fiction** — 8 "Guide pour" pairs are real-life facts (agnostic, goldfish, sleeper,
+deja-vu, second, hasty-generalization, mathematician, magic + FR twins) and carry **no
+`Fiction` tag**. They were the ones Martin had left un-tagged before commit `d86cdbf`
+("added Fiction where missing"), which wrongly added it; a one-off removed it again.
+Their `facets:[fiction]` is **kept** — they're still Djosh Sho column pieces under the
+Book door. WriterHelper's migration never pair-unions `Fiction` across a guidepour twin,
+so it can't creep back. The `Djosh Sho` tag alone defines the column.
 
 ## Two-layer redirect (the "no manual page per entry" requirement)
 
@@ -43,26 +47,38 @@ FRENCH and frequently differ from the post slug — `/metropole`→`grand-metrop
 `/web5`→`web-5-0`. New Guide Pour entries stay zero-manual-work: WriterHelper writes
 the post with one `aliases:` line and the stub appears on the next build.
 
-## guidance4.com (English, later)
+## guidance4.com (English) — separate, because slugs collide
 
-The EN sibling domain gets the same `* → martingamsby.com/*` forwarding. EN aliases are
-seeded **as a best guess = the EN post slug** (all distinct from the FR set; `web5`
-[FR] vs `web-5-0` [EN] is a deliberate split to avoid an alias collision, since both
-sites forward into one shared bare-slug namespace). Confirm guidance4's real printed
-slugs when that site/book is set and adjust the EN `aliases`.
+Source of truth: `Interverti/content/interverti/en/book.draft.md` (the EN book). It uses
+**"Guidance for ✳"** (not "Guide for") and prints `guidance4.com/<slug>`. The EN slugs
+were updated to match it: `metropolis, fasting, sleep, web5, conferences, hypocrisy,
+generalization, math, fabulist` (+ unchanged `agnostic, goldfish, homeless,
+personalities, deja-vu, second, magic`). Stored in each EN post's `aliases:`.
+
+**`web5` and `conferences` are IDENTICAL in both books**, so guidepour.com and
+guidance4.com **cannot both forward into one `martingamsby.com/<slug>` namespace** —
+they'd collide (and the build guard would throw). So the integration emits **FR only**
+(`EMIT_LANGS = ['fr']`); guidance4.com gets its **own redirect layer** when it launches
+(its own GitHub Pages repo, or a language-prefixed forward). The EN `aliases` are the
+recorded data for that. The EN book also has **17 entries with no post yet** (gaps):
+bicycle, bunker, backward-compatibility, end-of-the-world, adrenaline, cows, old, music,
+flaws, tesla, wisdom, mozart, everyone, einstein, resilience, newton, slaves — their
+texts are in the book if Martin wants them generated.
 
 ## The `/{lang}/guidepour` page
 
 `src/pages/[lang]/guidepour.astro` (mirrors `book.astro`): title "Guide pour ✳", a
-lede, the **Djosh Sho bio** (ported verbatim from the Grav `author.fr.md`; EN is a
-translation), an explicit **fiction note** ("Djosh Sho est un personnage de fiction…")
+lede, the **Djosh Sho bio** (FR ported verbatim from the Grav `author.fr.md`; EN is the
+exact text from the EN book, ch. 10), an explicit **fiction note** ("Djosh Sho est un personnage de fiction…")
 so a first-time reader knows it's from the novel, a Coal Ton mention, and a `PostList`
 of the entries — filtered by `getGuidePourPosts(lang)` / `isGuidePour(post)` in
 `src/lib/blog.ts` on the cross-language **`Djosh Sho`** tag **only** (NOT the fiction
 facet — real-life-fact entries must still appear). Linked both ways with `/book` (the
 book epigraph is already by Djosh Sho) and from the main nav + the friendlier `404`. No
-enum/doors change. The home page also hangs a **`✳` star on the book gate** linking here
-(`src/pages/[lang]/index.astro`, a `.sky-post` chip with `data-facet="book"`).
+enum/doors change. Entries render as **"Guide pour *title*" / "Guidance for *title*"**
+(`PostList`'s `titlePrefix` prop). The home page also hangs a **`✳` star on the book
+gate** linking here (`src/pages/[lang]/index.astro`, a `.sky-post` chip with
+`data-facet="book"`).
 
 ## Gaps Martin will fill (they're in the book)
 
