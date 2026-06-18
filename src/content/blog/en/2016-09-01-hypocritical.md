@@ -1,5 +1,5 @@
 ---
-title: "Hypocritical"
+title: "Hypocrite"
 date: 2016-09-01
 translationKey: 2016-09-01-hypocritical
 facets: [fiction]

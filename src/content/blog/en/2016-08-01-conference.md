@@ -1,5 +1,5 @@
 ---
-title: "Conference"
+title: "Conferences"
 date: 2016-08-01
 translationKey: 2016-08-01-conference
 facets: [fiction]

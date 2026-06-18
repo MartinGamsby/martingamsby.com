@@ -1,5 +1,5 @@
 ---
-title: "Mathematician"
+title: "Regression"
 date: 2017-03-01
 translationKey: 2017-03-01-mathematician
 facets: [physics, fiction]

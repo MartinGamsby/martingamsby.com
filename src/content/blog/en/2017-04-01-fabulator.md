@@ -1,5 +1,5 @@
 ---
-title: "Fabulator"
+title: "Fabulist"
 date: 2017-04-01
 translationKey: 2017-04-01-fabulator
 facets: [fiction]

@@ -123,18 +123,19 @@ Quick rules:
   emits a `dist/<alias>/index.html` meta-refresh stub → that post's canonical
   `/{lang}/blog/<stem>/` on every `astro build` (NOT a postbuild npm script — CI's
   `withastro/action` runs `astro build` directly). It **fails the build** on a
-  duplicate alias or one that shadows a real route. This retires **guidepour.com** (FR
-  "Guide pour ✳" entries by the fictional Djosh Sho; Martin path-forwards
-  `guidepour.com/* → martingamsby.com/*` at the registrar). The integration emits
-  **FR posts only** (`EMIT_LANGS = ['fr']`): the EN book (**guidance4.com**) prints
-  `web5` and `conferences` too — identical to the French slugs — so the two domains
-  **can't share one bare-slug namespace**, and guidance4.com gets its own redirect
-  layer later. EN posts still carry their guidance4 slug in `aliases:` (the recorded
-  source of truth is `Interverti/content/interverti/en/book.draft.md`, which prints
-  `guidance4.com/<slug>` and uses "**Guidance for**" — not "Guide for"). The old slugs
-  are FRENCH and rarely match the filename (`/metropole`→`grand-metropolien`), so
-  they're stored explicitly — and they're **immutable** (printed in the book), so
-  never rename an existing alias.
+  SAME-language duplicate alias, or one that shadows a real route. This retires
+  **guidepour.com** (FR "Guide pour ✳") and **guidance4.com** (EN "Guidance for ✳"),
+  both by the fictional Djosh Sho; Martin path-forwards `<domain>/* → martingamsby.com/*`
+  at the registrar, so both emit (`EMIT_LANGS = ['fr', 'en']`). `web5` and `conferences`
+  are printed IDENTICALLY in both books → those two slugs collide; **FR wins**
+  (guidepour.com is live/primary) and the EN stub is skipped with a build warning, so
+  `guidance4.com/web5` lands on the French post (the in-page language toggle is the
+  escape). EN slugs come from the source of truth
+  `Interverti/content/interverti/en/book.draft.md`, which prints `guidance4.com/<slug>`
+  and uses "**Guidance for**" (not "Guide for"). The old slugs are FRENCH/ENGLISH book
+  slugs that rarely match the filename (`/metropole`→`grand-metropolien`,
+  `/math`→`mathematician`), so they're stored explicitly — and they're **immutable**
+  (printed in the book), so never rename an existing alias.
   **WriterHelper must set `aliases:` on any new Guide Pour entry** (and tag it
   `Djosh Sho`, which `isGuidePour()`/`getGuidePourPosts()` in `src/lib/blog.ts` use to
   populate the `/{lang}/guidepour` page). See `wiki/concepts/guidepour-redirects.md`.

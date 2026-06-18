@@ -55,15 +55,23 @@ were updated to match it: `metropolis, fasting, sleep, web5, conferences, hypocr
 generalization, math, fabulist` (+ unchanged `agnostic, goldfish, homeless,
 personalities, deja-vu, second, magic`). Stored in each EN post's `aliases:`.
 
-**`web5` and `conferences` are IDENTICAL in both books**, so guidepour.com and
-guidance4.com **cannot both forward into one `martingamsby.com/<slug>` namespace** —
-they'd collide (and the build guard would throw). So the integration emits **FR only**
-(`EMIT_LANGS = ['fr']`); guidance4.com gets its **own redirect layer** when it launches
-(its own GitHub Pages repo, or a language-prefixed forward). The EN `aliases` are the
-recorded data for that. The EN book also has **17 entries with no post yet** (gaps):
+Both domains forward `/<slug>` → `martingamsby.com/<slug>`, so the integration emits
+**both** (`EMIT_LANGS = ['fr', 'en']`, FR-first). **`web5` and `conferences` are
+IDENTICAL in both books** → those two slugs collide; **FR wins** (guidepour.com is
+live/primary), the EN stub is skipped with a build warning, and `guidance4.com/web5`
+lands on the French post (language toggle = escape). Same-language duplicate aliases
+still **throw** (real bug). Last build: 30 stubs (16 FR + 14 EN-only). Perfect
+per-language landing for those 2 would need guidance4.com on its own host.
+
+The EN book has **17 entries with NO post** (confirmed gaps — searched, none exist):
 bicycle, bunker, backward-compatibility, end-of-the-world, adrenaline, cows, old, music,
 flaws, tesla, wisdom, mozart, everyone, einstein, resilience, newton, slaves — their
-texts are in the book if Martin wants them generated.
+texts are in the book if Martin wants them generated (EN-only unless the FR book is
+provided for twins).
+
+5 EN posts were **retitled to the book's entry titles** (Martin's call): Sleeper→**Sleep**,
+Conference→**Conferences**, Hypocritical→**Hypocrite**, Mathematician→**Regression**,
+Fabulator→**Fabulist** (FR twin titles left as-is — needs the FR book to align).
 
 ## The `/{lang}/guidepour` page
 
