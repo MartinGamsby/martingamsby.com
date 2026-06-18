@@ -660,6 +660,102 @@ article.post a.footer-link:hover .icon {
   vertical-align: -0.125em;
 }
 
+/* ---------- Star map (related-posts + tag-galaxy constellations) ---------- */
+.starmap { position: relative; margin: 1.4rem 0 2rem; }
+.starmap-lines { display: none; }
+.starmap-stage { position: relative; }
+
+/* Fallback (no JS): a centred, wrapped field with the core as a lead-in pill. */
+.starmap-stars {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 0.9rem 0.8rem;
+}
+.starmap-node {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+  max-width: 8rem;
+}
+.starmap-label {
+  font-size: 0.72rem;
+  line-height: 1.15;
+  text-align: center;
+  color: var(--muted);
+  overflow-wrap: anywhere;
+}
+.starmap-core {
+  display: inline-grid;
+  place-items: center;
+  padding: 0.45rem 1rem;
+  margin: 0 auto 0.5rem;
+  border-radius: 999px;
+  font-weight: 600;
+  color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 12%, var(--bg2));
+  border: 1px solid color-mix(in srgb, var(--accent) 45%, var(--border));
+  box-shadow: var(--shadow);
+  max-width: min(90%, 22rem);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.starmap-chip { text-decoration: none; }
+
+/* JS-enhanced: lift the core + chips into an absolute orbit over the canvas. The chip
+   keeps its own transform (centring) while drift rides the `translate` property. */
+.starmap.is-mapped { height: var(--starmap-h, 340px); }
+.starmap.is-mapped .starmap-lines {
+  display: block;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.starmap.is-mapped .starmap-stage { position: absolute; inset: 0; }
+.starmap.is-mapped .starmap-stars { display: block; position: absolute; inset: 0; }
+.starmap.is-mapped .starmap-node {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  gap: 0.2rem;
+}
+.starmap.is-mapped .starmap-core {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  z-index: 1;
+}
+
+/* Tag-galaxy page */
+.tags-intro { max-width: 42rem; color: var(--muted); }
+.tag-posts { margin-top: 1.5rem; }
+.tag-posts-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.6rem;
+}
+.tag-showing-name { color: var(--accent); font-weight: 600; }
+.tag-clear {
+  font-size: 0.85rem;
+  padding: 0.15rem 0.7rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--bg2);
+  color: inherit;
+  cursor: pointer;
+}
+.tag-clear:hover { border-color: var(--accent); }
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

@@ -3,6 +3,7 @@ title: "Grand Metropolitan"
 date: 2016-04-01
 translationKey: 2016-04-01-grand-metropolitan
 facets: [fiction]
+aliases: [grand-metropolitan]
 tags: [Guide For,Interverted (Novel),Fiction,Djosh Sho,Gamsblurb]
 ---
 

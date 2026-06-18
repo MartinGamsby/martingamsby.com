@@ -1,0 +1,209 @@
+---
+// A focused, self-contained constellation: a central "core" node with a field of
+// star-chips orbiting it, connected by facet-coloured lines. Reuses the home
+// constellation's visual vocabulary (.sky-social / .sky-post chips, the --c-<gate>
+// palette, data-facet colour + --w weight) but is fully generic and decoupled from
+// Constellation.astro, so it can anchor a single post (related posts) or a whole page
+// (the tag galaxy). Works without JS — chips fall back to a centred, wrapped row;
+// JS enhances them into the orbiting map. See [[related-constellation]], [[tag-galaxy]].
+import type { Gate } from '../data/social-constellation';
+
+export interface Star {
+  href: string;
+  title: string;       // tooltip / aria-label
+  gate: Gate;          // colour bucket (dev|physics|book|music|everything)
+  weight?: number;     // size multiplier (default 1)
+  image?: string | null; // thumbnail -> rendered like a .sky-post star
+  glyph?: string;      // text inside the chip when there's no image (e.g. a count)
+  label?: string;      // visible caption under the chip (e.g. a tag name)
+  tag?: string;        // optional data-tag (used by the galaxy's click-to-filter)
+}
+
+interface Props {
+  stars: Star[];
+  coreLabel?: string;
+  coreHref?: string;
+}
+
+const { stars, coreLabel, coreHref } = Astro.props;
+const CoreTag = coreHref ? 'a' : 'div';
+---
+
+<div class="starmap" data-starmap>
+  <canvas class="starmap-lines" aria-hidden="true"></canvas>
+  <div class="starmap-stage">
+    {coreLabel && (
+      <CoreTag class="starmap-core" href={coreHref}>{coreLabel}</CoreTag>
+    )}
+    <ul class="starmap-stars">
+      {stars.map((s) => (
+        <li
+          class="starmap-node"
+          data-facet={s.gate}
+          data-weight={s.weight ?? 1}
+          style={`--w:${s.weight ?? 1}`}
+        >
+          <a
+            class:list={['sky-social', 'starmap-chip', { 'sky-post': !!s.image }]}
+            href={s.href}
+            data-facet={s.gate}
+            data-tag={s.tag}
+            style={`--w:${s.weight ?? 1}`}
+            aria-label={s.title}
+            title={s.title}
+          >
+            {s.image
+              ? <img src={s.image} alt="" loading="lazy" decoding="async" />
+              : <span class="sky-post-glyph" aria-hidden="true">{s.glyph ?? '★'}</span>}
+          </a>
+          {s.label && <span class="starmap-label">{s.label}</span>}
+        </li>
+      ))}
+    </ul>
+  </div>
+</div>
+
+<script>
+  const GATES = ['dev', 'physics', 'book', 'music', 'everything'] as const;
+
+  function colorFor(gate: string): string {
+    const cs = getComputedStyle(document.documentElement);
+    const accent = cs.getPropertyValue('--accent').trim() || '#a78bfa';
+    if (gate === 'everything' || !GATES.includes(gate as any)) return accent;
+    return cs.getPropertyValue(`--c-${gate}`).trim() || accent;
+  }
+
+  function initStarMap(map: HTMLElement) {
+    const canvas = map.querySelector('canvas') as HTMLCanvasElement | null;
+    const ctx = canvas?.getContext('2d');
+    const core = map.querySelector('.starmap-core') as HTMLElement | null;
+    const nodes = [...map.querySelectorAll('.starmap-node')] as HTMLElement[];
+    if (!canvas || !ctx || nodes.length === 0) return;
+
+    map.classList.add('is-mapped');
+    const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let w = 0, h = 0, dpr = 1, raf = 0, t = 0, cx = 0, cy = 0, coreHW = 0, coreHH = 0;
+
+    const items = nodes.map((el) => ({
+      el,
+      weight: parseFloat(el.dataset.weight || '1'),
+      color: colorFor(el.dataset.facet || 'everything'),
+      hx: 0, hy: 0,                                  // home (laid-out) position
+      ampX: 4 + Math.random() * 3,
+      ampY: 0,
+      phx: Math.random() * Math.PI * 2,
+      phy: Math.random() * Math.PI * 2,
+      wv: 0.006 + Math.random() * 0.004,
+    }));
+    items.forEach((it) => (it.ampY = it.ampX * 0.8));
+
+    // Distribute the chips over concentric rings; the outermost ring lands near the
+    // edge so the map fills its box. Heavier (more-relevant / more-frequent) chips go
+    // on the inner rings, nearest the core.
+    function layout() {
+      const rect = map.getBoundingClientRect();
+      w = rect.width;
+      const ringCaps: number[] = [];
+      let total = 0, r = 0;
+      while (total < items.length) {
+        const cap = 5 + r * 4;
+        ringCaps.push(cap);
+        total += cap;
+        r++;
+      }
+      const rings = ringCaps.length;
+      h = Math.round(Math.min(Math.max(w * 0.62, 280), 200 + rings * 150));
+      map.style.setProperty('--starmap-h', `${h}px`);
+      dpr = Math.min(devicePixelRatio || 1, 2);
+      canvas.width = Math.round(w * dpr);
+      canvas.height = Math.round(h * dpr);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      cx = w / 2;
+      cy = h / 2;
+      if (core) {
+        const cr = core.getBoundingClientRect();
+        coreHW = cr.width / 2;
+        coreHH = cr.height / 2;
+      }
+
+      const maxR = Math.min(w, h) / 2 - 46;
+      const minR = Math.max(coreHW, coreHH) + 52;
+      const step = rings > 1 ? (maxR - minR) / (rings - 1) : 0;
+
+      const byWeight = [...items].sort((a, b) => b.weight - a.weight);
+      let idx = 0;
+      for (let ring = 0; ring < rings; ring++) {
+        const radius = minR + ring * step;
+        const here = byWeight.slice(idx, idx + ringCaps[ring]);
+        const offset = (ring % 2) * (Math.PI / here.length);
+        here.forEach((it, i) => {
+          const a = offset + (i / here.length) * Math.PI * 2;
+          it.hx = cx + Math.cos(a) * radius;
+          it.hy = cy + Math.sin(a) * radius;
+          it.el.style.left = `${it.hx.toFixed(1)}px`;
+          it.el.style.top = `${it.hy.toFixed(1)}px`;
+        });
+        idx += ringCaps[ring];
+      }
+    }
+
+    // Endpoint on the core box's edge toward (tx,ty) — so lines start at the pill's
+    // border, not its centre.
+    function coreEdge(tx: number, ty: number) {
+      const dx = tx - cx, dy = ty - cy;
+      if (!dx && !dy) return { x: cx, y: cy };
+      const s = Math.min(
+        coreHW / Math.max(Math.abs(dx), 1e-6),
+        coreHH / Math.max(Math.abs(dy), 1e-6),
+      );
+      return { x: cx + dx * s, y: cy + dy * s };
+    }
+
+    function frame(advance: boolean) {
+      if (advance) t++;
+      ctx.clearRect(0, 0, w, h);
+      for (const it of items) {
+        const dx = it.ampX * Math.sin(t * it.wv + it.phx);
+        const dy = it.ampY * Math.cos(t * it.wv * 0.9 + it.phy);
+        const x = it.hx + dx, y = it.hy + dy;
+        if (advance) it.el.style.translate = `${dx.toFixed(2)}px ${dy.toFixed(2)}px`;
+        const e = coreEdge(x, y);
+        ctx.globalAlpha = 0.5;
+        ctx.strokeStyle = it.color;
+        ctx.lineWidth = 1.2;
+        ctx.beginPath();
+        ctx.moveTo(e.x, e.y);
+        ctx.lineTo(x, y);
+        ctx.stroke();
+        ctx.globalAlpha = 0.22;
+        ctx.fillStyle = it.color;
+        ctx.beginPath();
+        ctx.arc(x, y, 2.4 * it.weight, 0, Math.PI * 2);
+        ctx.fill();
+      }
+      ctx.globalAlpha = 1;
+    }
+
+    function loop() { frame(true); raf = requestAnimationFrame(loop); }
+    function start() {
+      cancelAnimationFrame(raf);
+      if (reduced) frame(false);
+      else loop();
+    }
+
+    layout();
+    start();
+    addEventListener('resize', () => { layout(); start(); });
+    document.fonts?.ready.then(() => { layout(); if (reduced) frame(false); });
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) cancelAnimationFrame(raf);
+      else start();
+    });
+    new MutationObserver(() => {
+      for (const it of items) it.color = colorFor(it.el.dataset.facet || 'everything');
+      if (reduced) frame(false);
+    }).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+  }
+
+  for (const map of document.querySelectorAll<HTMLElement>('.starmap')) initStarMap(map);
+</script>

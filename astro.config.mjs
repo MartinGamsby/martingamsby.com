@@ -1,6 +1,7 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 import rehypeFooterIcons from './src/lib/rehype-footer-icons.mjs';
+import guidepourRedirects from './src/lib/guidepour-redirects.mjs';
 
 // Custom-domain cutover done (2026-06-13): the site is served from the apex
 // domain, so `site` is the absolute origin (used for sitemap/RSS/canonical) and
@@ -9,6 +10,7 @@ import rehypeFooterIcons from './src/lib/rehype-footer-icons.mjs';
 export default defineConfig({
   site: 'https://martingamsby.com',
   base: '/',
+  integrations: [guidepourRedirects()],
   markdown: {
     rehypePlugins: [rehypeFooterIcons],
   },

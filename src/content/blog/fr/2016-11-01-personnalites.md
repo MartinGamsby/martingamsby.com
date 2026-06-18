@@ -3,6 +3,7 @@ title: "Personnalités"
 date: 2016-11-01
 translationKey: 2016-11-01-personalities
 facets: [fiction]
+aliases: [personnalites]
 tags: [Guide Pour,Interverti (Roman),Fiction,Djosh Sho,Gamsblurb]
 ---
 

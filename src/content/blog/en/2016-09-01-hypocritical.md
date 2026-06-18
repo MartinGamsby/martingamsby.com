@@ -3,6 +3,7 @@ title: "Hypocritical"
 date: 2016-09-01
 translationKey: 2016-09-01-hypocritical
 facets: [fiction]
+aliases: [hypocritical]
 tags: [Guide For,Interverted (Novel),Fiction,Djosh Sho,Gamsblurb]
 ---
 

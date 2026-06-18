@@ -3,6 +3,7 @@ title: "Intermittent Fasting"
 date: 2016-05-01
 translationKey: 2016-05-01-intermittent-fasting
 facets: [fiction]
+aliases: [intermittent-fasting]
 tags: [Guide For,Interverted (Novel),Fiction,Djosh Sho,Gamsblurb]
 ---
 

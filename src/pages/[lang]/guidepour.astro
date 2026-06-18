@@ -1,0 +1,116 @@
+---
+import Base from '../../layouts/Base.astro';
+import PostList from '../../components/PostList.astro';
+import { LANGS, t, url, type Lang } from '../../i18n/ui';
+import { getGuidePourPosts } from '../../lib/blog';
+
+export function getStaticPaths() {
+  return LANGS.map((lang) => ({ params: { lang } }));
+}
+
+const lang = Astro.params.lang as Lang;
+const tr = t(lang);
+const posts = await getGuidePourPosts(lang);
+
+// Djosh Sho is the in-universe author of the "Guide pour *" column (from the
+// novel Interverti). The FR bio is ported verbatim from the old guidepour.com;
+// the EN bio is a translation. The fiction note is OURS (not in-character), so
+// a first-time reader knows this is from the novel.
+const content = {
+  fr: {
+    title: 'Guide pour ✳',
+    lede: '« Guide pour ✳ » — où l’étoile est un métier, un état, une fonction… tout ce pour quoi on peut être « nouveau ». Une chronique signée Djosh Sho.',
+    fictionNote:
+      'Djosh Sho est un personnage de fiction : le narrateur du roman Interverti. Ces billets « Guide pour ✳ » sont tirés de son univers.',
+    bioHeading: 'Djosh Sho',
+    bio: [
+      'Ça ne donne rien de se plaindre, il faut agir. Et c’est ce que fais maintenant à presque tous les soirs. Un jour, j’ai lu une citation qui disait quelque chose comme : « pourquoi les oiseaux, qui peuvent voler n’importe où sur la planète, restent toujours aux mêmes endroits. » Ensuite, je me suis reposé la question : pourquoi je reste ici, moi qui peut voler partout sur la planète ?',
+      'La vérité, c’est qu’on veut que les autres changent les choses. La vérité, c’est aussi que chaque personne qu’on rencontre connait quelque chose qu’on ne connait pas, peu importe leur âge ou leur origine. Tout ce que je sais, ça peut servir à un autre, même ce que je trouve insignifiant ! Donc j’écris. J’écris pour aider, et aussi un peu pour combler mon manque de sommeil. J’écris à la seule place où les gens lisent encore : sur un site web. J’écris des phrases pour aider les nouveaux. Les nouveaux dans n’importe quoi, dans n’importe quel domaine que j’ai déjà touché de près ou de loin. J’appelle ça « guide pour ✳ », où l’étoile, c’est une fonction, un métier, un état… où quelqu’un peut être nouveau.',
+      'Quand j’écris des mots sur mon site, je dessine par le fait même des sillons en-dessous de mes yeux, mais j’ose espérer que c’est pour une bonne cause, qui va peut être aider à un futur meilleur, même si de nos jours, tout semble aller de pire en pire, malgré ce que les médias en pensent…',
+    ],
+    coalTon:
+      'Coal Ton (« Colton ») est un autre personnage du roman, souvent cité dans ces billets.',
+    postsHeading: 'Les billets « Guide pour ✳ »',
+    bookLink: 'À propos du roman Interverti →',
+  },
+  en: {
+    title: 'Guide for ✳',
+    lede: '“Guide for ✳” — where the star is a role, a job, a state… anything someone can be “new” at. A column by Djosh Sho.',
+    fictionNote:
+      'Djosh Sho is a fictional character: the narrator of the novel Interverted. These “Guide for ✳” entries are drawn from his world.',
+    bioHeading: 'Djosh Sho',
+    bio: [
+      'Complaining gets you nowhere; you have to act. And that’s what I do now, almost every night. One day, I read a quote that went something like: “why do birds, who can fly anywhere on the planet, always stay in the same places?” Then I asked myself: why do I stay here, when I too can fly anywhere on the planet?',
+      'The truth is that we want others to change things. The truth is also that everyone you meet knows something you don’t, no matter their age or origin. Everything I know could be useful to someone else, even what I find insignificant! So I write. I write to help, and also a little to make up for my lack of sleep. I write in the only place where people still read: on a website. I write sentences to help the newcomers. Newcomers to anything, in any field I’ve ever touched, closely or from afar. I call it “guide for ✳”, where the star is a role, a job, a state… anything someone can be new at.',
+      'When I write words on my site, I also draw furrows under my eyes, but I dare hope it’s for a good cause, one that might help toward a better future — even if these days everything seems to be getting worse and worse, no matter what the media thinks…',
+    ],
+    coalTon:
+      'Coal Ton (“Colton”) is another character from the novel, often quoted in these entries.',
+    postsHeading: 'The “Guide for ✳” entries',
+    bookLink: 'About the novel Interverted →',
+  },
+} as const;
+
+const c = content[lang];
+---
+
+<Base lang={lang} title={c.title} description={c.lede}>
+  <article class="guidepour">
+    <header class="gp-head">
+      <h1>{c.title}</h1>
+      <p class="gp-lede">{c.lede}</p>
+      <p class="gp-fiction">{c.fictionNote}</p>
+    </header>
+
+    <section class="gp-author">
+      <h2>{c.bioHeading}</h2>
+      {c.bio.map((p) => <p>{p}</p>)}
+      <p class="gp-coalton">{c.coalTon}</p>
+      <p><a href={url(`/${lang}/book/`)}>{c.bookLink}</a></p>
+    </section>
+
+    {posts.length > 0 && (
+      <section class="gp-posts">
+        <h2>{c.postsHeading}</h2>
+        <PostList posts={posts} lang={lang} />
+      </section>
+    )}
+  </article>
+</Base>
+
+<style>
+  .guidepour h2 {
+    font-size: 1.45rem;
+    margin: 2.75rem 0 1rem;
+  }
+  .gp-head h1 {
+    font-size: clamp(2.2rem, 6vw, 3.2rem);
+    margin: 0.3rem 0 0;
+    background: var(--grad);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    width: fit-content;
+  }
+  .gp-lede {
+    font-size: 1.15rem;
+    text-wrap: pretty;
+    margin: 0.8rem 0 0;
+  }
+  .gp-fiction {
+    margin: 1rem 0 0;
+    padding: 0.7rem 1rem;
+    border-left: 3px solid var(--accent);
+    background: color-mix(in srgb, var(--accent) 8%, transparent);
+    border-radius: 0 0.4rem 0.4rem 0;
+    color: var(--muted);
+    font-size: 0.95rem;
+  }
+  .gp-author p {
+    text-wrap: pretty;
+  }
+  .gp-coalton {
+    color: var(--muted);
+    font-size: 0.95rem;
+  }
+</style>

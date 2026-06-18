@@ -3,6 +3,7 @@ title: "Fabulator"
 date: 2017-04-01
 translationKey: 2017-04-01-fabulator
 facets: [fiction]
+aliases: [fabulator]
 tags: [Guide For,Interverted (Novel),Fiction,Djosh Sho,Gamsblurb]
 ---
 

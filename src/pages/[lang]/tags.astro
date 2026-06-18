@@ -1,0 +1,72 @@
+---
+import Base from '../../layouts/Base.astro';
+import StarMap from '../../components/StarMap.astro';
+import PostList from '../../components/PostList.astro';
+import { LANGS, t, type Lang } from '../../i18n/ui';
+import { getPosts } from '../../lib/blog';
+import { getTagStars } from '../../lib/tags';
+
+export function getStaticPaths() {
+  return LANGS.map((lang) => ({ params: { lang } }));
+}
+
+const lang = Astro.params.lang as Lang;
+const tr = t(lang);
+
+const tagStars = await getTagStars(lang);
+const maxCount = tagStars.length ? tagStars[0].count : 1;
+const allPosts = await getPosts(lang);
+
+// Size each star by frequency: a tag used `maxCount` times is biggest.
+const stars = tagStars.map((s) => ({
+  href: '#tagged-posts',
+  title: `${s.tag} · ${s.count}`,
+  gate: s.gate,
+  weight: 0.85 + (s.count / maxCount) * 1.35,
+  glyph: String(s.count),
+  label: s.tag,
+  tag: s.tag,
+}));
+---
+
+<Base lang={lang} title={tr.tagsHeading} description={tr.tagsIntro}>
+  <h1 class="section-title">{tr.tagsHeading}</h1>
+  <p class="tags-intro">{tr.tagsIntro}</p>
+
+  <StarMap stars={stars} coreLabel={tr.nav.tags} />
+
+  <section class="tag-posts" id="tagged-posts" hidden>
+    <div class="tag-posts-bar">
+      <span class="tag-showing"><b>{tr.tagsShowing}</b> <span class="tag-showing-name"></span></span>
+      <button type="button" class="tag-clear">{tr.tagsClear}</button>
+    </div>
+    <PostList posts={allPosts} lang={lang} tagData />
+  </section>
+</Base>
+
+<script>
+  const section = document.getElementById('tagged-posts');
+  const nameEl = section?.querySelector('.tag-showing-name') as HTMLElement | null;
+  const items = section ? [...section.querySelectorAll<HTMLElement>('.post-list li')] : [];
+
+  function showTag(tag: string) {
+    if (!section || !nameEl) return;
+    nameEl.textContent = tag;
+    for (const li of items) {
+      const tags = (li.dataset.tags || '').split('|');
+      li.hidden = !tags.includes(tag);
+    }
+    section.hidden = false;
+    section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  for (const chip of document.querySelectorAll<HTMLElement>('.starmap-chip[data-tag]')) {
+    chip.addEventListener('click', (e) => {
+      e.preventDefault();
+      showTag(chip.dataset.tag || '');
+    });
+  }
+  section?.querySelector('.tag-clear')?.addEventListener('click', () => {
+    section.hidden = true;
+  });
+</script>

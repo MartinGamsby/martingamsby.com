@@ -3,7 +3,8 @@ title: "Mathematician"
 date: 2017-03-01
 translationKey: 2017-03-01-mathematician
 facets: [physics, fiction]
-tags: [Guide For,Interverted (Novel),Djosh Sho,Gamsblurb]
+aliases: [mathematician]
+tags: [Guide For,Interverted (Novel),Fiction,Djosh Sho,Gamsblurb]
 ---
 
 Nowadays, in school, mathematics is necessary, for many good reasons. The problem is that only a tiny fraction of students are interested in it. As a result, grades are low, so teachers lower the level, since they think it is too difficult, which only makes the course less interesting and less liked. 

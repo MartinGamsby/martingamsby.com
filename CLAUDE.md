@@ -115,7 +115,23 @@ Quick rules:
 - Blog posts: markdown in `src/content/blog/{fr,en}/` (folder = language, filename
   keeps the `YYYY-MM-DD-slug` form and is the URL slug); frontmatter carries
   `title`, `date`, `translationKey` (shared by twins — the language toggle depends
-  on it), `facets[]` (`dev|physics|fiction|music|ideas`), `tags[]`, optional `draft`.
+  on it), `facets[]` (`dev|physics|fiction|music|ideas`), `tags[]`, optional `draft`,
+  optional `aliases[]` (see next).
+- **Retired-site redirects via `aliases[]`.** A post can list extra bare-slug URLs
+  it answers to in `aliases: [slug, …]` (no leading slash). The `guidepour-redirects`
+  Astro integration (`src/lib/guidepour-redirects.mjs`, wired in `astro.config.mjs`)
+  emits a `dist/<alias>/index.html` meta-refresh stub → that post's canonical
+  `/{lang}/blog/<stem>/` on every `astro build` (NOT a postbuild npm script — CI's
+  `withastro/action` runs `astro build` directly). It **fails the build** on a
+  duplicate alias or one that shadows a real route. This retires **guidepour.com** (FR
+  "Guide pour ✳" entries by the fictional Djosh Sho; Martin path-forwards
+  `guidepour.com/* → martingamsby.com/*` at the registrar) and, later,
+  **guidance4.com** (EN). The old guidepour slugs are FRENCH and rarely match the
+  filename (`/metropole`→`grand-metropolien`), so they're stored explicitly — and
+  they're **immutable** (printed in the book), so never rename an existing alias.
+  **WriterHelper must set `aliases:` on any new Guide Pour entry** (and tag it
+  `Djosh Sho`, which `isGuidePour()`/`getGuidePourPosts()` in `src/lib/blog.ts` use to
+  populate the `/{lang}/guidepour` page). See `wiki/concepts/guidepour-redirects.md`.
 - French content is written in Quebec French; keep Martin's colloquial voice when
   touching post text. Never machine-rewrite migrated posts — migration preserves
   content byte-for-byte apart from frontmatter.

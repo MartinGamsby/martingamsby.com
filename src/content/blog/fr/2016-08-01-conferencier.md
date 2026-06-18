@@ -3,6 +3,7 @@ title: "Conférencier"
 date: 2016-08-01
 translationKey: 2016-08-01-conference
 facets: [fiction]
+aliases: [conferences]
 tags: [Guide Pour,Interverti (Roman),Fiction,Djosh Sho,Gamsblurb]
 ---
 

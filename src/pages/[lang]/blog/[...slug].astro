@@ -1,8 +1,10 @@
 ---
 import { getCollection, render } from 'astro:content';
 import Base from '../../../layouts/Base.astro';
+import StarMap from '../../../components/StarMap.astro';
 import { formatDate, imageUrl, otherLang, t, url, type Lang } from '../../../i18n/ui';
-import { findTwin, langOf, slugOf, type Post } from '../../../lib/blog';
+import { findTwin, gateOf, langOf, slugOf, type Post } from '../../../lib/blog';
+import { getRelatedPosts } from '../../../lib/related';
 
 export async function getStaticPaths() {
   const all = await getCollection('blog', ({ data }) => !data.draft);
@@ -25,6 +27,21 @@ const twinUrl = twin
   ? url(`/${langOf(twin)}/blog/${slugOf(twin)}/`)
   : url(`/${otherLang(lang)}/blog/`);
 const { Content } = await render(post);
+
+// Related posts -> a mini-constellation hung off this post (shared tags + facet,
+// sized by relevance). See src/lib/related.ts.
+const related = await getRelatedPosts(post, lang);
+const myFacets = new Set(post.data.facets);
+const relatedStars = related.map((r) => {
+  const prefer = r.post.data.facets.find((f) => myFacets.has(f));
+  return {
+    href: url(`/${lang}/blog/${slugOf(r.post)}/`),
+    title: r.post.data.title,
+    gate: gateOf(r.post.data.facets, prefer),
+    weight: Math.min(1.85, 1 + 0.22 * r.sharedTags),
+    image: r.post.data.image ? imageUrl(r.post.data.imageThumb ?? r.post.data.image) : null,
+  };
+});
 ---
 
 <Base lang={lang} title={post.data.title} description={post.data.description} twinUrl={twinUrl}>
@@ -45,4 +62,11 @@ const { Content } = await render(post);
     <Content />
     <p><a href={url(`/${lang}/blog/`)}>{tr.backToBlog}</a></p>
   </article>
+
+  {relatedStars.length > 0 && (
+    <section class="related-constellation">
+      <h2 class="section-title">{tr.relatedHeading}</h2>
+      <StarMap stars={relatedStars} coreLabel={post.data.title} />
+    </section>
+  )}
 </Base>

@@ -1,3 +1,9 @@
 node_modules/
 dist/
 .astro/
+
+# Local secrets (e.g. YOUTUBE_API_KEY for tools/fetch-popularity.mjs). NEVER commit
+# the real .env — this repo is public. .env.example (no secret) is tracked.
+.env
+.env.*
+!.env.example

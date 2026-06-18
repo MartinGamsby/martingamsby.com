@@ -3,7 +3,7 @@ import { Image } from 'astro:assets';
 import Base from '../../layouts/Base.astro';
 import PostList from '../../components/PostList.astro';
 import Icon from '../../components/Icon.astro';
-import { LANGS, t, type Lang } from '../../i18n/ui';
+import { LANGS, t, url, type Lang } from '../../i18n/ui';
 import { getPosts } from '../../lib/blog';
 import coverFr from '../../assets/book/interverti-fr.png';
 import coverEn from '../../assets/book/interverti-en.png';
@@ -41,6 +41,7 @@ const content = {
     epigraph:
       'Tout ce que nous faisons pour progresser n’est qu’une béquille, et chaque béquille est un pas en arrière.',
     epigraphBy: 'Djosh Sho',
+    guidepourLink: 'Les billets « Guide pour ✳ » de Djosh Sho →',
     buy: 'Acheter sur Amazon',
     buyHref: amazonFrUrl,
     formats: 'Édition papier (couverture souple et rigide) · première édition, juin 2026',
@@ -86,6 +87,7 @@ const content = {
     epigraph:
       'Everything we make for progress is only a crutch, and every crutch is a step backward.',
     epigraphBy: 'Djosh Sho',
+    guidepourLink: 'Djosh Sho’s “Guide for ✳” entries →',
     buy: 'French edition on Amazon',
     buyHref: amazonFrUrl,
     formats: 'The French edition is releasde now; the English edition is on its way.',
@@ -134,6 +136,7 @@ const c = content[lang];
       <p>« {c.epigraph} »</p>
       <cite>— {c.epigraphBy}</cite>
     </blockquote>
+    <p class="book-gplink"><a href={url(`/${lang}/guidepour/`)}>{c.guidepourLink}</a></p>
 
     <section class="book-blurb">
       <h2>{c.blurbHeading}</h2>

@@ -3,6 +3,7 @@ title: "Hypocrite"
 date: 2016-09-01
 translationKey: 2016-09-01-hypocritical
 facets: [fiction]
+aliases: [hypocrisie]
 tags: [Guide Pour,Interverti (Roman),Fiction,Djosh Sho,Gamsblurb]
 ---
 

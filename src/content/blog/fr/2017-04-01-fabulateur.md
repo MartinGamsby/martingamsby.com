@@ -3,6 +3,7 @@ title: "Fabulateur"
 date: 2017-04-01
 translationKey: 2017-04-01-fabulator
 facets: [fiction]
+aliases: [fabulateur]
 tags: [Guide Pour,Interverti (Roman),Fiction,Djosh Sho,Gamsblurb]
 ---
 

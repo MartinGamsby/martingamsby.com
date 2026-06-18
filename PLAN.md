@@ -35,6 +35,7 @@ hatch. A post can carry several facets at once (e.g. `physics` + `ideas`).
 | `…/dev` | CV pitch (13+ yrs C++/Python/Qt, AI/ML, 50M+ users, 3 patents), curated personal projects, **professional work subsection** (see below), CV PDF, GitHub link |
 | `…/physics` | The preprint *Replacing Dark Energy and Unifying Large-Scale Anomalies* (Zenodo, DOI 10.5281/zenodo.20482196 — paper + simulation code in one record), ORCID 0009-0007-4069-9687, ProgenitorNodeModelCosmology, physics-tagged posts |
 | `…/book` | Interverti: cover, blurb, excerpt, buy links when live. FR first; EN page = "coming soon" |
+| `…/guidepour` | Djosh Sho author page (the in-universe "Guide pour ✳" column from the book); bio + fiction note + the Guide Pour entry list. Old guidepour.com / guidance4.com links redirect in (see open question #4) |
 | `…/music` | Music Experiment Game story, YouTube embeds (FR channel on /fr, EN channel on /en) |
 | `…/blog` | Full stream + facet chips + Pagefind search (handles bilingual) |
 | `…/about` | The existing INTP "too many interests" essay, contact |
@@ -126,8 +127,19 @@ Show both, clearly separated:
    https://zenodo.org/records/20482196 (DOI 10.5281/zenodo.20482196, paper + code,
    v1.0.2) — details in `wiki/sources/physics-preprint.md`.
 3. **Domain registrar** — where does martingamsby.com DNS live (needed for cutover)?
-4. **guidepour.com** — is it Martin's (it's referenced inside the book)? Canonical
-   book page: `martingamsby.com/book` or guidepour.com?
+4. ~~**guidepour.com**~~ **Resolved 2026-06-17**: it's Martin's (a retired Grav
+   site; the "Guide pour ✳" entries by the fictional Djosh Sho, from Interverti).
+   Canonical book page is `martingamsby.com/book`. The Grav site is being killed and
+   **forwarded into martingamsby.com**: Martin sets path-preserving forwarding at the
+   registrar (`guidepour.com/* → martingamsby.com/*`; fallback = a GitHub Pages repo
+   if it can't), and the site emits a bare-slug redirect stub per entry from a new
+   `aliases:` frontmatter field (`/agnostique → /fr/blog/2016-02-01-agnostique/`) via
+   the `guidepour-redirects` build integration. New `/{lang}/guidepour` page carries
+   the Djosh Sho bio. The 16 entries already live on the site as `fiction` posts.
+   English sibling **guidance4.com** gets the same treatment later (EN aliases seeded
+   as a best guess). See `wiki/concepts/guidepour-redirects.md`. Open gaps Martin will
+   fill: missing entry #06, the hidden `/crypto` article, the full printed-slug list,
+   guidance4's real slugs.
 5. **Door wording** — current set is a proposal; Martin said "maybe other doors,
    not sure yet".
 6. ~~**Public contact method**~~ **Resolved 2026-06-13**: option (c) — publish

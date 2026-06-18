@@ -3,6 +3,7 @@ title: "Grand Métropolien"
 date: 2016-04-01
 translationKey: 2016-04-01-grand-metropolitan
 facets: [fiction]
+aliases: [metropole]
 tags: [Guide Pour,Interverti (Roman),Fiction,Djosh Sho,Gamsblurb]
 ---
 

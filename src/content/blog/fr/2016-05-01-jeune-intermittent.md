@@ -3,6 +3,7 @@ title: "Jeûne Intermittent"
 date: 2016-05-01
 translationKey: 2016-05-01-intermittent-fasting
 facets: [fiction]
+aliases: [jeune]
 tags: [Guide Pour,Interverti (Roman),Fiction,Djosh Sho,Gamsblurb]
 ---
 

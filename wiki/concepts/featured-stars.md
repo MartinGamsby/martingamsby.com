@@ -101,4 +101,8 @@ existing orbit/animation/gate-wiring with **zero** changes to
 and fall back to a ★ glyph when the chosen post has no image. CSS: `.sky-post*`
 in `global.css`. Works without JS (chips sit in the centred fallback row).
 
-See also [[doors-as-lenses]], [[overview]].
+The same popularity `scoreOf` and the constellation's visual vocabulary are reused by
+two scoped sky maps — [[related-constellation]] (per post) and [[tag-galaxy]] (the
+`/[lang]/tags` page) — both via the shared `StarMap.astro` component.
+
+See also [[doors-as-lenses]], [[related-constellation]], [[tag-galaxy]], [[overview]].

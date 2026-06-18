@@ -3,6 +3,7 @@ title: "Conference"
 date: 2016-08-01
 translationKey: 2016-08-01-conference
 facets: [fiction]
+aliases: [conference]
 tags: [Guide For,Interverted (Novel),Fiction,Djosh Sho,Gamsblurb]
 ---
 

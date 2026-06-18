@@ -3,6 +3,7 @@ title: "Itinérant"
 date: 2016-10-01
 translationKey: 2016-10-01-homeless
 facets: [fiction]
+aliases: [itinerant]
 tags: [Guide Pour,Interverti (Roman),Fiction,Djosh Sho,Gamsblurb]
 ---
 

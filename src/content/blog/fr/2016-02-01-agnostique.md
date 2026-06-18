@@ -3,7 +3,8 @@ title: "Agnostique"
 date: 2016-02-01
 translationKey: 2016-02-01-agnostic
 facets: [fiction]
-tags: [Guide Pour,Interverti (Roman),Djosh Sho,Gamsblurb]
+aliases: [agnostique]
+tags: [Guide Pour,Interverti (Roman),Fiction,Djosh Sho,Gamsblurb]
 ---
 
 Lorsque l’on pense à la mort, on pense souvent à ce tunnel avec une lumière blanche au bout, comme plusieurs récits en témoignent. 

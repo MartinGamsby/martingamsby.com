@@ -7,16 +7,21 @@ interface Props {
   lang: Lang;
   /** Emit data-facets on each item so the blog index can filter client-side. */
   facetData?: boolean;
+  /** Emit data-tags (pipe-separated) so the tag galaxy can filter client-side. */
+  tagData?: boolean;
 }
 
-const { posts, lang, facetData = false } = Astro.props;
+const { posts, lang, facetData = false, tagData = false } = Astro.props;
 ---
 
 <ul class="post-list">
   {posts.map((p) => {
     const href = url(`/${lang}/blog/${slugOf(p)}/`);
     return (
-      <li data-facets={facetData ? p.data.facets.join(' ') : undefined}>
+      <li
+        data-facets={facetData ? p.data.facets.join(' ') : undefined}
+        data-tags={tagData ? p.data.tags.join('|') : undefined}
+      >
         <time datetime={p.data.date.toISOString().slice(0, 10)}>{formatDate(p.data.date, lang)}</time>
         <a class="post-title" href={href}>{p.data.title}</a>
         {p.data.image && (
