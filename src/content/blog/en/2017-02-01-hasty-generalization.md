@@ -7,7 +7,9 @@ aliases: [generalization]
 tags: [Guidance For,Interverted (Novel),Djosh Sho,Gamsblurb]
 ---
 
-In ancient Greece, a certain Socrates denounced the sophists of his time, who claimed to hold the truth, while their logic was fundamentally flawed. One of the mistakes they made was hasty generalization. It is not because something happened to your mother-in-law that it will necessarily happen to all the mothers-in-law in this world. Sometimes, it is obvious, but other times, since it is easier, people often fall into the trap of believing that what happens in their life happens to everyone, and that they hold the truth. This is unfortunately never the case...
+In ancient Greece, a certain Socrates denounced the sophists of his time, who claimed to hold the truth, when their logic was fundamentally biased. One of the mistakes they made was hasty generalization. Just because something happened to your mother-in-law doesn't mean it will necessarily happen to all mothers-in-law in the world. Sometimes it's obvious, but other times, since it's easier, people often fall into the trap of believing that what happens in their life happens to everyone, and that they hold the truth. Unfortunately, that's never the case...
+
+Everyone is different, which makes everyone the same. You're just one among many. Stop generalizing.
 
 > Guidance for: * Hasty Generalization * : from the novel **Interverti**
 

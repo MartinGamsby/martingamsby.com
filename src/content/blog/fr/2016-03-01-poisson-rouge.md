@@ -1,5 +1,5 @@
 ---
-title: "Poisson Rouge"
+title: "Poisson rouge"
 date: 2016-03-01
 translationKey: 2016-03-01-goldfish
 facets: [fiction]
@@ -7,11 +7,11 @@ aliases: [poisson-rouge]
 tags: [Guide Pour,Interverti (Roman),Djosh Sho,Gamsblurb]
 ---
 
-Tout le monde semble s’entendre sur le fait que les poissons rouges sont bêtes et qu’ils n’ont que 3 secondes de mémoire. Ces gens seraient déçus de savoir le temps mémoire des humains, à peine plus élevé. 
+Tout le monde semble s’entendre sur le fait que les poissons rouges sont bêtes et qu’ils n’ont que trois secondes de mémoire. Ces gens seraient déçus de savoir le temps de mémoire des humains, à peine plus élevé.
 
-Quelques secondes aussi. 
+Quelques secondes aussi.
 
-Mais il y a la mémoire à long terme qui vient pallier à cette lacune, nous trompant nous même à penser que nous nous rappelons de tout. Cette mémoire, les poissons rouges aussi l'ont, et sont en fait supérieurs à la plupart des autres poissons. Ils peuvent même reconnaître les gens dans la pièce, seulement au son de leurs pas, faisant vibrer l'eau dans leur aquarium.
+Mais il y a la mémoire à long terme qui vient pallier à cette lacune, nous trompant nous-mêmes à penser que nous nous souvenons de tout. Cette mémoire, les poissons rouges aussi l'ont, et sont en fait supérieurs à la plupart des autres poissons. Ils peuvent même reconnaître les gens dans la pièce, seulement au son de leurs pas, faisant vibrer l'eau dans leur aquarium.
 
 > Guide pour: * Poisson Rouge * : tiré du roman **Interverti**
 

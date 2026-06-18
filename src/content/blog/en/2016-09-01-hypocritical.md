@@ -7,9 +7,9 @@ aliases: [hypocrisy]
 tags: [Guidance For,Interverted (Novel),Fiction,Djosh Sho,Gamsblurb]
 ---
 
-Hypocrisy, in short, is saying something and then thinking something else. This behavior can be practiced by almost anyone, even those who claim to be victims of it, sometimes doing it without even realizing it. For example, some people say they are altruistic, because they help people in need, but what they do borders on uselessness. They then complain that others should be more altruistic, even if what they do is very similar: nothing. 
+Hypocrisy, in summary, is thinking one thing, then saying another. This behavior can be practiced by almost everyone, even by those who claim to be victims of it, sometimes doing it without even realizing it. For example, some call themselves altruistic, because they help people in need, but what they do borders on uselessness. They then complain that others should be more altruistic, even though concretely what they do is very similar: nothing. "Liking" a post on the Internet may seem like a good deed, but it's worse, because you think you've done a good deed, so you don't do anything else.
 
-Colton says that it is part of human regression, that it happens more and more often, too often, to the point where the Earth will no longer support the lack of action of these selfish inhabitants. 
+Colton says it's part of human regression, that it happens more and more often, too often, to the point where the Earth will no longer support the lack of action from its selfish inhabitants.
 
 > (FICTION) Guidance for: * Hypocrite * : from the novel **Interverti**
 

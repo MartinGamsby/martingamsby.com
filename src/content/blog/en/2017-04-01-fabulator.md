@@ -7,6 +7,8 @@ aliases: [fabulist]
 tags: [Guidance For,Interverted (Novel),Fiction,Djosh Sho,Gamsblurb]
 ---
 
-Human beings have an incredible brain. They are capable of great things. So much so that sometimes they imagine themselves to be better than they really are. When faced with a difficult choice or an irrational desire, the brain will invent a rational story to give a reason to this desire. See the old texts “l'espèce fabulatrice” by Romain Gary.
+The human being has an incredible brain. It's capable of great things.
+
+So much so that sometimes, it imagines itself to be better than it really is. Faced with a difficult choice or an irrational desire, the brain will invent a rational story to give a reason for this desire. See the old texts "The Fabulist Species" by Nancy Huston.
 
 > (FICTION) Guidance for: * Fabulator * : taken from the novel **Interverti**

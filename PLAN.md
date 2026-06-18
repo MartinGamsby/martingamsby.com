@@ -139,13 +139,12 @@ Show both, clearly separated:
    generated from both books** (`Interverti/content/interverti/{fr/book.md,en/book.draft.md}`,
    the source of truth), bodies synced to the current book text, dated in book order.
    English sibling **guidance4.com** (EN, "Guidance for ✳") forwards the same way, so
-   the integration emits **both** (`EMIT_LANGS=['fr','en']`) — **57 stubs**. **9 slugs
-   collide** (printed identically in both books: web5, conferences, deja-vu, adrenaline,
-   tesla, mozart, einstein, resilience, newton); **FR wins** (EN skipped → lands on FR,
-   toggle = escape). See `wiki/concepts/guidepour-redirects.md`. **Open: guidance4.com
-   hosting** — its own repo (recommended, keeps `/tesla` etc. correct-language) vs
-   renaming the 9 EN slugs (the EN book is still a draft, so mutable). Minor: the hidden
-   `/crypto` article (not a book entry) and Coal Ton's bio.
+   the integration emits **both** (`EMIT_LANGS=['fr','en']`) — **66 stubs**, build throws
+   on any duplicate. The FR + EN books shared **9 slugs**; since the EN book is unprinted
+   (mutable), those 9 were **renamed on the EN side** (e.g. tesla→nikola-tesla,
+   web5→web-5-0) in the EN posts' aliases AND `en/book.draft.md`, so every slug is unique
+   and both languages land correct. See `wiki/concepts/guidepour-redirects.md`. Minor
+   leftovers: the hidden `/crypto` article (not a book entry) and Coal Ton's bio.
 5. **Door wording** — current set is a proposal; Martin said "maybe other doors,
    not sure yet".
 6. ~~**Public contact method**~~ **Resolved 2026-06-13**: option (c) — publish
