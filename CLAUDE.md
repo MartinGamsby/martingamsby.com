@@ -126,11 +126,15 @@ Quick rules:
   SAME-language duplicate alias, or one that shadows a real route. This retires
   **guidepour.com** (FR "Guide pour ✳") and **guidance4.com** (EN "Guidance for ✳"),
   both by the fictional Djosh Sho; Martin path-forwards `<domain>/* → martingamsby.com/*`
-  at the registrar, so both emit (`EMIT_LANGS = ['fr', 'en']`). `web5` and `conferences`
-  are printed IDENTICALLY in both books → those two slugs collide; **FR wins**
-  (guidepour.com is live/primary) and the EN stub is skipped with a build warning, so
-  `guidance4.com/web5` lands on the French post (the in-page language toggle is the
-  escape). EN slugs come from the source of truth
+  at the registrar, so both emit (`EMIT_LANGS = ['fr', 'en']`) — **every alias is unique
+  across both languages** and the build **throws on any duplicate**. The FR book and the
+  EN book once shared 9 slugs (proper nouns/cognates: web5, conferences, deja-vu,
+  adrenaline, tesla, mozart, einstein, resilience, newton); since the EN book is a draft
+  (unprinted, mutable), those 9 were **renamed on the EN side** in both the EN posts'
+  `aliases:` AND `Interverti/content/interverti/en/book.draft.md` (e.g. `tesla →
+  nikola-tesla`, `web5 → web-5-0`, `conferences → conference`, `deja-vu → dejavu`). The
+  two books have the same 33 entries; all now have posts (17 were generated from the
+  book text). Last build: **66 stubs** (33 FR + 33 EN). EN slugs come from the source of truth
   `Interverti/content/interverti/en/book.draft.md`, which prints `guidance4.com/<slug>`
   and uses "**Guidance for**" (not "Guide for"). The old slugs are FRENCH/ENGLISH book
   slugs that rarely match the filename (`/metropole`→`grand-metropolien`,

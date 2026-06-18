@@ -47,31 +47,56 @@ FRENCH and frequently differ from the post slug — `/metropole`→`grand-metrop
 `/web5`→`web-5-0`. New Guide Pour entries stay zero-manual-work: WriterHelper writes
 the post with one `aliases:` line and the stub appears on the next build.
 
-## guidance4.com (English) — separate, because slugs collide
+## Two books, 33 entries, both source-of-truth
 
-Source of truth: `Interverti/content/interverti/en/book.draft.md` (the EN book). It uses
-**"Guidance for ✳"** (not "Guide for") and prints `guidance4.com/<slug>`. The EN slugs
-were updated to match it: `metropolis, fasting, sleep, web5, conferences, hypocrisy,
-generalization, math, fabulist` (+ unchanged `agnostic, goldfish, homeless,
-personalities, deja-vu, second, magic`). Stored in each EN post's `aliases:`.
+- **FR (immutable, published):** `Interverti/content/interverti/fr/book.md` — "Guide pour ✳",
+  prints `guidepour.com/<slug>`.
+- **EN (draft, NOT yet published → mutable):** `Interverti/content/interverti/en/book.draft.md`
+  — "Guidance for ✳", prints `guidance4.com/<slug>`.
+
+Both books have the **same 33 entries in the same order**. 16 already had posts; the
+**17 new ones were generated from the book text** (FR+EN twins): bicyclette/bicycle,
+hangar/bunker, rétrocompatibilité/backward-compatibility, fin-du-monde/end-of-the-world,
+adrénaline, vaches/cows, vieux/old, musique/music, défauts/flaws, tesla, sagesse/wisdom,
+mozart, tout-le-monde/everyone, einstein, résilience, newton, esclaves/slaves. The
+existing 16 bodies were **synced to the current book text** (the books had been edited
+since the .md were first made), single-block where the book is single-block.
+
+**Dates (fake — real ones unknown):** new entries placed in **book order** — the 6 before
+Magie get in-between dates (2016-03-15 … 2017-04-20), the 11 after Magie get daily dates
+2017-05-02 … 2017-05-12. Existing dates kept (re-dating them would break the old Jekyll
+redirect stubs). One quirk: the existing Régression(`maths`, 2017-03) sits later than book
+order wants — left as-is.
+
+**Titles retitled to the books** (Martin's call): FR Dormeur→**Sommeil**,
+Conférencier→**Conférences**, Mathématicien→**Régression**; EN Sleeper→**Sleep**,
+Conference→**Conferences**, Hypocritical→**Hypocrite**, Mathematician→**Regression**,
+Fabulator→**Fabulist** (+ case fixes). **Fixed 2 wrong FR aliases** vs the immutable FR
+book: `dormeur`→**sommeil**, `dejavu`→**deja-vu**.
+
+## Collisions — resolved by renaming 9 EN slugs
 
 Both domains forward `/<slug>` → `martingamsby.com/<slug>`, so the integration emits
-**both** (`EMIT_LANGS = ['fr', 'en']`, FR-first). **`web5` and `conferences` are
-IDENTICAL in both books** → those two slugs collide; **FR wins** (guidepour.com is
-live/primary), the EN stub is skipped with a build warning, and `guidance4.com/web5`
-lands on the French post (language toggle = escape). Same-language duplicate aliases
-still **throw** (real bug). Last build: 30 stubs (16 FR + 14 EN-only). Perfect
-per-language landing for those 2 would need guidance4.com on its own host.
+**both** (`EMIT_LANGS = ['fr', 'en']`) and **throws on ANY duplicate alias** (no
+silent collisions). The FR book and the EN book once shared **9 slugs** (proper nouns +
+cognates). Since the EN book is a draft (**not printed → mutable**, Martin's call), those
+9 were **renamed on the EN side** — in both the EN posts' `aliases:` and the EN
+`book.draft.md`:
 
-The EN book has **17 entries with NO post** (confirmed gaps — searched, none exist):
-bicycle, bunker, backward-compatibility, end-of-the-world, adrenaline, cows, old, music,
-flaws, tesla, wisdom, mozart, everyone, einstein, resilience, newton, slaves — their
-texts are in the book if Martin wants them generated (EN-only unless the FR book is
-provided for twins).
+| FR (immutable) | EN was | EN now |
+|---|---|---|
+| web5 | web5 | **web-5-0** |
+| conferences | conferences | **conference** |
+| deja-vu | deja-vu | **dejavu** |
+| adrenaline | adrenaline | **adrenalin** |
+| tesla | tesla | **nikola-tesla** |
+| mozart | mozart | **wolfgang-mozart** |
+| einstein | einstein | **albert-einstein** |
+| resilience | resilience | **resiliency** |
+| newton | newton | **isaac-newton** |
 
-5 EN posts were **retitled to the book's entry titles** (Martin's call): Sleeper→**Sleep**,
-Conference→**Conferences**, Hypocritical→**Hypocrite**, Mathematician→**Regression**,
-Fabulator→**Fabulist** (FR twin titles left as-is — needs the FR book to align).
+Now every slug is unique → both FR `/tesla` and EN `/nikola-tesla` land correct-language.
+Last build: **66 stubs** (33 FR + 33 EN), 0 collisions.
 
 ## The `/{lang}/guidepour` page
 
@@ -88,15 +113,14 @@ enum/doors change. Entries render as **"Guide pour *title*" / "Guidance for *tit
 gate** linking here (`src/pages/[lang]/index.astro`, a `.sky-post` chip with
 `data-facet="book"`).
 
-## Gaps Martin will fill (they're in the book)
+## Open items
 
-- **Missing entry #06** — Grav goes `05.sleeper` → `07.web5`; no post exists for #06.
-- **`/crypto`** — a hidden (`visible:false`), 2021, longer article in Grav (category
-  "Argent", not Interverti) that was never published on the site. Include as a post +
-  redirect, or let it fall to the friendly 404?
-- **Full printed-slug list** — confirm every `guidepour.com/<slug>` the book prints so
-  none dead-ends (the 16 live ones are covered).
-- **guidance4 / EN slugs** — best-guess until confirmed.
-- **Coal Ton** — only a name in Grav (no real bio); currently a one-line mention.
+- **`/crypto`** — a hidden (`visible:false`), 2021, longer article that was in the old Grav
+  site (category "Argent") but is NOT a book "Guide pour" entry and not on the site. Make a
+  post + redirect, or let `guidepour.com/crypto` fall to the friendly 404? (The old Grav
+  `06.*` folder gap is a non-issue — both books have exactly 33 entries, all now covered.)
+- **Régression date quirk** — the existing `maths`/`math` post (2017-03) sits later than its
+  book-order position; re-dating it would break the old Jekyll redirect stub, so left as-is.
+- **Coal Ton** — only a name (no real bio); currently a one-line mention on `/guidepour`.
 
 See also [[doors-as-lenses]], [[jekyll-blogs]], [[overview]].

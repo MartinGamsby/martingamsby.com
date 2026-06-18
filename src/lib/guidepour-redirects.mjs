@@ -15,13 +15,11 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 // Both languages emit martingamsby.com bare-slug stubs: FR = guidepour.com,
-// EN = guidance4.com (both forward `/<slug>` -> martingamsby.com/<slug>).
-// `web5` and `conferences` are printed IDENTICALLY in both books, so those two
-// slugs collide. guidepour.com is live and primary, so FR WINS a cross-language
-// collision (the EN stub is skipped with a warning) — guidance4.com/web5 then
-// lands on the French post, with the in-page language toggle as the escape hatch.
-// (For perfect per-language landing on those two, guidance4.com would need its own
-// host.) Listed FR-first so FR wins. See wiki/concepts/guidepour-redirects.md.
+// EN = guidance4.com (both forward `/<slug>` -> martingamsby.com/<slug>). Every
+// alias must be UNIQUE across both languages — the 9 slugs that the FR book and
+// the (unprinted, mutable) EN book once shared were renamed on the EN side
+// (e.g. tesla -> nikola-tesla, web5 -> web-5-0). The build THROWS on any duplicate
+// alias, so a future collision can't ship silently. See wiki/concepts/guidepour-redirects.md.
 const EMIT_LANGS = ['fr', 'en'];
 
 function frontmatter(raw) {
@@ -95,20 +93,17 @@ export default function guidepourRedirects() {
         const blogDir = fileURLToPath(new URL('src/content/blog/', root));
         const targets = await collectAliasTargets(blogDir);
 
-        // Guard 1: resolve one owner per alias. A SAME-language duplicate is a real
-        // bug (throw). A CROSS-language collision (FR `web5` vs EN `web5`) is
-        // expected — EMIT_LANGS is FR-first, so the first (FR) owner wins and the
-        // EN stub is skipped with a warning (see the header note).
+        // Guard 1: every alias must be unique across both languages (EN slugs were
+        // renamed to avoid the FR/EN book overlaps) — any duplicate is a real bug.
         const owner = new Map();
         for (const t of targets) {
           const prev = owner.get(t.alias);
-          if (!prev) { owner.set(t.alias, t); continue; }
-          if (prev.lang === t.lang) {
+          if (prev) {
             throw new Error(
               `guidepour-redirects: alias "${t.alias}" is claimed by both ${prev.source} and ${t.source}.`,
             );
           }
-          logger.warn(`alias "${t.alias}" claimed by ${prev.lang} (${prev.source}) and ${t.lang} (${t.source}); ${prev.lang} wins.`);
+          owner.set(t.alias, t);
         }
         const emit = [...owner.values()];
 

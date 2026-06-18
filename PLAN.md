@@ -135,17 +135,17 @@ Show both, clearly separated:
    if it can't), and the site emits a bare-slug redirect stub per entry from a new
    `aliases:` frontmatter field (`/agnostique → /fr/blog/2016-02-01-agnostique/`) via
    the `guidepour-redirects` build integration. New `/{lang}/guidepour` page carries
-   the Djosh Sho bio. The 16 entries already live on the site as `fiction` posts.
+   the Djosh Sho bio. **All 33 entries now have posts** — the 16 originals plus **17
+   generated from both books** (`Interverti/content/interverti/{fr/book.md,en/book.draft.md}`,
+   the source of truth), bodies synced to the current book text, dated in book order.
    English sibling **guidance4.com** (EN, "Guidance for ✳") forwards the same way, so
-   the integration emits **both** (`EMIT_LANGS=['fr','en']`). `web5`/`conferences` are
-   printed identically in both books → those two collide; **FR wins** (the EN stub is
-   skipped, so `guidance4.com/web5` lands on the FR post; toggle = escape). EN slugs +
-   the 5 retitles (Sleep, Conferences, Hypocrite, Regression, Fabulist) come from the EN
-   book (`Interverti/content/interverti/en/book.draft.md`, the source of truth). See
-   `wiki/concepts/guidepour-redirects.md`. Open gaps Martin will fill: missing FR entry
-   #06, the hidden `/crypto` article, the FR printed-slug cross-check, and the **17 EN
-   book entries with no post** (bicycle, bunker, backward-compatibility, … — confirmed
-   absent; texts are in the book if we want to generate them).
+   the integration emits **both** (`EMIT_LANGS=['fr','en']`) — **57 stubs**. **9 slugs
+   collide** (printed identically in both books: web5, conferences, deja-vu, adrenaline,
+   tesla, mozart, einstein, resilience, newton); **FR wins** (EN skipped → lands on FR,
+   toggle = escape). See `wiki/concepts/guidepour-redirects.md`. **Open: guidance4.com
+   hosting** — its own repo (recommended, keeps `/tesla` etc. correct-language) vs
+   renaming the 9 EN slugs (the EN book is still a draft, so mutable). Minor: the hidden
+   `/crypto` article (not a book entry) and Coal Ton's bio.
 5. **Door wording** — current set is a proposal; Martin said "maybe other doors,
    not sure yet".
 6. ~~**Public contact method**~~ **Resolved 2026-06-13**: option (c) — publish
