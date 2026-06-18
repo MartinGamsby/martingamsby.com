@@ -9,9 +9,11 @@ interface Props {
   facetData?: boolean;
   /** Emit data-tags (pipe-separated) so the tag galaxy can filter client-side. */
   tagData?: boolean;
+  /** Prefix each title, e.g. "Guide pour <em>title</em>" on the guidepour page. */
+  titlePrefix?: string;
 }
 
-const { posts, lang, facetData = false, tagData = false } = Astro.props;
+const { posts, lang, facetData = false, tagData = false, titlePrefix } = Astro.props;
 ---
 
 <ul class="post-list">
@@ -23,7 +25,9 @@ const { posts, lang, facetData = false, tagData = false } = Astro.props;
         data-tags={tagData ? p.data.tags.join('|') : undefined}
       >
         <time datetime={p.data.date.toISOString().slice(0, 10)}>{formatDate(p.data.date, lang)}</time>
-        <a class="post-title" href={href}>{p.data.title}</a>
+        {titlePrefix
+          ? <a class="post-title" href={href}>{titlePrefix} <em>{p.data.title}</em></a>
+          : <a class="post-title" href={href}>{p.data.title}</a>}
         {p.data.image && (
           <a class="post-thumb" href={href} tabindex="-1" aria-hidden="true">
             <img src={imageUrl(p.data.imageThumb ?? p.data.image)} alt="" loading="lazy" decoding="async" />

@@ -21,6 +21,8 @@
 <div class="hero-sky" aria-hidden="true"><canvas></canvas></div>
 
 <script>
+  import { rectEdge, circEdge, orbitPoint } from '../lib/constellation-geometry';
+
   const sky = document.querySelector('.hero-sky');
   const canvas = sky?.querySelector('canvas');
   const ctx = canvas?.getContext('2d');
@@ -65,39 +67,10 @@
     let fc = facetColors();
 
     // --- geometry helpers ---------------------------------------------------
-    // Point on a box's border in the direction of (tx,ty). Honours the card's
-    // border-radius: in a corner zone it returns the point on the rounded arc,
-    // not the sharp rectangle corner (which sits in the card's transparent
-    // cut-out, making the link look like it stops short of the edge).
-    function rectEdge(b, tx, ty) {
-      const dx = tx - b.x, dy = ty - b.y;
-      if (!dx && !dy) return { x: b.x, y: b.y };
-      const s = Math.min(b.hw / Math.max(Math.abs(dx), 1e-6), b.hh / Math.max(Math.abs(dy), 1e-6));
-      const px = b.x + dx * s, py = b.y + dy * s;
-      const r = b.rad || 0;
-      if (r > 0 && Math.abs(px - b.x) > b.hw - r && Math.abs(py - b.y) > b.hh - r) {
-        // corner zone: intersect the ray with the corner's arc circle
-        const ccx = b.x + Math.sign(px - b.x) * (b.hw - r);
-        const ccy = b.y + Math.sign(py - b.y) * (b.hh - r);
-        const ex = b.x - ccx, ey = b.y - ccy;
-        const A = dx * dx + dy * dy;
-        const B = 2 * (dx * ex + dy * ey);
-        const C = ex * ex + ey * ey - r * r;
-        const disc = B * B - 4 * A * C;
-        if (disc >= 0) {
-          const tt = (-B + Math.sqrt(disc)) / (2 * A);
-          return { x: b.x + dx * tt, y: b.y + dy * tt };
-        }
-      }
-      return { x: px, y: py };
-    }
+    // rectEdge / circEdge / orbitPoint are shared with StarMap.astro — see
+    // src/lib/constellation-geometry.ts.
     function inRect(b, px, py) {
       return Math.abs(px - b.x) <= b.hw && Math.abs(py - b.y) <= b.hh;
-    }
-    // Point on a chip's rim in the direction of (tx,ty).
-    function circEdge(c, tx, ty) {
-      const dx = tx - c.x, dy = ty - c.y, d = Math.hypot(dx, dy) || 1;
-      return { x: c.x + (dx / d) * c.radius, y: c.y + (dy / d) * c.radius };
     }
 
     // --- measuring the DOM into nodes --------------------------------------
@@ -183,37 +156,20 @@
         return true;
       };
 
-      // A point on the "orbit": the rounded outline `d` px outside the card, at
-      // perimeter fraction p (0..1). Walking this lets a chip sit ANYWHERE along
-      // an edge (or round a corner) — not just dead-centre on a side.
-      const orbitPoint = (g, d, p) => {
-        const W = g.hw * 2, H = g.hh * 2, arc = (Math.PI / 2) * d;
-        const L = 2 * W + 2 * H + 4 * arc;
-        let s = (((p % 1) + 1) % 1) * L;
-        const x1 = g.homeX - g.hw, x2 = g.homeX + g.hw;
-        const y1 = g.homeY - g.hh, y2 = g.homeY + g.hh;
-        if (s < H) return { x: x2 + d, y: y1 + s }; s -= H;                                   // right edge ↓
-        if (s < arc) { const a = s / d; return { x: x2 + d * Math.cos(a), y: y2 + d * Math.sin(a) }; } s -= arc; // BR
-        if (s < W) return { x: x2 - s, y: y2 + d }; s -= W;                                   // bottom edge ←
-        if (s < arc) { const a = Math.PI / 2 + s / d; return { x: x1 + d * Math.cos(a), y: y2 + d * Math.sin(a) }; } s -= arc; // BL
-        if (s < H) return { x: x1 - d, y: y2 - s }; s -= H;                                   // left edge ↑
-        if (s < arc) { const a = Math.PI + s / d; return { x: x1 + d * Math.cos(a), y: y1 + d * Math.sin(a) }; } s -= arc; // TL
-        if (s < W) return { x: x1 + s, y: y1 - d }; s -= W;                                   // top edge →
-        const a = Math.PI * 1.5 + s / d; return { x: x2 + d * Math.cos(a), y: y1 + d * Math.sin(a) };           // TR
-      };
-
-      // Each chip starts at a random spot on its gate's orbit and scans around
-      // until it finds one clear of every card, placed chip, and the screen
-      // edge — widening the orbit only if the whole ring is blocked.
+      // orbitPoint (the rounded outline `d` px outside a box) is shared — see
+      // src/lib/constellation-geometry.ts. A chip walks its gate's orbit until it finds
+      // a spot clear of every card, placed chip, and the screen edge — widening the
+      // orbit only if the whole ring is blocked.
       const N = 30;
       for (const s of socials) {
         const g = s.gate, base = GATE_MARGIN + s.radius;
+        const gBox = { x: g.homeX, y: g.homeY, hw: g.hw, hh: g.hh };
         const phase = Math.random();
         let best = null;
         for (let ring = 0; ring < 14 && !best; ring++) {
           const d = base + ring * (s.radius * 2 + 8);
           for (let k = 0; k < N && !best; k++) {
-            const pt = orbitPoint(g, d, phase + k / N);
+            const pt = orbitPoint(gBox, d, phase + k / N);
             if (fits(pt.x, pt.y, s.radius)) best = pt;
           }
         }

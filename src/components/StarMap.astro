@@ -64,6 +64,8 @@ const CoreTag = coreHref ? 'a' : 'div';
 </div>
 
 <script>
+  import { rectEdge, orbitPoint } from '../lib/constellation-geometry';
+
   const GATES = ['dev', 'physics', 'book', 'music', 'everything'] as const;
 
   function colorFor(gate: string): string {
@@ -98,25 +100,9 @@ const CoreTag = coreHref ? 'a' : 'div';
     }));
     items.forEach((it) => (it.ampY = it.ampX * 0.8));
 
-    // A point on the rounded-rectangle outline `d` px outside the core box, at perimeter
-    // fraction p (0..1). Walking the box's OWN outline (not an ellipse) is what clears a
-    // wide, short title pill on every side: the earlier ellipse cleared the left/right
-    // but a diagonal chip still cut the long top edge. Mirrors the home constellation's
-    // orbitPoint.
-    function orbitPoint(d: number, p: number) {
-      const W = coreHW * 2, H = coreHH * 2, arc = (Math.PI / 2) * d;
-      const L = 2 * W + 2 * H + 4 * arc;
-      let s = (((p % 1) + 1) % 1) * L;
-      const x1 = cx - coreHW, x2 = cx + coreHW, y1 = cy - coreHH, y2 = cy + coreHH;
-      if (s < H) return { x: x2 + d, y: y1 + s }; s -= H;                                          // right ↓
-      if (s < arc) { const a = s / d; return { x: x2 + d * Math.cos(a), y: y2 + d * Math.sin(a) }; } s -= arc; // BR
-      if (s < W) return { x: x2 - s, y: y2 + d }; s -= W;                                          // bottom ←
-      if (s < arc) { const a = Math.PI / 2 + s / d; return { x: x1 + d * Math.cos(a), y: y2 + d * Math.sin(a) }; } s -= arc; // BL
-      if (s < H) return { x: x1 - d, y: y2 - s }; s -= H;                                          // left ↑
-      if (s < arc) { const a = Math.PI + s / d; return { x: x1 + d * Math.cos(a), y: y1 + d * Math.sin(a) }; } s -= arc; // TL
-      if (s < W) return { x: x1 + s, y: y1 - d }; s -= W;                                          // top →
-      const a = Math.PI * 1.5 + s / d; return { x: x2 + d * Math.cos(a), y: y1 + d * Math.sin(a) }; // TR
-    }
+    // The box used for both the orbit layout and the line-attachment point — the core
+    // pill. `border-radius:999px` caps to a corner radius of min(coreHW, coreHH).
+    const coreBox = () => ({ x: cx, y: cy, hw: coreHW, hh: coreHH, rad: Math.min(coreHW, coreHH) });
 
     // Lay the chips on concentric rounded-rect orbits around the core, heaviest first.
     // Each orbit sits `d` px outside the box, so every chip clears the core (and a long
@@ -164,11 +150,12 @@ const CoreTag = coreHref ? 'a' : 'div';
       cx = w / 2;
       cy = h / 2;
 
+      const box = coreBox();
       rings.forEach((r, ri) => {
         const n = r.items.length;
         const phase = ri * 0.13;                              // offset adjacent rings
         r.items.forEach((it, k) => {
-          const pt = orbitPoint(r.d, phase + k / n);
+          const pt = orbitPoint(box, r.d, phase + k / n);
           it.hx = pt.x;
           it.hy = pt.y;
           it.el.style.left = `${it.hx.toFixed(1)}px`;
@@ -177,45 +164,16 @@ const CoreTag = coreHref ? 'a' : 'div';
       });
     }
 
-    // Endpoint on the core PILL's edge toward (tx,ty) — so lines start at the border,
-    // not the centre. Honours the rounded ends: `border-radius:999px` caps to a corner
-    // radius of min(coreHW, coreHH), so in the rounded-end zone we intersect the ray
-    // with the cap's arc instead of the sharp rectangle corner (which sits in the
-    // pill's transparent cut-out → the visible gap).
-    function coreEdge(tx: number, ty: number) {
-      const dx = tx - cx, dy = ty - cy;
-      if (!dx && !dy) return { x: cx, y: cy };
-      const s = Math.min(
-        coreHW / Math.max(Math.abs(dx), 1e-6),
-        coreHH / Math.max(Math.abs(dy), 1e-6),
-      );
-      const px = cx + dx * s, py = cy + dy * s;
-      const r = Math.min(coreHW, coreHH);
-      if (r > 0 && Math.abs(px - cx) > coreHW - r && Math.abs(py - cy) > coreHH - r) {
-        const ccx = cx + Math.sign(px - cx) * (coreHW - r);
-        const ccy = cy + Math.sign(py - cy) * (coreHH - r);
-        const ex = cx - ccx, ey = cy - ccy;
-        const A = dx * dx + dy * dy;
-        const B = 2 * (dx * ex + dy * ey);
-        const C = ex * ex + ey * ey - r * r;
-        const disc = B * B - 4 * A * C;
-        if (disc >= 0) {
-          const tt = (-B + Math.sqrt(disc)) / (2 * A);
-          return { x: cx + dx * tt, y: cy + dy * tt };
-        }
-      }
-      return { x: px, y: py };
-    }
-
     function frame(advance: boolean) {
       if (advance) t++;
       ctx.clearRect(0, 0, w, h);
+      const box = coreBox();
       for (const it of items) {
         const dx = it.ampX * Math.sin(t * it.wv + it.phx);
         const dy = it.ampY * Math.cos(t * it.wv * 0.9 + it.phy);
         const x = it.hx + dx, y = it.hy + dy;
         if (advance) it.el.style.translate = `${dx.toFixed(2)}px ${dy.toFixed(2)}px`;
-        const e = coreEdge(x, y);
+        const e = rectEdge(box, x, y);
         ctx.globalAlpha = 0.5;
         ctx.strokeStyle = it.color;
         ctx.lineWidth = 1.2;
