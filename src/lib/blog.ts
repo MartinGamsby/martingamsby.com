@@ -47,8 +47,11 @@ export function isGuidePour(post: Post): boolean {
   return post.data.tags.includes('Djosh Sho');
 }
 
+// The column is identified ONLY by the cross-language `Djosh Sho` tag — NOT the fiction
+// facet. Some "Guide pour" entries are real-life facts (no fiction facet), and they must
+// still appear on the guidepour page, so we don't pre-filter by facet.
 export async function getGuidePourPosts(lang: Lang): Promise<Post[]> {
-  const posts = await getPosts(lang, 'fiction');
+  const posts = await getPosts(lang);
   return posts.filter(isGuidePour);
 }
 

@@ -13,8 +13,10 @@ The 16 live entries were converted to Gamsblurb posts years ago (`convert.py` in
 Grav `01.home/`) and pulled in during the Jekyll migration, so they're already
 `facets: [fiction]` posts **in both FR and EN**, tagged `Guide Pour`/`Guide For`,
 `Interverti (Roman)`/`Interverted (Novel)`, **`Djosh Sho`**, `Gamsblurb`. This was a
-redirect + author-page + tag-tidy job, **not** a content migration. Tags were
-normalized so every entry carries the `Fiction` tag too.
+redirect + author-page + tag-tidy job, **not** a content migration. **Not every entry is
+fiction** — some "Guide pour" pieces are real-life facts; for those the `fiction` facet
+(and the `Fiction` tag, which now follows it via WriterHelper's tag migration) is
+dropped. The `Djosh Sho` tag is the only thing that defines the column.
 
 ## Two-layer redirect (the "no manual page per entry" requirement)
 
@@ -56,9 +58,11 @@ lede, the **Djosh Sho bio** (ported verbatim from the Grav `author.fr.md`; EN is
 translation), an explicit **fiction note** ("Djosh Sho est un personnage de fiction…")
 so a first-time reader knows it's from the novel, a Coal Ton mention, and a `PostList`
 of the entries — filtered by `getGuidePourPosts(lang)` / `isGuidePour(post)` in
-`src/lib/blog.ts` on the cross-language **`Djosh Sho`** tag. Linked both ways with
-`/book` (the book epigraph is already by Djosh Sho) and from the main nav + the
-friendlier `404`. `facets:[fiction]` stays — no enum/doors change.
+`src/lib/blog.ts` on the cross-language **`Djosh Sho`** tag **only** (NOT the fiction
+facet — real-life-fact entries must still appear). Linked both ways with `/book` (the
+book epigraph is already by Djosh Sho) and from the main nav + the friendlier `404`. No
+enum/doors change. The home page also hangs a **`✳` star on the book gate** linking here
+(`src/pages/[lang]/index.astro`, a `.sky-post` chip with `data-facet="book"`).
 
 ## Gaps Martin will fill (they're in the book)
 

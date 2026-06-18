@@ -134,6 +134,20 @@ const satellites = [
           </li>
         );
       })}
+      {/* The "Guide pour ✳" column, hung off the book gate as its own star (its ✳ emblem). */}
+      <li>
+        <a
+          class="sky-social sky-post"
+          href={url(`/${lang}/guidepour/`)}
+          data-facet="book"
+          data-weight="1.2"
+          style="--w:1.2"
+          aria-label={tr.nav.guidepour}
+          title={tr.nav.guidepour}
+        >
+          <span class="sky-post-glyph" aria-hidden="true">✳</span>
+        </a>
+      </li>
     </ul>
   </div>
 

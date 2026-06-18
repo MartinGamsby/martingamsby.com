@@ -177,8 +177,11 @@ const CoreTag = coreHref ? 'a' : 'div';
       });
     }
 
-    // Endpoint on the core box's edge toward (tx,ty) — so lines start at the pill's
-    // border, not its centre.
+    // Endpoint on the core PILL's edge toward (tx,ty) — so lines start at the border,
+    // not the centre. Honours the rounded ends: `border-radius:999px` caps to a corner
+    // radius of min(coreHW, coreHH), so in the rounded-end zone we intersect the ray
+    // with the cap's arc instead of the sharp rectangle corner (which sits in the
+    // pill's transparent cut-out → the visible gap).
     function coreEdge(tx: number, ty: number) {
       const dx = tx - cx, dy = ty - cy;
       if (!dx && !dy) return { x: cx, y: cy };
@@ -186,7 +189,22 @@ const CoreTag = coreHref ? 'a' : 'div';
         coreHW / Math.max(Math.abs(dx), 1e-6),
         coreHH / Math.max(Math.abs(dy), 1e-6),
       );
-      return { x: cx + dx * s, y: cy + dy * s };
+      const px = cx + dx * s, py = cy + dy * s;
+      const r = Math.min(coreHW, coreHH);
+      if (r > 0 && Math.abs(px - cx) > coreHW - r && Math.abs(py - cy) > coreHH - r) {
+        const ccx = cx + Math.sign(px - cx) * (coreHW - r);
+        const ccy = cy + Math.sign(py - cy) * (coreHH - r);
+        const ex = cx - ccx, ey = cy - ccy;
+        const A = dx * dx + dy * dy;
+        const B = 2 * (dx * ex + dy * ey);
+        const C = ex * ex + ey * ey - r * r;
+        const disc = B * B - 4 * A * C;
+        if (disc >= 0) {
+          const tt = (-B + Math.sqrt(disc)) / (2 * A);
+          return { x: cx + dx * tt, y: cy + dy * tt };
+        }
+      }
+      return { x: px, y: py };
     }
 
     function frame(advance: boolean) {
