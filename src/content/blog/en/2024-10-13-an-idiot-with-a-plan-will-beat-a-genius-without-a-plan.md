@@ -3,7 +3,7 @@ title: "An idiot WITH a plan, will beat a genius WITHOUT a plan"
 date: 2024-10-13
 translationKey: 2024-10-13-an-idiot-with-a-plan-will-beat-a-genius-without-a-plan
 facets: [ideas]
-tags: [Quote,Planning,Loved Ones,Time Management,Gamsblurb]
+tags: [Planning,Loved Ones,Time Management,Gamsblurb]
 image: /assets/posts/2024-10-13-an-idiot-with-a-plan-will-beat-a-genius-without-a-plan.header.webp
 imageThumb: /assets/posts/2024-10-13-an-idiot-with-a-plan-will-beat-a-genius-without-a-plan.thumb.webp
 ---

@@ -3,7 +3,7 @@ title: "Un idiot AVEC un plan va surpasser un génie SANS plan"
 date: 2024-10-13
 translationKey: 2024-10-13-an-idiot-with-a-plan-will-beat-a-genius-without-a-plan
 facets: [ideas]
-tags: [Citation,Planification,Êtres chers,Gestion du temps,Gamsblurb]
+tags: [Planification,Êtres chers,Gestion du temps,Gamsblurb]
 image: /assets/posts/2024-10-13-un-idiot-avec-un-plan-va-surpasser-un-genie-sans-plan.header.webp
 imageThumb: /assets/posts/2024-10-13-un-idiot-avec-un-plan-va-surpasser-un-genie-sans-plan.thumb.webp
 ---
