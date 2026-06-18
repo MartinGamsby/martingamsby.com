@@ -5,6 +5,7 @@ import StarMap from '../../../components/StarMap.astro';
 import { formatDate, imageUrl, otherLang, t, url, type Lang } from '../../../i18n/ui';
 import { findTwin, gateOf, langOf, slugOf, type Post } from '../../../lib/blog';
 import { getRelatedPosts } from '../../../lib/related';
+import { trendingScore } from '../../../lib/featured';
 
 export async function getStaticPaths() {
   const all = await getCollection('blog', ({ data }) => !data.draft);
@@ -32,13 +33,16 @@ const { Content } = await render(post);
 // sized by relevance). See src/lib/related.ts.
 const related = await getRelatedPosts(post, lang);
 const myFacets = new Set(post.data.facets);
+// Size each star by trending (recency-decayed popularity), normalized across the shown
+// set so the most-trending related post is biggest and the field isn't all one size.
+const maxTrend = Math.max(...related.map((r) => trendingScore(r.post)), 1e-9);
 const relatedStars = related.map((r) => {
   const prefer = r.post.data.facets.find((f) => myFacets.has(f));
   return {
     href: url(`/${lang}/blog/${slugOf(r.post)}/`),
     title: r.post.data.title,
     gate: gateOf(r.post.data.facets, prefer),
-    weight: Math.min(1.85, 1 + 0.22 * r.sharedTags),
+    weight: 0.8 + (trendingScore(r.post) / maxTrend) * 0.9,
     image: r.post.data.image ? imageUrl(r.post.data.imageThumb ?? r.post.data.image) : null,
   };
 });

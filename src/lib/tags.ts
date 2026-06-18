@@ -14,7 +14,7 @@ export interface TagStar {
   gate: Gate;        // colour = the facet this tag appears with most often
 }
 
-export async function getTagStars(lang: Lang, minCount = 2, limit = 44): Promise<TagStar[]> {
+export async function getTagStars(lang: Lang, minCount = 2, limit = 28): Promise<TagStar[]> {
   const posts = await getPosts(lang);
   const freq = new Map<string, number>();
   const facetHits = new Map<string, Map<Facet, number>>();

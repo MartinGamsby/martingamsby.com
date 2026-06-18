@@ -30,6 +30,18 @@ export function scoreOf(post: Post): number {
   return popularity[post.data.translationKey] ?? 0;
 }
 
+// "Trending" = popularity decayed by age, so it differentiates posts even while the
+// manual popularity table is mostly empty (a fresh post out-trends an old one of equal
+// score). Half-life model: every TREND_HALF_LIFE_DAYS the weight halves. The `+1`
+// baseline means recency alone produces a usable spread when scores are flat. This is a
+// reasonable made-up metric — swap the formula here if a real one turns up.
+const TREND_HALF_LIFE_DAYS = 45;
+export function trendingScore(post: Post, now: number = Date.now()): number {
+  const ageDays = Math.max(0, (now - post.data.date.getTime()) / 86_400_000);
+  const decay = Math.pow(0.5, ageDays / TREND_HALF_LIFE_DAYS);
+  return (scoreOf(post) + 1) * decay;
+}
+
 // Gates are lenses over facets. `book` == the fiction facet; `everything` == all.
 export const GATE_FACET: Record<Gate, Facet | null> = {
   book: 'fiction',

@@ -17,12 +17,13 @@ const tagStars = await getTagStars(lang);
 const maxCount = tagStars.length ? tagStars[0].count : 1;
 const allPosts = await getPosts(lang);
 
-// Size each star by frequency: a tag used `maxCount` times is biggest.
+// Size each star by frequency: a tag used `maxCount` times is biggest. Kept in a modest
+// range so 40+ stars pack into the column without crowding.
 const stars = tagStars.map((s) => ({
   href: '#tagged-posts',
   title: `${s.tag} · ${s.count}`,
   gate: s.gate,
-  weight: 0.85 + (s.count / maxCount) * 1.35,
+  weight: 0.8 + (s.count / maxCount) * 0.9,
   glyph: String(s.count),
   label: s.tag,
   tag: s.tag,

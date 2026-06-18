@@ -3,10 +3,10 @@
 // Relatedness is deterministic — the same "shared tags" signal the WriterHelper picker
 // uses to suggest tags, here turned into reader-facing navigation. A candidate is
 // ranked by: shared tags (the house tag is ignored — it's on every post), then shared
-// facets, then manual popularity (scoreOf), then recency. The popularity table breaks
-// ties so the home constellation and these mini-maps agree on what's "big".
+// facets, then trendingScore (recency-decayed popularity). Trending breaks ties, and the
+// page sizes each star by it, so the map isn't a flat field of equal dots.
 import { getPosts, type Post } from './blog';
-import { scoreOf } from './featured';
+import { trendingScore } from './featured';
 import type { Lang } from '../i18n/ui';
 
 const HOUSE_TAG = 'Gamsblurb';
@@ -36,8 +36,7 @@ export async function getRelatedPosts(post: Post, lang: Lang, limit = 8): Promis
       (a, b) =>
         b.sharedTags - a.sharedTags ||
         b.sharedFacets - a.sharedFacets ||
-        scoreOf(b.post) - scoreOf(a.post) ||
-        b.post.data.date.getTime() - a.post.data.date.getTime(),
+        trendingScore(b.post) - trendingScore(a.post),
     )
     .slice(0, limit);
 }

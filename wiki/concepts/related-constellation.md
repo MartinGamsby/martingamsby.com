@@ -13,9 +13,9 @@ candidate (same language, not this post) is ranked by:
 
 1. **shared tags** (the house tag `Gamsblurb` is ignored — it's on every post);
 2. **shared facets**;
-3. **manual popularity** `scoreOf` (from `post-popularity.json`, see [[featured-stars]] —
-   so the home sky and these mini-maps agree on what's "big");
-4. **recency**.
+3. **trendingScore** — recency-decayed popularity (see [[featured-stars]]): a half-life
+   decay of `scoreOf+1`, so it spreads posts apart even while the manual popularity
+   table is empty (it was all 0s → every star the same size, the original complaint).
 
 Candidates with zero shared tags AND zero shared facets are dropped.
 
@@ -24,8 +24,8 @@ Candidates with zero shared tags AND zero shared facets are dropped.
 `src/pages/[lang]/blog/[...slug].astro` maps the related posts to stars and drops in
 `<StarMap>` under the post body (only when there's at least one related post). Each
 star's colour gate comes from `gateOf(facets, preferSharedFacet)` (`src/lib/blog.ts`) and its
-size from relevance (`1 + 0.22·sharedTags`, capped). Image posts render as a circular
-thumbnail (the `.sky-post` look), the rest as a ★.
+size from `trendingScore` normalized across the shown set (most-trending = biggest).
+Image posts render as a circular thumbnail (the `.sky-post` look), the rest as a ★.
 
 ## Shared component: `StarMap.astro`
 

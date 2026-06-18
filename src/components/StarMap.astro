@@ -88,8 +88,9 @@ const CoreTag = coreHref ? 'a' : 'div';
       el,
       weight: parseFloat(el.dataset.weight || '1'),
       color: colorFor(el.dataset.facet || 'everything'),
+      r: 16,                                         // chip radius, measured in layout()
       hx: 0, hy: 0,                                  // home (laid-out) position
-      ampX: 4 + Math.random() * 3,
+      ampX: 3 + Math.random() * 3,
       ampY: 0,
       phx: Math.random() * Math.PI * 2,
       phy: Math.random() * Math.PI * 2,
@@ -97,22 +98,64 @@ const CoreTag = coreHref ? 'a' : 'div';
     }));
     items.forEach((it) => (it.ampY = it.ampX * 0.8));
 
-    // Distribute the chips over concentric rings; the outermost ring lands near the
-    // edge so the map fills its box. Heavier (more-relevant / more-frequent) chips go
-    // on the inner rings, nearest the core.
+    // A point on the rounded-rectangle outline `d` px outside the core box, at perimeter
+    // fraction p (0..1). Walking the box's OWN outline (not an ellipse) is what clears a
+    // wide, short title pill on every side: the earlier ellipse cleared the left/right
+    // but a diagonal chip still cut the long top edge. Mirrors the home constellation's
+    // orbitPoint.
+    function orbitPoint(d: number, p: number) {
+      const W = coreHW * 2, H = coreHH * 2, arc = (Math.PI / 2) * d;
+      const L = 2 * W + 2 * H + 4 * arc;
+      let s = (((p % 1) + 1) % 1) * L;
+      const x1 = cx - coreHW, x2 = cx + coreHW, y1 = cy - coreHH, y2 = cy + coreHH;
+      if (s < H) return { x: x2 + d, y: y1 + s }; s -= H;                                          // right ↓
+      if (s < arc) { const a = s / d; return { x: x2 + d * Math.cos(a), y: y2 + d * Math.sin(a) }; } s -= arc; // BR
+      if (s < W) return { x: x2 - s, y: y2 + d }; s -= W;                                          // bottom ←
+      if (s < arc) { const a = Math.PI / 2 + s / d; return { x: x1 + d * Math.cos(a), y: y2 + d * Math.sin(a) }; } s -= arc; // BL
+      if (s < H) return { x: x1 - d, y: y2 - s }; s -= H;                                          // left ↑
+      if (s < arc) { const a = Math.PI + s / d; return { x: x1 + d * Math.cos(a), y: y1 + d * Math.sin(a) }; } s -= arc; // TL
+      if (s < W) return { x: x1 + s, y: y1 - d }; s -= W;                                          // top →
+      const a = Math.PI * 1.5 + s / d; return { x: x2 + d * Math.cos(a), y: y1 + d * Math.sin(a) }; // TR
+    }
+
+    // Lay the chips on concentric rounded-rect orbits around the core, heaviest first.
+    // Each orbit sits `d` px outside the box, so every chip clears the core (and a long
+    // title pill) by ≥ margin on all sides; capacity comes from the outline length, so
+    // chips never crowd. The field is sized to the outermost orbit.
     function layout() {
       const rect = map.getBoundingClientRect();
-      w = rect.width;
-      const ringCaps: number[] = [];
-      let total = 0, r = 0;
-      while (total < items.length) {
-        const cap = 5 + r * 4;
-        ringCaps.push(cap);
-        total += cap;
-        r++;
+      w = rect.width || w;
+      for (const it of items) {
+        const chip = it.el.querySelector('.starmap-chip');
+        const cr = chip ? chip.getBoundingClientRect() : null;
+        it.r = (cr && cr.width ? cr.width : 34 * it.weight) / 2;
       }
-      const rings = ringCaps.length;
-      h = Math.round(Math.min(Math.max(w * 0.62, 280), 200 + rings * 150));
+      if (core) {
+        const cr = core.getBoundingClientRect();
+        coreHW = cr.width / 2;
+        coreHH = cr.height / 2;
+      }
+      const maxR = Math.max(16, ...items.map((i) => i.r));
+      const gap = 16;
+      const margin = 16;
+      const spacing = maxR * 2 + gap;
+      const ordered = [...items].sort((a, b) => b.weight - a.weight);
+
+      const d0 = margin + maxR;
+      const step = maxR * 2 + gap;
+      const rings: { d: number; items: typeof items }[] = [];
+      let i = 0, ring = 0;
+      while (i < ordered.length) {
+        const d = d0 + ring * step;
+        const L = 4 * coreHW + 4 * coreHH + 2 * Math.PI * d;   // rounded-rect perimeter
+        const cap = Math.max(1, Math.floor(L / spacing));
+        rings.push({ d, items: ordered.slice(i, i + cap) });
+        i += cap;
+        ring++;
+      }
+
+      const dOuter = rings[rings.length - 1].d;
+      h = Math.round(Math.min(Math.max(2 * (coreHH + dOuter + maxR + margin), 240), 1000));
       map.style.setProperty('--starmap-h', `${h}px`);
       dpr = Math.min(devicePixelRatio || 1, 2);
       canvas.width = Math.round(w * dpr);
@@ -120,31 +163,18 @@ const CoreTag = coreHref ? 'a' : 'div';
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
       cx = w / 2;
       cy = h / 2;
-      if (core) {
-        const cr = core.getBoundingClientRect();
-        coreHW = cr.width / 2;
-        coreHH = cr.height / 2;
-      }
 
-      const maxR = Math.min(w, h) / 2 - 46;
-      const minR = Math.max(coreHW, coreHH) + 52;
-      const step = rings > 1 ? (maxR - minR) / (rings - 1) : 0;
-
-      const byWeight = [...items].sort((a, b) => b.weight - a.weight);
-      let idx = 0;
-      for (let ring = 0; ring < rings; ring++) {
-        const radius = minR + ring * step;
-        const here = byWeight.slice(idx, idx + ringCaps[ring]);
-        const offset = (ring % 2) * (Math.PI / here.length);
-        here.forEach((it, i) => {
-          const a = offset + (i / here.length) * Math.PI * 2;
-          it.hx = cx + Math.cos(a) * radius;
-          it.hy = cy + Math.sin(a) * radius;
+      rings.forEach((r, ri) => {
+        const n = r.items.length;
+        const phase = ri * 0.13;                              // offset adjacent rings
+        r.items.forEach((it, k) => {
+          const pt = orbitPoint(r.d, phase + k / n);
+          it.hx = pt.x;
+          it.hy = pt.y;
           it.el.style.left = `${it.hx.toFixed(1)}px`;
           it.el.style.top = `${it.hy.toFixed(1)}px`;
         });
-        idx += ringCaps[ring];
-      }
+      });
     }
 
     // Endpoint on the core box's edge toward (tx,ty) — so lines start at the pill's
