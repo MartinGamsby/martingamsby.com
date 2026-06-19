@@ -99,7 +99,11 @@ Quick rules:
   `WEIGHTS` includes
   `xView:1`/`xLike:100`/`xRepost:75` and `liImpression:1`/`liReaction:100`/`liComment:100`/
   `liRepost:75` (LinkedIn — `impressions` is the author-only reach signal, read
-  deterministically via `javascript_tool` like X; see the skill); hand-edited
+  deterministically via `javascript_tool` like X; see the skill) and
+  `fbReaction:100`/`fbComment:100`/`fbShare:75` (Facebook — engagement-only, no public reach
+  signal; counts read deterministically from the page's embedded GraphQL JSON and anchored to
+  the focal post by author vanity/page-id, since `share/<code>/` story links often expire and
+  suggested posts pollute the page — see the skill); hand-edited
   `manual`/`pin`/`score` survive re-runs.
   Stars render as `.sky-social.sky-post` chips so the constellation script is untouched.
   See `wiki/concepts/featured-stars.md`. (A popularity *skill* is fine — it's read-only

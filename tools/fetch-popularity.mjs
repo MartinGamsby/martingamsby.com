@@ -48,6 +48,7 @@ const WEIGHTS = {
   xView: 1, xLike: 100, xRepost: 75,
   liImpression: 1, liReaction: 100, liComment: 100, liRepost: 75,
   tsSignal: 1, tsComment: 100,
+  fbReaction: 100, fbComment: 100, fbShare: 75,
 };
 
 // Login-walled platforms the /popularity skill reads in the browser. Each maps to the
@@ -59,6 +60,7 @@ const PLATFORMS = {
   x: { label: 'x/twitter', metrics: ['xView', 'xLike', 'xRepost'] },
   linkedin: { label: 'linkedin', metrics: ['liImpression', 'liReaction', 'liComment', 'liRepost'] },
   typeshare: { label: 'typeshare', metrics: ['tsSignal', 'tsComment'] },
+  facebook: { label: 'facebook', metrics: ['fbReaction', 'fbComment', 'fbShare'] },
 };
 const platformOf = (label) => Object.keys(PLATFORMS).find((s) => PLATFORMS[s].label === String(label).toLowerCase());
 const platformOfMetric = (m) => Object.keys(PLATFORMS).find((s) => PLATFORMS[s].metrics.includes(m));

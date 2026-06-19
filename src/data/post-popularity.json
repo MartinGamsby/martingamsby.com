@@ -3,18 +3,21 @@
   "_fetched": {
     "x": "2026-06-18",
     "linkedin": "2026-06-19",
-    "typeshare": "2026-06-19"
+    "typeshare": "2026-06-19",
+    "facebook": "2026-06-19"
   },
   "2026-06-13-my-interverted-novel-now-available-on-amazon": {
-    "score": 531,
+    "score": 1231,
     "title": "My Interverted novel now available on Amazon!",
     "sources": {
       "xView": 56,
       "xLike": 4,
-      "xRepost": 1
+      "xRepost": 1,
+      "fbReaction": 7
     },
     "links": {
-      "x": "https://x.com/Martin_Gamsby/status/2066859764957466926"
+      "x": "https://x.com/Martin_Gamsby/status/2066859764957466926",
+      "facebook": "https://www.facebook.com/share/p/18miSPvfFp/"
     },
     "updated": "2026-06-19"
   },
@@ -42,17 +45,20 @@
     "updated": "2026-06-19"
   },
   "2026-06-11-11-years": {
-    "score": 2034,
+    "score": 6534,
     "title": "11 years!",
     "sources": {
       "xView": 7,
       "liImpression": 327,
       "liReaction": 16,
-      "liComment": 1
+      "liComment": 1,
+      "fbReaction": 29,
+      "fbComment": 16
     },
     "links": {
       "x": "https://x.com/Martin_Gamsby/status/2065052720088723627",
-      "linkedin": "https://www.linkedin.com/posts/martingamsby_i-finally-formatted-my-novel-that-i-started-share-7470819888496979969-p4Dr"
+      "linkedin": "https://www.linkedin.com/posts/martingamsby_i-finally-formatted-my-novel-that-i-started-share-7470819888496979969-p4Dr",
+      "facebook": "https://www.facebook.com/share/p/18dk5JjTah/"
     },
     "updated": "2026-06-19"
   },
@@ -96,16 +102,19 @@
     "updated": "2026-06-19"
   },
   "2025-06-28-10-years": {
-    "score": 1389,
+    "score": 1789,
     "title": "10 years!",
     "sources": {
       "xView": 386,
       "xLike": 9,
       "xRepost": 1,
-      "tsSignal": 28
+      "tsSignal": 28,
+      "fbReaction": 2,
+      "fbComment": 2
     },
     "links": {
-      "x": "https://x.com/Martin_Gamsby/status/1939108829414694992"
+      "x": "https://x.com/Martin_Gamsby/status/1939108829414694992",
+      "facebook": "https://www.facebook.com/share/18Yi8S3Lwz/"
     },
     "updated": "2026-06-19"
   },
@@ -918,18 +927,20 @@
     "updated": "2026-06-19"
   },
   "2024-09-15-ai-for-president-hear-me-out": {
-    "score": 484,
+    "score": 584,
     "title": "AI for president? (hear me out)",
     "sources": {
       "xView": 38,
       "xLike": 2,
       "liImpression": 137,
       "liReaction": 1,
-      "tsSignal": 9
+      "tsSignal": 9,
+      "fbReaction": 1
     },
     "links": {
       "x": "https://x.com/MartinGamsby_EN/status/1835302173988597800",
-      "linkedin": "https://www.linkedin.com/posts/martingamsby_ai-for-president-hear-me-out-it-wouldnt-activity-7241066270085779456-5_g9"
+      "linkedin": "https://www.linkedin.com/posts/martingamsby_ai-for-president-hear-me-out-it-wouldnt-activity-7241066270085779456-5_g9",
+      "facebook": "https://www.facebook.com/share/N1DQd737Uj4cPEPj/"
     },
     "updated": "2026-06-19"
   },
@@ -1072,14 +1083,17 @@
     }
   },
   "2024-09-03-im-afraid-of-soup": {
-    "score": 26,
+    "score": 2051,
     "title": "I'm afraid of soup",
     "sources": {
       "xView": 26,
-      "tsSignal": 0
+      "tsSignal": 0,
+      "fbReaction": 18,
+      "fbShare": 3
     },
     "links": {
-      "x": "https://x.com/MartinGamsby_EN/status/1834599414683361562"
+      "x": "https://x.com/MartinGamsby_EN/status/1834599414683361562",
+      "facebook": "https://www.facebook.com/share/MnicxC7zV5uRU8Ry/"
     },
     "updated": "2026-06-19"
   },
@@ -1160,14 +1174,16 @@
     "updated": "2026-06-19"
   },
   "2024-08-27-gandalf-reconciled-me-with-life": {
-    "score": 17,
+    "score": 117,
     "title": "Gandalf reconciled me with life",
     "sources": {
       "xView": 17,
-      "tsSignal": 0
+      "tsSignal": 0,
+      "fbReaction": 1
     },
     "links": {
-      "x": "https://x.com/MartinGamsby_EN/status/1833471576450166916"
+      "x": "https://x.com/MartinGamsby_EN/status/1833471576450166916",
+      "facebook": "https://www.facebook.com/share/c8bt2BMtZZLj6Q3F/"
     },
     "updated": "2026-06-19"
   },
@@ -1294,10 +1310,12 @@
     "title": "Goldfish",
     "sources": {
       "xView": 19,
-      "xLike": 2
+      "xLike": 2,
+      "fbReaction": 0
     },
     "links": {
-      "x": "https://twitter.com/user/status/1862673657174049144"
+      "x": "https://twitter.com/user/status/1862673657174049144",
+      "facebook": "https://www.facebook.com/440556702484707_122170529798685210"
     },
     "updated": "2026-06-19"
   },
@@ -1426,10 +1444,12 @@
     "title": "The house contractor vs Learning",
     "sources": {
       "xView": 31,
-      "tsSignal": 22
+      "tsSignal": 22,
+      "fbReaction": 0
     },
     "links": {
-      "x": "https://x.com/Martin_Gamsby/status/1842176075171799055"
+      "x": "https://x.com/Martin_Gamsby/status/1842176075171799055",
+      "facebook": "https://www.facebook.com/share/p/3uzFYnNxnCpuzcsr/"
     },
     "updated": "2026-06-19"
   },

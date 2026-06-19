@@ -142,7 +142,7 @@ finished loading the analytics line yet.
 
 **Other platforms — Claude-for-Chrome:** `navigate`, then `get_page_text`/`read_page`
 (`find` if a count is buried). Capture what the page shows:
-Medium claps/responses, Facebook reactions/comments/shares, Instagram likes/comments.
+Medium claps/responses, Instagram likes/comments.
 Record only what's actually there — hidden/private = gap.
 
 **Typeshare — the big number is "signal", NOT likes.** Each post's engagement bar shows
@@ -155,14 +155,73 @@ extractor walks back from the Comment button collecting the two numeric `<button
 posts have their engagement on X/LinkedIn instead), so record `tsSignal:0` to mark the
 post read — it's not a gap.
 
+**Facebook — deterministic via `javascript_tool` reading the embedded GraphQL JSON; do NOT
+eyeball the rendered counts.** Facebook obfuscates the visible count digits (scrambled,
+CSS-reordered character spans) AND its reaction-breakdown aria-labels (`J'aime : N
+personnes`) are polluted by *suggested posts* on the page — so neither the page text nor
+the aria-labels are reliable. Instead, the exact counts live in the page's
+`<script type="application/json">` payloads as `reaction_count.count` /
+`comments_count_summary_renderer…comments.total_count` / `share_count.count`. The catch:
+the page carries feedback for the focal post **plus** suggested posts (and the URL's
+`pfbid` rotates, so it can't anchor). **Anchor the focal post by author** — the URL's
+`/<vanity>/posts/…` segment (e.g. `martin.gamsby`) or its `?id=<pageId>` param — since
+suggested posts are by *other* authors. `navigate` to the `url`, then run this self-polling
+extractor standalone (the deep JSON walk is heavy — one post per call, don't batch):
+
+```js
+await (async () => {
+  const SS=()=>[...document.querySelectorAll('script[type="application/json"]')];
+  const hasRC=()=>SS().some(s=>/reaction_count/.test(s.textContent));
+  const un=()=>/n.est pas disponible|n.est plus disponible|isn.t available/i.test(document.body.innerText);
+  for(let i=0;i<80;i++){if(hasRC()||un())break;await new Promise(r=>setTimeout(r,250));}
+  if(un()&&!hasRC()) return {unavailable:true};
+  if(!hasRC()) return {error:'not-ready',url:location.href.slice(0,60)};
+  const sp=new URL(location.href).searchParams, path=location.pathname;
+  const seg=(path.match(/^\/([^/]+)\/posts\//)||[])[1];
+  const vanity=(seg&&!/^(permalink\.php|share|profile\.php|story\.php)$/.test(seg))?seg:null;
+  const idParam=sp.get('id');
+  const cOf=(o)=>o.comments_count_summary_renderer?.feedback?.comment_rendering_instance?.comments?.total_count ?? o.comment_rendering_instance?.comments?.total_count ?? o.total_comment_count ?? o.comments?.total_count ?? null;
+  const ownerOf=(o)=>o.owning_profile?.id||o.actor?.id||(Array.isArray(o.actors)&&o.actors[0]?.id)||o.page?.id||null;
+  const urlOf=(o)=>{const u=o.wwwURL||o.url||o.permalink_url||o.share_url;return (typeof u==='string'&&/facebook\.com|\/posts\/|permalink\.php/.test(u))?u:null;};
+  const hits=[];
+  const walk=(o,cu,ow)=>{if(!o||typeof o!=='object')return;const u=urlOf(o)||cu,w=ownerOf(o)||ow;
+    if(o.reaction_count&&typeof o.reaction_count==='object'&&'count'in o.reaction_count&&o.share_count&&'count'in o.share_count&&o.comments_count_summary_renderer){hits.push({r:o.reaction_count.count,c:cOf(o),s:o.share_count.count,url:u,owner:w});}
+    for(const k in o){try{walk(o[k],u,w);}catch(e){}}};
+  for(const sc of SS()){try{walk(JSON.parse(sc.textContent),null,null);}catch(e){}}
+  const focal=hits.filter(t=>(vanity&&t.url&&t.url.includes('/'+vanity+'/'))||(idParam&&(String(t.owner)===idParam||(t.url&&t.url.includes('id='+idParam)))));
+  const fs=new Set();const fu=focal.filter(t=>{const k=t.r+'|'+t.c+'|'+t.s;if(fs.has(k))return false;fs.add(k);return true;});
+  const us=new Set();const um=hits.filter(t=>{const k=t.r+'|'+t.c+'|'+t.s;if(us.has(k))return false;us.add(k);return true;});
+  return {focal:fu.map(t=>({r:t.r,c:t.c,s:t.s})), uniq:um.map(t=>({r:t.r,c:t.c,s:t.s}))};
+})()
+```
+
+Map `r→fbReaction`, `c→fbComment`, `s→fbShare`. **Expect exactly one `focal` triple** —
+that's the answer. If `focal` is empty but `uniq` has one entry, use it (isolated post);
+if `uniq` has several and none anchored, the anchor failed — screenshot the modal and read
+it visually. A confirmed all-zero post is a real 0: record `fbReaction:0` to **mark it read**
+(like Typeshare's `tsSignal:0`); only `fbComment`/`fbShare` that are 0 get omitted.
+`{"unavailable":true}` = a **gap**, never a 0.
+
+**Story-share traps & navigation quirks (learned the hard way):**
+- Footer links of the form `facebook.com/share/<code>/` (no `/p/`) are often **24h story
+  shares that have since expired** → they load "Ce contenu n'est pas disponible" =
+  `{"unavailable":true}` = gap. `share/p/<code>/` and `share/v/<code>/` are permanent
+  post/video links. Much of the 2024 daily run is expired stories — expect many gaps.
+- A `share/` link sometimes **soft-navigates** (the SPA opens the notifications flyover
+  over the home feed instead of the post). If the extractor returns `not-ready` and the
+  title is just "Facebook", `location.reload()` once to force a full load, then re-extract.
+- Close any open **Messenger chat** popups first (`[aria-label="Fermer la discussion"]`) —
+  a live chat hammers the renderer and can stall `javascript_tool`. Never read chat content.
+
 ### 3 — Import readings
 Build an array, one object per post you read, then import. Map each metric to its
 `sources` key — X: `views→xView`, `likes→xLike`, `reposts→xRepost`; LinkedIn:
 `impressions→liImpression`, `reactions→liReaction`, `comments→liComment`,
-`reposts→liRepost`; Typeshare: `signal→tsSignal`, `comments→tsComment`; other platforms
-get their own keys — add weights in `WEIGHTS` in `tools/fetch-popularity.mjs`. Omit any
-metric that came back `null` (don't write a 0 — except a real Typeshare `tsSignal:0`,
-which marks the post read):
+`reposts→liRepost`; Typeshare: `signal→tsSignal`, `comments→tsComment`; Facebook:
+`r→fbReaction`, `c→fbComment`, `s→fbShare`; other platforms get their own keys — add
+weights in `WEIGHTS` in `tools/fetch-popularity.mjs`. Omit any metric that came back `null`
+(don't write a 0 — except a real Typeshare `tsSignal:0` or a confirmed Facebook
+`fbReaction:0`, which mark the post read):
 
 ```json
 [
