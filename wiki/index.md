@@ -7,7 +7,7 @@ Read this first; open only the pages you need.
 
 ## Concepts
 - [[doors-as-lenses]] — the core design concept: audience doors filter one content pool, never silo it.
-- [[featured-stars]] — each home gate hangs one representative post as a "star"; chosen by a manual popularity table (src/data/post-popularity.json) + on-demand fetch script, falling back to most-recent-with-image.
+- [[featured-stars]] — each home gate hangs one representative post as a "star"; chosen by a manual popularity table (src/data/post-popularity.json) + on-demand fetch script (YouTube/Bluesky auto; X & other login-walled platforms read from the browser by the `/popularity` skill via `--import`), falling back to most-recent-with-image.
 - [[related-constellation]] — every post ends with a mini-constellation of related posts (shared tags + facet, sized by popularity); shared `StarMap.astro` component.
 - [[tag-galaxy]] — `/[lang]/tags`: every reused tag is a star sized by frequency, coloured by dominant facet, click-to-filter the posts.
 - [[guidepour-redirects]] — retiring guidepour.com (+ future guidance4.com): bare-slug redirect stubs from an `aliases` frontmatter field + build integration, and the `/{lang}/guidepour` Djosh Sho author page.

@@ -86,9 +86,30 @@ off-limits. Martin's blog is shared on his **personal** profile
 (`facebook.com/martin.gamsby`), so the Page token only helps **if** blog content
 also lives on that business Page (then `/{page}/posts` + insights would give real
 reach). Otherwise it's no use here. The blog itself has no analytics. So **YouTube
-view count is the only real auto-signal**; X / Facebook / Typeshare / blog are
-hand-scored by editing `score` (or `pin`). Hand-edited `manual`/`pin`/`score`
-survive re-runs.
+view count is the only real auto-signal** in the script; Bluesky engagement is ~0.
+
+## Browser-read platforms — the `/popularity` skill
+
+The login-walled platforms the script can't reach (**X/Twitter** first — Martin's
+known signal — then Typeshare/Medium/LinkedIn/Facebook/Instagram) are read from the
+operator's **logged-in browser** by the `.claude/skills/popularity` skill (analytics,
+not authoring), and folded into the same `sources`/`score`. Pipeline:
+
+- `tools/lib/worklist.mjs` parses each post's **footer social links** (`- [X/Twitter]
+  (url)` after the trailing `---`) into `{translationKey, hl, platform, url}` rows.
+  `npm run fetch-popularity -- --worklist [--platform X/Twitter --hl en]` prints them.
+- The skill visits each `url` via Claude-for-Chrome, reads engagement, and writes
+  `[{translationKey, sources:{xView,xLike,…}, links}]`.
+- `npm run fetch-popularity -- --import readings.json` merges those into `sources` and
+  re-runs `recomputeScores()`. `WEIGHTS` now includes `xView:1` (an X impression
+  counts like a YouTube view), `xLike:10`, `xRepost:5`.
+- **X reply trap:** read the *focal* tweet (the article whose permalink matches the
+  URL's status id), never the first `<article>` — a reply renders the parent post
+  above it, so the first article is someone else's (much larger) numbers.
+
+First migration (2026-06-18 sweep, 90 X readings): e.g. `an-idea-you-can-apply`
+xView 1062 → score 1232 → **dev** star; `10-years` → book star; `just-a-few-hours` →
+music star. Hand-edited `manual`/`pin`/`score` still survive re-runs.
 
 ## Rendering
 

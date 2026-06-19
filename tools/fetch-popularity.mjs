@@ -28,13 +28,18 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { collectWorklist } from './lib/worklist.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const FILE = path.join(root, 'src', 'data', 'post-popularity.json');
 const BLOG = path.join(root, 'src', 'content', 'blog');
 
 // What each raw count is worth. ytView=1 → score ≈ total YouTube views. Tune freely.
-const WEIGHTS = { ytView: 1, ytLike: 10, bskyLike: 3, bskyRepost: 5 };
+// xView=1 mirrors ytView (an X impression counts like a YouTube view); X engagement
+// weights mirror Bluesky's. X/Twitter (and other login-walled platforms) can't be
+// auto-fetched here — the /popularity skill reads them via the browser and feeds
+// them in with `--import` (see below).
+const WEIGHTS = { ytView: 1, ytLike: 10, bskyLike: 3, bskyRepost: 5, xView: 1, xLike: 10, xRepost: 5 };
 
 // Gates are lenses over facets (mirror of src/lib/featured.ts GATE_FACET).
 const GATE_FACET = { book: 'fiction', dev: 'dev', music: 'music', physics: 'physics', everything: null };
@@ -54,18 +59,38 @@ const BSKY = 'https://public.api.bsky.app/xrpc';
 // video links than the channel /videos page exposes (it caps at ~30 recent).
 const BSKY_HANDLES = ['martingamsby.bsky.social', 'martin-gamsby.bsky.social'];
 
-const args = new Set(process.argv.slice(2));
+const argv = process.argv.slice(2);
+const args = new Set(argv);
 const dryRun = args.has('--dry-run');
 const offline = args.has('--offline');
+// valued options: `--import file`, repeatable `--platform x --hl en`
+const optVal = (flag) => { const i = argv.indexOf(flag); return i >= 0 ? argv[i + 1] : null; };
+const optVals = (flag) => argv.flatMap((a, i) => (a === flag ? [argv[i + 1]] : [])).filter(Boolean);
 if (args.has('--help') || args.has('-h')) {
-  console.log('Usage: [YOUTUBE_API_KEY=…] node tools/fetch-popularity.mjs [--list | --seed | --dry-run | --offline]\n' +
-    '  (no flags)  seed missing entries + auto-fetch YouTube views + print standings\n' +
-    '  --list      print each gate\'s candidates and current ★ star\n' +
-    '  --seed      scaffold an entry (score 0) for every post\n' +
-    '  --dry-run   do the work but do not write the file\n' +
-    '  --offline   skip the network (seed + list only)\n' +
+  console.log('Usage: [YOUTUBE_API_KEY=…] node tools/fetch-popularity.mjs [mode]\n' +
+    '  (no flags)        seed missing entries + auto-fetch YouTube views + print standings\n' +
+    '  --list            print each gate\'s candidates and current ★ star\n' +
+    '  --seed            scaffold an entry (score 0) for every post\n' +
+    '  --worklist [--platform X/Twitter] [--hl en]\n' +
+    '                    print the social-link worklist (JSON) the /popularity skill sweeps\n' +
+    '  --import <file>   merge browser-read readings ([{translationKey,sources,links?}])\n' +
+    '                    into post-popularity.json and recompute scores\n' +
+    '  --dry-run         do the work but do not write the file\n' +
+    '  --offline         skip the network (seed + list only)\n' +
     '  Set YOUTUBE_API_KEY for complete, reliable coverage (all uploads + likes);\n' +
     '  without it, YouTube is scraped best-effort (~30 recent + Bluesky, rate-limited).');
+  process.exit(0);
+}
+
+// --worklist: enumerate readable social links from post footers (no network, no
+// file write). Repeatable --platform / --hl narrow the run. Drives the skill sweep.
+if (args.has('--worklist')) {
+  const platform = optVals('--platform');
+  const hl = optVals('--hl');
+  console.log(JSON.stringify(
+    collectWorklist({ platform: platform.length ? platform : undefined, hl: hl.length ? hl : undefined }),
+    null, 2,
+  ));
   process.exit(0);
 }
 
@@ -311,6 +336,33 @@ function recomputeScores() {
 const posts = readPosts();
 
 if (args.has('--list')) { list(posts); process.exit(0); }
+
+// --import <file>: fold browser-read readings (from the /popularity skill) into
+// `sources` and recompute. File shape: [{translationKey, sources:{xView,…}, links?}].
+// Manual/pin still win; this is just another sources contributor like ytView.
+const importFile = optVal('--import');
+if (importFile) {
+  const readings = JSON.parse(fs.readFileSync(importFile, 'utf8'));
+  ensureSeed(posts); // so a brand-new post still has an entry to merge into
+  let merged = 0;
+  const missing = [];
+  for (const r of Array.isArray(readings) ? readings : []) {
+    const tk = r?.translationKey;
+    if (!tk) continue;
+    const e = data[tk];
+    if (!e || typeof e !== 'object') { missing.push(tk); continue; }
+    if (r.sources) e.sources = { ...(e.sources || {}), ...r.sources };
+    if (r.links) e.links = { ...(e.links || {}), ...r.links };
+    merged++;
+  }
+  const changed = recomputeScores();
+  console.log(`Imported ${merged} reading${merged === 1 ? '' : 's'} · ${changed} score${changed === 1 ? '' : 's'} updated` +
+    (missing.length ? `\n  ! no post-popularity entry for: ${missing.join(', ')}` : ''));
+  if (!dryRun) { write(); console.log(`Wrote ${path.relative(root, FILE)}.`); }
+  else console.log('Dry run — no file written.');
+  list(posts);
+  process.exit(0);
+}
 
 const seeded = ensureSeed(posts);
 if (args.has('--seed')) {

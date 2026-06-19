@@ -2,6 +2,8 @@
 
 Append-only. Format: `## [YYYY-MM-DD] operation | description`
 
+## [2026-06-18] add | Popularity tracking moved in from WriterHelper (its `popularity.json` ledger was an island nothing read). Now login-walled platforms feed the homepage stars: `tools/lib/worklist.mjs` parses post-footer social links → worklist; `tools/fetch-popularity.mjs` gains `--worklist` (emit it) and `--import <file>` (fold `[{translationKey,sources,links}]` into `sources` + recompute); `WEIGHTS` += `xView:1/xLike:10/xRepost:5`. The `.claude/skills/popularity` skill reads X/Twitter etc. via Claude-for-Chrome (deterministic `aria-label` extractor; **reply trap** = read the focal tweet by status-id, not the first article) and imports them. Analytics only — never writes `src/content/blog/**`. Migrated the 2026-06-18 X sweep (90 readings): `an-idea-you-can-apply` xView 1062 → score 1232 → dev star. WriterHelper's popularity.py/skill/ledger decommissioned. See [[featured-stars]].
+
 ## [2026-06-11] ingest | Initial research: inventoried both Jekyll blogs (~145 paired posts each, YAT theme, active), found martingamsby.com WordPress dead (HTTP 500), listed public GitHub repos, read CV identity, confirmed Music-Experiment-Game repo is private, linktrees block scrapers.
 
 ## [2026-06-11] ingest | Plan decided with Martin: one unified Astro site in this repo, doors-as-lenses UX (Software/Physics/Book/Music/Everything), blogs migrate in, /fr + /en mirrored routes. Written to PLAN.md.

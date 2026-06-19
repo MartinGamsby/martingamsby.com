@@ -86,11 +86,16 @@ Quick rules:
   scrapes best-effort (~30 recent from the channel page + Bluesky-shared) and
   YouTube **rate-limits (429)** on repeated runs — so a key is recommended. Flags:
   `--seed` (scaffold only), `--list` (standings only), `--dry-run`, `--offline`.
-  YouTube view count is the only real auto-signal —
-  Bluesky engagement is ~0 (used only for discovery), the blog has no analytics, and
-  Typeshare/FB/X have no free API → hand-score by editing `score`. Hand-edited
-  `manual`/`pin`/`score` survive re-runs. Stars render as `.sky-social.sky-post`
-  chips so the constellation script is untouched. See `wiki/concepts/featured-stars.md`.
+  YouTube view count is the only real auto-signal in the script —
+  Bluesky engagement is ~0 (used only for discovery) and the blog has no analytics.
+  **Login-walled platforms (X/Twitter first, then Typeshare/Medium/LinkedIn/FB/IG) are
+  read from the operator's browser** by the `.claude/skills/popularity` skill (analytics,
+  not authoring) and folded in via `node tools/fetch-popularity.mjs --import <readings>`
+  (or `--worklist` to enumerate the footer social links). `WEIGHTS` includes
+  `xView:1`/`xLike:10`/`xRepost:5`; hand-edited `manual`/`pin`/`score` survive re-runs.
+  Stars render as `.sky-social.sky-post` chips so the constellation script is untouched.
+  See `wiki/concepts/featured-stars.md`. (A popularity *skill* is fine — it's read-only
+  telemetry; the "no skills" rule above is about **authoring**.)
 - **Authoring is deterministic — never via a Claude skill.** Posts are
   written/translated in **WriterHelper** (sibling repo, a Python model→template→file
   pipeline) which writes the `.md` pair directly into `src/content/blog/{fr,en}/`;
