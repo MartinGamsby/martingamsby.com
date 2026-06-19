@@ -39,7 +39,7 @@ const BLOG = path.join(root, 'src', 'content', 'blog');
 // weights mirror Bluesky's. X/Twitter (and other login-walled platforms) can't be
 // auto-fetched here — the /popularity skill reads them via the browser and feeds
 // them in with `--import` (see below).
-const WEIGHTS = { ytView: 1, ytLike: 10, bskyLike: 3, bskyRepost: 5, xView: 1, xLike: 10, xRepost: 5 };
+const WEIGHTS = { ytView: 1, ytLike: 100, bskyLike: 50, bskyRepost: 75, xView: 1, xLike: 100, xRepost: 75 };
 
 // Gates are lenses over facets (mirror of src/lib/featured.ts GATE_FACET).
 const GATE_FACET = { book: 'fiction', dev: 'dev', music: 'music', physics: 'physics', everything: null };
@@ -98,6 +98,15 @@ const today = new Date().toISOString().slice(0, 10);
 const data = fs.existsSync(FILE) ? JSON.parse(fs.readFileSync(FILE, 'utf8')) : {};
 const scoreOf = (tk) => (typeof data[tk]?.score === 'number' ? data[tk].score : 0);
 const write = () => fs.writeFileSync(FILE, JSON.stringify(data, null, 2) + '\n');
+
+// Mirror of src/lib/featured.ts trendingScore — the home gate stars sort by this
+// (recency-decayed score), so --list must too or it'd preview the wrong star. Keep
+// the formula in sync with featured.ts (logarithmic, age in TREND_HALF_LIFE_DAYS slices).
+const TREND_HALF_LIFE_DAYS = 45;
+const trendingOf = (p, now) => {
+  const ageDays = Math.max(0, (now - Date.parse(p.date)) / 86_400_000);
+  return (scoreOf(p.translationKey) + 1) / (Math.log2(ageDays / TREND_HALF_LIFE_DAYS + 1) + 1);
+};
 
 // --- text helpers ---------------------------------------------------------
 const decode = (s = '') => s
@@ -176,19 +185,20 @@ function ensureSeed(posts) {
 function list(posts) {
   const seen = posts.filter((p) => p.lang === 'en');
   const used = new Set();
+  const now = Date.now();
   for (const gate of GATES) {
     const facet = GATE_FACET[gate];
     const pool = seen
       .filter((p) => !used.has(p.translationKey) && (facet === null || p.facets.includes(facet)))
-      .sort((a, b) => scoreOf(b.translationKey) - scoreOf(a.translationKey) || (b.hasImage - a.hasImage) || (a.date < b.date ? 1 : -1));
+      .sort((a, b) => trendingOf(b, now) - trendingOf(a, now) || (b.hasImage - a.hasImage) || (a.date < b.date ? 1 : -1));
     if (!pool.length) { console.log(`\n${gate} (${facet || 'all'}): — none —`); continue; }
     used.add(pool[0].translationKey);
     console.log(`\n${gate} (${facet || 'all'}):`);
     for (const p of pool.slice(0, 5)) {
-      console.log(`  ${p === pool[0] ? '★' : ' '} score ${String(scoreOf(p.translationKey)).padStart(6)} ${p.hasImage ? 'img' : '   '}  ${p.translationKey}`);
+      console.log(`  ${p === pool[0] ? '★' : ' '} trend ${String(Math.round(trendingOf(p, now))).padStart(5)}  score ${String(scoreOf(p.translationKey)).padStart(6)} ${p.hasImage ? 'img' : '   '}  ${p.translationKey}`);
     }
   }
-  console.log('\n★ = currently featured. Bump `score` (or set `pin`) in the JSON to override.');
+  console.log('\n★ = currently featured (trend = recency-decayed score). Bump `score`/`pin` to override.');
 }
 
 // --- network: discover + scrape YouTube views ----------------------------
