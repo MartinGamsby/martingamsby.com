@@ -72,8 +72,10 @@ Quick rules:
   `imageUrl()` in `src/i18n/ui.ts` resolves the stored path; PostList prefers
   `imageThumb`, the post page uses `image`.
 - **Home constellation features one post per gate** (a "star"). `src/lib/featured.ts`
-  picks it: highest **popularity score** → has-image → most-recent, de-duped across
-  gates (`GATE_FACET` maps `book→fiction`, `everything→`all). Popularity lives in
+  picks it: highest **trendingScore** (recency-decayed popularity — `(score+1) /
+  (log2(ageDays/45+1)+1)`, so engagement fades with age and fresh posts rank high) →
+  has-image → most-recent, de-duped across gates (`GATE_FACET` maps `book→fiction`,
+  `everything→`all). Popularity lives in
   `src/data/post-popularity.json` (manual, keyed by `translationKey`; `_`-prefixed
   keys ignored) — **the manual JSON is the source of truth, refreshed only on demand,
   never per-commit/cron.** `tools/fetch-popularity.mjs` (`npm run fetch-popularity`):

@@ -11,14 +11,18 @@ de-duped across gates (no post features twice; `everything` is listed last so it
 takes the top post the specific gates didn't claim). Per gate the candidate pool
 is the posts carrying that gate's facet, sorted by:
 
-1. **popularity score** (desc) — from the manual table, see below;
-2. **has an image** (desc);
+1. **trendingScore** (desc) — recency-decayed popularity (`(score + 1) /
+   (log2(ageDays/45 + 1) + 1)`), so a high-engagement post fades over time and a
+   fresh post out-ranks an equal-but-older one. Same metric the related-constellation
+   and tag-galaxy use;
+2. **has an image** (desc) — tiebreak only (trending rarely ties);
 3. **date** (desc).
 
-So with an empty popularity table it degrades to *"most-recent post with an
-image"*, which is exactly the baseline Martin asked for. Gates are lenses over
-facets (`GATE_FACET`): `book → fiction`, `dev/music/physics` 1:1, `everything →`
-the whole pool.
+So with an empty popularity table it degrades to *"most-recent post"* (recency drives
+trendingScore), then prefers one with an image. Gates are lenses over facets
+(`GATE_FACET`): `book → fiction`, `dev/music/physics` 1:1, `everything →` the whole
+pool. (Both `src/lib/featured.ts` `getGateFeatures` and the `--list` preview in
+`tools/fetch-popularity.mjs` sort by trendingScore — keep the two formulas in sync.)
 
 ## The popularity table (manual, with an optional fetch helper)
 
