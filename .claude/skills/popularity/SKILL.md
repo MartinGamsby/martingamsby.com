@@ -141,16 +141,28 @@ clearly rendered (its body text is present), re-poll once — it usually means t
 finished loading the analytics line yet.
 
 **Other platforms — Claude-for-Chrome:** `navigate`, then `get_page_text`/`read_page`
-(`find` if a count is buried). Capture what the page shows: Typeshare likes/comments,
+(`find` if a count is buried). Capture what the page shows:
 Medium claps/responses, Facebook reactions/comments/shares, Instagram likes/comments.
 Record only what's actually there — hidden/private = gap.
+
+**Typeshare — the big number is "signal", NOT likes.** Each post's engagement bar shows
+two numbers before the **Comment** button: the first (larger) is Typeshare's own
+**signal** score — a reach metric, treat it like views (`tsSignal`, weight 1) — and the
+second is the **comment** count (`tsComment`, weight 100, ≈ a like). There is no public
+like count. A logged-out read is fine (these numbers are public). The deterministic
+extractor walks back from the Comment button collecting the two numeric `<button>`s:
+`nums[0]→tsComment`, `nums[1]→tsSignal`. A genuine `0` signal is a real 0 (many daily
+posts have their engagement on X/LinkedIn instead), so record `tsSignal:0` to mark the
+post read — it's not a gap.
 
 ### 3 — Import readings
 Build an array, one object per post you read, then import. Map each metric to its
 `sources` key — X: `views→xView`, `likes→xLike`, `reposts→xRepost`; LinkedIn:
 `impressions→liImpression`, `reactions→liReaction`, `comments→liComment`,
-`reposts→liRepost`; other platforms get their own keys — add weights in `WEIGHTS` in
-`tools/fetch-popularity.mjs`. Omit any metric that came back `null` (don't write a 0):
+`reposts→liRepost`; Typeshare: `signal→tsSignal`, `comments→tsComment`; other platforms
+get their own keys — add weights in `WEIGHTS` in `tools/fetch-popularity.mjs`. Omit any
+metric that came back `null` (don't write a 0 — except a real Typeshare `tsSignal:0`,
+which marks the post read):
 
 ```json
 [
