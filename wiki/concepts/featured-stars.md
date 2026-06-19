@@ -21,8 +21,10 @@ is the posts carrying that gate's facet, sorted by:
 So with an empty popularity table it degrades to *"most-recent post"* (recency drives
 trendingScore), then prefers one with an image. Gates are lenses over facets
 (`GATE_FACET`): `book → fiction`, `dev/music/physics` 1:1, `everything →` the whole
-pool. (Both `src/lib/featured.ts` `getGateFeatures` and the `--list` preview in
-`tools/fetch-popularity.mjs` sort by trendingScore — keep the two formulas in sync.)
+pool. Both `src/lib/featured.ts` `getGateFeatures` and the `--list` preview in
+`tools/fetch-popularity.mjs` rank by `trendingScore`, sharing one decay source —
+`src/lib/trending.mjs` (`trendingValue(score, ageDays)`, a dependency-free ESM module
+so Vite and plain Node can each import it) — so the preview can't drift from the site.
 
 ## The popularity table (manual, with an optional fetch helper)
 
@@ -106,14 +108,47 @@ not authoring), and folded into the same `sources`/`score`. Pipeline:
   `[{translationKey, sources:{xView,xLike,…}, links}]`.
 - `npm run fetch-popularity -- --import readings.json` merges those into `sources` and
   re-runs `recomputeScores()`. `WEIGHTS` now includes `xView:1` (an X impression
-  counts like a YouTube view), `xLike:10`, `xRepost:5`.
+  counts like a YouTube view), `xLike:100`, `xRepost:75`, and the LinkedIn set
+  `liImpression:1` / `liReaction:100` / `liComment:100` / `liRepost:75`.
 - **X reply trap:** read the *focal* tweet (the article whose permalink matches the
   URL's status id), never the first `<article>` — a reply renders the parent post
   above it, so the first article is someone else's (much larger) numbers.
+- **LinkedIn impressions are the author-only reach signal.** The operator is logged in
+  as the post author, so every one of Martin's own posts surfaces a headline
+  **"N impressions"** (next to "View analytics") — LinkedIn's equivalent of an X/YouTube
+  view, and the primary `liImpression` signal. It's read deterministically (regex
+  `/([\d.,]+\s*[KM]?)\s*impressions?/i` over page text, NOT the social-counts bar or an
+  aria-label); reactions come from `.social-details-social-counts__social-proof-fallback-number`,
+  comments/reposts from exact aria-labels. "This post cannot be displayed" (several dead
+  `activity-…` / `/feed/update/urn:li:share:…` URLs) = a gap, not a 0.
 
 First migration (2026-06-18 sweep, 90 X readings): e.g. `an-idea-you-can-apply`
 xView 1062 → score 1232 → **dev** star; `10-years` → book star; `just-a-few-hours` →
 music star. Hand-edited `manual`/`pin`/`score` still survive re-runs.
+
+LinkedIn sweep (2026-06-19, 14 readings of 19 links): impressions ranged 75–787 —
+biggest `simple-is-not-always-better` 787 imp + 2 reactions, `11-years` 327 imp + 16
+reactions + 1 comment (→ **book** star, score 2034), `an-idea` +207 imp + 1 comment
+(stays **dev** star, score 3069). 4 dead posts (`excel`, `puffy-head`, `reflections`,
+`quantum` — "cannot be displayed") were gaps; 1 link was a Typeshare URL mislabeled
+"LinkedIn" in `everything-beautiful`'s footer (a redundant dup of that post's real
+Typeshare link — removed from the post). LinkedIn engagement is real but small;
+**impressions** carry the signal.
+
+## Incremental sweeps + per-platform recency (`_fetched`)
+
+`--worklist` is **incremental by default**: it emits only the links *not yet read* for a
+platform (a post is "read" once any of that platform's `sources` metrics exists — `x*` for
+X, `li*` for LinkedIn) and prints a per-platform recency summary on **stderr** (e.g.
+`linkedin: last full import 2026-06-19 (0d ago) · 18 links, 4 unread`). `--all` forces a
+full re-pass (re-read every link — a periodic refresh, or the first pass of a new platform
+like Typeshare). `--import` auto-stamps a top-level `_fetched: {<slug>: "YYYY-MM-DD"}`
+(`_`-prefixed, so scoring/seed/list ignore it) for every platform whose metrics the import
+touched — that's the date the recency summary reads. Platform↔metric mapping lives in the
+`PLATFORMS` table in `tools/fetch-popularity.mjs` (add a platform there once it has a
+metric/weight). So the cadence is: default = pick up new posts only; `--all` = refresh a
+whole platform. (Bluesky/YouTube are auto-fetched, not browser-read, so they aren't
+stamped.) Added 2026-06-19.
 
 ## Rendering
 

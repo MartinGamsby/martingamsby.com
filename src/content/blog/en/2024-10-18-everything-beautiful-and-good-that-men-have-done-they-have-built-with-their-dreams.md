@@ -9,5 +9,4 @@ tags: [Quote]
 ---
 
 - [Typeshare](https://typeshare.co/martingamsby/posts/cm2f4c0vb00vdi40dl30g00o7)
-- [LinkedIn](https://typeshare.co/martingamsby/posts/everything-beautiful-o0mc1)
 - [Bluesky](https://bsky.app/profile/martingamsby.bsky.social/post/3l6x5dbuubd2c)

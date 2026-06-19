@@ -29,6 +29,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { collectWorklist } from './lib/worklist.mjs';
+import { trendingValue } from '../src/lib/trending.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const FILE = path.join(root, 'src', 'data', 'post-popularity.json');
@@ -36,10 +37,29 @@ const BLOG = path.join(root, 'src', 'content', 'blog');
 
 // What each raw count is worth. ytView=1 → score ≈ total YouTube views. Tune freely.
 // xView=1 mirrors ytView (an X impression counts like a YouTube view); X engagement
-// weights mirror Bluesky's. X/Twitter (and other login-walled platforms) can't be
-// auto-fetched here — the /popularity skill reads them via the browser and feeds
-// them in with `--import` (see below).
-const WEIGHTS = { ytView: 1, ytLike: 100, bskyLike: 50, bskyRepost: 75, xView: 1, xLike: 100, xRepost: 75 };
+// weights mirror Bluesky's. liImpression=1 mirrors xView/ytView — LinkedIn shows the
+// *author* a per-post impression count (the operator is logged in as Martin, so every
+// one of his own posts surfaces "N impressions"), the LinkedIn reach signal; its
+// engagement (liReaction/liComment ≈ a like, liRepost ≈ a share) mirrors X's. X/Twitter
+// and LinkedIn (and other login-walled platforms) can't be auto-fetched here — the
+// /popularity skill reads them via the browser and feeds them in with `--import`.
+const WEIGHTS = {
+  ytView: 1, ytLike: 100, bskyLike: 50, bskyRepost: 75,
+  xView: 1, xLike: 100, xRepost: 75,
+  liImpression: 1, liReaction: 100, liComment: 100, liRepost: 75,
+};
+
+// Login-walled platforms the /popularity skill reads in the browser. Each maps to the
+// `sources` metric keys it contributes + the worklist footer label it appears under. Lets
+// `--worklist` tell which posts are already read for a platform (so a default sweep only
+// surfaces NEW links) and `--import` stamp `_fetched.<slug>` with the read date. Add a
+// platform here once it has a metric/weight; until then its links always count as unread.
+const PLATFORMS = {
+  x: { label: 'x/twitter', metrics: ['xView', 'xLike', 'xRepost'] },
+  linkedin: { label: 'linkedin', metrics: ['liImpression', 'liReaction', 'liComment', 'liRepost'] },
+};
+const platformOf = (label) => Object.keys(PLATFORMS).find((s) => PLATFORMS[s].label === String(label).toLowerCase());
+const platformOfMetric = (m) => Object.keys(PLATFORMS).find((s) => PLATFORMS[s].metrics.includes(m));
 
 // Gates are lenses over facets (mirror of src/lib/featured.ts GATE_FACET).
 const GATE_FACET = { book: 'fiction', dev: 'dev', music: 'music', physics: 'physics', everything: null };
@@ -66,15 +86,23 @@ const offline = args.has('--offline');
 // valued options: `--import file`, repeatable `--platform x --hl en`
 const optVal = (flag) => { const i = argv.indexOf(flag); return i >= 0 ? argv[i + 1] : null; };
 const optVals = (flag) => argv.flatMap((a, i) => (a === flag ? [argv[i + 1]] : [])).filter(Boolean);
+
+// Loaded up here (not just for the main run) so --worklist can tell read vs. unread links
+// and --import can stamp _fetched. `_`-prefixed keys (incl. `_fetched`) are ignored by
+// scoring/seed/list. `_fetched` records the last full-import date per platform slug.
+const today = new Date().toISOString().slice(0, 10);
+const data = fs.existsSync(FILE) ? JSON.parse(fs.readFileSync(FILE, 'utf8')) : {};
+
 if (args.has('--help') || args.has('-h')) {
   console.log('Usage: [YOUTUBE_API_KEY=…] node tools/fetch-popularity.mjs [mode]\n' +
     '  (no flags)        seed missing entries + auto-fetch YouTube views + print standings\n' +
     '  --list            print each gate\'s candidates and current ★ star\n' +
     '  --seed            scaffold an entry (score 0) for every post\n' +
-    '  --worklist [--platform X/Twitter] [--hl en]\n' +
-    '                    print the social-link worklist (JSON) the /popularity skill sweeps\n' +
+    '  --worklist [--platform X/Twitter] [--hl en] [--all]\n' +
+    '                    print the social-link worklist (JSON) the /popularity skill sweeps;\n' +
+    '                    DEFAULT emits only links not yet read (incremental); --all = full re-pass\n' +
     '  --import <file>   merge browser-read readings ([{translationKey,sources,links?}])\n' +
-    '                    into post-popularity.json and recompute scores\n' +
+    '                    into post-popularity.json, recompute scores, stamp _fetched.<platform>\n' +
     '  --dry-run         do the work but do not write the file\n' +
     '  --offline         skip the network (seed + list only)\n' +
     '  Set YOUTUBE_API_KEY for complete, reliable coverage (all uploads + likes);\n' +
@@ -82,31 +110,47 @@ if (args.has('--help') || args.has('-h')) {
   process.exit(0);
 }
 
-// --worklist: enumerate readable social links from post footers (no network, no
-// file write). Repeatable --platform / --hl narrow the run. Drives the skill sweep.
+// --worklist: enumerate readable social links from post footers (no network, no file
+// write). Repeatable --platform / --hl narrow the run; drives the skill sweep. By DEFAULT
+// it emits only the links NOT yet read — a post counts as read for a platform once any of
+// that platform's metrics is in its `sources` — so a re-run surfaces only new/never-read
+// posts. Pass --all for a full re-pass (re-read every link regardless: a periodic refresh,
+// or a first "Typeshare pass"). A per-platform summary (last `_fetched` date + how many
+// links remain) goes to stderr so stdout stays pure JSON for the skill to parse.
 if (args.has('--worklist')) {
   const platform = optVals('--platform');
   const hl = optVals('--hl');
-  console.log(JSON.stringify(
-    collectWorklist({ platform: platform.length ? platform : undefined, hl: hl.length ? hl : undefined }),
-    null, 2,
-  ));
+  const all = args.has('--all');
+  const rows = collectWorklist({ platform: platform.length ? platform : undefined, hl: hl.length ? hl : undefined });
+  const isRead = (row) => {
+    const slug = platformOf(row.platform);
+    if (!slug) return false; // platform with no metric defined yet → never "read"
+    const src = data[row.translationKey]?.sources || {};
+    return PLATFORMS[slug].metrics.some((m) => m in src);
+  };
+  const fetched = data._fetched || {};
+  const dayDiff = (d) => Math.round((Date.parse(today) - Date.parse(d)) / 86_400_000);
+  const stats = {};
+  for (const r of rows) {
+    const slug = platformOf(r.platform) || r.platform.toLowerCase();
+    (stats[slug] ||= { total: 0, unread: 0 });
+    stats[slug].total++;
+    if (!isRead(r)) stats[slug].unread++;
+  }
+  for (const [slug, s] of Object.entries(stats)) {
+    const when = fetched[slug] ? `last full import ${fetched[slug]} (${dayDiff(fetched[slug])}d ago)` : 'never imported';
+    console.error(`${slug}: ${when} · ${s.total} links, ${s.unread} unread${all ? ' — emitting ALL (--all)' : ''}`);
+  }
+  console.log(JSON.stringify(all ? rows : rows.filter((r) => !isRead(r)), null, 2));
   process.exit(0);
 }
 
-const today = new Date().toISOString().slice(0, 10);
-const data = fs.existsSync(FILE) ? JSON.parse(fs.readFileSync(FILE, 'utf8')) : {};
 const scoreOf = (tk) => (typeof data[tk]?.score === 'number' ? data[tk].score : 0);
 const write = () => fs.writeFileSync(FILE, JSON.stringify(data, null, 2) + '\n');
 
-// Mirror of src/lib/featured.ts trendingScore — the home gate stars sort by this
-// (recency-decayed score), so --list must too or it'd preview the wrong star. Keep
-// the formula in sync with featured.ts (logarithmic, age in TREND_HALF_LIFE_DAYS slices).
-const TREND_HALF_LIFE_DAYS = 45;
-const trendingOf = (p, now) => {
-  const ageDays = Math.max(0, (now - Date.parse(p.date)) / 86_400_000);
-  return (scoreOf(p.translationKey) + 1) / (Math.log2(ageDays / TREND_HALF_LIFE_DAYS + 1) + 1);
-};
+// The home gate stars sort by trendingScore (recency-decayed), so --list must too or it
+// would preview the wrong star. Same decay as the site, from the shared source.
+const trendingOf = (p, now) => trendingValue(scoreOf(p.translationKey), (now - Date.parse(p.date)) / 86_400_000);
 
 // --- text helpers ---------------------------------------------------------
 const decode = (s = '') => s
@@ -365,8 +409,16 @@ if (importFile) {
     if (r.links) e.links = { ...(e.links || {}), ...r.links };
     merged++;
   }
+  // Stamp _fetched.<platform> = today for every platform whose metrics this import touched,
+  // so --worklist can report how long ago each platform was last swept.
+  const stamped = new Set();
+  for (const r of Array.isArray(readings) ? readings : []) {
+    for (const m of Object.keys(r?.sources || {})) { const s = platformOfMetric(m); if (s) stamped.add(s); }
+  }
+  if (stamped.size) { data._fetched = data._fetched || {}; for (const s of stamped) data._fetched[s] = today; }
   const changed = recomputeScores();
   console.log(`Imported ${merged} reading${merged === 1 ? '' : 's'} · ${changed} score${changed === 1 ? '' : 's'} updated` +
+    (stamped.size ? ` · stamped _fetched: ${[...stamped].join(', ')}` : '') +
     (missing.length ? `\n  ! no post-popularity entry for: ${missing.join(', ')}` : ''));
   if (!dryRun) { write(); console.log(`Wrote ${path.relative(root, FILE)}.`); }
   else console.log('Dry run — no file written.');

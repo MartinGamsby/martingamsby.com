@@ -9,6 +9,7 @@
 // works before the table is populated. Stars are de-duped across gates so no post repeats.
 import popularityRaw from '../data/post-popularity.json';
 import { getPosts, type Post, type Facet } from './blog';
+import { trendingValue } from './trending.mjs';
 import type { Lang } from '../i18n/ui';
 import type { Gate } from '../data/social-constellation';
 
@@ -30,19 +31,11 @@ export function scoreOf(post: Post): number {
   return popularity[post.data.translationKey] ?? 0;
 }
 
-// "Trending" = popularity decayed by age, so it differentiates posts even while the
-// manual popularity table is mostly empty (a fresh post out-trends an old one of equal
-// score). LOGARITHMIC decay (gentle): age is measured in TREND_HALF_LIFE_DAYS-wide
-// slices and weight = (score + 1) / (log2(slices + 1) + 1). So at 1 slice old it halves,
-// at 3 slices it's a third, at 7 a quarter — old posts keep shrinking but never crash to
-// ~0 the way an exponential half-life does, so good evergreen posts stay visible. A
-// future-dated post (age 0) divides by 1 → full score; the `+1` numerator gives a
-// zero-engagement post a pure-recency score so fresh posts rank high by construction.
-const TREND_HALF_LIFE_DAYS = 45;
+// trendingScore = recency-decayed popularity — the gate stars, related constellation
+// and tag galaxy all rank by it. The decay curve lives in ./trending.mjs (the single
+// source shared with tools/fetch-popularity.mjs, so the CLI preview can't drift from it).
 export function trendingScore(post: Post, now: number = Date.now()): number {
-  const ageDays = Math.max(0, (now - post.data.date.getTime()) / 86_400_000);
-  const slices = ageDays / TREND_HALF_LIFE_DAYS; // age in halving-windows
-  return (scoreOf(post) + 1) / (Math.log2(slices + 1) + 1);
+  return trendingValue(scoreOf(post), (now - post.data.date.getTime()) / 86_400_000);
 }
 
 // Gates are lenses over facets. `book` == the fiction facet; `everything` == all.

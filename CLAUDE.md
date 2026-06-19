@@ -93,8 +93,14 @@ Quick rules:
   **Login-walled platforms (X/Twitter first, then Typeshare/Medium/LinkedIn/FB/IG) are
   read from the operator's browser** by the `.claude/skills/popularity` skill (analytics,
   not authoring) and folded in via `node tools/fetch-popularity.mjs --import <readings>`
-  (or `--worklist` to enumerate the footer social links). `WEIGHTS` includes
-  `xView:1`/`xLike:10`/`xRepost:5`; hand-edited `manual`/`pin`/`score` survive re-runs.
+  (or `--worklist` to enumerate the footer social links — **incremental by default**,
+  emitting only links not yet read for a platform + a per-platform last-swept summary from
+  the `_fetched` stamp; `--all` forces a full re-pass, e.g. a first "Typeshare pass").
+  `WEIGHTS` includes
+  `xView:1`/`xLike:100`/`xRepost:75` and `liImpression:1`/`liReaction:100`/`liComment:100`/
+  `liRepost:75` (LinkedIn — `impressions` is the author-only reach signal, read
+  deterministically via `javascript_tool` like X; see the skill); hand-edited
+  `manual`/`pin`/`score` survive re-runs.
   Stars render as `.sky-social.sky-post` chips so the constellation script is untouched.
   See `wiki/concepts/featured-stars.md`. (A popularity *skill* is fine — it's read-only
   telemetry; the "no skills" rule above is about **authoring**.)

@@ -1,5 +1,9 @@
 {
   "_readme": "Per-post popularity, keyed by translationKey (shared by FR/EN twins). The home constellation features the HIGHEST-scored post per gate as a 'star'; with no score it falls back to the most-recent post that has an image. Edit `score` by hand, OR run `node tools/fetch-popularity.mjs` to pull stats into `sources` (it recomputes score = manual + sum(sources) unless `pin` is set). Keys starting with '_' are ignored. Entry shape: { score:number, manual?:number, sources?:{platform:number}, links?:{bluesky?:string, youtube?:string}, pin?:number, updated?:string }. The single example below is a placeholder — change/remove it and add your own.",
+  "_fetched": {
+    "x": "2026-06-18",
+    "linkedin": "2026-06-19"
+  },
   "2026-06-13-my-interverted-novel-now-available-on-amazon": {
     "score": 531,
     "title": "My Interverted novel now available on Amazon!",
@@ -37,13 +41,17 @@
     "updated": "2026-06-19"
   },
   "2026-06-11-11-years": {
-    "score": 7,
+    "score": 2034,
     "title": "11 years!",
     "sources": {
-      "xView": 7
+      "xView": 7,
+      "liImpression": 327,
+      "liReaction": 16,
+      "liComment": 1
     },
     "links": {
-      "x": "https://x.com/Martin_Gamsby/status/2065052720088723627"
+      "x": "https://x.com/Martin_Gamsby/status/2065052720088723627",
+      "linkedin": "https://www.linkedin.com/posts/martingamsby_i-finally-formatted-my-novel-that-i-started-share-7470819888496979969-p4Dr"
     },
     "updated": "2026-06-19"
   },
@@ -467,13 +475,16 @@
     "updated": "2026-06-19"
   },
   "2024-10-26-simple-is-not-always-better": {
-    "score": 31,
+    "score": 1018,
     "title": "Simple is not always better",
     "sources": {
-      "xView": 31
+      "xView": 31,
+      "liImpression": 787,
+      "liReaction": 2
     },
     "links": {
-      "x": "https://x.com/Martin_Gamsby/status/1850281346155139315"
+      "x": "https://x.com/Martin_Gamsby/status/1850281346155139315",
+      "linkedin": "https://www.linkedin.com/posts/martingamsby_simple-is-not-always-better-whats-the-easiest-activity-7256047961233592321-mT_c"
     },
     "updated": "2026-06-19"
   },
@@ -581,20 +592,29 @@
     "updated": "2026-06-19"
   },
   "2024-10-13-an-idiot-with-a-plan-will-beat-a-genius-without-a-plan": {
-    "score": 235,
+    "score": 334,
     "title": "An idiot WITH a plan, will beat a genius WITHOUT a plan",
     "sources": {
       "xView": 35,
-      "xLike": 2
+      "xLike": 2,
+      "liImpression": 99
     },
     "links": {
-      "x": "https://x.com/Martin_Gamsby/status/1845471703247253647"
+      "x": "https://x.com/Martin_Gamsby/status/1845471703247253647",
+      "linkedin": "https://www.linkedin.com/posts/martingamsby_activity-7251238625961476097-XuPf"
     },
     "updated": "2026-06-19"
   },
   "2024-10-12-never-underestimate-others": {
-    "score": 0,
-    "title": "Never underestimate others"
+    "score": 86,
+    "title": "Never underestimate others",
+    "sources": {
+      "liImpression": 86
+    },
+    "links": {
+      "linkedin": "https://www.linkedin.com/posts/martingamsby_activity-7250870142409093120-AuZo"
+    },
+    "updated": "2026-06-19"
   },
   "2024-10-11-vegetables-and-meat": {
     "score": 155,
@@ -621,17 +641,26 @@
     "updated": "2026-06-19"
   },
   "2024-10-08-going-to-the-restaurant-like-changing-habits-is-a-hit-and-miss": {
-    "score": 0,
-    "title": "Going to the restaurant (like changing habits) is a hit-and-miss"
-  },
-  "2024-10-07-i-thought-i-didnt-have-a-dream-car": {
-    "score": 33,
-    "title": "I thought I didn't have a dream car...",
+    "score": 75,
+    "title": "Going to the restaurant (like changing habits) is a hit-and-miss",
     "sources": {
-      "xView": 33
+      "liImpression": 75
     },
     "links": {
-      "x": "https://x.com/Martin_Gamsby/status/1843287110826291480"
+      "linkedin": "https://www.linkedin.com/posts/martingamsby_going-to-the-restaurant-like-changing-habits-activity-7249803631917498368-I5np"
+    },
+    "updated": "2026-06-19"
+  },
+  "2024-10-07-i-thought-i-didnt-have-a-dream-car": {
+    "score": 111,
+    "title": "I thought I didn't have a dream car...",
+    "sources": {
+      "xView": 33,
+      "liImpression": 78
+    },
+    "links": {
+      "x": "https://x.com/Martin_Gamsby/status/1843287110826291480",
+      "linkedin": "https://www.linkedin.com/posts/martingamsby_i-thought-i-didnt-have-a-dream-car-activity-7249053109073645568-4Yp9"
     },
     "updated": "2026-06-19"
   },
@@ -658,13 +687,15 @@
     "updated": "2026-06-19"
   },
   "2024-10-01-amazon": {
-    "score": 64,
+    "score": 161,
     "title": "Amazon",
     "sources": {
-      "xView": 64
+      "xView": 64,
+      "liImpression": 97
     },
     "links": {
-      "x": "https://x.com/Martin_Gamsby/status/1841253829087494618"
+      "x": "https://x.com/Martin_Gamsby/status/1841253829087494618",
+      "linkedin": "https://www.linkedin.com/posts/martingamsby_activity-7247019959518642176-PdvP"
     },
     "updated": "2026-06-19"
   },
@@ -692,14 +723,16 @@
     "updated": "2026-06-19"
   },
   "2024-09-27-meditation-is-easy-actually": {
-    "score": 169,
+    "score": 245,
     "title": "Meditation is easy, actually.",
     "sources": {
       "xView": 69,
-      "xLike": 1
+      "xLike": 1,
+      "liImpression": 76
     },
     "links": {
-      "x": "https://x.com/Martin_Gamsby/status/1839663528199733518"
+      "x": "https://x.com/Martin_Gamsby/status/1839663528199733518",
+      "linkedin": "https://www.linkedin.com/posts/martingamsby_meditation-is-easy-actually-the-1-thing-activity-7245427756837011457-djqL"
     },
     "updated": "2026-06-19"
   },
@@ -771,49 +804,59 @@
     "updated": "2026-06-19"
   },
   "2024-09-17-the-secret-to-feeling-better-always-at-hand": {
-    "score": 26,
+    "score": 149,
     "title": "The secret to feeling better, always at hand",
     "sources": {
-      "xView": 26
+      "xView": 26,
+      "liImpression": 123
     },
     "links": {
-      "x": "https://x.com/MartinGamsby_EN/status/1836165173943386544"
+      "x": "https://x.com/MartinGamsby_EN/status/1836165173943386544",
+      "linkedin": "https://www.linkedin.com/posts/martingamsby_oneatatime-activity-7241932226555166722-xYaH"
     },
     "updated": "2026-06-19"
   },
   "2024-09-16-an-idea-you-can-apply-to-everything-from-20-years-of-learning": {
-    "score": 2762,
+    "score": 3069,
     "title": "An idea you can apply to everything, from 20 years of learning",
     "sources": {
       "xView": 1062,
-      "xLike": 17
+      "xLike": 17,
+      "liImpression": 207,
+      "liComment": 1
     },
     "links": {
-      "x": "https://x.com/MartinGamsby_EN/status/1835761291383951494"
+      "x": "https://x.com/MartinGamsby_EN/status/1835761291383951494",
+      "linkedin": "https://www.linkedin.com/posts/martingamsby_une-id%C3%A9e-qui-r%C3%A8gle-tout-provenant-de-20-activity-7241558755887190018-0K04"
     },
     "updated": "2026-06-19"
   },
   "2024-09-15-ai-for-president-hear-me-out": {
-    "score": 238,
+    "score": 475,
     "title": "AI for president? (hear me out)",
     "sources": {
       "xView": 38,
-      "xLike": 2
+      "xLike": 2,
+      "liImpression": 137,
+      "liReaction": 1
     },
     "links": {
-      "x": "https://x.com/MartinGamsby_EN/status/1835302173988597800"
+      "x": "https://x.com/MartinGamsby_EN/status/1835302173988597800",
+      "linkedin": "https://www.linkedin.com/posts/martingamsby_ai-for-president-hear-me-out-it-wouldnt-activity-7241066270085779456-5_g9"
     },
     "updated": "2026-06-19"
   },
   "2024-09-14-a-PhD-in-your-pocket": {
-    "score": 575,
+    "score": 786,
     "title": "A PhD in your pocket",
     "sources": {
       "xView": 75,
-      "xLike": 5
+      "xLike": 5,
+      "liImpression": 211
     },
     "links": {
-      "x": "https://x.com/MartinGamsby_EN/status/1834913441284231360"
+      "x": "https://x.com/MartinGamsby_EN/status/1834913441284231360",
+      "linkedin": "https://www.linkedin.com/posts/martingamsby_phd-is-your-pocket-yesterday-chatgpt-activity-7240717023339556864-fAot"
     },
     "updated": "2026-06-19"
   },
@@ -866,13 +909,16 @@
     "updated": "2026-06-19"
   },
   "2024-09-09-programming-a-love-hate-relationship-not-just-programming": {
-    "score": 9,
+    "score": 304,
     "title": "Programming, a love-hate relationship? (Not just programming)",
     "sources": {
-      "xView": 9
+      "xView": 9,
+      "liImpression": 195,
+      "liReaction": 1
     },
     "links": {
-      "x": "https://x.com/Martin_Gamsby/status/1833171814945583205"
+      "x": "https://x.com/Martin_Gamsby/status/1833171814945583205",
+      "linkedin": "https://www.linkedin.com/posts/martingamsby_programming-a-love-hate-relationship-have-activity-7238906511387693058-Fm2T"
     },
     "updated": "2026-06-19"
   },
@@ -1169,14 +1215,16 @@
     "title": "I learned the most important lesson from school, 4 years ago …"
   },
   "2009-11-29-start-to-finish": {
-    "score": 125,
+    "score": 286,
     "title": "Start to finish",
     "sources": {
       "xView": 25,
-      "xLike": 1
+      "xLike": 1,
+      "liImpression": 161
     },
     "links": {
-      "x": "https://x.com/Martin_Gamsby/status/1847262308273361249"
+      "x": "https://x.com/Martin_Gamsby/status/1847262308273361249",
+      "linkedin": "https://www.linkedin.com/posts/martingamsby_start-to-finish-activity-7253029221491519488-cA-H"
     },
     "updated": "2026-06-19"
   },

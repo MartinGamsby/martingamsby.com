@@ -24,7 +24,8 @@ url, title, date}` rows — one per readable link. You visit each `url`, read it
 and import it as `sources.<metric>` keyed by `translationKey` (shared by FR/EN twins, so
 one reading covers both). The full back-catalogue is ~470 links — **chunk by platform**
 and import as you go; re-importing merges (overwrites a post's earlier `sources`, never
-duplicates), so the sweep is resumable.
+duplicates), so the sweep is resumable. The worklist is **incremental by default** (emits
+only links not yet read for that platform); pass `--all` for a full re-pass. See Step 1.
 
 ## Preconditions
 
@@ -47,6 +48,30 @@ npm run fetch-popularity -- --worklist --platform X/Twitter --hl en   # one chun
 npm run fetch-popularity -- --worklist                                # everything
 ```
 `--platform` / `--hl` are repeatable; omit for all. Each row's `url` is what you open.
+
+**The worklist is incremental by default — it only emits links not yet read.** A post
+counts as "read" for a platform once any of that platform's metrics is in its `sources`
+(X → `x*`, LinkedIn → `li*`), so a re-run surfaces only **new / never-read** posts and you
+never re-check what's done. The command also prints a **per-platform recency summary on
+stderr** — e.g. `linkedin: last full import 2026-06-19 (0d ago) · 18 links, 4 unread` /
+`typeshare: never imported · 107 links, 107 unread` — read from the `_fetched` stamp (see
+below). If a platform shows `0 unread`, it's up to date; skip it unless forced.
+
+**Full re-pass with `--all`** — to re-read *every* link regardless of what's stored (a
+periodic refresh of an already-swept platform, or the first pass of a brand-new one like
+Typeshare):
+
+```bash
+npm run fetch-popularity -- --worklist --platform Typeshare --all     # full Typeshare pass
+npm run fetch-popularity -- --worklist --platform LinkedIn --all      # re-read all LinkedIn
+```
+
+So the normal cadence is: **default** (incremental — pick up the new ones), and **`--all`**
+when you deliberately want fresh numbers for a whole platform. `--import` stamps
+`_fetched.<platform>` (a `_`-prefixed, scoring-ignored top-level key in
+`post-popularity.json`) with the run date automatically, which is what the recency summary
+reads — you don't maintain it by hand. (Only browser-read platforms are tracked there;
+Bluesky/YouTube are auto-fetched and not stamped.)
 
 ### 2 — Read the numbers (browser)
 
@@ -79,16 +104,53 @@ await (async () => {
 was **deleted** ("this page doesn't exist") — verify with `get_page_text`, then treat it
 as a **gap**, not a 0. `twitter.com/user/status/<id>` URLs redirect fine to the post.
 
+**LinkedIn — deterministic via `javascript_tool`, and the primary signal is `impressions`.**
+Because the operator is logged in **as the author** (Martin), LinkedIn surfaces a per-post
+**"N impressions"** headline (next to "View analytics") on every one of *his own* posts —
+the LinkedIn equivalent of an X view / YouTube view, and the real-reach number we want.
+It is NOT in the social-counts bar or an aria-label; read it from the page text with
+`/([\d.,]+\s*[KM]?)\s*impressions?/i`. Engagement (reactions/comments/reposts) lives in the
+`.social-details-social-counts` bar: reactions are in
+`.social-details-social-counts__social-proof-fallback-number` (fallback: an `N reactions`
+aria-label); comments/reposts are exact aria-labels (`"1 comment on … post"`, `"N reposts"`).
+A post with zero engagement renders **no** counts bar — that's a real 0, not a gap (the
+impression count still shows). `navigate` to the `url`, then run this self-polling extractor
+(batch many `navigate`→extract pairs per `browser_batch`, but keep it to ~3 posts/batch — a
+LinkedIn post is heavy and 7 navigations time the batch out):
+
+```js
+await (async () => {
+  const num=(s)=>{if(s==null)return null;const m=String(s).replace(/,/g,'').match(/([\d.]+)\s*([KM]?)/i);if(!m)return null;let v=parseFloat(m[1]);if(/k/i.test(m[2]))v*=1e3;if(/m/i.test(m[2]))v*=1e6;return Math.round(v);};
+  const dead=()=>/cannot be displayed|isn.t available|no longer available/i.test(document.body.innerText);
+  const impT=()=>(document.body.innerText.match(/([\d.,]+\s*[KM]?)\s*impressions?\b/i)||[])[1];
+  for(let i=0;i<45;i++){if(dead()||impT()||document.querySelector('.social-details-social-counts'))break;await new Promise(r=>setTimeout(r,200));}
+  if(dead())return{error:'unavailable'};
+  const A=[...document.querySelectorAll('[aria-label]')].map(e=>e.getAttribute('aria-label')).filter(Boolean);
+  const F=(re)=>{for(const a of A){const m=a.match(re);if(m)return num(m[1]);}return null;};
+  let r=null;const sp=document.querySelector('.social-details-social-counts__social-proof-fallback-number');
+  if(sp)r=num(sp.innerText);if(r==null)r=F(/([\d,.KM]+)\s*reactions?\b/i);
+  return{impressions:num(impT()),reactions:r,comments:F(/([\d,.KM]+)\s*comments?\b/i),reposts:F(/([\d,.KM]+)\s*reposts?\b/i)};
+})()
+```
+
+Map `impressions→liImpression` (primary), `reactions→liReaction`, `comments→liComment`,
+`reposts→liRepost`. An `{"error":"unavailable"}` means LinkedIn shows "This post cannot be
+displayed" (deleted/restricted — several old `activity-…` and `/feed/update/urn:li:share:…`
+URLs are dead) → a **gap**, never a 0. If `impressions` comes back `null` but the post
+clearly rendered (its body text is present), re-poll once — it usually means the page hadn't
+finished loading the analytics line yet.
+
 **Other platforms — Claude-for-Chrome:** `navigate`, then `get_page_text`/`read_page`
 (`find` if a count is buried). Capture what the page shows: Typeshare likes/comments,
-Medium claps/responses, LinkedIn reactions/comments/reposts, Facebook reactions/comments/
-shares, Instagram likes/comments. Record only what's actually there — hidden/private =
-gap.
+Medium claps/responses, Facebook reactions/comments/shares, Instagram likes/comments.
+Record only what's actually there — hidden/private = gap.
 
 ### 3 — Import readings
-Build an array, one object per post you read, then import. Map each X metric to its
-`sources` key (`views→xView`, `likes→xLike`, `reposts→xRepost`; other platforms get their
-own keys — add weights in `WEIGHTS` in `tools/fetch-popularity.mjs`):
+Build an array, one object per post you read, then import. Map each metric to its
+`sources` key — X: `views→xView`, `likes→xLike`, `reposts→xRepost`; LinkedIn:
+`impressions→liImpression`, `reactions→liReaction`, `comments→liComment`,
+`reposts→liRepost`; other platforms get their own keys — add weights in `WEIGHTS` in
+`tools/fetch-popularity.mjs`. Omit any metric that came back `null` (don't write a 0):
 
 ```json
 [
@@ -117,8 +179,14 @@ you couldn't read. Suggest the next chunk if the sweep is partial.
 - **Never fabricate a metric.** A missing/hidden/login-walled number is a gap, reported as
   such — not a 0.
 - **X reply trap:** always read the focal tweet (status-ID match), never the first article.
+- **LinkedIn impressions are author-only:** they show because the operator is logged in as
+  the post author. The headline `N impressions` (not the social-counts bar) is the primary
+  signal. "This post cannot be displayed" = a gap, not a 0.
 - **Don't read Bluesky/YouTube here** — `npm run fetch-popularity` does them automatically.
 - **Never touch `src/content/blog/**`** — this writes only `src/data/post-popularity.json`.
 - Honour link safety: these are the operator's own posts, but verify a URL looks like the
   expected platform before navigating.
 - Weights live in `WEIGHTS` (`tools/fetch-popularity.mjs`); tune there, never invent scores.
+- **Incremental by default.** `--worklist` only emits never-read links and reports each
+  platform's last-swept date (`_fetched`); don't re-read what's done. Use `--all` only when
+  you intend a full refresh of a platform. Import auto-stamps `_fetched.<platform>`.
