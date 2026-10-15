@@ -37,6 +37,8 @@ hatch. A post can carry several facets at once (e.g. `physics` + `ideas`).
 | `…/book` | Interverti: cover, blurb, excerpt, buy links when live. FR first; EN page = "coming soon" |
 | `…/guidepour` | Djosh Sho author page (the in-universe "Guide pour ✳" column from the book); bio + fiction note + the Guide Pour entry list. Old guidepour.com / guidance4.com links redirect in (see open question #4) |
 | `…/music` | Music Experiment Game story, YouTube embeds (FR channel on /fr, EN channel on /en) |
+| `…/music/<game>` | **Planned**: the game's own presentation page — the pitch (listen, and the music grows: each song teaches the next one something new), screenshots + the trailer, a few of its song videos, the **Steam wishlist** button (once the store page exists), platform + languages, a link to the licenses page. What the Steam page links back to. Slug = the game's final name (still a working title: the game repo's `memory/plans/release-roadmap.md`) |
+| `…/music/licenses` | **Done** (`src/pages/[lang]/music/licenses.astro`): the game's free-software notices — GPL/LGPL components + source links, the 3-year written offer (obfuscated email), LGPL replaceability, content credits. **Every game build prints this URL: never move it** (it doesn't carry the game's name on purpose) |
 | `…/blog` | Full stream + facet chips + Pagefind search (handles bilingual) |
 | `…/about` | The existing INTP "too many interests" essay, contact |
 | `…/links` | Linktree-style page; both linktr.ee URLs eventually point here |
@@ -109,6 +111,9 @@ Show both, clearly separated:
       working trees onto the new site (e.g. `…-11-ans`/`…-11-years`); mark
       `draft: true` if any shouldn't be live.
 - [ ] **Phase 3 — Doors**: home, dev, physics, book, music, about, links pages ×2 languages.
+      Music door extra: the game's presentation page (`…/music/<game>`, site map)
+      before its Steam "Coming Soon"; `…/music/licenses` is done (commit it live
+      before the game's first public build: the build links to it).
 - [ ] **Phase 4 — Polish & launch**: RSS, sitemap, hreflang, OG images, Pagefind
       search, ~~DNS cutover~~ (**done 2026-06-13**), linktrees → `/links`, `llms.txt`.
       Time launch so the book page is live when Interverti publishes (FR edition
