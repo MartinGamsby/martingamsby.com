@@ -1,0 +1,125 @@
+---
+// Music Experiment Game: the free software it ships, where its source is,
+// and the written offer the game's third-party notices point to
+// (THIRD-PARTY-NOTICES.txt in the game's `licenses` folder links here).
+import Base from '../../../layouts/Base.astro';
+import { LANGS, url, type Lang } from '../../../i18n/ui';
+
+export function getStaticPaths() {
+  return LANGS.map((lang) => ({ params: { lang } }));
+}
+
+const lang = Astro.params.lang as Lang;
+
+// Never the verbatim address in the HTML (wiki: profiles-and-channels).
+const ea = 'martingamsby';
+const eb = 'gmail';
+const ec = 'com';
+const ed = lang === 'fr' ? `${ea} [à] ${eb} [point] ${ec}` : `${ea} [at] ${eb} [dot] ${ec}`;
+
+// The GPL / LGPL components the game distributes, and their sources.
+const sources = [
+  { name: 'FFmpeg 7.1', license: 'GPL-3.0', note: { fr: 'build « essentials » de gyan.dev, non modifié', en: 'gyan.dev "essentials" build, unmodified' },
+    links: [['ffmpeg-7.1.tar.xz', 'https://ffmpeg.org/releases/ffmpeg-7.1.tar.xz'], ['gyan.dev builds', 'https://www.gyan.dev/ffmpeg/builds/']] },
+  { name: 'Qt 6.8 / PySide6 6.8.0.2', license: 'LGPL-3.0',
+    links: [['download.qt.io', 'https://download.qt.io/official_releases/QtForPython/'], ['code.qt.io', 'https://code.qt.io/cgit/pyside/pyside-setup.git/']] },
+  { name: 'pygame 2.6.1', license: 'LGPL-2.1', note: { fr: 'avec SDL2 (zlib) et ses bibliothèques', en: 'with SDL2 (zlib) and its libraries' },
+    links: [['github.com/pygame/pygame', 'https://github.com/pygame/pygame/releases/tag/2.6.1']] },
+  { name: 'sf2_loader 1.29', license: 'LGPL-2.1', note: { fr: 'avec FluidSynth, GLib, libsndfile, libInstPatch, libintl (LGPL-2.1)', en: 'with FluidSynth, GLib, libsndfile, libInstPatch, libintl (LGPL-2.1)' },
+    links: [['github.com/Rainbow-Dreamer/sf2_loader', 'https://github.com/Rainbow-Dreamer/sf2_loader'], ['fluidsynth.org', 'https://www.fluidsynth.org']] },
+  { name: 'musicpy 6.92', license: 'LGPL-2.1',
+    links: [['github.com/Rainbow-Dreamer/musicpy', 'https://github.com/Rainbow-Dreamer/musicpy']] },
+  { name: { fr: 'Bibliothèques d’exécution GCC', en: 'GCC runtime libraries' }, license: 'GPL-3.0 + GCC Runtime Library Exception',
+    links: [['gcc.gnu.org', 'https://gcc.gnu.org']] },
+];
+const pick = (v: any) => (typeof v === 'string' ? v : v[lang]);
+
+const c = {
+  fr: {
+    title: 'Music Experiment Game — logiciels libres et code source',
+    intro: [
+      'Music Experiment Game est © Martin Gamsby (GamesByGamsby), tous droits réservés.',
+      'Le jeu inclut des logiciels libres et du contenu de tiers, chacun sous sa propre licence. Le texte complet de chaque licence est livré avec le jeu : dans le dossier « licenses » du jeu, et dans Paramètres → Crédits et licences.',
+    ],
+    sourcesHeading: 'Code source des composants GPL et LGPL',
+    sourcesIntro: 'Ces composants sont distribués sans modification. Leur code source complet est disponible à ces adresses :',
+    offerHeading: 'Offre écrite',
+    offer: 'Pendant au moins trois ans après que vous avez reçu votre copie du jeu, et tant que le jeu est offert, vous pouvez obtenir le code source correspondant complet de chacun de ces composants, sans frais autres que ceux de la distribution, en écrivant à :',
+    replaceHeading: 'Remplacer les bibliothèques LGPL',
+    replace: 'Les bibliothèques LGPL sont des fichiers séparés dans le dossier « _internal » du jeu (les modules Python en fichiers .py, les bibliothèques natives en .dll). Vous pouvez les remplacer par vos propres versions modifiées.',
+    creditsHeading: 'Contenu de tiers',
+    credits: [
+      ['Icônes d’instruments', 'game-icons.net, CC BY 3.0 (auteurs nommés dans le jeu)', 'https://game-icons.net'],
+      ['SoundFont MuseScore_General', 'Frank Wen, Michael Cowgill, S. Christian Collins — MIT', 'https://musescore.org'],
+    ],
+    back: '← Musique',
+  },
+  en: {
+    title: 'Music Experiment Game — free software and source code',
+    intro: [
+      'Music Experiment Game is © Martin Gamsby (GamesByGamsby), all rights reserved.',
+      'The game includes free software and third-party content, each under its own license. The full text of every license ships with the game: in the game’s “licenses” folder, and in Settings → Credits & licenses.',
+    ],
+    sourcesHeading: 'Source code of the GPL and LGPL components',
+    sourcesIntro: 'These components are distributed unmodified. Their complete source code is available here:',
+    offerHeading: 'Written offer',
+    offer: 'For at least three years after you received your copy of the game, and for as long as the game is offered, you can get the complete corresponding source code of any of these components, at no charge beyond the cost of providing it, by writing to:',
+    replaceHeading: 'Replacing the LGPL libraries',
+    replace: 'The LGPL libraries are separate files in the game’s “_internal” folder (the Python modules as .py files, the native libraries as .dll files). You may replace them with modified versions of your own.',
+    creditsHeading: 'Third-party content',
+    credits: [
+      ['Instrument icons', 'game-icons.net, CC BY 3.0 (authors credited in the game)', 'https://game-icons.net'],
+      ['MuseScore_General SoundFont', 'Frank Wen, Michael Cowgill, S. Christian Collins — MIT', 'https://musescore.org'],
+    ],
+    back: '← Music',
+  },
+}[lang];
+---
+
+<Base lang={lang} title={c.title}>
+  <article class="post licenses">
+    <p><a href={url(`/${lang}/music/`)}>{c.back}</a></p>
+    <h1>{c.title}</h1>
+    {c.intro.map((p) => <p>{p}</p>)}
+
+    <h2>{c.sourcesHeading}</h2>
+    <p>{c.sourcesIntro}</p>
+    <ul class="components">
+      {sources.map((s) => (
+        <li>
+          <strong>{pick(s.name)}</strong> — {s.license}
+          {s.note && <span class="note"> ({pick(s.note)})</span>}
+          <br />
+          {s.links.map(([label, href], i) => (
+            <>{i > 0 && ' · '}<a href={href} rel="noopener">{label}</a></>
+          ))}
+        </li>
+      ))}
+    </ul>
+
+    <h2>{c.offerHeading}</h2>
+    <p>{c.offer}</p>
+    <p><span class="email-link">{ed}</span></p>
+
+    <h2>{c.replaceHeading}</h2>
+    <p>{c.replace}</p>
+
+    <h2>{c.creditsHeading}</h2>
+    <ul class="components">
+      {c.credits.map(([what, who, href]) => (
+        <li><strong>{what}</strong> — {who} · <a href={href} rel="noopener">{href.replace('https://', '')}</a></li>
+      ))}
+    </ul>
+  </article>
+</Base>
+
+<style>
+  .components { padding-left: 1.2rem; }
+  .components li { margin-bottom: 0.6rem; }
+  .note { opacity: 0.8; }
+  .email-link {
+    font-weight: 600;
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+  }
+</style>

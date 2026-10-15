@@ -13,6 +13,12 @@ Profile: github.com/MartinGamsby (11 public repos as of 2026-06-11).
   **CoinTrackingMerge**, **Platformer** — smaller; curate, don't list all.
 - **Music-Experiment-Game** — **PRIVATE** repo. Music door links its YouTube output,
   not the source, unless Martin makes it public.
+  The game is proprietary (sold on Steam); its third-party notices point to
+  **`/{fr,en}/music/licenses`** (`src/pages/[lang]/music/licenses.astro`): the
+  GPL/LGPL components it ships (FFmpeg, Qt/PySide6, pygame, sf2_loader +
+  FluidSynth, musicpy, GCC runtime) with upstream source links, the 3-year
+  **written offer** (obfuscated email), LGPL replaceability, third-party
+  content credits. That URL is printed in every build — never move it.
 
 ## Professional demos (attributed to employer)
 - **Lattice sensAI Edge Vision Engine SDK** — Hugging Face Space
