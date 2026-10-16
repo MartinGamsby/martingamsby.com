@@ -26,5 +26,6 @@ const posts = await getPosts(lang, facet);
     ))}
   </ul>
 )}
+<slot />
 <p>{tr.underConstruction}</p>
 <PostList posts={posts} lang={lang} />

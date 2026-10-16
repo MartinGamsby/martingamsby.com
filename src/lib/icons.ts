@@ -15,6 +15,8 @@ import {
   faLinkedinIn,
   faOrcid,
   faAmazon,
+  faSteam,
+  faWindows,
 } from '@fortawesome/free-brands-svg-icons';
 import { faGlobe } from '@fortawesome/free-solid-svg-icons';
 
@@ -27,6 +29,8 @@ const defs = {
   linkedin: faLinkedinIn,
   orcid: faOrcid,
   amazon: faAmazon,
+  steam: faSteam,
+  windows: faWindows,
   // No dedicated brand glyph in the pack — keep the set uniform with the globe.
   typeshare: faGlobe,
   zenodo: faGlobe,

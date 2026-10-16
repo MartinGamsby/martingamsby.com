@@ -36,8 +36,8 @@ hatch. A post can carry several facets at once (e.g. `physics` + `ideas`).
 | `…/physics` | The preprint *Replacing Dark Energy and Unifying Large-Scale Anomalies* (Zenodo, DOI 10.5281/zenodo.20482196 — paper + simulation code in one record), ORCID 0009-0007-4069-9687, ProgenitorNodeModelCosmology, physics-tagged posts |
 | `…/book` | Interverti: cover, blurb, excerpt, buy links when live. FR first; EN page = "coming soon" |
 | `…/guidepour` | Djosh Sho author page (the in-universe "Guide pour ✳" column from the book); bio + fiction note + the Guide Pour entry list. Old guidepour.com / guidance4.com links redirect in (see open question #4) |
-| `…/music` | Music Experiment Game story, YouTube embeds (FR channel on /fr, EN channel on /en) |
-| `…/music/<game>` | **Planned**: the game's own presentation page — the pitch (listen, and the music grows: each song teaches the next one something new), screenshots + the trailer, a few of its song videos, the **Steam wishlist** button (once the store page exists), platform + languages, a link to the licenses page. What the Steam page links back to. Slug = the game's final name (still a working title: the game repo's `memory/plans/release-roadmap.md`) |
+| `…/music` | Music Experiment Game story, YouTube embeds (FR channel on /fr, EN channel on /en); now: the channel link, a card to the game's page, the music posts |
+| `…/music/music-experiment-game` | **Done** (`src/pages/[lang]/music/music-experiment-game.astro`, copy + video IDs in `src/data/music-game.ts`): the game's presentation page — "in development, not out yet" badge + status (coming to Steam, Windows, **no date printed**), the pitch, real in-game screenshots (per language: the stage + band, the Ideas tree, the MIDI player's pixel orchestra), what the game is, "procedural, not generative AI", features, 3 YouTube renders by the game's video pipeline (public-domain pieces, the "Music YouTube" channel), platform + languages, the licenses link. **Steam page coming** note in place of the wishlist button: set `steamUrl` in `src/data/music-game.ts` once the store page exists (and add the trailer then). The music door links it (a card). What the Steam page links back to. Slug = the game's working title (wiki [[music-game-page]]: renaming = moving this file) |
 | `…/music/licenses` | **Done** (`src/pages/[lang]/music/licenses.astro`): the game's free-software notices — GPL/LGPL components + source links, the 3-year written offer (obfuscated email), LGPL replaceability, content credits. **Every game build prints this URL: never move it** (it doesn't carry the game's name on purpose) |
 | `…/blog` | Full stream + facet chips + Pagefind search (handles bilingual) |
 | `…/about` | The existing INTP "too many interests" essay, contact |
@@ -111,9 +111,10 @@ Show both, clearly separated:
       working trees onto the new site (e.g. `…-11-ans`/`…-11-years`); mark
       `draft: true` if any shouldn't be live.
 - [ ] **Phase 3 — Doors**: home, dev, physics, book, music, about, links pages ×2 languages.
-      Music door extra: the game's presentation page (`…/music/<game>`, site map)
-      before its Steam "Coming Soon"; `…/music/licenses` is done (commit it live
-      before the game's first public build: the build links to it).
+      Music door extra: the game's presentation page is done
+      (`…/music/music-experiment-game`; wishlist button + trailer once the Steam
+      page exists); `…/music/licenses` is done (push it live before the game's
+      first public build: the build links to it).
 - [ ] **Phase 4 — Polish & launch**: RSS, sitemap, hreflang, OG images, Pagefind
       search, ~~DNS cutover~~ (**done 2026-06-13**), linktrees → `/links`, `llms.txt`.
       Time launch so the book page is live when Interverti publishes (FR edition

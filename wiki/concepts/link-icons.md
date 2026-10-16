@@ -21,7 +21,7 @@ from FA ships to the client (verified: `svg class="icon"` present in built HTML)
 ## How it's wired
 
 - `src/lib/icons.ts` — the registry: maps an `IconName` (`youtube|bluesky|x|
-  facebook|typeshare|github|linkedin|orcid|amazon|zenodo|doi|web`) to an FA glyph;
+  facebook|typeshare|github|linkedin|orcid|amazon|steam|windows|zenodo|doi|web`) to an FA glyph;
   `getIcon(name)` returns `{ viewBox, d }`. (Type lives here, NOT in the `.astro`
   component — Astro's frontmatter parser choked on an exported union type.)
 - `src/components/Icon.astro` — thin renderer: `<Icon name=… size=… />` → inline

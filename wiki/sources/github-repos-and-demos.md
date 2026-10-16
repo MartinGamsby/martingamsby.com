@@ -19,6 +19,7 @@ Profile: github.com/MartinGamsby (11 public repos as of 2026-06-11).
   FluidSynth, musicpy, GCC runtime) with upstream source links, the 3-year
   **written offer** (obfuscated email), LGPL replaceability, third-party
   content credits. That URL is printed in every build — never move it.
+  Its presentation page is `/{fr,en}/music/music-experiment-game` ([[music-game-page]]).
 
 ## Professional demos (attributed to employer)
 - **Lattice sensAI Edge Vision Engine SDK** — Hugging Face Space

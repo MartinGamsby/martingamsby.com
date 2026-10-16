@@ -160,6 +160,10 @@ Quick rules:
   **WriterHelper must set `aliases:` on any new Guide Pour entry** (and tag it
   `Djosh Sho`, which `isGuidePour()`/`getGuidePourPosts()` in `src/lib/blog.ts` use to
   populate the `/{lang}/guidepour` page). See `wiki/concepts/guidepour-redirects.md`.
+- **Music Experiment Game page** (`/{lang}/music/music-experiment-game`, wiki
+  `concepts/music-game-page.md`): the game is NOT out — never print a release date;
+  the wishlist button appears only when `steamUrl` in `src/data/music-game.ts` is set.
+  `/{lang}/music/licenses` is printed in every game build: never move it.
 - French content is written in Quebec French; keep Martin's colloquial voice when
   touching post text. Never machine-rewrite migrated posts — migration preserves
   content byte-for-byte apart from frontmatter.

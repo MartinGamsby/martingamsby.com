@@ -1,7 +1,10 @@
 ---
+import { Image } from 'astro:assets';
 import Base from '../../layouts/Base.astro';
 import DoorStub from '../../components/DoorStub.astro';
-import { LANGS, t, type Lang } from '../../i18n/ui';
+import { LANGS, t, url, type Lang } from '../../i18n/ui';
+import stageEn from '../../assets/music-game/stage.en.webp';
+import stageFr from '../../assets/music-game/stage.fr.webp';
 
 export function getStaticPaths() {
   return LANGS.map((lang) => ({ params: { lang } }));
@@ -13,8 +16,74 @@ const links =
   lang === 'fr'
     ? [{ label: 'YouTube — @MartinGamsby', url: 'https://www.youtube.com/@MartinGamsby', icon: 'youtube' as const }]
     : [{ label: 'YouTube — @MartinGamsbyEN', url: 'https://www.youtube.com/@MartinGamsbyEN', icon: 'youtube' as const }];
+
+// The game's own page (src/pages/[lang]/music/music-experiment-game.astro).
+const game = {
+  fr: {
+    stage: stageFr,
+    alt: 'Le groupe en pixel art de Music Experiment Game, sur scène',
+    badge: 'En développement',
+    text: 'Mon jeu : écoutez, et la musique grandit. Chaque chanson apprend quelque chose de nouveau à la suivante.',
+    more: 'Découvrir le jeu →',
+  },
+  en: {
+    stage: stageEn,
+    alt: 'Music Experiment Game’s pixel-art band, on stage',
+    badge: 'In development',
+    text: 'My game: listen, and the music grows. Each song teaches the next one something new.',
+    more: 'Discover the game →',
+  },
+}[lang];
 ---
 
 <Base lang={lang} title={tr.doors.music.title}>
-  <DoorStub lang={lang} doorKey="music" facet="music" links={links} />
+  <DoorStub lang={lang} doorKey="music" facet="music" links={links}>
+    <a class="game-card" href={url(`/${lang}/music/music-experiment-game/`)}>
+      <Image src={game.stage} alt={game.alt} widths={[740, 1100]} sizes="(max-width: 760px) 100vw, 46rem" />
+      <span class="game-card-body">
+        <span class="game-card-badge">{game.badge}</span>
+        <strong>Music Experiment Game</strong>
+        <span>{game.text}</span>
+        <span class="game-card-more">{game.more}</span>
+      </span>
+    </a>
+  </DoorStub>
 </Base>
+
+<style>
+  .game-card {
+    display: block;
+    margin: 1.5rem 0;
+    border: 1px solid color-mix(in srgb, var(--c-music) 40%, var(--border));
+    border-radius: 0.9rem;
+    overflow: hidden;
+    color: var(--fg);
+    background: color-mix(in srgb, var(--bg2) 85%, transparent);
+    box-shadow: var(--shadow);
+    transition: transform 0.2s ease, border-color 0.2s ease;
+  }
+  .game-card:hover {
+    text-decoration: none;
+    transform: translateY(-2px);
+    border-color: var(--c-music);
+  }
+  .game-card img { display: block; width: 100%; height: auto; }
+  .game-card-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    padding: 0.9rem 1.1rem 1.1rem;
+  }
+  .game-card-body strong { font-family: var(--font-heading); font-size: 1.3rem; }
+  .game-card-badge {
+    align-self: flex-start;
+    padding: 0.12rem 0.65rem;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #fff;
+    background: var(--c-music);
+  }
+  .game-card-more { color: var(--accent); font-weight: 600; }
+</style>

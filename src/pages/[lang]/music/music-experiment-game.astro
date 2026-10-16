@@ -1,0 +1,284 @@
+---
+// Music Experiment Game's presentation page: the pitch, real screenshots, the
+// game's video renders, platform + languages, the licenses link. What the
+// Steam store page links back to. Copy + video IDs: src/data/music-game.ts.
+// The slug follows the game's name (a working title): renaming the game means
+// renaming this file. Never touch /music/licenses (every build prints it).
+import { Image } from 'astro:assets';
+import Base from '../../../layouts/Base.astro';
+import Icon from '../../../components/Icon.astro';
+import { LANGS, url, type Lang } from '../../../i18n/ui';
+import { copy, steamUrl, videos, videoChannel } from '../../../data/music-game';
+import stageEn from '../../../assets/music-game/stage.en.webp';
+import stageFr from '../../../assets/music-game/stage.fr.webp';
+import ideasEn from '../../../assets/music-game/ideas.en.webp';
+import ideasFr from '../../../assets/music-game/ideas.fr.webp';
+import orchestraEn from '../../../assets/music-game/orchestra.en.webp';
+import orchestraFr from '../../../assets/music-game/orchestra.fr.webp';
+
+export function getStaticPaths() {
+  return LANGS.map((lang) => ({ params: { lang } }));
+}
+
+const lang = Astro.params.lang as Lang;
+const c = copy[lang];
+// Screenshots taken in the page's language (the game ships both).
+const shots = {
+  fr: { stage: stageFr, ideas: ideasFr, orchestra: orchestraFr },
+  en: { stage: stageEn, ideas: ideasEn, orchestra: orchestraEn },
+}[lang];
+const gallery = [
+  { img: shots.ideas, alt: c.ideasAlt, caption: c.ideasCaption },
+  { img: shots.orchestra, alt: c.orchestraAlt, caption: c.orchestraCaption },
+];
+---
+
+<Base lang={lang} title={c.title} description={c.description}>
+  <article class="game">
+    <p class="game-back"><a href={url(`/${lang}/music/`)}>{c.back}</a></p>
+
+    <header class="game-hero">
+      <p class="game-badge">{c.badge} <span>· {c.badgeNote}</span></p>
+      <h1>{c.title}</h1>
+      <p class="game-pitch">{c.pitch}</p>
+      <div class="game-cta">
+        {steamUrl ? (
+          <a class="steam-btn" href={steamUrl} rel="noopener"><Icon name="steam" size={20} /><span>{c.wishlist}</span></a>
+        ) : (
+          <p class="steam-soon"><Icon name="steam" size={18} /><span>{c.steamSoon}</span></p>
+        )}
+        <p class="game-platform"><Icon name="windows" size={15} /><span>{lang === 'fr' ? 'Windows · Français · English' : 'Windows · English · Français'}</span></p>
+      </div>
+      <p class="game-status">{steamUrl ? c.status : `${c.status} ${c.steamSoonNote}`}</p>
+    </header>
+
+    <figure class="shot shot-wide">
+      <a href={shots.stage.src}>
+        <Image src={shots.stage} alt={c.stageAlt} widths={[740, 1100, 1480]} sizes="(max-width: 760px) 100vw, 46rem" />
+      </a>
+      <figcaption>{c.stageCaption}</figcaption>
+    </figure>
+
+    <section>
+      <h2 class="section-title">{c.aboutHeading}</h2>
+      {c.about.map((p) => <p>{p}</p>)}
+    </section>
+
+    <aside class="game-procedural">
+      <h2>{c.proceduralHeading}</h2>
+      <p>{c.procedural}</p>
+    </aside>
+
+    <section>
+      <h2 class="section-title">{c.featuresHeading}</h2>
+      <ul class="game-features">
+        {c.features.map((f) => (
+          <li><strong>{f.name}</strong><span>{f.text}</span></li>
+        ))}
+      </ul>
+    </section>
+
+    <section>
+      <h2 class="section-title">{c.shotsHeading}</h2>
+      <div class="game-gallery">
+        {gallery.map((g) => (
+          <figure class="shot">
+            <a href={g.img.src}>
+              <Image src={g.img} alt={g.alt} widths={[560, 900, 1400]} sizes="(max-width: 760px) 100vw, 46rem" />
+            </a>
+            <figcaption>{g.caption}</figcaption>
+          </figure>
+        ))}
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-title">{c.videosHeading}</h2>
+      <p>{c.videosIntro}</p>
+      <div class="game-videos">
+        {videos.map((v) => (
+          <div class="video">
+            <iframe
+              src={`https://www.youtube-nocookie.com/embed/${v.id}`}
+              title={v.title[lang]}
+              loading="lazy"
+              allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen
+            ></iframe>
+            <p>{v.title[lang]}</p>
+          </div>
+        ))}
+      </div>
+      <p class="game-channel">
+        <a href={videoChannel.url} rel="noopener"><Icon name="youtube" size={18} /><span>{c.videosChannel} {videoChannel.name}</span></a>
+      </p>
+    </section>
+
+    <section>
+      <h2 class="section-title">{c.factsHeading}</h2>
+      <dl class="game-facts">
+        {c.facts.map(([k, v]) => (
+          <div><dt>{k}</dt><dd>{v}</dd></div>
+        ))}
+      </dl>
+      <p class="game-licenses">
+        <a href={url(`/${lang}/music/licenses/`)}>{c.licenses} →</a>
+        <span>{c.licensesNote}</span>
+      </p>
+    </section>
+  </article>
+</Base>
+
+<style>
+  .game-back { margin: 0 0 1rem; }
+
+  /* ---- Hero ---- */
+  .game-hero { margin-bottom: 2rem; }
+  .game-badge {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.35rem;
+    margin: 0 0 0.7rem;
+    padding: 0.25rem 0.8rem;
+    border-radius: 999px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    color: #fff;
+    background: var(--c-music);
+  }
+  .game-badge span { font-weight: 500; text-transform: none; opacity: 0.92; }
+  .game-hero h1 {
+    font-size: clamp(2.2rem, 6vw, 3.2rem);
+    line-height: 1.08;
+    margin: 0 0 0.9rem;
+    background: var(--grad);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    width: fit-content;
+  }
+  .game-pitch {
+    font-family: var(--font-heading);
+    font-size: clamp(1.15rem, 2.6vw, 1.35rem);
+    line-height: 1.5;
+    text-wrap: pretty;
+    margin: 0 0 1.4rem;
+  }
+  .game-cta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.8rem 1.4rem;
+    margin-bottom: 0.9rem;
+  }
+  .steam-btn,
+  .steam-soon {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    margin: 0;
+    padding: 0.65rem 1.4rem;
+    border-radius: 999px;
+    font-weight: 650;
+  }
+  .steam-btn { color: #fff; background: var(--grad); }
+  .steam-btn:hover { text-decoration: none; transform: translateY(-2px); }
+  .steam-soon {
+    color: var(--muted);
+    border: 1px dashed color-mix(in srgb, var(--muted) 55%, var(--border));
+    background: color-mix(in srgb, var(--bg2) 70%, transparent);
+  }
+  .game-platform {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.92rem;
+  }
+  .game-status { color: var(--muted); font-size: 0.95rem; margin: 0; text-wrap: pretty; }
+
+  /* ---- Screenshots ---- */
+  .shot { margin: 0; }
+  .shot a { display: block; line-height: 0; }
+  .shot img {
+    width: 100%;
+    height: auto;
+    border-radius: 0.6rem;
+    border: 1px solid var(--border);
+    box-shadow: 0 18px 40px -22px color-mix(in srgb, var(--c-music) 55%, transparent);
+  }
+  .shot figcaption { color: var(--muted); font-size: 0.9rem; margin-top: 0.5rem; text-wrap: pretty; }
+  .game-gallery { display: grid; gap: 1.8rem; }
+
+  /* ---- Procedural callout ---- */
+  .game-procedural {
+    margin: 2.5rem 0 0;
+    padding: 1.1rem 1.3rem;
+    border-left: 4px solid var(--c-music);
+    border-radius: 0 0.7rem 0.7rem 0;
+    background: color-mix(in srgb, var(--c-music) 7%, var(--bg2));
+  }
+  .game-procedural h2 { font-size: 1.2rem; margin: 0 0 0.4rem; }
+  .game-procedural p { margin: 0; }
+
+  /* ---- Features ---- */
+  .game-features {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    gap: 0.9rem;
+  }
+  .game-features li {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    padding: 0.9rem 1rem;
+    border: 1px solid color-mix(in srgb, var(--c-music) 30%, var(--border));
+    border-radius: 0.8rem;
+    background: color-mix(in srgb, var(--bg2) 82%, transparent);
+  }
+  .game-features strong { font-family: var(--font-heading); font-size: 1.05rem; }
+  .game-features span { color: var(--muted); font-size: 0.93rem; }
+  .game-features li:last-child:nth-child(odd) { grid-column: 1 / -1; }
+
+  /* ---- Videos ---- */
+  .game-videos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+    gap: 1.2rem;
+    margin: 1rem 0;
+  }
+  .video iframe {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border: 0;
+    border-radius: 0.6rem;
+    background: #000;
+  }
+  .video p { color: var(--muted); font-size: 0.85rem; margin: 0.4rem 0 0; text-wrap: pretty; }
+  .game-channel a { display: inline-flex; align-items: center; gap: 0.45rem; }
+
+  /* ---- Facts + licenses ---- */
+  .game-facts {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.9rem 1.4rem;
+    margin: 0 0 1.6rem;
+  }
+  .game-facts dt {
+    color: var(--muted);
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .game-facts dd { margin: 0.15rem 0 0; font-weight: 600; }
+  .game-licenses { display: flex; flex-direction: column; gap: 0.2rem; }
+  .game-licenses span { color: var(--muted); font-size: 0.9rem; }
+</style>

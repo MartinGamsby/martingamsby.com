@@ -129,8 +129,12 @@ a:hover {
 }
 .site-header nav {
   display: flex;
-  gap: 1.1rem;
+  flex-wrap: wrap; /* phone width: the links wrap instead of widening the page */
+  gap: 0.55rem 1.1rem;
   align-items: center;
+}
+.site-header nav > a {
+  white-space: nowrap;
 }
 .site-header nav > a:not(.lang-switch) {
   color: var(--fg);
