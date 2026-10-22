@@ -129,6 +129,11 @@ Quick rules:
   `tools/make-redirect-stubs.mjs --target-base https://martingamsby.com` in those
   repos. HTTPS may lag while GitHub provisions the cert; enable "Enforce HTTPS" in
   repo Settings → Pages once it's available.
+- **Search-engine discovery**: `@astrojs/sitemap` (in `astro.config.mjs`) writes
+  `/sitemap-index.xml` + `/sitemap-0.xml` from every built route on each build, and
+  `public/robots.txt` points crawlers at it — so a new page is listed automatically
+  (no manual list to maintain). The guidepour alias stubs aren't routes, so they stay
+  out; 404 is excluded. Submit the sitemap once in Google Search Console.
 - Blog posts: markdown in `src/content/blog/{fr,en}/` (folder = language, filename
   keeps the `YYYY-MM-DD-slug` form and is the URL slug); frontmatter carries
   `title`, `date`, `translationKey` (shared by twins — the language toggle depends
