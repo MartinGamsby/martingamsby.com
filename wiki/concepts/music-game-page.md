@@ -1,8 +1,9 @@
-# Music Experiment Game's presentation page
+# The game's presentation page (Accidental Orchestra)
 
-`/{fr,en}/music/music-experiment-game/` — the game's own page on the site: what the
-Steam store page links back to, linked from the music door by a card (image +
-"in development" badge). Page: `src/pages/[lang]/music/music-experiment-game.astro`;
+`/{fr,en}/music/accidental-orchestra/` — the game's own page on the site
+(**Accidental Orchestra: A Music Experiment**; FR **Orchestre Accidentel : une
+expérience musicale**): what the Steam store page and the game's Settings link to, linked from the music door by a card (image +
+"in development" badge). Page: `src/pages/[lang]/music/accidental-orchestra.astro`;
 all copy (FR + EN, written separately, not translated) and the embedded video IDs:
 `src/data/music-game.ts`. Sibling: `/{lang}/music/licenses/` (see
 [[github-repos-and-demos]]) — **never move that one**, every game build prints it.
@@ -65,6 +66,11 @@ candidate is live first: `https://www.youtube.com/oembed?url=…watch?v=ID`.
 
 ## The slug
 
-`music-experiment-game` is the game's **working title**. Renaming the game = rename
-the page file (and the music door's card link, `src/pages/[lang]/music.astro`);
-consider a meta-refresh stub at the old path if the Steam page already links it.
+`accidental-orchestra`, the game's name in English on both languages (mirrored
+routes; the FR page's title is French). **The game holds this slug too**
+(`py/helpers/credits.py` `SITE_PAGES` in the game repo: its Settings "Game
+website" button and Credits card): change both together. The old working-title
+address `/{lang}/music/music-experiment-game/` answers with a meta-refresh redirect
+(`redirects` in `astro.config.mjs`; noindex + canonical; kept out of the sitemap by
+its `filter`). `/{lang}/music/licenses/` never moves (every game build prints it):
+renaming the game only changed its titles.

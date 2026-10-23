@@ -1,7 +1,7 @@
 /*
- * Music Experiment Game's presentation page (`/{lang}/music/music-experiment-game/`):
+ * Accidental Orchestra's presentation page (`/{lang}/music/accidental-orchestra/`):
  * the copy, per language, and the YouTube renders it embeds. The page itself is
- * `src/pages/[lang]/music/music-experiment-game.astro`.
+ * `src/pages/[lang]/music/accidental-orchestra.astro`.
  *
  * Status rules (wiki: music-game-page): the game is NOT out — no release date is
  * printed (the target isn't public), and no wishlist button until the Steam
@@ -64,7 +64,7 @@ interface Copy {
 
 export const copy: Record<Lang, Copy> = {
   fr: {
-    title: 'Music Experiment Game',
+    title: 'Orchestre Accidentel : une expérience musicale',
     description:
       'Un jeu incrémental où on découvre comment la musique fonctionne en l’écoutant. En développement, s’en vient sur Steam (Windows).',
     back: '← Musique',
@@ -119,7 +119,7 @@ export const copy: Record<Lang, Copy> = {
     licensesNote: 'Les composants libres inclus avec le jeu, leurs licences et leur code source.',
   },
   en: {
-    title: 'Music Experiment Game',
+    title: 'Accidental Orchestra: A Music Experiment',
     description:
       'An incremental game where you figure out how music works by listening to it. In development, coming to Steam (Windows).',
     back: '← Music',

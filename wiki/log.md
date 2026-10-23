@@ -82,3 +82,5 @@ Append-only. Format: `## [YYYY-MM-DD] operation | description`
 
 ## [2026-10-22] ingest | sitemap + robots.txt
 The site had no sitemap, so pages linked only from deep inside (the music game + licenses pages) were not being found by search engines. Added `@astrojs/sitemap` (auto-lists every built route; 324 URLs on first build, alias stubs and 404 excluded) and `public/robots.txt` pointing at `/sitemap-index.xml`.
+
+## [2026-10-22] update | The game is renamed Accidental Orchestra: A Music Experiment (FR: Orchestre Accidentel : une expérience musicale). Its page moved to `/{fr,en}/music/accidental-orchestra/` (file renamed, titles, the music door's card); the old `music-experiment-game/` address redirects (astro `redirects`, out of the sitemap). `/music/licenses/` kept its URL, new titles. The game repo's link uses the new slug. Updated [[music-game-page]], [[github-repos-and-demos]], PLAN.md.

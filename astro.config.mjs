@@ -15,7 +15,14 @@ export default defineConfig({
   // goes into /sitemap-index.xml so search engines find pages that are only
   // linked from deep inside the site. The guidepour alias stubs aren't routes,
   // so they stay out; the 404 is dropped by the integration itself.
-  integrations: [guidepourRedirects(), sitemap()],
+  integrations: [guidepourRedirects(), sitemap({ filter: (page) => !page.includes('/music/music-experiment-game') })],
+  // The game was renamed (Accidental Orchestra, Oct 2026): its page moved;
+  // the old address answers with a redirect (a meta-refresh page, out of the
+  // sitemap). Never move /music/licenses/: every game build prints it.
+  redirects: {
+    '/fr/music/music-experiment-game': '/fr/music/accidental-orchestra/',
+    '/en/music/music-experiment-game': '/en/music/accidental-orchestra/',
+  },
   markdown: {
     rehypePlugins: [rehypeFooterIcons],
   },

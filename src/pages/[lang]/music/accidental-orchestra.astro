@@ -1,9 +1,11 @@
 ---
-// Music Experiment Game's presentation page: the pitch, real screenshots, the
-// game's video renders, platform + languages, the licenses link. What the
-// Steam store page links back to. Copy + video IDs: src/data/music-game.ts.
-// The slug follows the game's name (a working title): renaming the game means
-// renaming this file. Never touch /music/licenses (every build prints it).
+// Accidental Orchestra's presentation page (Orchestre Accidentel in French):
+// the pitch, real screenshots, the game's video renders, platform + languages,
+// the licenses link. What the Steam store page and the game's Settings link
+// to (the game holds this slug: its helpers/credits.SITE_PAGES — change both
+// together). The old /music/music-experiment-game/ redirects here
+// (astro.config.mjs). Copy + video IDs: src/data/music-game.ts. Never touch
+// /music/licenses (every build prints it).
 import { Image } from 'astro:assets';
 import Base from '../../../layouts/Base.astro';
 import Icon from '../../../components/Icon.astro';

@@ -17,18 +17,20 @@ const links =
     ? [{ label: 'YouTube — @MartinGamsby', url: 'https://www.youtube.com/@MartinGamsby', icon: 'youtube' as const }]
     : [{ label: 'YouTube — @MartinGamsbyEN', url: 'https://www.youtube.com/@MartinGamsbyEN', icon: 'youtube' as const }];
 
-// The game's own page (src/pages/[lang]/music/music-experiment-game.astro).
+// The game's own page (src/pages/[lang]/music/accidental-orchestra.astro).
 const game = {
   fr: {
     stage: stageFr,
-    alt: 'Le groupe en pixel art de Music Experiment Game, sur scène',
+    title: 'Orchestre Accidentel',
+    alt: 'Le groupe en pixel art d’Orchestre Accidentel, sur scène',
     badge: 'En développement',
     text: 'Mon jeu : écoutez, et la musique grandit. Chaque chanson apprend quelque chose de nouveau à la suivante.',
     more: 'Découvrir le jeu →',
   },
   en: {
     stage: stageEn,
-    alt: 'Music Experiment Game’s pixel-art band, on stage',
+    title: 'Accidental Orchestra',
+    alt: 'Accidental Orchestra’s pixel-art band, on stage',
     badge: 'In development',
     text: 'My game: listen, and the music grows. Each song teaches the next one something new.',
     more: 'Discover the game →',
@@ -38,11 +40,11 @@ const game = {
 
 <Base lang={lang} title={tr.doors.music.title}>
   <DoorStub lang={lang} doorKey="music" facet="music" links={links}>
-    <a class="game-card" href={url(`/${lang}/music/music-experiment-game/`)}>
+    <a class="game-card" href={url(`/${lang}/music/accidental-orchestra/`)}>
       <Image src={game.stage} alt={game.alt} widths={[740, 1100]} sizes="(max-width: 760px) 100vw, 46rem" />
       <span class="game-card-body">
         <span class="game-card-badge">{game.badge}</span>
-        <strong>Music Experiment Game</strong>
+        <strong>{game.title}</strong>
         <span>{game.text}</span>
         <span class="game-card-more">{game.more}</span>
       </span>

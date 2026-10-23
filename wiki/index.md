@@ -12,7 +12,7 @@ Read this first; open only the pages you need.
 - [[tag-galaxy]] — `/[lang]/tags`: every reused tag is a star sized by frequency, coloured by dominant facet, click-to-filter the posts.
 - [[guidepour-redirects]] — retiring guidepour.com (+ future guidance4.com): bare-slug redirect stubs from an `aliases` frontmatter field + build integration, and the `/{lang}/guidepour` Djosh Sho author page.
 - [[bilingual-routing]] — mirrored /fr + /en routes, translationKey pairing, hreflang.
-- [[music-game-page]] — `/{lang}/music/music-experiment-game`: the game's presentation page (not out yet: no date, "Steam page coming" until `steamUrl` is set), real in-game screenshots + how to remake them, YouTube renders from the game's ledger.
+- [[music-game-page]] — `/{lang}/music/accidental-orchestra` (old `music-experiment-game` redirects): Accidental Orchestra's presentation page (not out yet: no date, "Steam page coming" until `steamUrl` is set), real in-game screenshots + how to remake them, YouTube renders from the game's ledger.
 - [[link-icons]] — one royalty-free icon pack (Font Awesome Free) for every external/social link.
 
 ## Sources (Martin's existing properties)
