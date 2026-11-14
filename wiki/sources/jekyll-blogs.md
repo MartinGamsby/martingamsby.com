@@ -5,7 +5,7 @@ They are the migration source for the new site's blog (Phase 2).
 
 | | FR | EN |
 |---|---|---|
-| Local path | `C:\Users\Martin\Documents\GitHub\martingamsby.github.io` | `C:\Users\Martin\Documents\GitHub\martingamsby.gitbub.io_en` (folder-name typo is real) |
+| Local path | `C:\Users\marti\Documents\GitHub\martingamsby.github.io` | `C:\Users\marti\Documents\GitHub\martingamsby.gitbub.io_en` (folder-name typo is real) |
 | GitHub repo | `MartinGamsby/martingamsby.github.io` (fork of jeffreytse/jekyll-theme-yat) | `MartinGamsby/en` |
 | Served at | martingamsby.github.io | martingamsby.github.io/en |
 | Posts (2026-06-11) | ~145 | ~140 |
