@@ -38,7 +38,7 @@ Quick rules:
 - Raw materials you shouldn't rewrite go in `raw/` (immutable); wiki pages are yours
   to maintain.
 
-## Related local repos (siblings under `C:\Users\Martin\Documents\GitHub\`)
+## Related local repos (siblings under `C:\Users\marti\Documents\GitHub\`)
 
 | Path | What |
 |---|---|
