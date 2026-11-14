@@ -2,7 +2,7 @@
 
 The **deterministic** tool Martin writes and translates posts with. NOT a
 Claude skill, NOT a script in this repo — a standing Python/Qt app in the
-sibling repo `C:\Users\Martin\Documents\GitHub\WriterHelper`. Run with
+sibling repo `C:\Users\marti\Documents\GitHub\WriterHelper`. Run with
 `python writerhelper.py`.
 
 How it works: a model → template → file pipeline. Each article is an
