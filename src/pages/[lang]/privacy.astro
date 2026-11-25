@@ -1,0 +1,115 @@
+---
+// Privacy policy of the Google sign-in ("OAuth app") that Martin's own publishing
+// scripts use to upload to his YouTube channels (Google Cloud project "Music",
+// consent screen "Music Experiment Game"). Google requires its URL to move the app
+// out of Test mode, where its sign-ins expire after 7 days. The consent screen
+// links here: never move this page.
+import Base from '../../layouts/Base.astro';
+import { LANGS, url, type Lang } from '../../i18n/ui';
+
+export function getStaticPaths() {
+  return LANGS.map((lang) => ({ params: { lang } }));
+}
+
+const lang = Astro.params.lang as Lang;
+
+// Never the verbatim address in the HTML (wiki: profiles-and-channels).
+const ea = 'martingamsby';
+const eb = 'gmail';
+const ec = 'com';
+const ed = lang === 'fr' ? `${ea} [à] ${eb} [point] ${ec}` : `${ea} [at] ${eb} [dot] ${ec}`;
+
+const links = {
+  permissions: 'https://myaccount.google.com/permissions',
+  youtubeTerms: 'https://www.youtube.com/t/terms',
+  googlePrivacy: 'https://policies.google.com/privacy',
+  userData: 'https://developers.google.com/terms/api-services-user-data-policy',
+};
+
+const c = {
+  fr: {
+    title: 'Politique de confidentialité — connexion Google « Music Experiment Game »',
+    updated: 'Mise à jour : 25 novembre 2026',
+    sections: [
+      ['De quoi il s’agit', [
+        'Quand tu te connectes avec Google et que l’écran de consentement affiche « Music Experiment Game », c’est cette application qui demande l’accès. Elle sert uniquement à mes propres scripts de publication, qui téléversent des vidéos sur mes propres chaînes YouTube, en règlent le titre, la description, les tags, la vignette et l’heure de publication, et peuvent les aimer. Elle n’est offerte à personne d’autre, et le jeu que les joueurs téléchargent ne s’en sert pas.',
+      ]],
+      ['Ce qui est utilisé', [
+        'L’accès YouTube que tu accordes (la permission « youtube ») : pour téléverser des vidéos, modifier leurs informations, les aimer et lire le nom de la chaîne connectée, afin de vérifier que c’est la bonne avant de publier quoi que ce soit.',
+        'Rien d’autre : ni ton courriel, ni tes contacts, ni tes autres données Google.',
+      ]],
+      ['Où ça reste', [
+        'Le jeton de connexion est gardé dans un fichier sur mon ordinateur, et nulle part ailleurs. Il n’y a pas de serveur, pas de base de données, pas de statistiques, pas de publicité.',
+        'Aucune donnée n’est vendue, partagée ni transmise à qui que ce soit. Les seuls échanges sont entre mon ordinateur et les services de Google.',
+      ]],
+      ['Retirer l’accès', [
+        'Tu peux retirer l’accès en tout temps dans les autorisations de ton compte Google. Le jeton enregistré cesse alors de fonctionner.',
+      ]],
+    ],
+    terms: 'Cette application utilise les services d’API de YouTube. En l’utilisant, tu acceptes les conditions d’utilisation de YouTube, et les règles de confidentialité de Google s’appliquent. Son usage des données reçues des API de Google respecte les règles sur les données des utilisateurs des services d’API de Google, y compris les exigences d’utilisation limitée.',
+    labels: { permissions: 'Autorisations du compte Google', youtubeTerms: 'Conditions d’utilisation de YouTube', googlePrivacy: 'Règles de confidentialité de Google', userData: 'Règles sur les données des utilisateurs des API de Google' },
+    contact: 'Une question? Écris-moi :',
+    back: '← Accueil',
+  },
+  en: {
+    title: 'Privacy policy — “Music Experiment Game” Google sign-in',
+    updated: 'Updated: November 25, 2026',
+    sections: [
+      ['What this is', [
+        'When you sign in with Google and the consent screen says “Music Experiment Game”, this is the app asking. It is used only by my own publishing scripts, which upload videos to my own YouTube channels, set their title, description, tags, thumbnail and publishing time, and may like them. It isn’t offered to anyone else, and the game players download doesn’t use it.',
+      ]],
+      ['What it uses', [
+        'The YouTube access you grant (the “youtube” scope): to upload videos, edit their details, like them, and read the connected channel’s name, so it can check it’s the right channel before publishing anything.',
+        'Nothing else: not your email, your contacts, or any other Google data.',
+      ]],
+      ['Where it stays', [
+        'The sign-in token is kept in a file on my computer, and nowhere else. There is no server, no database, no analytics and no advertising.',
+        'No data is sold, shared or passed on to anyone. The only exchanges are between my computer and Google’s services.',
+      ]],
+      ['Removing access', [
+        'You can remove its access at any time in your Google Account’s permissions. The saved token then stops working.',
+      ]],
+    ],
+    terms: 'This app uses the YouTube API Services. By using it, you agree to the YouTube Terms of Service, and the Google Privacy Policy applies. Its use of information received from Google APIs adheres to the Google API Services User Data Policy, including the Limited Use requirements.',
+    labels: { permissions: 'Google Account permissions', youtubeTerms: 'YouTube Terms of Service', googlePrivacy: 'Google Privacy Policy', userData: 'Google API Services User Data Policy' },
+    contact: 'Questions? Write to me:',
+    back: '← Home',
+  },
+}[lang];
+---
+
+<Base lang={lang} title={c.title}>
+  <article class="post privacy">
+    <p><a href={url(`/${lang}/`)}>{c.back}</a></p>
+    <h1>{c.title}</h1>
+    <p class="updated">{c.updated}</p>
+
+    {c.sections.map(([heading, paragraphs]) => (
+      <>
+        <h2>{heading}</h2>
+        {(paragraphs as string[]).map((p) => <p>{p}</p>)}
+      </>
+    ))}
+
+    <p>{c.terms}</p>
+    <ul class="refs">
+      {Object.entries(links).map(([k, href]) => (
+        <li><a href={href} rel="noopener">{c.labels[k as keyof typeof links]}</a></li>
+      ))}
+    </ul>
+
+    <p>{c.contact}</p>
+    <p><span class="email-link">{ed}</span></p>
+  </article>
+</Base>
+
+<style>
+  .updated { opacity: 0.8; }
+  .refs { padding-left: 1.2rem; }
+  .refs li { margin-bottom: 0.4rem; }
+  .email-link {
+    font-weight: 600;
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+  }
+</style>
