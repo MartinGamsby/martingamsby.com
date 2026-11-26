@@ -3,6 +3,7 @@ title: "End of the World"
 date: 2017-03-15
 translationKey: 2017-03-15-end-of-the-world
 facets: [fiction]
+aliases: [end-of-the-world]
 tags: [Guidance For,Interverted (Novel),Djosh Sho,Gamsblurb]
 image: /assets/posts/2017-03-15-end-of-the-world.header.webp
 imageThumb: /assets/posts/2017-03-15-end-of-the-world.thumb.webp

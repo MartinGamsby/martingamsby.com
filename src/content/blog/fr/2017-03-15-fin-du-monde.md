@@ -3,6 +3,7 @@ title: "Fin du monde"
 date: 2017-03-15
 translationKey: 2017-03-15-end-of-the-world
 facets: [fiction]
+aliases: [fin-du-monde]
 tags: [Guide Pour,Interverti (Roman),Djosh Sho,Gamsblurb]
 image: /assets/posts/2017-03-15-fin-du-monde.header.webp
 imageThumb: /assets/posts/2017-03-15-fin-du-monde.thumb.webp
